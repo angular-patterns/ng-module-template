@@ -10,15 +10,15 @@ A template for building re-usable angular modules.
 
 ## Build Targets
 
-`npm run compile`
+### `npm run compile`
 Uses `gulp` to inline the HTML templates and `ngc` to compile the source. The resulting files are output to the `dist` folder
 
-`npm run bundle`
+### `npm run bundle`
 Uses `rollup` to generate the `index.es5.js` bundle
 
-`npm run bundle-umd`
+### `npm run bundle-umd`
 Uses `rollup` to generate the UMD bundle and save it to the `dist/bundles` folder
 
-`npm run build`
+### `npm run build`
 Compiles and builds the module.
  

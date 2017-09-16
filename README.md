@@ -1,4 +1,4 @@
-# ng-module-template
+ # ng-module-template
 
 A template for building re-usable angular modules.
 
@@ -17,7 +17,7 @@ Uses `gulp` to inline the HTML templates and `ngc` to compile the source. The re
 Uses `rollup` to generate the `index.es5.js` bundle
 
 ### `bundle-umd`
-Uses `rollup` to generate the UMD bundle and save it to the `dist/bundles` folder
+Uses `rollup` to generate the `app.bundle.umd.js` UMD bundle and save it to the `dist/bundles` folder
 
 ### `build`
 Compiles and builds the module.

@@ -1,0 +1,14 @@
+.gitignore
+src
+node_modules
+**/*.js
+**/*.ts
+**/*.json
+**/*.map
+**/*.d.ts
+!dist/*.es5.js
+!dist/*.d.ts
+!dist/*.metadata.json
+!dist/src/**/*.d.ts
+!dist/bundles/**/*.js
+!package.json

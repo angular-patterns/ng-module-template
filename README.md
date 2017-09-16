@@ -1,4 +1,4 @@
-# ng-module-template
+ ng-module-template
 
 A template for building re-usable angular modules.
 
@@ -19,6 +19,6 @@ Uses `rollup` to generate the `index.es5.js` bundle
 ### `bundle-umd`
 Uses `rollup` to generate the UMD bundle and save it to the `dist/bundles` folder
 
-### `npm run build`
+### `build`
 Compiles and builds the module.
  

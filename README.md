@@ -1,6 +1,6 @@
- # ng-module-template
+# ng-module-template
 
-A template for building re-usable angular modules.
+A minimal template for building re-usable angular modules.
 
 ## Setup
   1. `npm clone https://github.com/angular-patterns/ng-module-template.git`

@@ -1,4 +1,4 @@
- ng-module-template
+# ng-module-template
 
 A template for building re-usable angular modules.
 

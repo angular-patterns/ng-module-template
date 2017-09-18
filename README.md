@@ -3,7 +3,7 @@
 A minimal template for building re-usable angular modules.
 
 ## Setup
-  1. `npm clone https://github.com/angular-patterns/ng-module-template.git`
+  1. `git clone https://github.com/angular-patterns/ng-module-template.git`
   2. `cd ng-module-template`
   3. `npm install`
   4. `npm run <build target>`

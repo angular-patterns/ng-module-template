@@ -7,13 +7,21 @@
   "module": "dist/bundles/app.bundle.umd.js",
   "scripts": {
     "compile": "gulp copy-src && ngc -p tsconfig.json",
-    "bundle": "rollup dist/index.js --output.format es --output.file dist/index.es5.js --output.exports named",
-    "bundle-umd": "rollup dist/index.js --output.format umd --name ng-module-template2 --output.file dist/bundles/app.bundle.umd.js --output.exports named",
+    "bundle": "rollup --config",
+    "bundle-umd": "rollup --config --output.format umd --name ng-module-template2 --output.file dist/bundles/app.bundle.umd.js",
     "build": "npm run compile && npm run bundle && npm run bundle-umd"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@angular/common": "^4.4.5",
+    "@angular/compiler": "^4.4.5",
+    "@angular/compiler-cli": "^4.4.5",
+    "@angular/core": "^4.4.5",
+    "@angular/platform-browser": "^4.4.5",
+    "@angular/platform-browser-dynamic": "^4.4.5",
+    "typescript": "^2.5.3",
+    "zone.js": "^0.8.18"
   },
   "devDependencies": {
     "@angular/common": "^4.4.0-RC.0",

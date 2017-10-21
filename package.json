@@ -9,7 +9,8 @@
     "compile": "gulp copy-src && ngc -p tsconfig.json",
     "bundle": "rollup --config",
     "bundle-umd": "rollup --config --output.format umd --name ng-module-template2 --output.file dist/bundles/app.bundle.umd.js",
-    "build": "npm run compile && npm run bundle && npm run bundle-umd"
+    "build": "npm run compile && npm run bundle && npm run bundle-umd",
+    "dev": "npm run build && gulp copy-dist"
   },
   "author": "",
   "license": "ISC",

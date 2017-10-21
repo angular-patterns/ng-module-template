@@ -25,3 +25,11 @@ gulp.task('copy-src',['copy-public-api'], function () {
     .pipe(inlineNg2Template({ base: './src', useRelativePaths: true }))
     .pipe(gulp.dest('dist/src'))
 });
+
+gulp.task('copy-dist', function () {
+    return gulp.src([
+        'dist/**/*'
+    ])
+    .pipe(gulp.dest('client/dist'))
+});
+

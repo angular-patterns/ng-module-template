@@ -1,5 +1,6 @@
 import { PipeTransform, Pipe } from "@angular/core";
-declare var moment: any;
+import * as moment from 'moment-es6';
+
 
 @Pipe({
     name: 'parseDate',
@@ -7,7 +8,7 @@ declare var moment: any;
 })
 export class ParseDatePipe implements PipeTransform {
     transform(date: Date, format: string) {
-        return moment(date.toISOString()).format(format);
+        return moment.default(date.toISOString()).format(format);
     }
 
 }

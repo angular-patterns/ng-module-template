@@ -51,7 +51,10 @@ gulp.task('bundle', ['compile'], function () {
         '@angular/platform-browser',
         '@angular/platform-browser-dynamic',
         '@angular/router',
-        '@angular/router-deprecated'
+        '@angular/router-deprecated',
+        'rxjs',
+        'zone.js',
+        'moment-es6'
     ];
 
     var globals = {
@@ -59,11 +62,14 @@ gulp.task('bundle', ['compile'], function () {
         '@angular/http': 'vendor._angular_http',
         '@angular/platform-browser': 'vendor._angular_platformBrowser',
         '@angular/platform-browser-dynamic': 'vendor._angular_platformBrowserDynamic',
-        '@angular/router-deprecated': 'vendor._angular_routerDeprecated'
+        '@angular/router-deprecated': 'vendor._angular_routerDeprecated',
+        'rxjs/Observable': 'rxjs.Observable',
+        'zone.js':'zonejs',
+        'moment-es6': 'moment'
     };
 
     return rollup.rollup({
-        input: 'dist/index.js',
+        input: 'dist/index.js',    
         onwarn: function (warning) {
             if (warning.message.indexOf("treating it as an external dependency") > -1)
                 return;

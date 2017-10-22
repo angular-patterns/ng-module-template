@@ -140,7 +140,7 @@ gulp.task('publish', ['deploy'], function () {
             '../package.json',
             '../dist/**/*'
         ], { base: '../'})
-        .pipe(gulp.dest(dest));
+        .pipe(gulp.dest(path.combine(dest, pkg.name)));
         tasks.push(copyTask);     
     }
     

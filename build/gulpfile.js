@@ -133,9 +133,25 @@ gulp.task('deploy', ['build', 'pre-deploy'], function () {
 });
 
 gulp.task('publish', ['deploy'], function () {
-    return del([
+    var tasks = [];
+    if (process.argv.length == 4) {
+        var dest = process.argv[3].substring(2);
+        var copyTask = gulp.src([
+            '../package.json',
+            '../dist/**/*'
+        ], { base: '../'})
+        .pipe(gulp.dest(dest));
+        tasks.push(copyTask);     
+    }
+    
+    
+    var delTask = del([
         "dist/**"
     ], { force: true });
+
+    tasks.push(delTask);
+    return tasks;
+
 });
 
 gulp.task('name-module', function () {

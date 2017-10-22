@@ -40,7 +40,7 @@ gulp.task('compile', ['copy-src'], function (done) {
         });
 });
 
-gulp.task('bundle', ['compile'], function () {
+gulp.task('bundle', ['compile'], function (done) {
     var external = [
         '@angular/core',
         '@angular/common',
@@ -66,9 +66,9 @@ gulp.task('bundle', ['compile'], function () {
         'zone.js':'zonejs',
         'moment-es6': 'moment'
     };
-
-    return rollup.rollup({
-        input: 'dist/index.js',    
+ 
+    rollup.rollup({
+        input: 'dist/index.js',
         onwarn: function (warning) {
             if (warning.message.indexOf("treating it as an external dependency") > -1)
                 return;
@@ -78,7 +78,7 @@ gulp.task('bundle', ['compile'], function () {
         }
 
     }).then(function (bundle) {
-        bundle.write({
+        var umd = bundle.write({
             file: `dist/bundles/${pkg.name}.umd.js`,
             format: 'umd',
             exports: 'named',
@@ -87,7 +87,7 @@ gulp.task('bundle', ['compile'], function () {
             external: external,
             globals: globals
         });
-        bundle.write({
+        var cjs = bundle.write({
             file: `dist/bundles/${pkg.name}.cjs.js`,
             format: 'cjs',
             exports: 'named',
@@ -96,7 +96,7 @@ gulp.task('bundle', ['compile'], function () {
             external: external,
             globals: globals
         });
-        bundle.write({
+        var amd = bundle.write({
             file: `dist/bundles/${pkg.name}.amd.js`,
             format: 'amd',
             exports: 'named',
@@ -106,7 +106,7 @@ gulp.task('bundle', ['compile'], function () {
             globals: globals
         });
 
-        bundle.write({
+        var es = bundle.write({
             file: `dist/index.es5.js`,
             format: 'es',
             exports: 'named',
@@ -115,6 +115,10 @@ gulp.task('bundle', ['compile'], function () {
             external: external,
             globals: globals
 
+        });
+
+        return Promise.all([umd, cjs, amd, es]).then(function() {
+            done();
         });
 
     });
@@ -127,8 +131,8 @@ gulp.task('pre-build', function () {
 });
 
 
-gulp.task('build', ['bundle', 'pre-build'], function (done) {
-    gulp.src([
+gulp.task('build', ['pre-build', 'bundle'], function (done) {
+     gulp.src([
         'dist/index.es5.js',
         'dist/public_api.js',
         'dist/index.metadata.json',

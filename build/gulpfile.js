@@ -139,7 +139,7 @@ gulp.task('deploy', ['build', 'pre-deploy'], function () {
         .pipe(gulp.dest('../dist'))
 });
 
-gulp.task('publish', ['deploy'], function () {
+gulp.task('publish', [], function () {
     var tasks = [];
     if (process.argv.length == 4) {
         var dest = process.argv[3].substring(2);

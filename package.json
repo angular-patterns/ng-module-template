@@ -1,10 +1,10 @@
 {
-  "name": "ng-module-template",
+  "name": "time",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.es5.js",
   "typings": "dist/index.d.ts",
-  "module": "dist/bundles/ng-module-template.umd.js",
+  "module": "dist/bundles/time.umd.js",
   "scripts": {
     "start": "npm run dev",
     "serve": "webpack-dev-server --content-base dist --hot true --inline true",
@@ -27,6 +27,7 @@
     "@types/node": "^8.0.34",
     "bootstrap": "^3.3.7",
     "core-js": "^2.5.1",
+    "moment": "^2.19.1",
     "rxjs": "^5.4.3",
     "typescript": "^2.5.3",
     "zone.js": "^0.8.18"

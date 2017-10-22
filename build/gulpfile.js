@@ -5,6 +5,7 @@ const pkg = require('../package.json');
 const rollup = require('rollup');
 const inlineNg2Template = require('gulp-inline-ng2-template');
 const jsonModify = require('gulp-json-modify')
+const path = require('path');
 
 gulp.task('clean', function () {
     return del([
@@ -140,7 +141,7 @@ gulp.task('publish', ['deploy'], function () {
             '../package.json',
             '../dist/**/*'
         ], { base: '../'})
-        .pipe(gulp.dest(path.combine(dest, pkg.name)));
+        .pipe(gulp.dest(path.resolve(dest, pkg.name)));
         tasks.push(copyTask);     
     }
     

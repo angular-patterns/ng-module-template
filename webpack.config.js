@@ -11,7 +11,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const del = require('del');
 const Dotenv = require('dotenv-webpack');
 
-//del.sync("dist/**");
+del.sync("dist/**");
 
 module.exports = () => {
     const isProd = process.argv.indexOf('-p') !== -1;

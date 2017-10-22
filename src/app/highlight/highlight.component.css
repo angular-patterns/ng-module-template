@@ -1,0 +1,10 @@
+.normal {
+    font-weight: normal;
+}
+.highlight {
+    font-weight: bold;
+}
+.other {
+    color: grey;
+    font-style: italic;
+}

@@ -1,0 +1,15 @@
+<ng-content></ng-content>
+<table>
+    <tr *ngFor="let item of (result | async)?.items" (click)="onSelectAddress(item)">
+        <td>
+            <span [item]="item" class="highlight">{{ item.Text}}, {{ item.Description }}</span>
+        </td>
+    </tr>
+</table>
+
+
+
+<!-- <pre>
+
+{{ result | async | json}}
+</pre>  -->

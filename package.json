@@ -11,7 +11,8 @@
     "dev": "npm run serve -- --open",
     "build": "webpack -p",
     "build-dev": "webpack",
-    "build-module": "cd build && gulp publish",
+    "build-module": "cd build && gulp deploy && gulp publish",
+    "publish": "cd build && gulp publish",
     "name-module": "cd build && gulp name-module"
   },
   "author": "",

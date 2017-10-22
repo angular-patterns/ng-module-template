@@ -14,6 +14,7 @@
 
 export * from './src/app.module';
 export * from './src/time/time.component';
+export * from './src/time/parse-date.pipe';
 
 // This file only reexports content of the `src` folder. Keep it that way.
 // This is a hack to prevent people from turning on strictNullChecks. See #15432

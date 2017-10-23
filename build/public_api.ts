@@ -13,6 +13,7 @@
  */
 
 export * from './src/app.module';
+export * from './src/address/address.component';
 export * from './src/address-complete/address-complete.component';
 export * from './src/address-field/address-field.directive';
 export * from './src/highlight/highlight.component';

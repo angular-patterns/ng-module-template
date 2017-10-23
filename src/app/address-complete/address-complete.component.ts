@@ -25,7 +25,7 @@ import { Items, Item } from '../models/item.model';
   styleUrls: ['./address-complete.component.css']
 })
 export class AddressCompleteComponent implements AfterContentInit {
-  private result: Observable<Results>;
+  result: Observable<Results>;
   @Output() selectAddress: EventEmitter<Address>;
   @ContentChild(AddressFieldDirective) addressField: AddressFieldDirective;
   

@@ -35,7 +35,7 @@ module.exports = () => {
                 { test: /\.ts$/, use: isProd ? '@ngtools/webpack' : ['awesome-typescript-loader?slient=true', 'angular2-template-loader'] },
                 { 
                     test: /\.html$/, 
-                    loader: 'html-loader',
+                    loader: 'raw-loader',
                     options: {
                        minimize: isProd,
                        removeAttributeQuotes: false

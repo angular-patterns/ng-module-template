@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HighlightComponent } from './highlight/highlight.component';
 import { AddressCompleteComponent } from './address-complete/address-complete.component';
 import { AddressFieldDirective } from './address-field/address-field.directive';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports:      [ 

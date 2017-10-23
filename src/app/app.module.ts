@@ -19,6 +19,11 @@ import { CommonModule } from '@angular/common';
     AddressCompleteComponent, 
     AddressFieldDirective 
   ],
-  bootstrap:    [ AppComponent ]
+  bootstrap:    [ AppComponent ],
+  entryComponents: [
+    AppComponent, 
+    HighlightComponent, 
+    AddressCompleteComponent
+  ]
 })
 export class AppModule { }

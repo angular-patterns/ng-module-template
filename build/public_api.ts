@@ -13,6 +13,13 @@
  */
 
 export * from './src/app.module';
+export * from './src/address-complete/address-complete.component';
+export * from './src/address-field/address-field.directive';
+export * from './src/highlight/highlight.component';
+export * from './src/models/address.model';
+export * from './src/models/item.model';
+export * from './src/models/query.model';
+export * from './src/models/results.model';
 
 // This file only reexports content of the `src` folder. Keep it that way.
 // This is a hack to prevent people from turning on strictNullChecks. See #15432

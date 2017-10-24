@@ -1,4 +1,5 @@
 const gulp = require('gulp');
+const git = require('gulp-git');
 const shell = require('gulp-shell');
 const del = require('del');
 const pkg = require('../package.json');
@@ -6,6 +7,22 @@ const rollup = require('rollup');
 const inlineNg2Template = require('gulp-inline-ng2-template');
 const jsonModify = require('gulp-json-modify')
 const path = require('path');
+const fs = require('fs');
+const runSequence = require('run-sequence');
+
+const publishPath = (function(){
+    if (process.argv.length == 4) {
+        var destPath = process.argv[3].substring(2);
+        var publishPath = path.resolve(destPath, pkg.name);
+        return publishPath;
+    }
+    return null;
+})();
+if (publishPath != null)
+{
+    console.log(`publish path: ${publishPath}`);    
+}
+
 
 gulp.task('clean', function () {
     return del([
@@ -18,7 +35,7 @@ gulp.task('copy-public-api', ['clean'], function () {
     return gulp.src([
         'public_api.ts'
     ])
-    .pipe(gulp.dest('dist'))
+        .pipe(gulp.dest('dist'))
 
 });
 gulp.task('copy-src', ['copy-public-api'], function () {
@@ -31,10 +48,10 @@ gulp.task('copy-src', ['copy-public-api'], function () {
 });
 
 gulp.task('compile', ['copy-src'], function (done) {
-     gulp.src('tsconfig.json')
+    gulp.src('tsconfig.json')
         .pipe(shell(['"../node_modules/.bin/ngc" -p <%= file.path %>']))
-        .on('end', function() {
-            del('node_modules/**', { force: true}).then(function() {
+        .on('end', function () {
+            del('node_modules/**', { force: true }).then(function () {
                 done();
             });
         });
@@ -113,7 +130,7 @@ gulp.task('bundle', ['compile'], function (done) {
 
         });
 
-        return Promise.all([umd, cjs, amd, es]).then(function() {
+        return Promise.all([umd, cjs, amd, es]).then(function () {
             done();
         });
 
@@ -128,42 +145,80 @@ gulp.task('pre-build', function () {
 
 
 gulp.task('build', ['pre-build', 'bundle'], function (done) {
-     gulp.src([
+    gulp.src([
         'dist/index.es5.js',
         'dist/public_api.js',
         'dist/index.metadata.json',
         'dist/bundles/**.js',
         'dist/**/*.d.ts',
         '!../src/app/**/*.spec.ts'
-        ], { base: 'dist' })
+    ], { base: 'dist' })
         .pipe(gulp.dest('../dist'))
-        .on('end', function() {
-            del('dist/**', { force: true}).then(function() {
+        .on('end', function () {
+            del('dist/**', { force: true }).then(function () {
                 done();
             });
         });
 });
 
-gulp.task('pre-publish', function() {
-    if (process.argv.length == 4) {
-        var destPath = process.argv[3].substring(2);
-        var packagePath = path.resolve(destPath, pkg.name);
-        return del(packagePath, { force:true});
+gulp.task('pre-deploy', function () {
+    if (publishPath != null) {
+        var delPath = path.join(publishPath, '**/*');
+        return del(delPath, { force: true });
     }
 });
 
-gulp.task('publish', ['pre-publish'], function () {
-    if (process.argv.length == 4) {
-        var destPath = process.argv[3].substring(2);
-        var packagePath = path.resolve(destPath, pkg.name);
 
-        return gulp.src([
-            '../package.json',
-            '../dist/**/*'
-        ], { base: '../'})
-        .pipe(gulp.dest(packagePath));  
+gulp.task('git-init', function(done){
+    if (publishPath != null) {
+        process.chdir(publishPath);
+        git.init({args: '--quiet'}, function (err) {
+            if (err) throw err;
+            done();
+        });
     }
-    
+});
+
+gulp.task('git-add', function(){
+    if (publishPath != null) {
+        process.chdir(publishPath);
+        return gulp.src(path.join(publishPath, '**/*'))
+            .pipe(git.add());
+    }
+});
+
+gulp.task('git-commit', function(){
+    if (publishPath != null) {
+        process.chdir(publishPath);
+        return gulp.src(path.join(publishPath, '**/*'))
+          .pipe(git.commit(`v${pkg.version}`));
+    }
+});
+  
+gulp.task('git-tag', function(done){
+    if (publishPath != null) {
+        process.chdir(publishPath);
+        git.tag(pkg.version, 'version', function() {
+            done();
+        });
+    }
+});
+
+gulp.task('publish', ['deploy'], function (done) {
+  if (publishPath != null) {
+      runSequence('git-init','git-add', 'git-commit', 'git-tag', done);
+  }  
+});
+
+gulp.task('deploy', ['pre-deploy'], function () {
+    if (publishPath != null) {
+        var srcPath = path.resolve('../');
+        return gulp.src([
+            path.join(srcPath, 'package.json'),
+            path.join(srcPath, 'dist/**/*')
+        ], { base: srcPath })
+        .pipe(gulp.dest(publishPath));
+    }
 });
 
 gulp.task('name-module', function () {
@@ -180,7 +235,7 @@ gulp.task('name-module', function () {
             }))
             .pipe(gulp.dest('../'));
 
-    var modifyTsconfigJson = 
+    var modifyTsconfigJson =
         gulp.src(['./tsconfig.json'])
             .pipe(jsonModify({
                 key: 'angularCompilerOptions.flatModuleId',
@@ -188,7 +243,7 @@ gulp.task('name-module', function () {
             }))
             .pipe(gulp.dest('./'));
     return [
-        modifyPackageJson, 
+        modifyPackageJson,
         modifyTsconfigJson
     ];
 

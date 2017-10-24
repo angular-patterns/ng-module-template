@@ -22,7 +22,9 @@
             "es6"
         ],
         "skipLibCheck": true,
-        "types": []
+        "typeRoots": [
+            "../node_modules/@types/"
+        ]
     },
     "files": [
         "dist/public_api.ts"

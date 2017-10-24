@@ -200,7 +200,8 @@ gulp.task('git-commit', function(){
 gulp.task('git-tag', function(done){
     if (publishPath != null) {
         process.chdir(publishPath);
-        git.tag(pkg.version, 'version', function() {
+        git.tag(pkg.version, 'version', function(err) {
+            if (err) throw err;
             done();
         });
     }

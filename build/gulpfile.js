@@ -67,7 +67,10 @@ gulp.task('bundle', ['compile'], function (done) {
         '@angular/platform-browser',
         '@angular/platform-browser-dynamic',
         '@angular/router',
-        '@angular/router-deprecated'
+        '@angular/router-deprecated',
+        '@angular/common/http',
+        'rxjs/Observable'
+
     ];
 
     var globals = {
@@ -75,7 +78,9 @@ gulp.task('bundle', ['compile'], function (done) {
         '@angular/http': 'vendor._angular_http',
         '@angular/platform-browser': 'vendor._angular_platformBrowser',
         '@angular/platform-browser-dynamic': 'vendor._angular_platformBrowserDynamic',
-        '@angular/router-deprecated': 'vendor._angular_routerDeprecated'
+        '@angular/router-deprecated': 'vendor._angular_routerDeprecated',
+        '@angular/common/http': 'vendor._angular_common_http',
+        'rxjs/Observable': 'rxjs_observable'
     };
 
     rollup.rollup({

@@ -189,7 +189,7 @@ gulp.task('git-commit', function(){
     if (publishPath != null) {
         process.chdir(publishPath);
         return gulp.src(path.join(publishPath, '**/*'))
-          .pipe(git.commit('initial commit'));
+          .pipe(git.commit(`v${pkg.version}`));
     }
 });
   

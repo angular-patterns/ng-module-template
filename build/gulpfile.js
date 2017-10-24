@@ -1,4 +1,5 @@
 const gulp = require('gulp');
+const git = require('gulp-git');
 const shell = require('gulp-shell');
 const del = require('del');
 const pkg = require('../package.json');
@@ -6,6 +7,7 @@ const rollup = require('rollup');
 const inlineNg2Template = require('gulp-inline-ng2-template');
 const jsonModify = require('gulp-json-modify')
 const path = require('path');
+const fs = require('fs');
 
 gulp.task('clean', function () {
     return del([
@@ -142,26 +144,56 @@ gulp.task('build', ['pre-build', 'bundle'], function (done) {
         });
 });
 
-gulp.task('pre-publish', function() {
+gulp.task('pre-deploy', function() {
     if (process.argv.length == 4) {
         var destPath = process.argv[3].substring(2);
         var packagePath = path.resolve(destPath, pkg.name);
-        return del(packagePath, { force:true});
+        var delPath = path.join(packagePath, '**/*');
+        return del(delPath, { force:true});
     }
 });
 
-gulp.task('publish', ['pre-publish'], function () {
+gulp.task('publish', ['deploy'], function(done) {
     if (process.argv.length == 4) {
         var destPath = process.argv[3].substring(2);
         var packagePath = path.resolve(destPath, pkg.name);
+        process.chdir(packagePath);
+
+        gulp.src(path.join(packagePath,'**/*'))
+            .pipe(git.add({args: '*'}))
+            .pipe(git.commit('initial commit',  {args: '--quiet'}, function() {
+                git.tag(pkg.version, pkg.version, function(err) {
+                    if (err)
+                       throw err;
+                    console.log ('Created tag ' + pkg.version);
+                });
+                done();
+            }));
+    }
+});
+
+gulp.task('deploy', ['pre-deploy'], function () {
+    if (process.argv.length == 4) {
+        var destPath = process.argv[3].substring(2);
+        var srcPath = path.resolve('../');
+        var packagePath = path.resolve(destPath, pkg.name);
+        var isNew = !fs.existsSync(packagePath);
+
+        if (isNew) {
+            fs.mkdirSync(packagePath,'0777', true);
+            process.chdir(packagePath);            
+            git.init(function(err) {
+                if (err) throw err;
+            });
+        }
 
         return gulp.src([
-            '../package.json',
-            '../dist/**/*'
-        ], { base: '../'})
-        .pipe(gulp.dest(packagePath));  
+            path.join(srcPath, 'package.json'),
+            path.join(srcPath,'dist/**/*')
+        ], { base: srcPath})
+        .pipe(gulp.dest(packagePath));
+                
     }
-    
 });
 
 gulp.task('name-module', function () {

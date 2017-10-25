@@ -21,7 +21,7 @@ export class MessageComponent implements OnInit {
     constructor(@Inject(HttpClient) private http: HttpClient) { 
         const url = `${process.env.MESSAGE_URL}`;
         this.messages = Observable.timer(0,10000).switchMap(t=> this.http.get<Message[]>(url));
-        this.timer = Observable.timer(0,3000);
+        this.timer = Observable.timer(0,5000);
 
         this.rotating = Observable.combineLatest(this.messages, this.timer).map(arr=> {
             var messages = arr[0];

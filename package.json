@@ -18,6 +18,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+  },
+  "devDependencies": {
     "@angular/common": "^4.4.5",
     "@angular/compiler": "^4.4.5",
     "@angular/compiler-cli": "^4.4.5",
@@ -27,9 +29,7 @@
     "bootstrap": "^3.3.7",
     "core-js": "^2.5.1",
     "rxjs": "^5.4.3",
-    "zone.js": "^0.8.18"
-  },
-  "devDependencies": {
+    "zone.js": "^0.8.18",    
     "@ngtools/webpack": "^1.7.4",
     "@types/node": "^8.0.34",
     "angular2-template-loader": "^0.6.2",

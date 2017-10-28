@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, ViewContainerRef } from '@angular/core';
-import { WidgetFactory } from './widget.factory';
+import { WidgetFactory } from '../providers/widget/widget.factory';
+
+
 
 @Component({
     selector: 'widget',

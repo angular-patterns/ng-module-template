@@ -13,7 +13,7 @@ import { AppModule as AddressModule, AddressComponent } from 'address';
 import { AppModule as WeatherModule, WeatherComponent } from 'weather';
 import { MissingWidgetComponent } from './widgets/missing-widget.component';
 
-var portalProvider = PortalProvider.register(
+export var portalProvider = PortalProvider.register(
   [
     {
       key: 'template1',
@@ -35,7 +35,7 @@ var portalProvider = PortalProvider.register(
   ]
 );
 
-var widgetProvider = WidgetProvider.register(
+export var widgetProvider = WidgetProvider.register(
   [
     {
       key: 'time',

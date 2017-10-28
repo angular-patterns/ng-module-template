@@ -30,6 +30,10 @@ module.exports = () => {
             filename: 'bundles/[name].[hash].bundle.js',
             path: path.join(process.cwd(), "dist")
         },
+        externals: {
+            'moment': 'moment',
+            'chart.js': 'Chart'
+        },
         module: {
             rules: [
                 { test: /\.ts$/, use: isProd ? '@ngtools/webpack' : ['awesome-typescript-loader?slient=true', 'angular2-template-loader'] },

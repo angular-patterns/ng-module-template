@@ -1,10 +1,10 @@
 {
-  "name": "widget",
+  "name": "@portal/core",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.es5.js",
   "typings": "dist/index.d.ts",
-  "module": "dist/bundles/widget.umd.js",
+  "module": "dist/bundles/@portal/core.umd.js",
   "scripts": {
     "start": "npm run dev",
     "serve": "webpack-dev-server --content-base dist --hot true --inline true",

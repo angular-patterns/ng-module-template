@@ -85,6 +85,6 @@ export var portalProvider = PortalProvider.register(portals,
     UserPortalProvider
   ]
 })
-export class AppModule {
+export class PortalCoreModule {
   
  }

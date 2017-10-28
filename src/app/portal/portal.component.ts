@@ -18,11 +18,13 @@ export class PortalComponent implements OnInit, OnChanges {
 
     ngOnInit() {
         this.onRender();
+
      }
 
      
      ngOnChanges() {
          this.onRender();
+    
      }
 
      onRender() {

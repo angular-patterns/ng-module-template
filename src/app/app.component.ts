@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
         { key: 'weather', location: 2}
       ]
     });
+  
 
 
   }

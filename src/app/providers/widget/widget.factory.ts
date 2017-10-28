@@ -14,7 +14,7 @@ export class WidgetFactory {
         var widget = this.widgetProvider.findWidget(key);            
         var factory = this.componentFactoryResolver.resolveComponentFactory(widget.type);
         var component = view.createComponent(factory);
-        component.instance[key] = key;
+        component.instance.key = key;
         return component;
     }
 }

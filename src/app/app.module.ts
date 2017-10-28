@@ -2,11 +2,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { AppModule as TimeModule, TimeComponent } from 'time';
 import { WidgetComponent } from './widget/widget.component';
 import { MissingWidgetComponent } from './components/missing-widget.component';
 import { WidgetContainerComponent } from './widget-container/widget-container.component';
-import { AppModule as WeatherModule, WeatherComponent } from 'weather';
 import { WidgetFactory } from './providers/widget/widget.factory';
 import { WidgetProvider } from './providers/widget/widget.provider';
 import { UserPortalProvider } from './providers/user/user-portal.provider';
@@ -22,14 +20,6 @@ import { UserPortalComponent } from './user/user-portal.component';
 
 
 var widgets: Widget[] = [
-  {
-    key: 'time',
-    type: TimeComponent
-  },
-  {
-    key: 'weather',
-    type: WeatherComponent
-  }
 ];
 
 
@@ -37,10 +27,6 @@ var portals: Portal[] = [
   {
     key: 'default',
     type: DefaultPortalComponent
-  },
-  {
-    key: 'default1',
-    type: TimeComponent
   }
 ];
 
@@ -55,7 +41,9 @@ export var portalProvider = PortalProvider.register(portals,
   });
 
 @NgModule({
-  imports: [BrowserModule, TimeModule, WeatherModule],
+  imports: [
+    BrowserModule
+  ],
   declarations: [
     AppComponent,
     WidgetComponent,
@@ -66,14 +54,18 @@ export var portalProvider = PortalProvider.register(portals,
     UserPortalComponent,
     MissingPortalComponent
   ],
-  bootstrap: [AppComponent],
-  exports: [AppComponent],
+  bootstrap: [
+    AppComponent
+  ],
+  exports: [
+    WidgetContainerComponent,
+    PortalComponent,
+    UserPortalComponent
+  ],
   entryComponents: [
-    TimeComponent,
     MissingWidgetComponent,
     WidgetComponent,
     WidgetContainerComponent,
-    WeatherComponent,
     PortalComponent,
     DefaultPortalComponent,
     UserPortalComponent,
@@ -93,4 +85,6 @@ export var portalProvider = PortalProvider.register(portals,
     UserPortalProvider
   ]
 })
-export class AppModule { }
+export class AppModule {
+  
+ }

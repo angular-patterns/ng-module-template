@@ -1,10 +1,10 @@
 {
-  "name": "ng-module-template",
+  "name": "test-portal",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.es5.js",
   "typings": "dist/index.d.ts",
-  "module": "dist/bundles/ng-module-template.umd.js",
+  "module": "dist/bundles/test-portal.umd.js",
   "scripts": {
     "start": "npm run dev",
     "serve": "webpack-dev-server --content-base dist --hot true --inline true",
@@ -24,17 +24,14 @@
     "@angular/core": "^4.4.5",
     "@angular/platform-browser": "^4.4.5",
     "@angular/platform-browser-dynamic": "^4.4.5",
-    "@ngtools/webpack": "^1.7.4",
-    "@types/node": "^8.0.34",
     "bootstrap": "^3.3.7",
     "core-js": "^2.5.1",
     "rxjs": "^5.4.3",
-    "typescript": "^2.5.3",
     "zone.js": "^0.8.18"
   },
   "devDependencies": {
-    "@ngtools/webpack": "^1.7.1",
-    "@types/node": "^8.0.28",
+    "@ngtools/webpack": "^1.7.4",
+    "@types/node": "^8.0.34",
     "angular2-template-loader": "^0.6.2",
     "awesome-typescript-loader": "^3.2.3",
     "css-loader": "^0.28.7",

@@ -7,7 +7,7 @@ import { MissingWidgetComponent } from './components/missing-widget.component';
 import { WidgetContainerComponent } from './widget-container/widget-container.component';
 import { WidgetFactory } from './providers/widget/widget.factory';
 import { WidgetProvider } from './providers/widget/widget.provider';
-import { UserPortalProvider } from './providers/user/user-portal.provider';
+import { UserPortalProvider } from './providers/user-portal/user-portal.provider';
 import { Widget } from './model/widget.model';
 import { PortalComponent } from './portal/portal.component';
 import { PortalFactory } from './providers/portal/portal.factory';
@@ -15,7 +15,8 @@ import { PortalProvider } from './providers/portal/portal.provider';
 import { MissingPortalComponent } from './components/missing-portal.component';
 import { Portal } from './model/portal.model';
 import { DefaultPortalComponent } from './components/default-portal.component';
-import { UserPortalComponent } from './user/user-portal.component';
+import { UserPortalComponent } from './user-portal/user-portal.component';
+import { WidgetHostDirective } from './widget-host/widget-host.directive';
 
 
 
@@ -52,7 +53,8 @@ export var portalProvider = PortalProvider.register(portals,
     PortalComponent,
     DefaultPortalComponent,
     UserPortalComponent,
-    MissingPortalComponent
+    MissingPortalComponent,
+    WidgetHostDirective
   ],
   bootstrap: [
     AppComponent

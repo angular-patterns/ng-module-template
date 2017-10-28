@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { UserPortalProvider } from '../providers/user/user-portal.provider';
+import { UserPortalProvider } from '../providers/user-portal/user-portal.provider';
 import { Observable} from 'rxjs/Observable';
 
 @Component({

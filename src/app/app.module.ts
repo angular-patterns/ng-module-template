@@ -1,7 +1,7 @@
-      
-import { NgModule }      from '@angular/core';
+
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppComponent }  from './app.component';
+import { AppComponent } from './app.component';
 import { AppModule as TimeModule, TimeComponent } from 'time';
 import { WidgetComponent } from './widget/widget.component';
 import { MissingWidgetComponent } from './components/missing-widget.component';
@@ -41,48 +41,54 @@ var portals: Portal[] = [
   {
     key: 'default1',
     type: TimeComponent
-  }  
+  }
 ];
 
+export var widgetProvider = WidgetProvider.register(widgets,
+  {
+    missingComponent: MissingWidgetComponent
+  });
+
+export var portalProvider = PortalProvider.register(portals,
+  {
+    missingComponent: MissingPortalComponent
+  });
+
 @NgModule({
-  imports:      [ BrowserModule,TimeModule,WeatherModule ],
-  declarations: [ 
-    AppComponent, 
-    WidgetComponent, 
+  imports: [BrowserModule, TimeModule, WeatherModule],
+  declarations: [
+    AppComponent,
+    WidgetComponent,
     MissingWidgetComponent,
     WidgetContainerComponent,
     PortalComponent,
     DefaultPortalComponent,
-    UserPortalComponent
+    UserPortalComponent,
+    MissingPortalComponent
   ],
-  bootstrap:    [ AppComponent ],
+  bootstrap: [AppComponent],
   exports: [AppComponent],
   entryComponents: [
-    TimeComponent, 
+    TimeComponent,
     MissingWidgetComponent,
     WidgetComponent,
     WidgetContainerComponent,
     WeatherComponent,
     PortalComponent,
     DefaultPortalComponent,
-    UserPortalComponent
+    UserPortalComponent,
+    MissingPortalComponent
   ],
   providers: [
-    WidgetFactory, 
+    WidgetFactory,
     {
       provide: WidgetProvider,
-      useValue: WidgetProvider.register(widgets, 
-        { 
-          missingComponent: MissingWidgetComponent
-        })
+      useValue: widgetProvider
     },
     PortalFactory,
     {
       provide: PortalProvider,
-      useValue: PortalProvider.register(portals, 
-      {
-        missingComponent: MissingPortalComponent
-      })
+      useValue: portalProvider
     },
     UserPortalProvider
   ]

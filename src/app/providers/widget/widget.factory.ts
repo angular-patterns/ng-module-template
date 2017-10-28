@@ -1,4 +1,4 @@
-import { Injectable, ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
+import { Injectable, ComponentFactoryResolver, ViewContainerRef, ComponentRef } from '@angular/core';
 import { TimeComponent } from 'time';
 import { WeatherComponent } from 'weather';
 import { WidgetProvider } from './widget.provider';
@@ -10,7 +10,7 @@ export class WidgetFactory {
 
     }
 
-    create(view:ViewContainerRef, key: string) {
+    create(view:ViewContainerRef, key: string):ComponentRef<any> {
         var widget = this.widgetProvider.findWidget(key);            
         var factory = this.componentFactoryResolver.resolveComponentFactory(widget.type);
         var component = view.createComponent(factory);

@@ -1,4 +1,4 @@
-import { Injectable, ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
+import { Injectable, ComponentFactoryResolver, ViewContainerRef, ComponentRef } from '@angular/core';
 import { PortalProvider } from './portal.provider';
 
 
@@ -9,7 +9,7 @@ export class PortalFactory {
 
     }
 
-    create(view:ViewContainerRef, key: string) {
+    create(view:ViewContainerRef, key: string): ComponentRef<any> {
         var widget = this.portalProvider.findPortal(key);            
         var factory = this.componentFactoryResolver.resolveComponentFactory(widget.type);
         var component = view.createComponent(factory);

@@ -24,4 +24,13 @@ export class AppComponent implements OnInit {
 
 
   }
+  onclick(portal:string) {
+    this.userPortalProvider.update({
+      key: portal,
+      widgets: [
+        { key: 'time', location:1 },
+        { key: 'weather', location: 2}
+      ]
+    });
+  }
 }

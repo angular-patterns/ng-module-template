@@ -37,7 +37,11 @@ var portals: Portal[] = [
   {
     key: 'default',
     type: DefaultPortalComponent
-  }
+  },
+  {
+    key: 'default1',
+    type: TimeComponent
+  }  
 ];
 
 @NgModule({

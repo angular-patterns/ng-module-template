@@ -13,7 +13,7 @@ import { AppModule as AddressModule, AddressComponent } from 'address';
 import { AppModule as WeatherModule, WeatherComponent } from 'weather';
 import { MissingWidgetComponent } from './widgets/missing-widget.component';
 import { AppModule as InboxModule } from 'inbox';
-import { InboxWidgetComponent } from "inbox";
+import { InboxWidgetComponent, InboxWidget, AppWidget, AddressWidget, RfrWidget, ScholarshipWidget, InquiryWidget, EdocWidget } from "inbox";
 import { Template5Component } from "./portal-templates/template5.component";
 
 
@@ -61,7 +61,34 @@ export var widgetProvider = WidgetProvider.register(
       key: 'inbox',
       type: InboxWidgetComponent
     },
-    
+    {
+      key: 'inbox-widget',
+      type: InboxWidget
+    },
+    {
+      key: 'app-widget',
+      type: AppWidget
+    },
+    {
+      key: 'address-widget',
+      type: AddressWidget
+    },
+    {
+      key: 'rfr-widget',
+      type: RfrWidget
+    },  
+    {
+      key: 'scholarship-widget',
+      type: ScholarshipWidget
+    },   
+    {
+      key: 'inquiry-widget',
+      type: InquiryWidget
+    },        
+    {
+      key: 'edoc-widget',
+      type: EdocWidget
+    },        
   ], {
     missingComponent: MissingWidgetComponent
   }
@@ -98,7 +125,15 @@ export var widgetProvider = WidgetProvider.register(
     TimeComponent,
     AddressComponent,
     WeatherComponent,
-    InboxWidgetComponent
+    InboxWidgetComponent,
+    InboxWidget,
+    InquiryWidget,
+    AppWidget,
+    RfrWidget,
+    AddressWidget,
+    ScholarshipWidget,
+    EdocWidget
+    
   ],
   providers: [
     {

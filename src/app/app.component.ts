@@ -17,6 +17,14 @@ export class AppComponent {
         { key: 'address', location: 4},
         { key: 'inbox', location: 2},
         { key: 'weather', location: 1},
+        { key: 'inquiry-widget', location: 1},
+        { key: 'edoc-widget', location: 2},
+        { key: 'address-widget', location: 3},
+        { key: 'scholarship-widget', location: 4},
+        { key: 'app-widget', location: 1},
+        { key: 'rfr-widget', location: 2},
+        { key: 'inbox-widget', location: 3},
+        
       ]
     });
   }
@@ -30,6 +38,13 @@ export class AppComponent {
         { key: 'address', location: 4},
         { key: 'inbox', location: 2},
         { key: 'weather', location: 1},
+        { key: 'inquiry-widget', location: 1},
+        { key: 'edoc-widget', location: 2},
+        { key: 'address-widget', location: 3},
+        { key: 'scholarship-widget', location: 4},
+        { key: 'app-widget', location: 1},
+        { key: 'rfr-widget', location: 2},
+        { key: 'inbox-widget', location: 3},
       ]
     })
 

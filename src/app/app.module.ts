@@ -15,6 +15,7 @@ import { MissingWidgetComponent } from './widgets/missing-widget.component';
 import { AppModule as InboxModule } from 'inbox';
 import { InboxWidgetComponent, InboxWidget, AppWidget, AddressWidget, RfrWidget, ScholarshipWidget, InquiryWidget, EdocWidget } from "inbox";
 import { Template5Component } from "./portal-templates/template5.component";
+import { Template6Component } from "./portal-templates/template6.component";
 
 
 export var portalProvider = PortalProvider.register(
@@ -38,6 +39,10 @@ export var portalProvider = PortalProvider.register(
     {
       key: 'template5',
       type: Template5Component
+    },
+    {
+      key: 'template6',
+      type: Template6Component
     },
 
   ]
@@ -111,6 +116,7 @@ export var widgetProvider = WidgetProvider.register(
     Template3Component,
     Template4Component,
     Template5Component,
+    Template6Component,
     MissingWidgetComponent
   ],
   bootstrap:    [ AppComponent ],
@@ -121,6 +127,7 @@ export var widgetProvider = WidgetProvider.register(
     Template3Component,
     Template4Component,
     Template5Component,
+    Template6Component,
     MissingWidgetComponent,
     TimeComponent,
     AddressComponent,

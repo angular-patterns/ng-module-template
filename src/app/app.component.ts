@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { UserPortalProvider } from '@portal/core';
 
 @Component({
-  selector: 'feature',
+  selector: 'app',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
@@ -14,9 +14,7 @@ export class AppComponent {
       key: 'template1',
       widgets: [
         { key: 'time', location: 1},
-        { key: 'address', location: 2},
-        { key: 'weather', location: 3},
-        { key: 'blah', location: 3},
+        { key: 'weather', location: 2},
       ]
     });
   }
@@ -27,9 +25,7 @@ export class AppComponent {
       key: this.templates[this.index],
       widgets: [
         { key: 'time', location: 1},
-        { key: 'address', location: 2},
-        { key: 'weather', location: 3},
-        { key: 'blah', location: 3},
+        { key: 'weather', location: 2},
       ]
     })
 

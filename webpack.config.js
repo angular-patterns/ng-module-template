@@ -55,6 +55,7 @@ module.exports = () => {
                     options: {
                         name: '[name].[hash:20].[ext]',
                         outputPath: 'assets/',
+                        useRelativePath: true,
                         limit: 10000
                     }                      
                 },

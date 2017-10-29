@@ -13,7 +13,7 @@ export class AppComponent {
     userPortalProvider.update({
       key: 'template1',
       widgets: [
-        { key: 'time', location: 99},
+        { key: 'time', location: 1},
         { key: 'inbox', location: 99},
         { key: 'address', location: 99},
         { key: 'weather', location: 99},

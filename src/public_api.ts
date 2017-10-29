@@ -13,7 +13,16 @@
  */
 
 export * from './app/app.module';
-export * from './app/widget/inbox-widget.component';
+export * from './app/inbox/inbox-widget.component';
+export * from './app/widget/widget.component';
+export * from './app/widgets/inbox.widget';
+export * from './app/widgets/address.widget';
+export * from './app/widgets/app.widget';
+export * from './app/widgets/edoc.widget';
+export * from './app/widgets/inquiry.widget';
+export * from './app/widgets/rfr.widget';
+export * from './app/widgets/scholarship.widget';
+export * from './app/widget/widget.model';
 
 
 // This file only reexports content of the `src` folder. Keep it that way.

@@ -1,0 +1,13 @@
+.icon {
+    padding: 20px;
+    border: solid 5px #0081ab;
+    color: #0081ab;
+}
+.icon .glyphicon{
+    font-size: 2.5em;
+}
+
+.panel-body .btn{
+    margin-right: 15px;
+    margin-bottom: 5px;
+}

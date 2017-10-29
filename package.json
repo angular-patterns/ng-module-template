@@ -1,6 +1,6 @@
 {
   "name": "test-portal",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "",
   "main": "dist/index.es5.js",
   "typings": "dist/index.d.ts",

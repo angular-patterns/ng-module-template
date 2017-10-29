@@ -14,7 +14,8 @@ export class AppComponent {
       key: 'template1',
       widgets: [
         { key: 'time', location: 1},
-        { key: 'weather', location: 2},
+        { key: 'inbox', location: 2},
+        { key: 'weather', location: 3},
       ]
     });
   }
@@ -25,7 +26,8 @@ export class AppComponent {
       key: this.templates[this.index],
       widgets: [
         { key: 'time', location: 1},
-        { key: 'weather', location: 2},
+        { key: 'inbox', location: 2},
+        { key: 'weather', location: 3},
       ]
     })
 

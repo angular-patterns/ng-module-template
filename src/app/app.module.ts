@@ -12,6 +12,9 @@ import { AppModule as TimeModule, TimeComponent } from 'time';
 import { AppModule as AddressModule, AddressComponent } from 'address';
 import { AppModule as WeatherModule, WeatherComponent } from 'weather';
 import { MissingWidgetComponent } from './widgets/missing-widget.component';
+import { AppModule as InboxModule } from 'inbox';
+import { InboxWidgetComponent } from "inbox";
+
 
 export var portalProvider = PortalProvider.register(
   [
@@ -49,6 +52,10 @@ export var widgetProvider = WidgetProvider.register(
       key: 'address',
       type: AddressComponent
     },
+    {
+      key: 'inbox',
+      type: InboxWidgetComponent
+    },
     
   ], {
     missingComponent: MissingWidgetComponent
@@ -63,14 +70,15 @@ export var widgetProvider = WidgetProvider.register(
     PortalCoreModule,
     TimeModule,
     WeatherModule,
-    AddressModule
+    AddressModule,
+    InboxModule
   ],
   declarations: [ AppComponent,
     Template1Component, 
     Template2Component,
     Template3Component,
     Template4Component,
-    MissingWidgetComponent 
+    MissingWidgetComponent
   ],
   bootstrap:    [ AppComponent ],
   exports: [AppComponent],
@@ -82,7 +90,8 @@ export var widgetProvider = WidgetProvider.register(
     MissingWidgetComponent,
     TimeComponent,
     AddressComponent,
-    WeatherComponent
+    WeatherComponent,
+    InboxWidgetComponent
   ],
   providers: [
     {

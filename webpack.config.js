@@ -51,6 +51,7 @@ module.exports = () => {
                     options: {
                         name: '[name].[hash:20].[ext]',
                         outputPath: 'assets/',
+                        useRelativePath: true,
                         limit: 10000
                     }                      
                 },
@@ -83,7 +84,10 @@ module.exports = () => {
               path: './.env'
             }),          
             new ProgressPlugin(),
-            new BundleAnalyzerPlugin(),
+            new BundleAnalyzerPlugin({
+                openAnalyzer: false,
+                analyzerMode: 'static',
+            }),
             new ExtractTextPlugin('bundles/styles.[hash].bundle.css'),    
             new HtmlWebpackPlugin({
                 filename: __dirname + '/dist/index.html',

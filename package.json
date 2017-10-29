@@ -18,6 +18,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "address": "file:///c:\\packages\\address",
     "inbox": "file:///c:\\packages\\inbox",
     "weather": "file:///c:\\packages\\weather"
   },

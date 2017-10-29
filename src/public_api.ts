@@ -12,8 +12,8 @@
  * Entry point for all public APIs of the core package.
  */
 
-export * from './src/app.module';
-export * from './src/widget/inbox-widget.component';
+export * from './app/app.module';
+export * from './app/widget/inbox-widget.component';
 
 
 // This file only reexports content of the `src` folder. Keep it that way.

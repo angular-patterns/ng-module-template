@@ -3,9 +3,9 @@
         "baseUrl": ".",
         "paths": {
             "*": [
-              "../node_modules/*"
+                "../node_modules/*"
             ]
-        },        
+        },
         "declaration": true,
         "stripInternal": true,
         "outDir": "",
@@ -33,7 +33,7 @@
         "annotateForClosureCompiler": true,
         "strictMetadataEmit": true,
         "flatModuleOutFile": "index.js",
-        "flatModuleId": "ng-module-template",
+        "flatModuleId": "inbox",
         "genDir": ""
     }
 }

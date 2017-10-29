@@ -7,7 +7,7 @@ import { UserPortalProvider } from '@portal/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  templates: string[] = ['template1', 'template2','template3', 'template4'];
+  templates: string[] = ['template1', 'template2','template3', 'template4', 'template5'];
   index: number = 0;
   constructor(private userPortalProvider: UserPortalProvider){
     userPortalProvider.update({
@@ -22,7 +22,7 @@ export class AppComponent {
   }
 
   onClick() {
-    this.index = (this.index +1) % 4;
+    this.index = (this.index +1) % 5;
     this.userPortalProvider.update({
       key: this.templates[this.index],
       widgets: [

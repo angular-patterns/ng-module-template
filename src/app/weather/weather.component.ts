@@ -13,7 +13,7 @@ export class WeatherComponent {
       },
       backgroundColor: '#fffff',
       color: '#222222',
-      width: '600px',
+      width: 'auto',
       height: 'auto',
       showWind:true,
       scale: TemperatureScale.CELCIUS,

@@ -95,7 +95,11 @@ export var widgetProvider = WidgetProvider.register(
     {
       key: 'edoc-widget',
       type: EdocWidget
-    },        
+    }, 
+    {
+      key: 'chart-widget',
+      type: ChartComponent
+    }       
   ], {
     missingComponent: MissingWidgetComponent
   }

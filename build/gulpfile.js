@@ -9,6 +9,7 @@ const jsonModify = require('gulp-json-modify')
 const path = require('path');
 const fs = require('fs');
 const runSequence = require('run-sequence');
+const replace = require('gulp-replace');
 
 const publishPath = (function(){
     if (process.argv.length == 4) {
@@ -33,9 +34,10 @@ gulp.task('clean', function () {
 
 gulp.task('copy-public-api', ['clean'], function () {
     return gulp.src([
-        'public_api.ts'
+        '../src/public_api.ts'
     ])
-        .pipe(gulp.dest('dist'))
+    .pipe(replace('./app', './src'))
+    .pipe(gulp.dest('dist'))
 
 });
 gulp.task('copy-src', ['copy-public-api'], function () {

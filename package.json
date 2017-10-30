@@ -46,6 +46,7 @@
     "gulp-git": "^2.4.2",
     "gulp-inline-ng2-template": "^4.0.0",
     "gulp-json-modify": "^1.0.2",
+    "gulp-replace": "^0.6.1",
     "gulp-shell": "^0.6.3",
     "html-loader": "^0.5.1",
     "html-webpack-plugin": "^2.30.1",

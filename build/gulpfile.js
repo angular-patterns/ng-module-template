@@ -247,12 +247,12 @@ gulp.task('name-module', function () {
 
     var modifyAppModule = 
         gulp.src('../src/app/app.module.ts')
-            .pipe(replace('AppModule', toPascalCase(`${pkg.name}`) + 'Module'))
+            .pipe(replace('AppModule', toPascalCase(name + 'Module')))
             .pipe(gulp.dest('../src/app'));
 
     var modifyWebpack = 
         gulp.src('../webpack.config.js')
-            .pipe(replace('#AppModule'), '#' + toPascalCase(`${pkg.name}` + 'Module'))
+            .pipe(replace('#AppModule', '#' + toPascalCase(name + 'Module')))
             .pipe(gulp.dest('../'));
             
     return [

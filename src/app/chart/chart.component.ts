@@ -24,7 +24,7 @@ export class ChartComponent implements AfterViewInit {
                         y = Math.random() * 100000;
                     series[i].addPoint(Math.floor(y), true, true);
                     }
-                }, 1000);
+                }, 3000);
             }
         }
     },      

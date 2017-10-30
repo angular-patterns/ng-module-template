@@ -18,9 +18,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@portal/core": "file:///c:\\packages\\@portal\\core",
+    "@types/node": "^8.0.47",
     "address": "file:///c:\\packages\\address",
     "chart": "file:///c:\\packages\\chart",
+    "extract-text-webpack-plugin": "^3.0.2",
     "inbox": "file:///c:\\packages\\inbox",
+    "rxjs": "^5.5.2",
     "weather": "file:///c:\\packages\\weather"
   },
   "devDependencies": {

@@ -18,8 +18,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@portal/core": "file:///c:\\packages\\@portal\\core",
     "address": "file:///c:\\packages\\address",
     "inbox": "file:///c:\\packages\\inbox",
+    "time": "file:///c:\\packages\\time",
     "weather": "file:///c:\\packages\\weather"
   },
   "devDependencies": {

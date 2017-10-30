@@ -10,6 +10,8 @@ const path = require('path');
 const fs = require('fs');
 const runSequence = require('run-sequence');
 const replace = require('gulp-replace');
+const rename = require('gulp-rename');
+const toPascalCase = require('to-pascal-case');
 
 const publishPath = (function(){
     if (process.argv.length == 4) {
@@ -242,9 +244,22 @@ gulp.task('name-module', function () {
                 value: name
             }))
             .pipe(gulp.dest('./'));
+
+    var modifyAppModule = 
+        gulp.src('../src/app/app.module.ts')
+            .pipe(replace('AppModule', toPascalCase(`${pkg.name}`) + 'Module'))
+            .pipe(gulp.dest('../src/app'));
+
+    var modifyWebpack = 
+        gulp.src('../webpack.config.js')
+            .pipe(replace('#AppModule'), '#' + toPascalCase(`${pkg.name}` + 'Module'))
+            .pipe(gulp.dest('../'));
+            
     return [
         modifyPackageJson,
-        modifyTsconfigJson
+        modifyTsconfigJson,
+        modifyAppModule,
+        modifyWebpack
     ];
 
 });

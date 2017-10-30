@@ -19,6 +19,7 @@
   "license": "ISC",
   "dependencies": {
     "address": "file:///c:\\packages\\address",
+    "chart": "file:///c:\\packages\\chart",
     "inbox": "file:///c:\\packages\\inbox",
     "weather": "file:///c:\\packages\\weather"
   },

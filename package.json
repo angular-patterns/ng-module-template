@@ -1,10 +1,10 @@
 {
-  "name": "ng-module-template",
-  "version": "1.0.0",
+  "name": "chart",
+  "version": "1.0.9",
   "description": "",
   "main": "dist/index.es5.js",
   "typings": "dist/index.d.ts",
-  "module": "dist/bundles/ng-module-template.umd.js",
+  "module": "dist/bundles/chart.umd.js",
   "scripts": {
     "start": "npm run dev",
     "serve": "webpack-dev-server --content-base dist --hot true --inline true",
@@ -12,7 +12,7 @@
     "build": "webpack -p",
     "build-dev": "webpack",
     "build-module": "cd build && gulp build",
-    "publish": "cd build && gulp publish --c:\\packages",
+    "publish": "npm version patch && npm run build-module && cd build && gulp publish --c:\\packages",
     "name-module": "cd build && gulp name-module"
   },
   "author": "",
@@ -28,6 +28,7 @@
     "@types/node": "^8.0.34",
     "bootstrap": "^3.3.7",
     "core-js": "^2.5.1",
+    "highcharts": "^6.0.2",
     "rxjs": "^5.4.3",
     "typescript": "^2.5.3",
     "zone.js": "^0.8.18"

@@ -88,9 +88,9 @@ module.exports = () => {
               path: './.env'
             }),          
             new ProgressPlugin(),
-            new BundleAnalyzerPlugin({ 
+            new BundleAnalyzerPlugin({
                 openAnalyzer: false,
-                analyzerMode: 'static',
+                analyzerMode: 'static',              
             }),
             new ExtractTextPlugin('bundles/styles.[hash].bundle.css'),    
             new HtmlWebpackPlugin({

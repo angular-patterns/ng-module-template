@@ -12,7 +12,7 @@
     "build": "webpack -p",
     "build-dev": "webpack",
     "build-module": "cd build && gulp build",
-    "publish": "npm version patch && npm run build && cd build && gulp publish --c:\\packages",
+    "publish": "npm run build && cd build && gulp publish --c:\\packages",
     "name-module": "cd build && gulp name-module"
   },
   "author": "",
@@ -21,10 +21,10 @@
     "@portal/core": "file:///c:\\packages\\@portal\\core",
     "@types/node": "^8.0.47",
     "address": "file:///c:\\packages\\address",
+    "chart": "file:///c:\\packages\\chart",
     "extract-text-webpack-plugin": "^3.0.2",
     "inbox": "file:///c:\\packages\\inbox",
     "rxjs": "^5.5.2",
-    "time": "file:///c:\\packages\\time",
     "weather": "file:///c:\\packages\\weather"
   },
   "devDependencies": {

@@ -17,6 +17,8 @@ import { InboxWidgetComponent, InboxWidget, AppWidget, AddressWidget, RfrWidget,
 import { Template5Component } from "./portal-templates/template5.component";
 import { Template6Component } from "./portal-templates/template6.component";
 
+import { ChartComponent, AppModule as ChartModule } from 'chart';
+
 
 export var portalProvider = PortalProvider.register(
   [
@@ -93,7 +95,11 @@ export var widgetProvider = WidgetProvider.register(
     {
       key: 'edoc-widget',
       type: EdocWidget
-    },        
+    }, 
+    {
+      key: 'chart-widget',
+      type: ChartComponent
+    }       
   ], {
     missingComponent: MissingWidgetComponent
   }
@@ -108,7 +114,8 @@ export var widgetProvider = WidgetProvider.register(
     TimeModule,
     WeatherModule,
     AddressModule,
-    InboxModule
+    InboxModule,
+    ChartModule
   ],
   declarations: [ AppComponent,
     Template1Component, 
@@ -139,7 +146,8 @@ export var widgetProvider = WidgetProvider.register(
     RfrWidget,
     AddressWidget,
     ScholarshipWidget,
-    EdocWidget
+    EdocWidget,
+    ChartComponent
     
   ],
   providers: [

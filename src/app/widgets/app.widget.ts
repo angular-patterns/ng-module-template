@@ -3,7 +3,7 @@ import { Widget } from "../widget/widget.model";
 
 
 @Component({
-  selector: 'app',
+  selector: 'application',
   template: `
   <widget class="wip" [widget]="wip">
   <div [innerHTML]="wip.description"></div>

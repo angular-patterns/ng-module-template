@@ -32,6 +32,7 @@
     "rxjs": "^5.4.3",
     "time": "file:///c:\\packages\\time",
     "typescript": "^2.5.3",
+    "weather": "file:///c:\\packages\\weather",
     "zone.js": "^0.8.18"
   },
   "devDependencies": {

@@ -1,8 +1,7 @@
 import { Observable } from "rxjs/Observable";
-
-
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import { UserPortal } from "../../model/user-portal.model";
+import 'rxjs/add/operator/merge';
 
 export class UserPortalProvider {
     public userPortal$: Observable<UserPortal>;

@@ -4,7 +4,7 @@ import { UserPortalProvider } from './providers/user-portal/user-portal.provider
 
 
 @Component({
-  selector: 'feature',
+  selector: 'app',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

@@ -12,8 +12,8 @@
  * Entry point for all public APIs of the core package.
  */
 
-export * from './src/app.module';
-export * from './src/chart/chart.component';
+export * from './app/app.module';
+export * from './app/chart/chart.component';
 
 // This file only reexports content of the `src` folder. Keep it that way.
 // This is a hack to prevent people from turning on strictNullChecks. See #15432

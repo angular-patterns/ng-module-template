@@ -12,17 +12,17 @@
  * Entry point for all public APIs of the core package.
  */
 
-export * from './src/app.module';
-export * from './src/inbox/inbox-widget.component';
-export * from './src/widget/widget.component';
-export * from './src/widgets/inbox.widget';
-export * from './src/widgets/address.widget';
-export * from './src/widgets/app.widget';
-export * from './src/widgets/edoc.widget';
-export * from './src/widgets/inquiry.widget';
-export * from './src/widgets/rfr.widget';
-export * from './src/widgets/scholarship.widget';
-export * from './src/widget/widget.model';
+export * from './app/app.module';
+export * from './app/inbox/inbox-widget.component';
+export * from './app/widget/widget.component';
+export * from './app/widgets/inbox.widget';
+export * from './app/widgets/address.widget';
+export * from './app/widgets/app.widget';
+export * from './app/widgets/edoc.widget';
+export * from './app/widgets/inquiry.widget';
+export * from './app/widgets/rfr.widget';
+export * from './app/widgets/scholarship.widget';
+export * from './app/widget/widget.model';
 
 
 // This file only reexports content of the `src` folder. Keep it that way.

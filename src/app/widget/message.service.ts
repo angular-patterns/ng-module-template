@@ -19,10 +19,12 @@ export class MessageService {
     
     }
     pushWidgets(messages: Message[]) {
+      
         this.messages.next(messages);
     }
     changePortal(portal: string) {
-        this.portalChange.next(portal);
+
+          this.portalChange.next(portal);
     }
 
 

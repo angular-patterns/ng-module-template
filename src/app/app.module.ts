@@ -19,8 +19,9 @@ import { Widget2Component } from '../widgets/widget2.component';
 import { Portal2Component } from '../portals/portal2.component';
 export const WidgetToken = new InjectionToken<Widget>("widgetToken");
 export const PortalToken = new InjectionToken<Portal>("portalToken");
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
+import {AppModule as ChartModule, ChartComponent} from 'chart';
 
 export function portalFactory(portals: Portal[]) {
   return new PortalProvider(portals);
@@ -71,7 +72,9 @@ export class PortalModule {
 
 @NgModule({
   imports:      [ 
-    BrowserModule, 
+    BrowserModule,
+    BrowserAnimationsModule, 
+    ChartModule,
     PortalModule.forRoot({
       portals: [
         { name: 'portal1', component: Portal1Component },          
@@ -80,6 +83,7 @@ export class PortalModule {
       widgets: [
         { name: 'widget1', component: Widget1Component },          
         { name: 'widget2', component: Widget2Component },          
+        { name: 'chart', component: ChartComponent },          
       ]
     })
   ],
@@ -88,7 +92,8 @@ export class PortalModule {
     Portal1Component,
     Widget1Component,
     Widget2Component,
-    Portal2Component
+    Portal2Component,
+    
   ],
   bootstrap:    [ AppComponent ],
   exports: [AppComponent],
@@ -96,7 +101,8 @@ export class PortalModule {
     Portal1Component,
     Widget1Component,
     Widget2Component,
-    Portal2Component
+    Portal2Component,
+    ChartComponent
   ]
 })
 export class AppModule { }

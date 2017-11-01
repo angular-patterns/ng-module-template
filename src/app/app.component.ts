@@ -13,6 +13,7 @@ export class AppComponent {
     this.messageService.pushWidgets([
       { location: 1, widgetName:"widget1"},
       { location: 2, widgetName:"widget2"},
+      // { location: 2, widgetName:"chart"},
     ]);
 
   }
@@ -20,5 +21,11 @@ export class AppComponent {
   changePortal() {
     this.portal = this.portal == "portal1" ? "portal2": "portal1";
     this.messageService.changePortal(this.portal);
+  }
+
+  pushWidget(name: string) {
+    this.messageService.pushWidgets([{
+      location: 1, widgetName: name
+    }]);
   }
 }

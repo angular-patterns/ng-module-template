@@ -30,6 +30,10 @@ module.exports = () => {
             filename: 'bundles/[name].[hash].bundle.js',
             path: path.join(process.cwd(), "dist")
         },
+        externals: {
+            'chart.js': 'Chart',
+            'highcharts': 'Highcharts'
+        },
         module: {
             rules: [
                 { test: /\.ts$/, use: isProd ? '@ngtools/webpack' : ['awesome-typescript-loader?slient=true', 'angular2-template-loader'] },
@@ -85,8 +89,8 @@ module.exports = () => {
             }),          
             new ProgressPlugin(),
             new BundleAnalyzerPlugin({
-                openAnalyzer: false,
-                analyzerMode: 'static',
+                openAnalyzer: true,
+                analyzerMode: 'server',
             }),
             new ExtractTextPlugin('bundles/styles.[hash].bundle.css'),    
             new HtmlWebpackPlugin({

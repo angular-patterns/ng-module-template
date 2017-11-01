@@ -1,6 +1,6 @@
 {
   "name": "time",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "dist/index.es5.js",
   "typings": "dist/index.d.ts",
@@ -12,7 +12,7 @@
     "build": "webpack -p",
     "build-dev": "webpack",
     "build-module": "cd build && gulp build",
-    "publish": "npm version patch && npm run build-module && cd build && gulp publish --c:\\packages",    
+    "publish": "npm version patch && npm run build-module && cd build && gulp publish --c:\\packages",
     "name-module": "cd build && gulp name-module"
   },
   "author": "",

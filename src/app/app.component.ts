@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MessageService } from './widget/message.service';
 
 @Component({
   selector: 'app',
@@ -6,4 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  portal: string;
+  constructor(private messageService:MessageService) {
+    this.portal = "portal1";
+    this.messageService.pushWidgets([
+      { location: 1, widgetName:"widget1"},
+      { location: 2, widgetName:"widget2"},
+    ]);
+
+  }
+
+  changePortal() {
+    this.portal = this.portal == "portal1" ? "portal2": "portal1";
+    this.messageService.changePortal(this.portal);
+  }
 }

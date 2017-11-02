@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import {  Portal1Component } from '../portals/portal1.component';
 import { Widget1Component } from '../widgets/widget1.component';
 import { WidgetComponent } from './widget/widget.component';
-import { PortalConfig, Portals, Widgets, Portal, Widget } from './model/model';
+import { PortalConfig, Portals, Widgets, Portal, Widget, Portlet } from './model/model';
 import { WidgetHostDirective } from './widget-host/widget-host.directive';
 import { PortalComponent } from './portal/portal.component';
 import { PortalProvider } from './providers/portal.provider';
@@ -17,8 +17,14 @@ import { WidgetContainerComponent } from './widget/widget-container.component';
 import { MessageService } from './widget/message.service';
 import { Widget2Component } from '../widgets/widget2.component';
 import { Portal2Component } from '../portals/portal2.component';
+import { Portlet1Component } from "../portlets/portlet1.component";
+import { Portlet2Component } from "../portlets/portlet2.component";
+import { PortletProvider } from "./providers/portlet.provider";
+import { PortletFactory } from "./providers/portlet.factory";
+import { PortletComponent } from "./widget/portlet.component";
 export const WidgetToken = new InjectionToken<Widget>("widgetToken");
 export const PortalToken = new InjectionToken<Portal>("portalToken");
+export const PortletToken = new InjectionToken<Portlet>("portletToken");
 
 
 
@@ -30,10 +36,14 @@ export function widgetFactory(widgets: Widget[]) {
   return new WidgetProvider(widgets);
 }
 
+export function portletFactory(portlets: Portlet[]) {
+  return new PortletProvider(portlets);
+}
+
 @NgModule({
   imports:      [BrowserModule],
-  declarations: [WidgetComponent, PortalComponent, WidgetHostDirective, WidgetContainerComponent],
-  exports: [WidgetComponent, PortalComponent, WidgetHostDirective, WidgetContainerComponent]
+  declarations: [WidgetComponent, PortletComponent, PortalComponent, WidgetHostDirective, WidgetContainerComponent],
+  exports: [WidgetComponent, PortletComponent, PortalComponent, WidgetHostDirective, WidgetContainerComponent]
 })
 export class PortalModule { 
   static forRoot(config:PortalConfig): ModuleWithProviders{
@@ -49,10 +59,19 @@ export class PortalModule {
           useValue: config.portals
         },
         {
+          provide: PortletToken,
+          useValue: config.portlets
+        },
+        {
           provide: PortalProvider,
           useFactory: portalFactory,
           deps: [PortalToken]
 
+        },
+        {
+          provide: PortletProvider,
+          useFactory: portletFactory,
+          deps: [PortletToken]
         },
         {
           provide: WidgetProvider,
@@ -61,6 +80,7 @@ export class PortalModule {
         },
         WidgetFactory,
         PortalFactory,
+        PortletFactory,
         MessageService
         
       ]
@@ -77,6 +97,10 @@ export class PortalModule {
         { name: 'portal1', component: Portal1Component },          
         { name: 'portal2', component: Portal2Component },          
       ],
+      portlets: [
+        { name: 'portlet1', component: Portlet1Component },          
+        { name: 'portlet2', component: Portlet2Component },          
+      ],
       widgets: [
         { name: 'widget1', component: Widget1Component },          
         { name: 'widget2', component: Widget2Component },          
@@ -88,7 +112,9 @@ export class PortalModule {
     Portal1Component,
     Widget1Component,
     Widget2Component,
-    Portal2Component
+    Portal2Component,
+    Portlet1Component,
+    Portlet2Component
   ],
   bootstrap:    [ AppComponent ],
   exports: [AppComponent],
@@ -96,7 +122,9 @@ export class PortalModule {
     Portal1Component,
     Widget1Component,
     Widget2Component,
-    Portal2Component
+    Portal2Component,
+    Portlet1Component,
+    Portlet2Component
   ]
 })
 export class AppModule { }

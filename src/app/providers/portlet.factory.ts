@@ -13,6 +13,7 @@ export class PortletFactory {
   create(view:ViewContainerRef, name: string): ComponentRef<PortletComponentRef> {
       var portlet = this.portletProvider.find(name);
       var factory = this.componentFactoryResolver.resolveComponentFactory(portlet);
-      return view.createComponent(factory);
+    
+      return view.createComponent(factory); 
   }
 }

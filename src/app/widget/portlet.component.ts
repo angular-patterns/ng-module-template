@@ -9,7 +9,7 @@ import { PortletComponentRef } from "../model/model";
 })
 
 export class PortletComponent implements OnInit {
-    component: ComponentRef<PortletComponentRef>;
+    component: ComponentRef<any>;
     @Input() name: string;
     @Input() widget: string;
 
@@ -41,8 +41,7 @@ export class PortletComponent implements OnInit {
             this.widgetHost.view.clear();
         }
         this.component = this.factory.create(this.widgetHost.view, this.name);
-        this.component.instance.widget.name = this.widget;
-    
+        
         
      }
 }

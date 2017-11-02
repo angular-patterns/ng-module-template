@@ -11,11 +11,10 @@ import 'rxjs/add/operator/map';
 
 export class WidgetContainerComponent implements OnInit {
     @Input() location: number;
-    names$: Observable<string[]>;
+    messages$: Observable<Message[]>;
     constructor(private messageService:MessageService) {
-        this.names$ = this.messageService.messages$
-            .map(t=>t.filter(x=>x.location == this.location))
-            .map(t=>t.map(x=>x.widgetName));
+        this.messages$ = this.messageService.messages$
+            .map(t=>t.filter(x=>x.location == this.location));
      }
 
     ngOnInit() { }

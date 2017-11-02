@@ -21,7 +21,8 @@ export interface Widget {
 
 export interface Message {
     location: number;
-    widgetName: string;
+    widget: string;
+    portlet: string;
 }
 
 export interface PortalConfig {
@@ -31,5 +32,5 @@ export interface PortalConfig {
 }
 
 export interface PortletComponentRef {
-    widget: WidgetComponent;
+    widget: string;
 }

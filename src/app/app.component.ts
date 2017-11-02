@@ -11,8 +11,8 @@ export class AppComponent {
   constructor(private messageService:MessageService) {
     this.portal = "portal1";
     this.messageService.pushWidgets([
-      { location: 1, widgetName:"widget1"},
-      { location: 2, widgetName:"widget2"},
+      { location: 1, widget:"widget1", portlet: "portlet1"},
+      { location: 2, widget:"widget2", portlet: "portlet1"},
     ]);
 
   }

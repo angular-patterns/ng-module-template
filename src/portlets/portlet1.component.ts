@@ -6,13 +6,11 @@ import { PortletComponentRef } from "../app/model/model";
     selector: 'portlet1',
     template: `
         <h1>Portlet 1</h1>
-        <widget></widget>
+        <ng-content></ng-content>
     `
 })
 
-export class Portlet1Component implements PortletComponentRef, OnInit {
-    @ViewChild(WidgetComponent) widget: WidgetComponent;
-
+export class Portlet1Component implements  OnInit {
     constructor() { }
 
     ngOnInit() { }

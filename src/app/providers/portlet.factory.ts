@@ -1,5 +1,5 @@
 import { PortalProvider } from "./portal.provider";
-import { Injectable, ComponentFactoryResolver, ViewContainerRef, ComponentRef } from "@angular/core";
+import { Injectable, ComponentFactoryResolver, ViewContainerRef, ComponentRef, Injector } from "@angular/core";
 import { PortletProvider } from "./portlet.provider";
 import { PortletComponentRef } from "../model/model";
 
@@ -10,10 +10,10 @@ export class PortletFactory {
 
   }
 
-  create(view:ViewContainerRef, name: string): ComponentRef<PortletComponentRef> {
+  create(view:ViewContainerRef, name: string, injector:Injector): ComponentRef<PortletComponentRef> {
       var portlet = this.portletProvider.find(name);
       var factory = this.componentFactoryResolver.resolveComponentFactory(portlet);
-    
-      return view.createComponent(factory); 
+      
+      return view.createComponent(factory, 0, injector); 
   }
 }

@@ -1,5 +1,5 @@
 import { WidgetProvider } from "./widget.provider";
-import { Injectable, ComponentFactoryResolver, ViewContainerRef, ComponentRef } from "@angular/core";
+import { Injectable, ComponentFactoryResolver, ViewContainerRef, ComponentRef, Injector } from "@angular/core";
 
 
 @Injectable()

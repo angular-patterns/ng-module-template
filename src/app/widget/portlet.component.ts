@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ComponentRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ComponentRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { WidgetHostDirective } from "../widget-host/widget-host.directive";
 import { PortletFactory } from "../providers/portlet.factory";
 import { PortletComponentRef } from "../model/model";
@@ -9,13 +9,13 @@ import { PortletComponentRef } from "../model/model";
 })
 
 export class PortletComponent implements OnInit {
-    component: ComponentRef<any>;
+    component: ComponentRef<PortletComponentRef>;
     @Input() name: string;
     @Input() widget: string;
 
     @ViewChild(WidgetHostDirective) widgetHost: WidgetHostDirective;
-
-    constructor(private factory: PortletFactory) { 
+    
+    constructor(private factory: PortletFactory, private view: ViewContainerRef) { 
 
     }
 
@@ -40,8 +40,10 @@ export class PortletComponent implements OnInit {
             this.component.destroy();
             this.widgetHost.view.clear();
         }
-        this.component = this.factory.create(this.widgetHost.view, this.name);
-        
+
+        this.component = this.factory.create(this.view, this.name, this.widgetHost.view.injector);
+        //this.component.instance.widget = this.widget;
+    
         
      }
 }

@@ -11,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
       Panel content
     </div>
   </div>
+  <ng-content></ng-content>
     `
 })
 

@@ -6,7 +6,9 @@ import { PortletComponentRef } from "../app/model/model";
     selector: 'portlet1',
     template: `
         <h1>Portlet 1</h1>
+        hello
         <ng-content></ng-content>
+        hello
     `
 })
 

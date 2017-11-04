@@ -13,6 +13,11 @@
  */
 
 export * from './app/app.module';
+export * from './app/model/model';
+export * from './app/portal/portal.component';
+export * from './app/widget/widget-container.component';
+export * from './app/widget/message.service';
+
 
 // This file only reexports content of the `src` folder. Keep it that way.
 // This is a hack to prevent people from turning on strictNullChecks. See #15432

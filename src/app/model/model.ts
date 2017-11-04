@@ -17,7 +17,6 @@ export interface Widget {
 export interface Message {
     location: number;
     widget: string;
-    portlet: string;
 }
 
 export interface PortalConfig {

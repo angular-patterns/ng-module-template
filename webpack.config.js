@@ -35,7 +35,8 @@ module.exports = () => {
                 { test: /\.ts$/, use: isProd ? '@ngtools/webpack' : ['awesome-typescript-loader?slient=true', 'angular2-template-loader'] },
                 { 
                     test: /\.html$/, 
-                    loader: 'raw-loader'
+                    loader: 'html-loader'
+                    
                 },
                 {
                     test: /\.(eot|svg|cur)$/,
@@ -47,6 +48,9 @@ module.exports = () => {
                 },
                 {
                     test: /\.(jpg|png|webp|gif|otf|ttf|woff|woff2|ani)$/,
+                    include: [
+                        path.join(__dirname, 'node_modules')
+                    ],
                     loader: "url-loader",
                     options: {
                         name: '[name].[hash:20].[ext]',
@@ -55,6 +59,20 @@ module.exports = () => {
                         limit: 10000
                     }                      
                 },
+                {
+                    test: /\.(jpg|png|webp|gif|otf|ttf|woff|woff2|ani)$/,
+                    include: [
+                        path.join(__dirname, 'src')
+                    ],
+                    loader: "url-loader",
+                    options: {
+                        name: '[name].[hash:20].[ext]',
+                        outputPath: 'assets/',
+                        useRelativePath: false,
+                        limit: 10
+                    }                      
+                },
+                
                 {
                    
                     test: /\.css$/,

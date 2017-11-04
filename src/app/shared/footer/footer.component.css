@@ -1,0 +1,64 @@
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    background-color: black;
+  }
+  .footer .autosize{
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+ }
+
+ .footer .navbar-nav li a {
+    color: white;
+ }
+
+  .footer > .container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .footer .navbar-brand  {     
+    height: auto;
+    padding: 12px 12px;
+    
+}
+
+
+@media all and (max-width:768px) {
+
+   .footer  .autosize {
+      margin: 0 0 0 0;
+      height: 20px;
+      width: auto;
+
+  }
+
+  .footer .nav>li, .footer .nav>li>a {
+      display: inline;
+      font-size: 0.9em;
+      line-height: 0.9em;
+    }
+
+}
+
+
+@media all and (max-width:400px) {
+  
+     .footer  .autosize {
+        margin: 0 0 0 0;
+        height: 15px;
+        width: auto;
+        
+    }
+  
+    .footer .nav>li, .footer .nav>li>a {
+        display: inline;
+        font-size: 0.8em;
+        line-height: 0.8em;
+    }
+  
+  }

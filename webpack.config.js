@@ -7,6 +7,7 @@ const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const ProvidePlugin = require('webpack').ProvidePlugin;
 
 const del = require('del');
 const Dotenv = require('dotenv-webpack');
@@ -35,7 +36,11 @@ module.exports = () => {
                 { test: /\.ts$/, use: isProd ? '@ngtools/webpack' : ['awesome-typescript-loader?slient=true', 'angular2-template-loader'] },
                 { 
                     test: /\.html$/, 
-                    loader: 'html-loader'
+                    loader: 'html-loader',
+                    options: {
+                        minimize:false,
+                        removeAttributeQuotes: false
+                    }
                     
                 },
                 {
@@ -68,7 +73,7 @@ module.exports = () => {
                     options: {
                         name: '[name].[hash:20].[ext]',
                         outputPath: 'assets/',
-                        useRelativePath: false,
+                        useRelativePath: true,
                         limit: 10
                     }                      
                 },
@@ -101,10 +106,14 @@ module.exports = () => {
             new Dotenv({
               path: './.env'
             }),          
+            new ProvidePlugin({
+                $: "jquery",
+                jQuery: "jquery"
+            }),
             new ProgressPlugin(),
             new BundleAnalyzerPlugin({
-                openAnalyzer: false,
-                analyzerMode: 'static',
+                openAnalyzer: true,
+                analyzerMode: 'server',
             }),
             new ExtractTextPlugin('bundles/styles.[hash].bundle.css'),    
             new HtmlWebpackPlugin({

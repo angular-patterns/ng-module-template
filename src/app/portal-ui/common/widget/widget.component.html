@@ -1,0 +1,17 @@
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{model.title}}</h3>
+    </div>
+    <div class="panel-body">
+        <button type="button" class="btn btn-default btn-lg pull-left icon">
+                <span class="glyphicon {{model.icon}}" aria-hidden="true"></span>
+                
+            </button>
+        <div [innerHTML]="model.description"></div>
+    </div>
+    <ul *ngIf="model.points.length > 0" class="list-group">
+        <li *ngFor="let point of model.points" class="list-group-item">
+            <span class="glyphicon glyphicon-triangle-right"></span> {{point}}
+        </li>
+    </ul>
+</div>

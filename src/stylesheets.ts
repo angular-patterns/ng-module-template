@@ -1,2 +1,2 @@
-import './css/secondary-css';
+import './css/global.css';
 

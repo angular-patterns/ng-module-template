@@ -4,13 +4,17 @@ import { AppComponent } from "./app.component";
 import { 
     PortalSfsModule, 
     DefaultTemplateComponent, 
+    ThreeColumnTemplateComponent,
     AddressWidgetComponent, 
     InboxWidgetComponent,
     AppWidgetComponent,
     EdocWidgetComponent,
     InquiryWidgetComponent,
     RfrWidgetComponent,
-    ScholarshipWidgetComponent
+    ScholarshipWidgetComponent,
+    WeatherWidgetComponent,
+    AddressLookupWidgetComponent,
+    TimeWidgetComponent
 } 
 from "./portal-sfs/portal-sfs.module";
 
@@ -27,13 +31,17 @@ from "./portal-sfs/portal-sfs.module";
     ],
     entryComponents: [
         DefaultTemplateComponent,
+        ThreeColumnTemplateComponent,
         AddressWidgetComponent,
         InboxWidgetComponent,
         AppWidgetComponent,
         EdocWidgetComponent,
         InquiryWidgetComponent,
         RfrWidgetComponent,
-        ScholarshipWidgetComponent
+        ScholarshipWidgetComponent,
+        WeatherWidgetComponent,
+        AddressLookupWidgetComponent,
+        TimeWidgetComponent
     ]
   })
   export class AppModule { }

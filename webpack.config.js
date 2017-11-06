@@ -130,7 +130,7 @@ module.exports = () => {
         ].concat(isProd ? [
             new AotPlugin({
                 tsConfigPath: './tsconfig.json',
-                entryModule: path.join(__dirname, 'src/app/app.module#AppModule')
+                entryModule: path.join(__dirname, 'src/app/app.module#SaModule')
             })]:
             [             
                 // get rid of warning "Critical dependency: the request of a dependency is an expression"   

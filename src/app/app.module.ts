@@ -44,4 +44,4 @@ from "./portal-sfs/portal-sfs.module";
         TimeWidgetComponent
     ]
   })
-  export class AppModule { }
+  export class SaModule { }

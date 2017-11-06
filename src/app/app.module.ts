@@ -1,7 +1,18 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { AppComponent } from "./app.component";
-import { PortalSfsModule, DefaultTemplateComponent, AddressWidgetComponent } from "./portal-sfs/portal-sfs.module";
+import { 
+    PortalSfsModule, 
+    DefaultTemplateComponent, 
+    AddressWidgetComponent, 
+    InboxWidgetComponent,
+    AppWidgetComponent,
+    EdocWidgetComponent,
+    InquiryWidgetComponent,
+    RfrWidgetComponent,
+    ScholarshipWidgetComponent
+} 
+from "./portal-sfs/portal-sfs.module";
 
 @NgModule({
     imports:      [ 
@@ -16,7 +27,13 @@ import { PortalSfsModule, DefaultTemplateComponent, AddressWidgetComponent } fro
     ],
     entryComponents: [
         DefaultTemplateComponent,
-        AddressWidgetComponent
+        AddressWidgetComponent,
+        InboxWidgetComponent,
+        AppWidgetComponent,
+        EdocWidgetComponent,
+        InquiryWidgetComponent,
+        RfrWidgetComponent,
+        ScholarshipWidgetComponent
     ]
   })
   export class AppModule { }

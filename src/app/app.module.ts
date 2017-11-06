@@ -22,7 +22,8 @@ import { AddressComponent } from './address/address.component';
     AddressComponent
   ],
   bootstrap:    [ AppComponent ],
-  entryComponents: [
+  exports: [
+    AddressComponent
   ]
 })
 export class AppModule { }

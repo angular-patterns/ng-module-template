@@ -12,9 +12,9 @@
  * Entry point for all public APIs of the core package.
  */
 
-export * from './src/app.module';
-export * from './src/time/time.component';
-export * from './src/time/parse-date.pipe';
+export * from './app/app.module';
+export * from './app/time/time.component';
+export * from './app/time/parse-date.pipe';
 
 // This file only reexports content of the `src` folder. Keep it that way.
 // This is a hack to prevent people from turning on strictNullChecks. See #15432

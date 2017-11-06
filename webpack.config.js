@@ -112,8 +112,8 @@ module.exports = () => {
             }),
             new ProgressPlugin(),
             new BundleAnalyzerPlugin({
-                openAnalyzer: true,
-                analyzerMode: 'server',
+                openAnalyzer: false,
+                analyzerMode: 'static',
             }),
             new ExtractTextPlugin('bundles/styles.[hash].bundle.css'),    
             new HtmlWebpackPlugin({

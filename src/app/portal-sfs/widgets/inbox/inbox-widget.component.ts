@@ -14,7 +14,8 @@ export class InboxWidgetComponent implements OnInit {
             "title": "View Inbox",
             "icon": "glyphicon-envelope",
             "description": "View any correspondence that has previously been sent to you.",
-            "points": []
+            "points": [],
+            "link": "letters"
         };     
     }
 

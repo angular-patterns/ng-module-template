@@ -19,7 +19,7 @@ export class AppWidgetComponent implements OnInit {
                 "<a href='start/newapplication?fundingYear=2018'>Apply for2016-2017 (classes start between01-Aug-2016 and31-Jul-2017)</a>",
                 
             ],
-            "link": "#"
+            "link": ""
         };   
     }
 

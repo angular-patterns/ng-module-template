@@ -25,6 +25,7 @@
     "@angular/platform-browser": "^4.4.5",
     "@angular/platform-browser-dynamic": "^4.4.5",
     "@ngtools/webpack": "^1.7.4",
+    "@portal/core": "file:///c:\\packages\\@portal\\core",
     "@types/jquery": "^3.2.16",
     "@types/node": "^8.0.34",
     "address": "file:///c:\\packages\\address",

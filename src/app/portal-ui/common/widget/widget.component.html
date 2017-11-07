@@ -3,9 +3,9 @@
         <h3 class="panel-title">{{model.title}}</h3>
     </div>
     <div class="panel-body">
-        <button type="button" class="btn btn-default btn-lg pull-left icon">
-               <a [href]="model.link">  <span class="glyphicon {{model.icon}}" aria-hidden="true"></span> </a>       
-        </button>        
+        <a [href]="model.link" type="button" class="btn btn-default btn-lg pull-left icon">
+               <span class="glyphicon {{model.icon}}" aria-hidden="true"></span>       
+        </a>        
         <div [innerHTML]="model.description"></div>
         
                

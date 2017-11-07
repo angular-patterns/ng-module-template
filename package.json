@@ -1,6 +1,6 @@
 {
   "name": "sa",
-  "version": "1.0.25",
+  "version": "1.0.26",
   "description": "",
   "main": "dist/index.es5.js",
   "typings": "dist/index.d.ts",

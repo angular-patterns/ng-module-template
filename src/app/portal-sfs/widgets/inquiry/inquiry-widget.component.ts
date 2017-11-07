@@ -15,6 +15,7 @@ export class InquiryWidgetComponent implements OnInit {
             "icon": "glyphicon-info-sign",
             "description": "\n              This option allows you to view previously submitted application details.\n \n        ",
             "points": [],
+            "link": "learnerinquiry"
         };     
     }
 

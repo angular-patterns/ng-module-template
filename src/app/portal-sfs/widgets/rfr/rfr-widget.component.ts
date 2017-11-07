@@ -20,6 +20,7 @@ export class RfrWidgetComponent implements OnInit {
                 "To submit additional Request for Review documents such as disability-related documents",
                 "View the status of previously submitted application changes or requests for review"
             ],
+            "link": "rfr"
         };     
     }
 

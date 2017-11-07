@@ -15,10 +15,11 @@ export class AppWidgetComponent implements OnInit {
             "icon": "glyphicon-usd",
             "description": "\n                <p>Begin a new application for Full-Time student aid.</p>\n          <p>\n                    You cannot begin a new application if you currently have an existing work-in-progress application for the same year. If you have a work-in-progress application, complete it or delete it.\n                </p>\n\n        ",
             "points": [
-                "Apply for2017-2018 (classes start between01-Aug-2017 and31-Jul-2018)",
-                "Apply for2016-2017 (classes start between01-Aug-2016 and31-Jul-2017)",
+                "<a href='start/newapplication?fundingYear=2017'>Apply for2017-2018 (classes start between01-Aug-2017 and31-Jul-2018)</a>",
+                "<a href='start/newapplication?fundingYear=2018'>Apply for2016-2017 (classes start between01-Aug-2016 and31-Jul-2017)</a>",
                 
-            ]
+            ],
+            "link": "#"
         };   
     }
 

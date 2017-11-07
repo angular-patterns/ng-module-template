@@ -4,7 +4,7 @@
     </div>
     <div class="panel-body">
         <button type="button" class="btn btn-default btn-lg pull-left icon">
-                <span class="glyphicon {{model.icon}}" aria-hidden="true"></span>        
+               <a [href]="model.link">  <span class="glyphicon {{model.icon}}" aria-hidden="true"></span> </a>       
         </button>        
         <div [innerHTML]="model.description"></div>
         
@@ -12,7 +12,7 @@
     </div>
     <ul *ngIf="model.points.length > 0" class="list-group">
         <li *ngFor="let point of model.points" class="list-group-item">
-            <span class="glyphicon glyphicon-triangle-right"></span> {{point}}
+            <span class="glyphicon glyphicon-triangle-right"></span> <span [innerHTML]="point"></span>
         </li>
     </ul>
 </div>

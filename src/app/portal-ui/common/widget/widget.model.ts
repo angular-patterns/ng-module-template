@@ -3,6 +3,6 @@ export interface Widget {
     icon:string;
     description: string;
     points: string[];
-
+    link: string;
   }
   

@@ -17,7 +17,7 @@ export class ScholarshipWidgetComponent implements OnInit {
             "points": [
                 "<a href='newrutherfordapplication'>Apply for 2017-2018 (classes start between01-Aug-2017 and31-Jul-2018) or previous years</a>"
             ],    
-            "link": "#"    
+            "link": ""    
         };     
     }
 

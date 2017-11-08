@@ -23,6 +23,20 @@ export class AppComponent implements OnInit {
 
             
         ]);
+
+        // this.messageService.pushWidgets([
+        //     // { widget: 'time-widget', location: 1 },
+        //     { widget: 'inbox-widget', location: 1 },
+        //     { widget: 'inquiry-widget', location: 1 },
+        //     { widget: 'app-widget', location: 1 },
+        //     { widget: 'scholarship-widget', location: 1 },
+        //     { widget: 'rfr-widget', location: 1 },
+        //     { widget: 'edoc-widget', location: 1 },
+        //     { widget: 'address-widget', location: 1 },
+        //     //{ widget: 'weather-widget', location: 1 },
+        //     //{ widget: 'address-lookup-widget', location: 1 },
+            
+        // ]);
      }
 
     ngOnInit() { }

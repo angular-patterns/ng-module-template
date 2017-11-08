@@ -1,6 +1,6 @@
 {
   "name": "@portal/core",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "",
   "main": "dist/index.es5.js",
   "typings": "dist/index.d.ts",

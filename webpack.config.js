@@ -1,5 +1,5 @@
 const path = require('path');
-const AotPlugin = require('@ngtools/webpack').AotPlugin;
+const AotPlugin = require('@ngtools/webpack').AngularCompilerPlugin;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CommonChunksPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');

@@ -34,7 +34,6 @@
     "jquery": "^3.2.1",
     "rxjs": "^5.4.3",
     "time": "file:///c:\\packages\\time",
-    "typescript": "^2.6.1",
     "weather": "file:///c:\\packages\\weather",
     "zone.js": "^0.8.18"
   },
@@ -63,7 +62,7 @@
     "style-loader": "^0.19.0",
     "to-pascal-case": "^1.0.0",
     "to-string-loader": "^1.1.5",
-    "typescript": "^2.5.2",
+    "typescript": "^2.6.1",
     "url-loader": "^0.6.2",
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",

@@ -17,7 +17,7 @@ import {
     TimeWidgetComponent
 } 
 from "./portal-sfs/portal-sfs.module";
-import { ScholarshipPortalComponent } from "../public_api";
+import { ScholarshipPortalComponent } from "./portal/scholarship-portal.component";
 
 @NgModule({
     imports:      [ 

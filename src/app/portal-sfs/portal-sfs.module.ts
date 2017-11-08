@@ -32,7 +32,7 @@ export { WeatherWidgetComponent } from "./widgets/weather/weather-widget.compone
 export { AddressLookupWidgetComponent } from "./widgets/address-lookup/address-lookup-widget.component";
 export { TimeWidgetComponent } from "./widgets/time/time-widget.component";
 
-var portalCoreModule:ModuleWithProviders = PortalCoreModule.forRoot({
+export var portalCoreModule:ModuleWithProviders = PortalCoreModule.forRoot({
     portals: [
         { name:'default-template', component: DefaultTemplateComponent },
         { name:'three-column-template', component: ThreeColumnTemplateComponent },

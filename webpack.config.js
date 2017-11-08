@@ -132,14 +132,16 @@ module.exports = () => {
                 tsConfigPath: './tsconfig.json',
                 entryModule: path.join(__dirname, 'src/app/app.module#SaModule')
             })]:
-            [             
-                // get rid of warning "Critical dependency: the request of a dependency is an expression"   
-                new ContextReplacementPlugin(
-                    /angular(\\|\/)core(\\|\/)@angular/,
-                    path.join(__dirname, 'src'), // location of your src
-                    {
-                        // your Angular Async Route paths relative to this root directory
-                    })
+            [
+         
+                // get rid of warning "Critical dependency: the request of a dependency is an expression" 
+                new ContextReplacementPlugin( /(.+)?angular(\\|\/)core(.+)?/, path.join(__dirname, 'src'), {} ),  
+                // new ContextReplacementPlugin(
+                //     /angular(\\|\/)core(\\|\/)@angular/,
+                //     path.join(__dirname, 'src'), // location of your src
+                //     {
+                //         // your Angular Async Route paths relative to this root directory
+                //     })
             ])
     };
 

@@ -28,13 +28,17 @@
     "@angular/platform-browser-dynamic": "^5.0.0",
     "@angular/router": "^5.0.0",
     "@portal/core": "file:///c:\\packages\\@portal\\core",
-    "address": "file:///c:\\packages\\address",
+    "address": "^1.0.3",
+    "awesome-typescript-loader": "^3.3.0",
     "bootstrap": "^3.3.7",
     "core-js": "^2.5.1",
     "jquery": "^3.2.1",
+    "rollup": "^0.50.1",
     "rxjs": "^5.4.3",
     "time": "file:///c:\\packages\\time",
     "weather": "file:///c:\\packages\\weather",
+    "webpack-bundle-analyzer": "^2.9.1",
+    "webpack-dev-server": "^2.9.4",
     "zone.js": "^0.8.18"
   },
   "devDependencies": {

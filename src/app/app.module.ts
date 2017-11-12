@@ -20,14 +20,19 @@ export const PortalToken = new InjectionToken<Portal>("portalToken");
 
 
 
-export function portalFactory(portals: Portal[]) {
-    alert(portals.length);
+export function portalProviderFactory(portals: Portal[]) {
   return new PortalProvider(portals);
 }
 
-export function widgetFactory(widgets: Widget[]) {
-    alert(widgets.length);
+export function widgetProviderFactory(widgets: Widget[]) {
   return new WidgetProvider(widgets);
+}
+
+export function MyWidgetFactory(widgetProvider:WidgetProvider, factory:ComponentFactoryResolver) {
+    return new WidgetFactory(widgetProvider, factory);
+}
+export function MyPortalFactory(portalProvider:PortalProvider, factory:ComponentFactoryResolver) {
+    return new PortalFactory(portalProvider, factory);
 }
 
 
@@ -63,17 +68,25 @@ export class PortalCoreModule {
         },
         {
           provide: PortalProvider,
-          useFactory: portalFactory,
+          useFactory: portalProviderFactory,
           deps: [PortalToken]
 
         },
         {
           provide: WidgetProvider,
-          useFactory: widgetFactory,
+          useFactory: widgetProviderFactory,
           deps: [WidgetToken]
         },
-        WidgetFactory,
-        PortalFactory,
+        {
+            provide: WidgetFactory,
+            useFactory: MyWidgetFactory,
+            deps: [WidgetProvider, ComponentFactoryResolver]
+        },        
+        {
+            provide: PortalFactory,
+            useFactory: MyPortalFactory,
+            deps: [PortalProvider, ComponentFactoryResolver]
+        },        
         MessageService
         
       ]

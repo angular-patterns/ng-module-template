@@ -21,10 +21,12 @@ export const PortalToken = new InjectionToken<Portal>("portalToken");
 
 
 export function portalFactory(portals: Portal[]) {
+    alert(portals.length);
   return new PortalProvider(portals);
 }
 
 export function widgetFactory(widgets: Widget[]) {
+    alert(widgets.length);
   return new WidgetProvider(widgets);
 }
 

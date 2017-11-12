@@ -76,7 +76,7 @@ export var portalCoreModule:ModuleWithProviders = PortalCoreModule.forRoot({
     //   TimeWidgetComponent
     ],
     exports: [
-        // portalCoreModule.ngModule,
+        portalCoreModule.ngModule,
         // DefaultTemplateComponent,
         // ThreeColumnTemplateComponent,
         // AddressWidgetComponent,

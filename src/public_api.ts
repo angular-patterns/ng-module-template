@@ -17,6 +17,10 @@ export * from './app/model/model';
 export * from './app/portal/portal.component';
 export * from './app/widget/widget-container.component';
 export * from './app/widget/message.service';
+export * from './app/providers/portal.factory';
+export * from './app/providers/portal.provider';
+export * from './app/providers/widget.factory';
+export * from './app/providers/widget.provider';
 
 
 

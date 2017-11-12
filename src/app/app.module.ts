@@ -13,6 +13,8 @@ import { WidgetFactory } from './providers/widget.factory';
 import { PortalFactory } from './providers/portal.factory';
 import { WidgetContainerComponent } from './widget/widget-container.component';
 import { MessageService } from './widget/message.service';
+import { PortalTemplateComponent } from './portal-template.component';
+import { SampleWidgetComponent } from './sample-widget.component';
 export const WidgetToken = new InjectionToken<Widget>("widgetToken");
 export const PortalToken = new InjectionToken<Portal>("portalToken");
 
@@ -83,17 +85,24 @@ export class PortalCoreModule {
     BrowserModule, 
     PortalCoreModule.forRoot({
       portals: [
+          { name: 'sample-portal', component: PortalTemplateComponent }
       ],
       widgets: [
+          { name: 'sample-widget', component: SampleWidgetComponent }
       ]
     })
   ],
   declarations: [ 
-    AppComponent
+    AppComponent,
+    PortalTemplateComponent,
+    SampleWidgetComponent
+
   ],
   bootstrap:    [ AppComponent ],
   exports: [AppComponent],
   entryComponents: [
+      PortalTemplateComponent,
+      SampleWidgetComponent
   ]
 })
 export class AppModule { }

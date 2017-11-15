@@ -8,7 +8,11 @@ export class PortalProvider {
     }
     find(name: string): Type<any> {
 
-      return this.portals.find(t=>t.name == name).component;
+      var portal = this.portals.find(t=>t.name == name);
+      if (portal == null)
+        throw new Error("Portal not found");
+        
+      return portal.component;
     }
 
 }

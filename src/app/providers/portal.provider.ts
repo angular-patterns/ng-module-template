@@ -1,10 +1,10 @@
 import { Injectable, Type, Inject } from "@angular/core";
-import { Portals } from "../model/model";
+import { Portal } from "../model/model";
 import { PortalToken } from "../app.module";
 
 @Injectable()
 export class PortalProvider {
-    constructor (@Inject(PortalToken) private portals: Portals = []) {
+    constructor (@Inject(PortalToken) private portals: Portal[] = []) {
     }
     find(name: string): Type<any> {
 

@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent }  from './app.component';
 import { RouterModule } from '@angular/router';
 import { WidgetComponent } from './widget/widget.component';
-import { PortalConfig, Portals, Widgets, Portal, Widget } from './model/model';
+import { PortalConfig, Portal, Widget } from './model/model';
 import { WidgetHostDirective } from './widget-host/widget-host.directive';
 import { PortalComponent } from './portal/portal.component';
 import { PortalProvider } from './providers/portal.provider';

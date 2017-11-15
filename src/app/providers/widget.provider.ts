@@ -1,10 +1,10 @@
 import { Injectable, Type, Inject } from "@angular/core";
-import { Widgets } from "../model/model";
+import { Widget } from "../model/model";
 import { WidgetToken } from "../app.module";
 
 @Injectable()
 export class WidgetProvider {
-  constructor (@Inject(WidgetToken) private widgets: Widgets = []) {
+  constructor (@Inject(WidgetToken) private widgets: Widget[] = []) {
 
   }
   find(name: string): Type<any> {

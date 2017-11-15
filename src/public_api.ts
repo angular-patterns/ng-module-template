@@ -13,7 +13,7 @@
  */
 
 export * from './app/app.module';
-export * from './app/model/model';
+export { Widget, Portal, PortalConfig, Message} from './app/model/model';
 export * from './app/portal/portal.component';
 export * from './app/widget/widget-container.component';
 export * from './app/widget/message.service';

@@ -44,7 +44,10 @@ export function MyPortalFactory(portalProvider:PortalProvider, factory:Component
     WidgetComponent, 
     PortalComponent, 
     WidgetHostDirective, 
-    WidgetContainerComponent
+    WidgetContainerComponent,
+    SampleWidgetComponent,
+    PortalTemplateComponent,
+    AppComponent
   ],
   exports: [
     WidgetComponent, 

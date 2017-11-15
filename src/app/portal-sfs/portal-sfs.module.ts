@@ -55,10 +55,10 @@ export var portalCoreModule:ModuleWithProviders = PortalCoreModule.forRoot({
 @NgModule({
     imports:      [ 
       BrowserModule, 
-    //   WeatherModule,
-    //   TimeModule,
-    //   AddressLookupModule,
-    //   PortalUiModule,
+      WeatherModule,
+      TimeModule,
+      AddressLookupModule,
+      PortalUiModule,
        portalCoreModule,
     ],
     declarations: [ 

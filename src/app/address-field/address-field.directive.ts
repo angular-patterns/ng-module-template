@@ -12,7 +12,7 @@ import { Directive, ElementRef } from '@angular/core';
     private observer: Observer<string>;
   
     constructor(public elementRef: ElementRef) {
-      this.clearEvent = Observable.create(o => {
+      this.clearEvent = Observable.create((o:Observer<string>) => {
           this.observer = o;
       });
       this.keyevent = Observable

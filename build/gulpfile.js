@@ -9,6 +9,9 @@ const jsonModify = require('gulp-json-modify')
 const path = require('path');
 const fs = require('fs');
 const runSequence = require('run-sequence');
+const replace = require('gulp-replace');
+const rename = require('gulp-rename');
+const toPascalCase = require('to-pascal-case');
 
 const publishPath = (function(){
     if (process.argv.length == 4) {
@@ -33,9 +36,10 @@ gulp.task('clean', function () {
 
 gulp.task('copy-public-api', ['clean'], function () {
     return gulp.src([
-        'public_api.ts'
+        '../src/public_api.ts'
     ])
-        .pipe(gulp.dest('dist'))
+    .pipe(replace('./app', './src'))
+    .pipe(gulp.dest('dist'))
 
 });
 gulp.task('copy-src', ['copy-public-api'], function () {
@@ -61,25 +65,21 @@ gulp.task('bundle', ['compile'], function (done) {
     var external = [
         '@angular/core',
         '@angular/common',
-        '@angular/common/http',
         '@angular/compiler',
         '@angular/core',
         '@angular/http',
         '@angular/platform-browser',
         '@angular/platform-browser-dynamic',
         '@angular/router',
-        '@angular/router-deprecated',
-        'rxjs/Observable'
+        '@angular/router-deprecated'
     ];
 
     var globals = {
         '@angular/core': 'vendor._angular_core',
         '@angular/http': 'vendor._angular_http',
-        '@angular/common/http': 'vendor_angular_common_http',
         '@angular/platform-browser': 'vendor._angular_platformBrowser',
         '@angular/platform-browser-dynamic': 'vendor._angular_platformBrowserDynamic',
-        '@angular/router-deprecated': 'vendor._angular_routerDeprecated',
-        'rxjs/Observable': 'rxjs_Observable'
+        '@angular/router-deprecated': 'vendor._angular_routerDeprecated'
     };
 
     rollup.rollup({
@@ -203,8 +203,7 @@ gulp.task('git-tag', function(done){
         git.tag(pkg.version, `v${pkg.version}`, function(err) {
             if (err) throw err;
             done();
-        });    
-    }
+        });    }
 });
 
 gulp.task('publish', ['deploy'], function (done) {
@@ -245,9 +244,22 @@ gulp.task('name-module', function () {
                 value: name
             }))
             .pipe(gulp.dest('./'));
+
+    var modifyAppModule = 
+        gulp.src('../src/app/app.module.ts')
+            .pipe(replace('AppModule', toPascalCase(name + 'Module')))
+            .pipe(gulp.dest('../src/app'));
+
+    var modifyWebpack = 
+        gulp.src('../webpack.config.js')
+            .pipe(replace('#AppModule', '#' + toPascalCase(name + 'Module')))
+            .pipe(gulp.dest('../'));
+            
     return [
         modifyPackageJson,
-        modifyTsconfigJson
+        modifyTsconfigJson,
+        modifyAppModule,
+        modifyWebpack
     ];
 
 });

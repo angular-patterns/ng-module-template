@@ -10,7 +10,7 @@ export class PortalProvider {
 
       var portal = this.portals.find(t=>t.name == name);
       if (portal == null)
-        throw new Error("Portal not found");
+        throw new Error(`Portal "${name}" not found`);
         
       return portal.component;
     }

@@ -9,7 +9,7 @@ export class WidgetProvider {
   find(name: string): Type<any> {
     var widget = this.widgets.find(t=>t.name == name);
     if (widget == null)
-      throw new Error("Widget not found");
+      throw new Error(`Widget "${name}" not found`);
       
     return widget.component; 
   }

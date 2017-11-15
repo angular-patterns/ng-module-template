@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent }  from './app.component';
 import { RouterModule } from '@angular/router';
 import { WidgetComponent } from './widget/widget.component';
-import { PortalConfig, Portals, Widgets, Portal, Widget } from './model/model';
+import { PortalConfig, Portal, Widget } from './model/model';
 import { WidgetHostDirective } from './widget-host/widget-host.directive';
 import { PortalComponent } from './portal/portal.component';
 import { PortalProvider } from './providers/portal.provider';
@@ -13,17 +13,26 @@ import { WidgetFactory } from './providers/widget.factory';
 import { PortalFactory } from './providers/portal.factory';
 import { WidgetContainerComponent } from './widget/widget-container.component';
 import { MessageService } from './widget/message.service';
+import { PortalTemplateComponent } from './portal-template.component';
+import { SampleWidgetComponent } from './sample-widget.component';
 export const WidgetToken = new InjectionToken<Widget>("widgetToken");
 export const PortalToken = new InjectionToken<Portal>("portalToken");
 
 
 
-export function portalFactory(portals: Portal[]) {
+export function portalProviderFactory(portals: Portal[]) {
   return new PortalProvider(portals);
 }
 
-export function widgetFactory(widgets: Widget[]) {
+export function widgetProviderFactory(widgets: Widget[]) {
   return new WidgetProvider(widgets);
+}
+
+export function MyWidgetFactory(widgetProvider:WidgetProvider, factory:ComponentFactoryResolver) {
+    return new WidgetFactory(widgetProvider, factory);
+}
+export function MyPortalFactory(portalProvider:PortalProvider, factory:ComponentFactoryResolver) {
+    return new PortalFactory(portalProvider, factory);
 }
 
 
@@ -59,17 +68,25 @@ export class PortalCoreModule {
         },
         {
           provide: PortalProvider,
-          useFactory: portalFactory,
+          useFactory: portalProviderFactory,
           deps: [PortalToken]
 
         },
         {
           provide: WidgetProvider,
-          useFactory: widgetFactory,
+          useFactory: widgetProviderFactory,
           deps: [WidgetToken]
         },
-        WidgetFactory,
-        PortalFactory,
+        {
+            provide: WidgetFactory,
+            useFactory: MyWidgetFactory,
+            deps: [WidgetProvider, ComponentFactoryResolver]
+        },        
+        {
+            provide: PortalFactory,
+            useFactory: MyPortalFactory,
+            deps: [PortalProvider, ComponentFactoryResolver]
+        },        
         MessageService
         
       ]
@@ -83,17 +100,24 @@ export class PortalCoreModule {
     BrowserModule, 
     PortalCoreModule.forRoot({
       portals: [
+          { name: 'sample-portal', component: PortalTemplateComponent }
       ],
       widgets: [
+          { name: 'sample-widget', component: SampleWidgetComponent }
       ]
     })
   ],
   declarations: [ 
-    AppComponent
+    AppComponent,
+    PortalTemplateComponent,
+    SampleWidgetComponent
+
   ],
   bootstrap:    [ AppComponent ],
   exports: [AppComponent],
   entryComponents: [
+      PortalTemplateComponent,
+      SampleWidgetComponent
   ]
 })
 export class AppModule { }

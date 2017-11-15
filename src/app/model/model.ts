@@ -1,7 +1,4 @@
 import { Type } from "@angular/core";
-import { WidgetComponent } from "../widget/widget.component";
-export declare type Portals = Portal[];
-export declare type Widgets = Widget[];
 
 export interface Portal {
     name: string;

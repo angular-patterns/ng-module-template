@@ -104,7 +104,7 @@ module.exports = () => {
             }),
             new AotPlugin({
                 tsConfigPath: './tsconfig.json',
-                entryModule: path.join(__dirname, 'src/app/app.module#PortalCoreModule')
+                entryModule: path.join(__dirname, 'src/app/app.module#AppModule')
             })
 
         ]

@@ -44,10 +44,7 @@ export function MyPortalFactory(portalProvider:PortalProvider, factory:Component
     WidgetComponent, 
     PortalComponent, 
     WidgetHostDirective, 
-    WidgetContainerComponent,
-    SampleWidgetComponent,
-    PortalTemplateComponent,
-    AppComponent
+    WidgetContainerComponent
   ],
   exports: [
     WidgetComponent, 
@@ -98,29 +95,29 @@ export class PortalCoreModule {
 }
 
 
-// @NgModule({
-//   imports:      [ 
-//     BrowserModule, 
-//     PortalCoreModule.forRoot({
-//       portals: [
-//           { name: 'sample-portal', component: PortalTemplateComponent }
-//       ],
-//       widgets: [
-//           { name: 'sample-widget', component: SampleWidgetComponent }
-//       ]
-//     })
-//   ],
-//   declarations: [ 
-//     AppComponent,
-//     PortalTemplateComponent,
-//     SampleWidgetComponent
+@NgModule({
+  imports:      [ 
+    BrowserModule, 
+    PortalCoreModule.forRoot({
+      portals: [
+          { name: 'sample-portal', component: PortalTemplateComponent }
+      ],
+      widgets: [
+          { name: 'sample-widget', component: SampleWidgetComponent }
+      ]
+    })
+  ],
+  declarations: [ 
+    AppComponent,
+    PortalTemplateComponent,
+    SampleWidgetComponent
 
-//   ],
-//   bootstrap:    [ AppComponent ],
-//   exports: [AppComponent],
-//   entryComponents: [
-//       PortalTemplateComponent,
-//       SampleWidgetComponent
-//   ]
-// })
-// export class AppModule { }
+  ],
+  bootstrap:    [ AppComponent ],
+  exports: [AppComponent],
+  entryComponents: [
+      PortalTemplateComponent,
+      SampleWidgetComponent
+  ]
+})
+export class AppModule { }

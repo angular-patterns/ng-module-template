@@ -13,8 +13,7 @@
  */
 
 export * from './app/app.module';
-<<<<<<< HEAD
-export { Widget, Portal, PortalConfig, Message} from './app/model/model';
+export * from './app/model/model';
 export * from './app/portal/portal.component';
 export * from './app/widget/widget-container.component';
 export * from './app/widget/message.service';
@@ -25,15 +24,3 @@ export * from './app/providers/widget.provider';
 
 
 
-// This file only reexports content of the `src` folder. Keep it that way.
-// This is a hack to prevent people from turning on strictNullChecks. See #15432
-
-export declare interface ɵStrictNullChecksNotSupported {
-
-  dontUseStrictNullChecksWithAngularYetSeeIssue15432: string|null;
-
-  [key: string]: string;
-
-}
-=======
->>>>>>> a7925752c07c152079720809b41d5709d34222ed

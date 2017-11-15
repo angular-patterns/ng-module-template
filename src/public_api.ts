@@ -15,13 +15,3 @@
 export * from './app/app.module';
 export * from './app/weather/weather.component';
 
-// This file only reexports content of the `src` folder. Keep it that way.
-// This is a hack to prevent people from turning on strictNullChecks. See #15432
-
-export declare interface ɵStrictNullChecksNotSupported {
-
-  dontUseStrictNullChecksWithAngularYetSeeIssue15432: string|null;
-
-  [key: string]: string;
-
-}

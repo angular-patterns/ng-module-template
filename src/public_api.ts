@@ -13,19 +13,5 @@
  */
 
 export * from './app/app.module';
-<<<<<<< HEAD
 export * from './app/time/time.component';
 export * from './app/time/parse-date.pipe';
-
-// This file only reexports content of the `src` folder. Keep it that way.
-// This is a hack to prevent people from turning on strictNullChecks. See #15432
-
-export declare interface ɵStrictNullChecksNotSupported {
-
-  dontUseStrictNullChecksWithAngularYetSeeIssue15432: string|null;
-
-  [key: string]: string;
-
-}
-=======
->>>>>>> 355b21f33ed4cbab1f3c86f0a7e547acdfff1f1f

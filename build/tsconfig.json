@@ -10,7 +10,7 @@
         },             
         "declaration": true,
         "stripInternal": true,
-        "noImplicitAny": true,
+        "noImplicitAny": false,
         "strictNullChecks": true,
         "noFallthroughCasesInSwitch": true,
         "moduleResolution": "node",

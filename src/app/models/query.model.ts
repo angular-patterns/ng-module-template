@@ -20,8 +20,8 @@ export class Query {
       this.block = true;
       this.searchTerm = term;
     }
-    toParams(): HttpParams {
-      var query = new Query(this.searchTerm);
+    static toParams(query: Query): HttpParams {
+      //var query = new Query(this.searchTerm);
       var params = new HttpParams();
       for(var key in query) {
         var value:string = query[key];      

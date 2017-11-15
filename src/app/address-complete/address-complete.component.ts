@@ -46,7 +46,7 @@ export class AddressCompleteComponent implements AfterContentInit {
 
    searchAddresses(s:string) {
      var url = `${process.env.URI}`;
-     var params = { params: new Query(s).toParams() };
+     var params = { params: Query.toParams(new Query(s)) };
      var getItems =  this.http.get<Items>(url, params);
      return getItems.map(t=>{ return { items: t.Items } });
    }

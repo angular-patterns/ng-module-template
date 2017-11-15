@@ -33,7 +33,10 @@ module.exports = () => {
         },
         module: {
             rules: [
-                { test: /\.ts$/, use: isProd ? '@ngtools/webpack' : ['awesome-typescript-loader?slient=true', 'angular2-template-loader'] },
+                { 
+                    test: /\.ts$/,
+                    loader: '@ngtools/webpack'
+                },
                 { 
                     test: /\.html$/, 
                     loader: 'html-loader',
@@ -125,24 +128,13 @@ module.exports = () => {
             }),
             new CommonChunksPlugin({
                 names: ['app','vendor','polyfills']
-            })
-
-        ].concat(isProd ? [
+            }),
             new AotPlugin({
                 tsConfigPath: './tsconfig.json',
                 entryModule: path.join(__dirname, 'src/app/app.module#SaModule')
-            })]:
-            [
-         
-                // get rid of warning "Critical dependency: the request of a dependency is an expression" 
-                new ContextReplacementPlugin( /(.+)?angular(\\|\/)core(.+)?/, path.join(__dirname, 'src'), {} ),  
-                // new ContextReplacementPlugin(
-                //     /angular(\\|\/)core(\\|\/)@angular/,
-                //     path.join(__dirname, 'src'), // location of your src
-                //     {
-                //         // your Angular Async Route paths relative to this root directory
-                //     })
-            ])
+            })
+
+        ]
     };
 
     return config;

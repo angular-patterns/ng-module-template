@@ -13,6 +13,7 @@
  */
 
 export * from './app/app.module';
+<<<<<<< HEAD
 export * from './app/time/time.component';
 export * from './app/time/parse-date.pipe';
 
@@ -26,3 +27,5 @@ export declare interface ɵStrictNullChecksNotSupported {
   [key: string]: string;
 
 }
+=======
+>>>>>>> 355b21f33ed4cbab1f3c86f0a7e547acdfff1f1f

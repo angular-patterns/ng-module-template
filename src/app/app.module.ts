@@ -24,14 +24,7 @@ import { PortalCoreModule } from "@portal/core";
 @NgModule({
     imports:      [ 
         BrowserModule, 
-        PortalCoreModule.forRoot({
-            portals:[
-
-            ],
-            widgets:[
-                
-            ]
-        })
+        PortalSfsModule
     ],
     declarations: [ 
         AppComponent,

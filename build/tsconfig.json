@@ -1,39 +1,44 @@
 {
     "compilerOptions": {
         "baseUrl": ".",
+        "rootDir": ".",
+        "outDir": "",
         "paths": {
             "*": [
                 "../node_modules/*"
             ]
-        },
+        },             
         "declaration": true,
         "stripInternal": true,
-        "outDir": "",
-        "module": "es2015",
-        "experimentalDecorators": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "noFallthroughCasesInSwitch": true,
         "moduleResolution": "node",
-        "rootDir": "",
-        "noImplicitAny": false,
-        "sourceMap": true,
-        "inlineSources": true,
+        "module": "es2015",
         "target": "es5",
         "lib": [
-            "dom",
-            "es6"
+            "es2015",
+            "dom"
         ],
         "skipLibCheck": true,
-        "typeRoots": [
-            "../node_modules/@types/"
-        ]
+        "typeRoots": [     
+            "../node_modules/@types/"  
+        ], 
+        "experimentalDecorators": true,
+        // This is needed due to https://github.com/Microsoft/TypeScript/issues/17516.
+        // As tsickle will lower decorators before TS, this is not a problem for our build.
+        "emitDecoratorMetadata": true,
+        "sourceMap": true,
+        "inlineSources": true
     },
     "files": [
         "dist/public_api.ts"
     ],
     "angularCompilerOptions": {
         "annotateForClosureCompiler": true,
-        "strictMetadataEmit": true,
+        "strictMetadataEmit": false,
+        "skipTemplateCodegen": true,
         "flatModuleOutFile": "index.js",
-        "flatModuleId": "@portal/core",
-        "genDir": ""
+        "flatModuleId": "@portal/core"
     }
 }

@@ -13,6 +13,7 @@
  */
 
 export * from './app/app.module';
+<<<<<<< HEAD
 export { Widget, Portal, PortalConfig, Message} from './app/model/model';
 export * from './app/portal/portal.component';
 export * from './app/widget/widget-container.component';
@@ -34,3 +35,5 @@ export declare interface ɵStrictNullChecksNotSupported {
   [key: string]: string;
 
 }
+=======
+>>>>>>> a7925752c07c152079720809b41d5709d34222ed

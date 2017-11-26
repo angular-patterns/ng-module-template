@@ -88,6 +88,11 @@ gulp.task('bundle', ['compile'], function (done) {
             if (warning.message.indexOf("treating it as an external dependency") > -1)
                 return;
 
+            if (warning.message.indexOf("external module '@angular/core' but never used"))
+                return;
+
+            if (warning.message.indexOf("external module '@angular/platform-browser' but never used"))
+                return;
 
             console.warn(warning.message);
         }

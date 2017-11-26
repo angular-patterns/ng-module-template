@@ -34,7 +34,7 @@
     ],
     "angularCompilerOptions": {
         "annotateForClosureCompiler": true,
-        "strictMetadataEmit": false,
+        "strictMetadataEmit": true,
         "skipTemplateCodegen": true,
         "flatModuleOutFile": "index.js",
         "flatModuleId": "ng-module-template"

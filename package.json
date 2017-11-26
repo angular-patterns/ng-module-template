@@ -13,7 +13,8 @@
     "build-dev": "webpack",
     "build-module": "cd build && gulp build",
     "publish": "cd build && gulp publish --c:\\packages",
-    "name-module": "cd build && gulp name-module"
+    "name-module": "cd build && gulp name-module",
+    "tslint": "tslint --project ."
   },
   "author": "",
   "license": "ISC",
@@ -34,6 +35,7 @@
   "devDependencies": {
     "@ngtools/webpack": "^1.8.0",
     "@types/node": "^8.0.50",
+    "codelyzer": "^4.0.1",
     "css-loader": "^0.28.7",
     "del": "^3.0.0",
     "dotenv-webpack": "^1.5.4",
@@ -54,6 +56,7 @@
     "style-loader": "^0.19.0",
     "to-pascal-case": "^1.0.0",
     "to-string-loader": "^1.1.5",
+    "tslint": "^5.8.0",
     "typescript": "^2.5.2",
     "url-loader": "^0.6.2",
     "webpack": "^3.6.0",

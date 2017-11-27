@@ -14,7 +14,8 @@
     "build-module": "cd build && gulp build",
     "publish": "cd build && gulp publish --c:\\packages",
     "name-module": "cd build && gulp name-module",
-    "tslint": "tslint --project ."
+    "tslint": "tslint --project .",
+    "test": "karma start test/karma.conf.js"
   },
   "author": "",
   "license": "ISC",
@@ -33,6 +34,8 @@
   },
   "devDependencies": {
     "@ngtools/webpack": "^1.8.0",
+    "@types/jasmine": "^2.8.2",
+    "@types/jasminewd2": "^2.0.3",
     "@types/node": "^8.0.50",
     "codelyzer": "^4.0.1",
     "css-loader": "^0.28.7",
@@ -49,6 +52,12 @@
     "gulp-shell": "^0.6.3",
     "html-loader": "^0.5.1",
     "html-webpack-plugin": "^2.30.1",
+    "jasmine": "^2.8.0",
+    "karma": "^1.7.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^2.0.6",
     "raw-loader": "^0.5.1",
     "rollup": "^0.50.0",
     "run-sequence": "^2.2.0",

@@ -14,7 +14,8 @@
     "build-module": "cd build && gulp build",
     "publish": "cd build && gulp publish --c:\\packages",
     "name-module": "cd build && gulp name-module",
-    "tslint": "tslint --project ."
+    "tslint": "tslint --project .",
+    "test": "karma start test/karma.conf.js"
   },
   "author": "",
   "license": "ISC",

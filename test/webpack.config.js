@@ -13,10 +13,10 @@ module.exports = () => {
         devtool: isProd ? false: 'inline-source-map',
         resolve: { 
             extensions: ['.ts', '.js'],
-            modules: [
-                path.resolve('../src'), 
-                path.resolve('../node_modules')
-            ]
+            // modules: [
+            //     path.resolve('../src'), 
+            //     path.resolve('../node_modules')
+            // ]
         },
         module: {
             rules: [
@@ -73,7 +73,7 @@ module.exports = () => {
         },
         plugins: [
             new Dotenv({
-              path: '../.env'
+              path: path.resolve('./.env')
             }),          
             new ProgressPlugin(),
             // new AotPlugin({

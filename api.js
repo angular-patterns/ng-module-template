@@ -74,7 +74,7 @@ app.get('/principles', function (req, res) {
                     description: `
                     <p><span class="glyphicon glyphicon-ok"></span> Do follow the recommended pattern that describes the symbol's feature then its type.</p>
                     <p><span class="glyphicon glyphicon-ok"></span> Do select from one of the valid types listed in the table below.</p>
-                    <p><span class="glyphicon glyphicon-ok"></span> Do follow the recommended the guidelines for the feature name.</p>
+                    <p><span class="glyphicon glyphicon-ok"></span> Do follow the recommended guidelines for the feature name.</p>
                     
                 <div class="row">
                     <div class="col-md-6">

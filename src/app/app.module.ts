@@ -7,11 +7,13 @@ import { routeModule } from './app.routes';
 import { PrinciplesComponent } from "./principles/principles.component";
 import { NamingComponent } from "./naming/naming.component";
 import { GuideComponent } from "./guide/guide.component";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
   imports:      [ 
     BrowserModule, 
+    BrowserAnimationsModule,
     HttpClientModule,
     routeModule
   ],

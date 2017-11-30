@@ -155,7 +155,25 @@ app.get('/principles', function (req, res) {
                     `,
                     reasons: [
                     ]
-                }                
+                },
+                { 
+                    title: 'Separate file names with dots and dashes',
+                    source: 'google',
+                    code: 'Google Style 02-02',
+                    description: `
+                    <p><span class="glyphicon glyphicon-ok"></span> Do use dashes to separate words in the descriptive name.</p>
+                    <p><span class="glyphicon glyphicon-ok"></span> Do use dots to separate the descriptive name from the type.</p>
+                    <p><span class="glyphicon glyphicon-ok"></span> Do use consistent type names for all components following a pattern that describes the component's feature then its type. A recommended pattern is feature.type.ts.</p>
+                    <p><span class="glyphicon glyphicon-ok"></span> Do use conventional type names including .service, .component, .pipe, .module, and .directive. Invent additional type names if you must but take care not to create too many.</p>
+                    
+                    `,
+                    reasons: [
+                        'Type names provide a consistent way to quickly identify what is in the file.',
+                        'Type names make it easy to find a specific file type using an editor or IDE\'s fuzzy search techniques.',
+                        'Unabbreviated type names such as .service are descriptive and unambiguous. Abbreviations such as .srv, .svc, and .serv can be confusing.',
+                        'Type names provide pattern matching for any automated tasks.'
+                    ]
+                },             
             ]
         }
     );

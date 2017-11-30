@@ -1,17 +1,18 @@
+<div>
+    <div class="bs-callout bs-callout-info">
+        <h4>{{ model?.title }}</h4>
+        <p [innerHTML]="model?.description"></p>
+    </div>
 
-<div class="bs-callout bs-callout-info">
-    <h4>{{ model?.title }}</h4>
-    <p [innerHTML]="model?.description"></p>
-</div>
-
-<div class="panel" *ngFor="let rule of model?.rules" [ngClass]="{ 'panel-success': rule?.source === 'google', 'panel-info': rule?.source === 'ae' }">
-    <!-- Default panel contents -->
-    <div class="panel-heading"><span class="badge">{{rule?.code}}</span>{{rule?.title }}</div>
-    <div class="panel-body">
-        <p [innerHTML]="rule?.description">
-        </p>
-        <div *ngFor="let reason of rule?.reasons">
-            <i><b class="why">Why?</b></i> {{reason}}
+    <div  [@flyInOut]="model?.rules.length" class="panel" *ngFor="let rule of model?.rules" [ngClass]="{ 'panel-success': rule?.source === 'google', 'panel-info': rule?.source === 'ae' }">
+        <!-- Default panel contents -->
+        <div class="panel-heading"><span class="badge">{{rule?.code}}</span>{{rule?.title }}</div>
+        <div class="panel-body">
+            <p [innerHTML]="rule?.description">
+            </p>
+            <div *ngFor="let reason of rule?.reasons">
+                <i><b class="why">Why?</b></i> {{reason}}
+            </div>
         </div>
     </div>
-</div> 
+</div>

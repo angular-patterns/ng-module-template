@@ -68,7 +68,7 @@ app.get('/principles', function (req, res) {
                     ]
                 },
                 { 
-                    title: 'List of Valid Types',
+                    title: 'File Naming Conventions',
                     source: 'ae',
                     code: 'AE Style 02-01',
                     description: `
@@ -122,7 +122,7 @@ app.get('/principles', function (req, res) {
                     <div class="col-md-6">
                         <div class="panel panel-default">
                             <!-- Default panel contents -->
-                            <div class="panel-heading">Feature Naming Convention</div>
+                            <div class="panel-heading">Feature Naming Guidelines</div>
                 
                             <table class="table">
                                 <thead>

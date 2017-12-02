@@ -12,18 +12,32 @@ const runSequence = require('run-sequence');
 const replace = require('gulp-replace');
 const rename = require('gulp-rename');
 const toPascalCase = require('to-pascal-case');
+const commandLineArgs = require('command-line-args');
 
-const publishPath = (function(){
-    if (process.argv.length == 4) {
-        var destPath = process.argv[3].substring(2);
-        var publishPath = path.resolve(destPath, pkg.name);
-        return publishPath;
-    }
-    return null;
-})();
+const optionDefinitions = [
+    { name: 'dest', alias: 'd', type: String, defaultValue: 'c:\\packages' },
+    { name: 'href', alias: 'h', type: String, defaultValue: '/'},
+    { name: 'name', alias: 'm', type: String, defaultValue: pkg.name}
+];
+
+const options = commandLineArgs(optionDefinitions);
+
+const publishPath = path.join(options.dest, pkg.name);
 if (publishPath != null)
 {
     console.log(`publish path: ${publishPath}`);    
+}
+if (options.dest != null)
+{
+    console.log(`dest: `, `${options.dest}`);
+}
+if (options.baseHref != null)
+{
+    console.log(`href: `, `${options.href}`);
+}
+if (options.moduleName != null)
+{
+    console.log(`name: `, `${options.name}`);
 }
 
 
@@ -229,7 +243,7 @@ gulp.task('deploy', ['pre-deploy'], function () {
 });
 
 gulp.task('name-module', function () {
-    var name = process.argv[3].substring(2);
+    var name = options.name;
     var modifyPackageJson =
         gulp.src([ '../package.json' ])
             .pipe(jsonModify({
@@ -267,4 +281,11 @@ gulp.task('name-module', function () {
         modifyWebpack
     ];
 
+});
+
+gulp.task('base-tag', function () {
+
+    return gulp.src('../dist/index.html')
+        .pipe(replace(RegExp("<base href=\"(.*)\""),`<base href=\"${options.href}\"`))
+        .pipe(gulp.dest('../dist'));
 });

@@ -107,11 +107,13 @@ module.exports = () => {
                 names: ['app', 'vendor', 'polyfills']
             })
         ].concat(
-            isProd ? [new AotPlugin({
-                tsConfigPath: './tsconfig.json',
-                entryModule: path.join(__dirname, 'src/app/app.module#AppModule')
-            })
-            ] : []);
+            isProd ? [
+                new AotPlugin({
+                    tsConfigPath: './tsconfig.json',
+                    entryModule: path.join(__dirname, 'src/app/app.module#AppModule')
+            })] : [
+                new ContextReplacementPlugin(/\@angular(\\|\/)core(\\|\/)esm5/),
+            ])
     };
 
     return config;

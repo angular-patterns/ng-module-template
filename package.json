@@ -12,12 +12,13 @@
     "build": "webpack -p",
     "build-dev": "webpack",
     "build-module": "cd build && gulp build",
-    "publish-local": "cd build && gulp publish --c:\\packages",
+    "publish-local": "cd build && gulp publish --dest c:\\packages",
     "name-module": "cd build && gulp name-module",
     "lint": "tslint --project .",
     "test": "karma start test/karma.conf.js",
     "e2e": "protractor e2e/protractor.conf.js",
-    "pree2e": "webdriver-manager update --standalone false --gecko false --quiet"
+    "pree2e": "webdriver-manager update --standalone false --gecko false --quiet", 
+    "base-href": "cd build && gulp base-tag"
   },
   "author": "",
   "license": "ISC",

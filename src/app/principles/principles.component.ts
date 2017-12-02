@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Guide } from '../guide.model';
 import { Observable } from "rxjs/Observable";
 import { HttpClient } from "@angular/common/http";
+import { principles } from '../../docs/principles';
 
 @Component({
     selector: 'sg-principles',
@@ -11,11 +12,7 @@ import { HttpClient } from "@angular/common/http";
 export class PrinciplesComponent implements OnInit {
     guide:  Guide;
     constructor(http:HttpClient) {
-        this.guide = null;
-
-        http.get<Guide>(process.env.PRINCIPLES_URL).subscribe(t=> {
-            this.guide = t;
-        });
+        this.guide = principles;
        
     }
 

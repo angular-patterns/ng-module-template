@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Guide } from "../guide.model";
 import { HttpClient } from "@angular/common/http";
+import { naming } from '../../docs/naming';
 
 @Component({
     selector: 'sg-naming',
@@ -9,12 +10,8 @@ import { HttpClient } from "@angular/common/http";
 
 export class NamingComponent implements OnInit {
     guide:  Guide;
-    constructor(http:HttpClient) {
-        this.guide = null;
-
-        http.get<Guide>(process.env.NAMING_URL).subscribe(t=> {
-            this.guide = t;
-        });
+    constructor() {
+        this.guide = naming;
        
     }
 

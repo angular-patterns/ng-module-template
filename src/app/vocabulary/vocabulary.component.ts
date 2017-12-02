@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
+import { vocabulary } from '../../docs/vocabulary';
 
 @Component({
     selector: 'sg-vocabulary',
@@ -8,9 +9,9 @@ import { Observable } from "rxjs/Observable";
 })
 
 export class VocabularyComponent implements OnInit {
-    items: Observable<any[]>;
-    constructor(private http:HttpClient) {
-        this.items = this.http.get<any[]>(process.env.VOCABULARY_URL);
+    items: any;
+    constructor() {
+        this.items = vocabulary;
      }
 
     ngOnInit() { }

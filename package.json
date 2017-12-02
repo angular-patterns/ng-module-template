@@ -44,6 +44,7 @@
     "@types/jasminewd2": "^2.0.3",
     "@types/node": "^8.0.50",
     "codelyzer": "^4.0.1",
+    "copy-webpack-plugin": "^4.2.3",
     "css-loader": "^0.28.7",
     "del": "^3.0.0",
     "dotenv-webpack": "^1.5.4",

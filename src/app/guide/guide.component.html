@@ -1,19 +1,26 @@
+
 <div>
     <div class="bs-callout bs-callout-info">
         <h4>{{ model?.title }}</h4>
         <p [innerHTML]="model?.description"></p>
     </div>
 
-    <div  [@flyInOut]="model?.rules.length" class="panel" *ngFor="let rule of model?.rules" [ngClass]="{ 'panel-success': rule?.source === 'google', 'panel-info': rule?.source === 'ae' }">
+    <div [@flyInOut]="model?.rules.length" class="panel" *ngFor="let rule of model?.rules" [ngClass]="{ 'panel-success': rule?.source === 'google', 'panel-info': rule?.source === 'ae' }">
         <!-- Default panel contents -->
-        <div class="panel-heading"><span class="badge">{{rule?.code}}</span>{{rule?.title }}</div>
+        <div class="panel-heading">
+            <span class="badge">{{rule?.code}}</span>{{rule?.title }}</div>
         <div class="panel-body">
             <p [innerHTML]="rule?.description">
             </p>
-            <div *ngFor="let reason of rule?.reasons">
-                <i><b class="why">Why?</b></i> {{reason}}
+            <div *ngFor="let tip of rule?.tips">
+                <p [ngSwitch]="tip.category">
+                    <span *ngSwitchCase="categoryEnum.Do" class="glyphicon glyphicon-ok"></span>
+                    <span *ngSwitchCase="categoryEnum.Consider" class="glyphicon glyphicon-ok"></span>
+                    <span *ngSwitchCase="categoryEnum.Avoid" class="glyphicon glyphicon-ok"></span>
+                    <span *ngSwitchCase="categoryEnum.Reason"><i><b class="why">Why?</b></i></span> 
+                    {{ tip.message }}
+                </p>
             </div>
         </div>
     </div>
 </div>
-

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Guide } from '../guide.model';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { CategoryEnum } from '../category-enum.model';
 
 @Component({
     selector: 'sg-guide',
@@ -23,8 +24,11 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 })
 
 export class GuideComponent implements OnInit {
+    categoryEnum = CategoryEnum;
+
     @Input() model:Guide;
     constructor() {
+   
         
      }
 

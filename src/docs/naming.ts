@@ -46,8 +46,8 @@ export var naming:Guide = {
                             <td><code>feature.<b>module</b>.ts</code></td>
                         </tr> 
                         <tr>
-                            <td>router</td>
-                            <td><code>feature.<b>router</b>.ts</code></td>
+                            <td>routing</td>
+                            <td><code>feature-<b>routing</b>.module.ts</code></td>
                         </tr>                          
                         <tr>
                             <td>component</td>

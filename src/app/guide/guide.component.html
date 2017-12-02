@@ -18,7 +18,8 @@
                     <span *ngSwitchCase="categoryEnum.Consider" class="glyphicon glyphicon-ok"></span>
                     <span *ngSwitchCase="categoryEnum.Avoid" class="glyphicon glyphicon-ok"></span>
                     <span *ngSwitchCase="categoryEnum.Reason"><i><b class="why">Why?</b></i></span> 
-                    {{ tip.message }}
+
+                    <span [innerHTML]="tip.message"></span>
                 </p>
             </div>
         </div>

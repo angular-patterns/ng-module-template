@@ -131,45 +131,57 @@ export var naming:Guide = {
                 { category: CategoryEnum.Do, message: 'Do use conventional type names including .service, .component, .pipe, .module, and .directive. Invent additional type names if you must but take care not to create too many.' },
                 
             ]
+        },
+        { 
+            title: 'Service Names',
+            source: 'ae',
+            code: 'AE Style 02-04',
+            description: `
+            <table class="table">
+            <thead>
+                <tr>
+                    <th>Symbol Name</th>
+                    <th>File Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+            <code>
+              @Injectable()<br />
+              export class HeroDataService { }
+              </code>
+               </td>
+                    <td><code>hero-data.<b>service</b>.ts</code></td>
+                </tr> 
+                <tr>
+                    <td>      
+                    <code>
+              @Injectable()<br />
+              export class CreditService { }
+              </code>
+                </td>
+                    <td><code>credit.<b>service</b>.ts</code></td>
+                </tr>                          
+                <tr>
+                    <td> 
+                    <code>
+              @Injectable()<br />
+              export class Logger { }
+              </code>
+                  </td>
+                    <td><code>logger.<b>service</b>.ts</code></td>
+                </tr>
+            </tbody>
+        </table>
+
+            `,
+            tips: [
+                { category: CategoryEnum.Do, message: 'Do use consistent names for all services named after their feature.' },
+                { category: CategoryEnum.Do, message: 'Do suffix a service class name with Service. For example, <code>DataService</code> or <code>HeroService</code>. There may be some exceptions if the service is unambiguous - i.e. Logger instead of LoggerService' },
+                { category: CategoryEnum.Reason, message: 'Provides a consistent way to quickly identify and reference services.' },
+            ]
         },   
         
-        // { 
-        //     title: 'Symbols and file names',
-        //     source: 'google',
-        //     code: 'Google Style 02-03',
-        //     description: `
-        //     <p><span class="glyphicon glyphicon-ok"></span> Do use consistent names for all assets named after what they represent.</p>
-        //     <p><span class="glyphicon glyphicon-ok"></span> Do use upper camel case for class names.</p>
-        //     <p><span class="glyphicon glyphicon-ok"></span> Do match the name of the symbol to the name of the file.</p>
-        //     <p><span class="glyphicon glyphicon-ok"></span> Do append the symbol name with the conventional suffix (such as Component, Directive, Module, Pipe, or Service) for a thing of that type.</p>
-        //     <p><span class="glyphicon glyphicon-ok"></span> Do give the filename the conventional suffix (such as .component.ts, .directive.ts, .module.ts, .pipe.ts, or .service.ts) for a file of that type.</p>
-
-        //     <table class="table">
-        //     <thead>
-        //         <tr>
-        //             <th>Symbol Name</th>
-        //             <th>File Name</th>
-        //         </tr>
-        //     </thead>
-        //     <tbody>
-        //         <tr>
-        //             <td>All lowercase</td>
-        //             <td><code><b>feature</b>.type.ts</code></td>
-        //         </tr>
-        //         <tr>
-        //             <td>May contain dashes</td>
-        //             <td><code><b>feature-list</b>.type.ts</code></td>
-        //         </tr>
-        //         <tr>
-        //             <td>Avoid numbers, use string value instead</td>
-        //             <td><code><b>feature-one</b>.type.ts</code></td>
-        //         </tr>
-        //     </tbody>
-        // </table>
-        //     `,  
-        //     reasons: [
-        //         'Consistent conventions make it easy to quickly identify and reference assets of different types.'
-        //     ]
-        // },
     ]
 }

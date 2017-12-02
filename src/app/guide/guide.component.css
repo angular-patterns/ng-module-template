@@ -5,3 +5,11 @@
 .why {
     color: navy; 
 }
+
+.glyphicon-remove {
+    color: red;
+}
+
+.glyphicon-ok {
+    color: green;
+}

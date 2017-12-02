@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { vocabulary } from '../docs/vocabulary';
 import { principles } from '../docs/principles';
 import { naming } from '../docs/naming';
+import { PanelComponent } from './panel/panel.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { naming } from '../docs/naming';
   declarations: [ 
     AppComponent, 
     GuideComponent,
-    VocabularyComponent
+    VocabularyComponent,
+    PanelComponent
   ],
   providers: [
      {  provide: 'vocabulary', useValue: ()=> vocabulary},

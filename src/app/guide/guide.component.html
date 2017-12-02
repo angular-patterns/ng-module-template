@@ -16,7 +16,7 @@
                 <p [ngSwitch]="tip.category">
                     <span *ngSwitchCase="categoryEnum.Do" class="glyphicon glyphicon-ok"></span>
                     <span *ngSwitchCase="categoryEnum.Consider" class="glyphicon glyphicon-ok"></span>
-                    <span *ngSwitchCase="categoryEnum.Avoid" class="glyphicon glyphicon-ok"></span>
+                    <span *ngSwitchCase="categoryEnum.Avoid" class="glyphicon glyphicon-remove"></span>
                     <span *ngSwitchCase="categoryEnum.Reason"><i><b class="why">Why?</b></i></span> 
 
                     <span [innerHTML]="tip.message"></span>

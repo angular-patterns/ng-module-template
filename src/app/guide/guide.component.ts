@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Guide } from '../guide.model';
+import { Guide } from '../models/guide.model';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { CategoryEnum } from '../category-enum.model';
+import { CategoryEnum } from '../models/category-enum.model';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

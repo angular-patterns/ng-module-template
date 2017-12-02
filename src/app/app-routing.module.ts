@@ -1,8 +1,6 @@
 import { ModuleWithProviders } from "@angular/core";
 import { VocabularyComponent } from "./vocabulary/vocabulary.component";
 import { RouterModule } from "@angular/router";
-import { NamingComponent } from "./naming/naming.component";
-import { PrinciplesComponent } from "./principles/principles.component";
 import { principles} from '../docs/principles';
 import { vocabulary} from '../docs/vocabulary';
 import { naming} from '../docs/naming';

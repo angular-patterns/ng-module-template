@@ -1,4 +1,4 @@
-import { CategoryEnum } from "../app/category-enum.model";
+import { CategoryEnum } from "../app/models/category-enum.model";
 
 export var principles: Guide = {
     title: 'Single Responsibility Principle',

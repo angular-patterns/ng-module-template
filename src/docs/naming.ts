@@ -1,5 +1,5 @@
-import { CategoryEnum } from "../app/category-enum.model";
-import { Guide } from "../app/guide.model";
+import { CategoryEnum } from "../app/models/category-enum.model";
+import { Guide } from "../app/models/guide.model";
 
 
 export var naming:Guide = {

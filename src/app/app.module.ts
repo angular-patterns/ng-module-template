@@ -4,8 +4,6 @@ import { AppComponent } from './app.component';
 import { VocabularyComponent } from "./vocabulary/vocabulary.component";
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { PrinciplesComponent } from "./principles/principles.component";
-import { NamingComponent } from "./naming/naming.component";
 import { GuideComponent } from "./guide/guide.component";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { vocabulary } from '../docs/vocabulary';
@@ -23,9 +21,7 @@ import { naming } from '../docs/naming';
   declarations: [ 
     AppComponent, 
     GuideComponent,
-    VocabularyComponent,
-    NamingComponent,
-    PrinciplesComponent 
+    VocabularyComponent
   ],
   providers: [
      {  provide: 'vocabulary', useValue: ()=> vocabulary},

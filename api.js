@@ -91,6 +91,14 @@ app.get('/principles', function (req, res) {
                                 </thead>
                                 <tbody>
                                     <tr>
+                                        <td>module</td>
+                                        <td><code>feature.<b>module</b>.ts</code></td>
+                                    </tr> 
+                                    <tr>
+                                        <td>router</td>
+                                        <td><code>feature.<b>router</b>.ts</code></td>
+                                    </tr>                          
+                                    <tr>
                                         <td>component</td>
                                         <td><code>feature.<b>component</b>.ts</code></td>
                                     </tr>
@@ -173,7 +181,46 @@ app.get('/principles', function (req, res) {
                         'Unabbreviated type names such as .service are descriptive and unambiguous. Abbreviations such as .srv, .svc, and .serv can be confusing.',
                         'Type names provide pattern matching for any automated tasks.'
                     ]
-                },             
+                },   
+                
+                { 
+                    title: 'Symbols and file names',
+                    source: 'google',
+                    code: 'Google Style 02-03',
+                    description: `
+                    <p><span class="glyphicon glyphicon-ok"></span> Do use consistent names for all assets named after what they represent.</p>
+                    <p><span class="glyphicon glyphicon-ok"></span> Do use upper camel case for class names.</p>
+                    <p><span class="glyphicon glyphicon-ok"></span> Do match the name of the symbol to the name of the file.</p>
+                    <p><span class="glyphicon glyphicon-ok"></span> Do append the symbol name with the conventional suffix (such as Component, Directive, Module, Pipe, or Service) for a thing of that type.</p>
+                    <p><span class="glyphicon glyphicon-ok"></span> Do give the filename the conventional suffix (such as .component.ts, .directive.ts, .module.ts, .pipe.ts, or .service.ts) for a file of that type.</p>
+
+                    <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Symbol Name</th>
+                            <th>File Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>All lowercase</td>
+                            <td><code><b>feature</b>.type.ts</code></td>
+                        </tr>
+                        <tr>
+                            <td>May contain dashes</td>
+                            <td><code><b>feature-list</b>.type.ts</code></td>
+                        </tr>
+                        <tr>
+                            <td>Avoid numbers, use string value instead</td>
+                            <td><code><b>feature-one</b>.type.ts</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+                    `,  
+                    reasons: [
+                        'Consistent conventions make it easy to quickly identify and reference assets of different types.'
+                    ]
+                },
             ]
         }
     );

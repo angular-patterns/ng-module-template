@@ -49,9 +49,9 @@ There are two options for deployment.
 
 Rename the module before you publish:<br />
 
-`npm run name-module -- --name my-module<br />
- git add *<br />
- git commit -m "renamed module from ng-module-template to my-module"<br />
+`npm run name-module -- --name my-module\n
+ git add *\n
+ git commit -m "renamed module from ng-module-template to my-module"
 `
 
 Optional Versioning:
@@ -65,6 +65,15 @@ Then publish:
 or
 
 `npm publish`
+
+## Installing your Published Module
+
+If you published locally:
+`npm install c:\packages\my-module --save`
+
+If you published to npm:
+`npm install my-module --save`
+
 
 
 

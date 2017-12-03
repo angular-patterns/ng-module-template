@@ -13,7 +13,7 @@ Opens webpack-dev-server on port 8080 for development:
 
 `  npm run dev`
 
-# Test
+## Test
 
 There are three type of tests: 
 

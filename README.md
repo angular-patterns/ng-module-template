@@ -45,5 +45,27 @@ There are two options for deployment.
   `npm publish`<br/>
   Follow the publish instructions from npm: https://docs.npmjs.com/getting-started/publishing-npm-packages
   
-   
+## Building Reusable Angular Modules
+
+Rename the module before you publish:<br />
+
+`npm run name-module -- --name my-module
+ git add *
+ git commit -m "renamed module from ng-module-template to my-module"
+`
+Optional Versioning:
+
+`npm version patch`
+
+Then publish:
+
+`npm run publish-local`
+
+or
+
+`npm publish`
+
+
+
+
 

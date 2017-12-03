@@ -50,7 +50,7 @@ Rename the module before you publish:<br />
 
 `npm run name-module -- --name my-module` <br />
 `git add *` <br />
-`git commit -m "renamed module from ng-module-template to my-module`
+`git commit -m "renamed module from ng-module-template to my-module"`
 
 Optional Versioning:
 

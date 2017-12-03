@@ -25,24 +25,24 @@ There are three type of tests:
 
 You have two options for a production build:
 
-1. Angular Application - outputs to the `dist` folder.
+1. Angular Application - outputs to the `dist` folder.<br/>
   `npm run build`
  
-2. Reusable Angular Module - outputs to the `dist` folder.
+2. Reusable Angular Module - outputs to the `dist` folder.<br/>
   `npm run build-module`
   
 ## Deployment
 
 There are two options for deployment.
 
-1. Deploy to local file system
+1. Deploy to local file system<br/>
   `npm run publish-local` - publishes the output `dist` folder to `c:\packages`.  
   
-  The folder can be customized using a `dest` parameter:
+  The folder can be customized using a `dest` parameter:<br/>
   `npm run publish -- --dest c:\custom-folder`
   
-2. Publish to npm
-  `npm publish`
+2. Publish to npm<br/>
+  `npm publish`<br/>
   Follow the publish instructions from npm: https://docs.npmjs.com/getting-started/publishing-npm-packages
   
    

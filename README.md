@@ -2,10 +2,9 @@
 
 ## Install
 
-`  git clone https://github.com/angular-patterns/ng-module-template.git
-   cd ng-module-template
-   npm install
-`
+`  git clone https://github.com/angular-patterns/ng-module-template.git`<br />
+`  cd ng-module-template` <br />
+`  npm install`
 
 ## Development
 

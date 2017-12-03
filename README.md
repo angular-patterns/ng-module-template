@@ -49,10 +49,11 @@ There are two options for deployment.
 
 Rename the module before you publish:<br />
 
-`npm run name-module -- --name my-module
- git add *
- git commit -m "renamed module from ng-module-template to my-module"
+`npm run name-module -- --name my-module<br />
+ git add *<br />
+ git commit -m "renamed module from ng-module-template to my-module"<br />
 `
+
 Optional Versioning:
 
 `npm version patch`

@@ -1,6 +1,6 @@
 # ng-module-template
 
-A template for building Angular applications or re-usable Angular modules that you can publisht to npm. This template is Angular5 compatible.
+A template for building Angular applications or re-usable Angular modules that you can publish to npm. This template is Angular5 compatible.
 
 ## Install
 

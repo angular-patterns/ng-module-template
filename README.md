@@ -67,10 +67,10 @@ or
 
 ## Installing your Published Module
 
-If you published locally:
+If you published locally:<br />
 `npm install c:\packages\my-module --save`
 
-If you published to npm:
+If you published to npm:<br />
 `npm install my-module --save`
 
 

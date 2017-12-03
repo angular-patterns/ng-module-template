@@ -35,7 +35,7 @@ You have two options for a production build:
 There are two options for deployment.
 
 1. Deploy to local file system<br/>
-  `npm run publish-local` - publishes the output `dist` folder to `c:\packages`.  
+  `npm run publish-local` - publishes from the `dist` folder to `c:\packages` (publish folder is configurable).  
   
   The folder can be customized using a `dest` parameter:<br/>
   `npm run publish -- --dest c:\custom-folder`

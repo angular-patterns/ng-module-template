@@ -14,8 +14,7 @@ import { ModalDialogComponent } from "./modal-dialog/modal-dialog.component";
     ],
     exports: [
         ModalDialogComponent,
-        ModalOutletComponent,
-        RouterModule
+        ModalOutletComponent
     ]
 })
 export class ModalModule {

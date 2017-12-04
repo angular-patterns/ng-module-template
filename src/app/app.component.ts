@@ -10,4 +10,8 @@ export class AppComponent {
   constructor() {
     this.title = 'Hello World!';
   }
+
+  throwError() {
+    throw new Error("Something went wrong!");
+  }
 }

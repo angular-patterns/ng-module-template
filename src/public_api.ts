@@ -13,3 +13,6 @@
  */
 
 export * from './app/app.module';
+export * from './modal/models/modal.model';
+export * from './modal/services/modal.service';
+export * from './modal/modal.module';

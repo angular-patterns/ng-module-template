@@ -1,0 +1,25 @@
+<div class="modal fade in show" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" (click)="close()" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">
+            <ng-content select="[modal-title]"></ng-content>
+          </h4>
+        </div>
+        <div class="modal-body">
+            <ng-content select="[modal-body]"></ng-content>
+        </div>
+        <div class="modal-footer">
+            <div #footer>
+                <ng-content select="[modal-footer]"></ng-content>
+            </div>
+            <div *ngIf="footer.children.length == 0">
+                <button (click)="close()" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-backdrop fade in"></div>

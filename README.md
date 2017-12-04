@@ -20,6 +20,7 @@ For example, if you want to export MyComponent, then modify `public_api.ts`:<br 
 
 `  export { MyComponent } from 'app/my.component';`
 <br />
+<br />
 Users of your module can then import the component:<br />
 
 `  import { MyComponent } from 'ng-module-template'`
@@ -48,6 +49,7 @@ There are two options for deployment.
 
 1. Publish to local file system<br/>
   `npm run publish-local` - publishes from the `dist` folder to `c:\packages`. <br />
+  <br />
   The folder can be customized using a `dest` parameter:<br/>
   `npm run publish -- --dest c:\custom-folder`
   

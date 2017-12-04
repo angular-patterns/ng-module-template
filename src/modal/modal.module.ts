@@ -22,8 +22,7 @@ var AppRouterModule = RouterModule.forRoot([
     ],
     exports: [
         ModalDialogComponent,
-        ModalOutletComponent,
-        AppRouterModule.ngModule
+        ModalOutletComponent
     ]
 })
 export class ModalModule {

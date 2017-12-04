@@ -26,7 +26,7 @@ export class ModalModule {
     static forRoot(): ModuleWithProviders {
         return {
             ngModule: ModalModule, 
-            providers: [ModalService]
+            providers: [ModalService, AppRouterModule.providers]
         }
     }
     // static forRoot(modals:Modal[]): ModuleWithProviders{

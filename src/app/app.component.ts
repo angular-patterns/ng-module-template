@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { ModalService } from 'ng-modal-dialog';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title: string;
-  constructor() {
+  constructor(@Inject(ModalService) private modalService: ModalService) {
     this.title = 'Hello World!';
+  }
+  open() {
+    this.modalService.open('test');
   }
 }

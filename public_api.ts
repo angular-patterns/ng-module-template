@@ -12,7 +12,7 @@
  * Entry point for all public APIs of the core package.
  */
 
-export * from './src/app/app.module';
-export * from './src/modal/models/modal.model';
-export * from './src/modal/services/modal.service';
 export * from './src/modal/modal.module';
+export * from './src/modal/services/modal.service';
+export * from './src/modal/models/modal.model';
+export * from './src/app/app.module';

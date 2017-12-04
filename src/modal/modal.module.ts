@@ -16,9 +16,6 @@ var AppRouterModule = RouterModule.forRoot([
         ModalDialogComponent,
         ModalOutletComponent
     ],
-    providers: [
-        ModalService,
-    ],
     exports: [
         ModalDialogComponent,
         ModalOutletComponent,

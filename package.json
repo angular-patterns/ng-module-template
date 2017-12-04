@@ -1,6 +1,6 @@
 {
   "name": "ng-modal-dialog",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "",
   "main": "dist/index.es5.js",
   "typings": "dist/index.d.ts",

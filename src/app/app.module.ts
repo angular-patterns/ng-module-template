@@ -12,8 +12,7 @@ const routes:Routes = [
 @NgModule({
   imports:      [ 
       BrowserModule,
-      ModalModule,
-      RouterModule.forRoot(routes)
+      ModalModule.forRoot()
     ],
   declarations: [ AppComponent, TestComponent ],
   bootstrap:    [ AppComponent ],

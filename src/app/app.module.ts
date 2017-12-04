@@ -8,7 +8,7 @@ import { TestComponent } from './test/test.component';
   imports:      [ 
       BrowserModule,
       ModalModule.forRoot([
-          { name: 'test', component: TestComponent}
+        { name: 'test', component: TestComponent}
       ])
     ],
   declarations: [ AppComponent, TestComponent ],

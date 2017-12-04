@@ -5,7 +5,6 @@ import { ModalOutletComponent } from "./modal-outlet/modal-outlet.component";
 import { ModalService } from "./services/modal.service";
 import { Modal } from "./models/modal.model";
 import { ModalDialogComponent } from "./modal-dialog/modal-dialog.component";
-import { provideRoutes } from "@angular/router/src/router_module";
 var AppRouterModule = RouterModule.forRoot([
 ]);
 @NgModule({

@@ -93,7 +93,8 @@ gulp.task('bundle', ['compile'], function (done) {
         '@angular/http': 'vendor._angular_http',
         '@angular/platform-browser': 'vendor._angular_platformBrowser',
         '@angular/platform-browser-dynamic': 'vendor._angular_platformBrowserDynamic',
-        '@angular/router-deprecated': 'vendor._angular_routerDeprecated'
+        '@angular/router-deprecated': 'vendor._angular_routerDeprecated',
+        '@angular/router': 'vendor._angular_router'
     };
 
     rollup.rollup({

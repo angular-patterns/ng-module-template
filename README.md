@@ -14,6 +14,16 @@ Opens webpack-dev-server on port 8080 for development:
 
 `  npm run dev`
 
+If you are building a reusable Angular module, you will also have to export any compnents, pipes, services, etc from `src\public_api.ts`. This will allow users of your module to import those sybmols directly.
+
+For example, if you want to export MyComponent, then modify `public_api.ts`:<br />
+
+`  export { MyComponent } from 'app/my.component';`
+<br />
+Users of your module can then import the component:<br />
+
+`  import { MyComponent } from 'ng-module-template'`
+
 ## Test
 
 There are three type of tests: 

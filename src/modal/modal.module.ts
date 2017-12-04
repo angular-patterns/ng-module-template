@@ -1,4 +1,4 @@
-import { ModuleWithProviders, NgModule } from "@angular/core";
+import { ModuleWithProviders, NgModule, Provider } from "@angular/core";
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from "@angular/router";
 import { ModalOutletComponent } from "./modal-outlet/modal-outlet.component";
@@ -26,7 +26,7 @@ export class ModalModule {
     static forRoot(): ModuleWithProviders {
         return {
             ngModule: ModalModule, 
-            providers: [ModalService, AppRouterModule.providers]
+            providers: [ModalService, <Provider[]>AppRouterModule.providers]
         }
     }
     // static forRoot(modals:Modal[]): ModuleWithProviders{

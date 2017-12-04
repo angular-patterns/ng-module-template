@@ -3,7 +3,7 @@ import { Injectable, Inject } from "@angular/core";
 
 @Injectable()
 export class ModalService {
-    constructor(@Inject(Router) private router:Router) {
+    constructor( private router:Router) {
 
     }
     open(name: string) {

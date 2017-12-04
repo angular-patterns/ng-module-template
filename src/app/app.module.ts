@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ModalModule } from '../modal/modal.module';
 import { TestComponent } from './test/test.component';
+import { provideRoutes } from '@angular/router';
 //import { RouterModule, provideRoutes } from '@angular/router';
 
 @NgModule({
@@ -16,7 +17,7 @@ import { TestComponent } from './test/test.component';
   declarations: [ AppComponent, TestComponent ],
   bootstrap:    [ AppComponent ],
   providers: [
-      //provideRoutes([ { path: 'test', component: TestComponent, outlet: 'modal'}])
+      provideRoutes([ { path: 'test', component: TestComponent, outlet: 'modal'}])
   ],
   exports: [AppComponent]
 })

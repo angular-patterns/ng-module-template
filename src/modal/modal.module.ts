@@ -12,9 +12,6 @@ import { ModalDialogComponent } from "./modal-dialog/modal-dialog.component";
         ModalDialogComponent,
         ModalOutletComponent
     ],
-    providers: [
-        ModalService
-    ],
     exports: [
         ModalDialogComponent,
         ModalOutletComponent,
@@ -38,13 +35,15 @@ export class ModalModule {
             ]
         })
         class InternalModalModule {
-
+            static forRoot():ModuleWithProviders {
+                return {
+                    ngModule: InternalModalModule,
+                    providers: [ModalService]
+                }
+            }
         }
 
-        return {
-            ngModule: InternalModalModule,
-            providers: [ModalService]
-        }
+        return InternalModalModule.forRoot();
     }
 
 

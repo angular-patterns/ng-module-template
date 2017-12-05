@@ -50,16 +50,16 @@ gulp.task('clean', function () {
 
 gulp.task('copy-public-api', ['clean'], function () {
     return gulp.src([
-        '../src/public_api.ts'
+        '../public_api.ts'
     ])
-    .pipe(replace('./app', './src'))
+    //.pipe(replace('./app', './src'))
     .pipe(gulp.dest('dist'))
 
 });
 gulp.task('copy-src', ['copy-public-api'], function () {
     return gulp.src([
-        '../src/app/**/*.ts',
-        '!../src/app/**/*.spec.ts'
+        '../src/**/*.ts',
+        '!../src/**/*.spec.ts'
     ])
         .pipe(inlineNg2Template({ base: '../src', useRelativePaths: true }))
         .pipe(gulp.dest('dist/src'))
@@ -93,7 +93,8 @@ gulp.task('bundle', ['compile'], function (done) {
         '@angular/http': 'vendor._angular_http',
         '@angular/platform-browser': 'vendor._angular_platformBrowser',
         '@angular/platform-browser-dynamic': 'vendor._angular_platformBrowserDynamic',
-        '@angular/router-deprecated': 'vendor._angular_routerDeprecated'
+        '@angular/router-deprecated': 'vendor._angular_routerDeprecated',
+        '@angular/router': 'vendor._angular_router'
     };
 
     rollup.rollup({

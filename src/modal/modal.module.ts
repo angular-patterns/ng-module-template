@@ -1,6 +1,6 @@
 import { ModuleWithProviders, NgModule, Provider } from "@angular/core";
 import { BrowserModule } from '@angular/platform-browser';
-import { Routes, RouterModule } from "@angular/router";
+import { Routes, RouterModule, provideRoutes } from "@angular/router";
 import { ModalOutletComponent } from "./modal-outlet/modal-outlet.component";
 import { ModalService } from "./services/modal.service";
 import { Modal } from "./models/modal.model";
@@ -23,43 +23,42 @@ var AppRouterModule = RouterModule.forRoot([
     ]
 })
 export class ModalModule {
-    static forRoot(): ModuleWithProviders {
-        return {
-            ngModule: ModalModule, 
-            providers: [ModalService, <Provider[]>AppRouterModule.providers]
-        }
-    }
-    // static forRoot(modals:Modal[]): ModuleWithProviders{
-    //     const routes:Routes = modals.map(t=> {
-    //         return { path: t.name, component: t.component, outlet: 'modal'}
-    //     });
-    //     //return RouterModule.forRoot(routes);
-    //     // @NgModule({
-    //     //     imports: [
-    //     //         ModalModule,
-    //     //         RouterModule,
-    //     //     ],
-    //     //     exports: [
-    //     //         ModalModule
-    //     //     ],
-    //     //     providers: [
-    //     //         provideRoutes(routes)
-    //     //     ]
-    //     // })
-    //     // class InternalModalModule {
-    //     //     static forRoot():ModuleWithProviders {
-    //     //         return {
-    //     //             ngModule: InternalModalModule,
-    //     //             providers: [ModalService]
-    //     //         }
-    //     //     }
-    //     // }
-
+    // static forRoot(): ModuleWithProviders {
     //     return {
-    //         ngModule: ModalModule,
-    //         providers: [provideRoutes(routes)]
-    //     };
-    //}
+    //         ngModule: ModalModule, 
+    //         providers: [ModalService, <Provider[]>AppRouterModule.providers]
+    //     }
+    // }
+    static forRoot(modals:Modal[]): ModuleWithProviders{
+        const routes:Routes = modals.map(t=> {
+            return { path: t.name, component: t.component, outlet: 'modal'}
+        });
+        //return RouterModule.forRoot(routes);
+        @NgModule({
+            imports: [
+                ModalModule
+            ],
+            exports: [
+                ModalModule
+            ],
+            providers: [
+                //provideRoutes(routes)
+            ]
+        })
+        class InternalModalModule {
+            static forRoot():ModuleWithProviders {
+                return {
+                    ngModule: InternalModalModule,
+                    providers: [ModalService]
+                }
+            }
+        }
+
+        return {
+            ngModule: InternalModalModule,
+            providers: [ModalService, provideRoutes(routes)]
+        };
+    }
 
 
 }

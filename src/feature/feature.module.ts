@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 
-import { TestComponent } from './test.component';
+import { WidgetComponent } from './widget.component';
 
 @NgModule({
     imports: [],
-    exports: [TestComponent],
-    declarations: [TestComponent],
+    exports: [WidgetComponent],
+    declarations: [WidgetComponent],
     providers: [],
 })
 export class FeatureModule { }

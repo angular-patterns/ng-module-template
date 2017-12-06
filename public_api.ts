@@ -13,4 +13,4 @@
  */
 
 export * from './src/feature/feature.module';
-export * from './src/feature/test.component';
+export * from './src/feature/widget.component';

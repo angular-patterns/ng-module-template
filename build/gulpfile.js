@@ -204,7 +204,7 @@ gulp.task('build', ['pre-build'], function (done) {
 
 gulp.task('deploy', ['build'], function(done) {
     gulp.src([
-        'dist/index.js',
+        'dist/index.es6.js',
         'dist/index.es5.js',
         'dist/public_api.js',
         'dist/index.metadata.json',

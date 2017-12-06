@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/bundles/ng-module-template.umd.js",
   "module": "dist/index.es5.js",
-  "es2015": "dist/index.js",
+  "es2015": "dist/index.es6.js",
   "typings": "dist/index.d.ts",
   "metadata": "dist/index.metadata.json",
   "scripts": {

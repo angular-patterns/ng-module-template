@@ -18,8 +18,7 @@ var AppRouterModule = RouterModule.forRoot([
     ],
     exports: [
         ModalDialogComponent,
-        ModalOutletComponent,
-        AppRouterModule.ngModule
+        ModalOutletComponent
     ]
 })
 export class ModalModule {
@@ -36,7 +35,8 @@ export class ModalModule {
         //return RouterModule.forRoot(routes);
         @NgModule({
             imports: [
-                ModalModule
+                ModalModule,
+                RouterModule.forRoot(routes)
             ],
             exports: [
                 ModalModule
@@ -56,7 +56,7 @@ export class ModalModule {
 
         return {
             ngModule: InternalModalModule,
-            providers: [ModalService, provideRoutes(routes)]
+            providers: [ModalService]
         };
     }
 

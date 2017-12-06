@@ -2,9 +2,11 @@
   "name": "ng-modal-dialog",
   "version": "1.0.21",
   "description": "",
-  "main": "dist/index.es5.js",
+  "main": "dist/bundles/ng-module-template.umd.js",
+  "module": "dist/index.es5.js",
+  "es2015": "dist/index.es6.js",
   "typings": "dist/index.d.ts",
-  "module": "dist/bundles/ng-modal-dialog.umd.js",
+  "metadata": "dist/index.metadata.json",
   "scripts": {
     "start": "npm run dev",
     "serve": "webpack-dev-server --content-base dist --hot true --inline true",
@@ -18,7 +20,7 @@
     "test": "karma start test/karma.conf.js",
     "e2e": "protractor e2e/protractor.conf.js",
     "pree2e": "webdriver-manager update --standalone false --gecko false --quiet",
-    "base-href": "cd build && gulp base-tag"
+    "base-tag": "cd build && gulp base-tag"
   },
   "author": "",
   "license": "ISC",

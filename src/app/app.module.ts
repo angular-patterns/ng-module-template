@@ -6,10 +6,12 @@ import { TestComponent } from './test/test.component';
 import { provideRoutes } from '@angular/router';
 //import { RouterModule, provideRoutes } from '@angular/router';
 
+export var root =  ModalModule.forRoot([ { name:'test', component: TestComponent}]);
+
 @NgModule({
   imports:      [ 
       BrowserModule,
-      ModalModule.forRoot([ { name:'test', component: TestComponent}]),
+      root
     //   ModalModule.forRoot([
     //     { name: 'test', component: TestComponent}
     //   ])

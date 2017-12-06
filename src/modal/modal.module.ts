@@ -46,12 +46,6 @@ export class ModalModule {
             ]
         })
         class InternalModalModule {
-            static forRoot():ModuleWithProviders {
-                return {
-                    ngModule: InternalModalModule,
-                    providers: [ModalService]
-                }
-            }
         }
 
         return {

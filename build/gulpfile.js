@@ -49,7 +49,7 @@ gulp.task('clean', function () {
 });
 
 
-gulp.task('copy-public-api', ['clean'], function () {
+gulp.task('copy-public-api', [], function () {
     return gulp.src([
         '../public_api.ts'
     ])
@@ -191,18 +191,26 @@ gulp.task('bundle-es5', ['compile-es5'], function (done) {
     });
 });
 
+gulp.task('pre-build-tmp', function () {
+    return del([
+        "dist/**"
+    ], { force: true });
+});
+
+
+
+gulp.task('build-tmp', ['pre-build-tmp'], function (done) {
+    runSequence('bundle-es6', 'bundle-es5', done);
+});
+
+
 gulp.task('pre-build', function () {
     return del([
         "../dist/**"
     ], { force: true });
 });
 
-
-gulp.task('build', ['pre-build'], function (done) {
-    runSequence('bundle-es6', 'bundle-es5', done);
-});
-
-gulp.task('deploy', ['build'], function(done) {
+gulp.task('build', ['build-tmp', 'pre-build'], function(done) {
     gulp.src([
         'dist/index.es6.js',
         'dist/index.es5.js',

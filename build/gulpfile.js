@@ -24,21 +24,18 @@ const optionDefinitions = [
 const options = commandLineArgs(optionDefinitions);
 
 const publishPath = path.join(options.dest, pkg.name);
-if (publishPath != null)
-{
-    console.log(`publish path: ${publishPath}`);    
-}
+
 if (options.dest != null)
 {
-    console.log(`dest: `, `${options.dest}`);
+    console.log(`publish-path: `, `${options.dest}`);
 }
-if (options.baseHref != null)
+if (options.name != null)
 {
-    console.log(`href: `, `${options.href}`);
+    console.log(`module-name: `, `${options.name}`);
 }
-if (options.moduleName != null)
+if (options.href != null)
 {
-    console.log(`name: `, `${options.name}`);
+    console.log(`base-href: `, `${options.href}`);
 }
 
 

@@ -13,6 +13,7 @@ const replace = require('gulp-replace');
 const rename = require('gulp-rename');
 const toPascalCase = require('to-pascal-case');
 const commandLineArgs = require('command-line-args');
+const rollupGlobals = require('./rollup.globals');
 
 const optionDefinitions = [
     { name: 'dest', alias: 'd', type: String, defaultValue: 'c:\\packages' },
@@ -61,13 +62,13 @@ gulp.task('copy-src', ['copy-public-api'], function () {
         '../src/**/*.ts',
         '!../src/**/*.spec.ts'
     ])
-        .pipe(inlineNg2Template({ base: '../src', useRelativePaths: true }))
-        .pipe(gulp.dest('dist/src'))
+    .pipe(inlineNg2Template({ base: '../src', useRelativePaths: true }))
+    .pipe(gulp.dest('dist/src'))
 });
 
-gulp.task('compile', ['copy-src'], function (done) {
-    gulp.src('tsconfig.json')
-        .pipe(shell(['"../node_modules/.bin/ngc" -p <%= file.path %>']))
+gulp.task('compile-es6', ['copy-src'], function (done) {
+    gulp.src('tsconfig.ngc.json')
+        .pipe(shell(['"../node_modules/.bin/ngc" -p <%= file.path %> --target es6']))
         .on('end', function () {
             del('node_modules/**', { force: true }).then(function () {
                 done();
@@ -75,28 +76,59 @@ gulp.task('compile', ['copy-src'], function (done) {
         });
 });
 
-gulp.task('bundle', ['compile'], function (done) {
-    var external = [
-        '@angular/core',
-        '@angular/common',
-        '@angular/compiler',
-        '@angular/core',
-        '@angular/http',
-        '@angular/platform-browser',
-        '@angular/platform-browser-dynamic',
-        '@angular/router',
-        '@angular/router-deprecated'
-    ];
+gulp.task('compile-es5', ['copy-src'], function (done) {
+    gulp.src('tsconfig.ngc.json')
+        .pipe(shell(['"../node_modules/.bin/ngc" -p <%= file.path %> --target es5']))
+        .on('end', function () {
+            del('node_modules/**', { force: true }).then(function () {
+                done();
+            });
+        });
+});
 
-    var globals = {
-        '@angular/core': 'vendor._angular_core',
-        '@angular/http': 'vendor._angular_http',
-        '@angular/platform-browser': 'vendor._angular_platformBrowser',
-        '@angular/platform-browser-dynamic': 'vendor._angular_platformBrowserDynamic',
-        '@angular/router-deprecated': 'vendor._angular_routerDeprecated',
-        '@angular/router': 'vendor._angular_router'
-    };
+gulp.task('bundle-es6', ['compile-es6'], function(done) {
+    var external = Object.keys(rollupGlobals);
+    var globals = rollupGlobals;
+    
+    rollup.rollup({
+        input: 'dist/index.js',
+        onwarn: function (warning) {
+            if (warning.message.indexOf("treating it as an external dependency") > -1)
+                return;
 
+            if (warning.message.indexOf("external module '@angular/core' but never used"))
+                return;
+
+            if (warning.message.indexOf("external module '@angular/platform-browser' but never used"))
+                return;
+
+            console.warn(warning.message);
+        }
+
+    }).then(function (bundle) {
+        var es = bundle.write({
+            file: `dist/index.es6.js`,
+            format: 'es',
+            exports: 'named',
+            name: pkg.name,
+            sourcemap: true,
+            external: external,
+            globals: globals
+
+        });
+
+        return Promise.all([es]).then(function () {
+            done();
+        });
+
+    });
+});
+
+gulp.task('bundle-es5', ['compile-es5'], function (done) {
+    
+    var external = Object.keys(rollupGlobals);
+    var globals = rollupGlobals;
+    
     rollup.rollup({
         input: 'dist/index.js',
         onwarn: function (warning) {
@@ -166,8 +198,13 @@ gulp.task('pre-build', function () {
 });
 
 
-gulp.task('build', ['pre-build', 'bundle'], function (done) {
+gulp.task('build', ['pre-build'], function (done) {
+    runSequence('bundle-es6', 'bundle-es5', done);
+});
+
+gulp.task('deploy', ['build'], function(done) {
     gulp.src([
+        'dist/index.js',
         'dist/index.es5.js',
         'dist/public_api.js',
         'dist/index.metadata.json',
@@ -181,9 +218,10 @@ gulp.task('build', ['pre-build', 'bundle'], function (done) {
                 done();
             });
         });
+
 });
 
-gulp.task('pre-deploy', function () {
+gulp.task('pre-publish', function () {
     if (publishPath != null) {
         var delPath = path.join(publishPath, '**/*');
         return del(delPath, { force: true });
@@ -223,16 +261,17 @@ gulp.task('git-tag', function(done){
         git.tag(pkg.version, `v${pkg.version}`, function(err) {
             if (err) throw err;
             done();
-        });    }
+        });    
+    }
 });
 
-gulp.task('publish', ['deploy'], function (done) {
+gulp.task('version', ['deploy'], function (done) {
   if (publishPath != null) {
       runSequence('git-init','git-add', 'git-commit', 'git-tag', done);
   }  
 });
 
-gulp.task('deploy', ['pre-deploy'], function () {
+gulp.task('publish', ['pre-publish'], function () {
     if (publishPath != null) {
         var srcPath = path.resolve('../');
         return gulp.src([

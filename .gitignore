@@ -1,4 +1,8 @@
 node_modules
 dist
 src/**/*.js
+e2e/**/*.js
+**/*.ngfactory.*
+**/*.ngsummary.*
+**/*.metadata.json
 npm-debug.log

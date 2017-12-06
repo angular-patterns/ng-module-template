@@ -2,9 +2,11 @@
   "name": "ng-module-template",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.es5.js",
+  "main": "dist/bundles/ng-module-template.umd.js",
+  "module": "dist/index.es5.js",
+  "es2015": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "module": "dist/bundles/ng-module-template.umd.js",
+  "metadata": "dist/index.metadata.json",
   "scripts": {
     "start": "npm run dev",
     "serve": "webpack-dev-server --content-base dist --hot true --inline true",

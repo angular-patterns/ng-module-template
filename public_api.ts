@@ -12,5 +12,9 @@
  * Entry point for all public APIs of the core package.
  */
 
-export * from './src/feature/feature.module';
-export * from './src/feature/widget.component';
+export * from './src/modal/modal.module';
+export * from './src/modal/modal-dialog/modal-dialog.component';
+export * from './src/modal/modal-outlet/modal-outlet.component';
+export * from './src/modal/models/modal.model';
+export * from './src/modal/services/modal.service';
+

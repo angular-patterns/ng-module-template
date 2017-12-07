@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { FeatureModule } from '../feature/feature.module';
+import { ModalModule } from '../modal/modal.module';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
-  imports:      [ BrowserModule, FeatureModule],
-  declarations: [ AppComponent ],
+  imports:      [ BrowserModule, ModalModule.forRoot([{ name: 'test', component: TestComponent}])],
+  declarations: [ AppComponent, TestComponent ],
   bootstrap:    [ AppComponent ],
   exports: [AppComponent]
 })

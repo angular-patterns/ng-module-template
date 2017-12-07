@@ -17,4 +17,5 @@ export * from './src/modal/modal-dialog/modal-dialog.component';
 export * from './src/modal/modal-outlet/modal-outlet.component';
 export * from './src/modal/models/modal.model';
 export * from './src/modal/services/modal.service';
+export * from './src/modal/services/provideModals';
 

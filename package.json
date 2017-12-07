@@ -1,9 +1,9 @@
 {
-  "name": "ng-module-template",
+  "name": "modal",
   "version": "1.0.0",
   "description": "",
   "main": "dist/bundles/ng-module-template.umd.js",
-  "module": "dist/index.es5.js",
+  "module": "dist/bundles/modal.umd.js",
   "es2015": "dist/index.es6.js",
   "typings": "dist/index.d.ts",
   "metadata": "dist/index.metadata.json",

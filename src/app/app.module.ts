@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { ModalModule } from 'ng-modal-dialog';
+import { ModalModule } from 'modal';
 import { TestComponent } from './test/test.component';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -18,7 +18,8 @@ const routes:Routes = [
     ],
   declarations: [ AppComponent, TestComponent ],
   bootstrap:    [ AppComponent ],
-  exports: [AppComponent]
+  exports: [AppComponent],
+  entryComponents: [TestComponent]
 })
 export class AppModule {
 }

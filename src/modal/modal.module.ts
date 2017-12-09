@@ -8,7 +8,7 @@ import { ModalDialogComponent } from "./modal-dialog/modal-dialog.component";
 import { ANALYZE_FOR_ENTRY_COMPONENTS } from "@angular/core";
 
 
-export const Modals = new InjectionToken<Modal>('modals');
+export const Modals = new InjectionToken<Modal[]>('modals');
 export function InitModalService(router:Router, modals:Modal[]) {
     var routes:Routes =  modals.map(t=> { return { path: t.name, component: t.component, outlet:'modal'}});
     router.resetConfig(routes);
@@ -18,7 +18,7 @@ export function InitModalService(router:Router, modals:Modal[]) {
 @NgModule({
     imports: [
         BrowserModule,
-        RouterModule.forRoot([])
+        RouterModule
     ],
     declarations: [
         ModalDialogComponent,
@@ -26,8 +26,7 @@ export function InitModalService(router:Router, modals:Modal[]) {
     ],
     exports: [
         ModalDialogComponent,
-        ModalOutletComponent,
-        RouterModule
+        ModalOutletComponent
     ],
     providers: [
         
@@ -36,7 +35,7 @@ export function InitModalService(router:Router, modals:Modal[]) {
 export class ModalModule {
 
 
-    static forRoot(modals:any[]): ModuleWithProviders {
+    static forRoot(modals:Modal[]): ModuleWithProviders {
         return {
             ngModule: ModalModule, 
             //providers: [ModalService, provideRoutes(modals)]

@@ -8,7 +8,7 @@ import { TestComponent } from './test/test.component';
 @NgModule({
   imports:      [ 
     BrowserModule, 
-    FeatureModule.forRoot([ { path:'test', component: TestComponent, outlet: 'modal' }]), 
+    FeatureModule.forRoot([ { name:'test', component: TestComponent }]), 
     RouterModule.forRoot([])
   ],
   declarations: [ AppComponent, TestComponent ],

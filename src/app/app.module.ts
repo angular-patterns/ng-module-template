@@ -3,14 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ModalModule } from '../modal/modal.module';
 import { TestComponent } from './test/test.component';
-import { provideRoutes } from '@angular/router';
+import { provideRoutes, RouterModule } from '@angular/router';
 //import { RouterModule, provideRoutes } from '@angular/router';
 
 
 @NgModule({
   imports:      [ 
       BrowserModule,
-      ModalModule.forRoot([ { name:'test', component: TestComponent}])
+      ModalModule.forRoot([ { path:'test', component: TestComponent, outlet: 'modal'}])
      //ModalModule.forRoot([ TestComponent])
     ],
   declarations: [ AppComponent, TestComponent ],

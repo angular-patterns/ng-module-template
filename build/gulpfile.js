@@ -302,7 +302,7 @@ gulp.task('name-module', function () {
             .pipe(gulp.dest('../'));
 
     var modifyTsconfigJson =
-        gulp.src(['./tsconfig.json'])
+        gulp.src(['./tsconfig.ngc.json'])
             .pipe(jsonModify({
                 key: 'angularCompilerOptions.flatModuleId',
                 value: name

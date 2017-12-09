@@ -36,16 +36,16 @@ export function InitModalService(router:Router, modals:Modal[]) {
 export class ModalModule {
 
 
-    static forRoot(modals:Modal[]): ModuleWithProviders {
+    static forRoot(modals:any[]): ModuleWithProviders {
         return {
             ngModule: ModalModule, 
-            //providers: [ModalService, provideRoutes(modals)]
-            providers: [
+            providers: [ModalService, provideRoutes(modals)]
+            // providers: [
             
-                { provide: Modals, useValue: modals},
-                { provide: ANALYZE_FOR_ENTRY_COMPONENTS, multi: true, useValue: modals },
-                { provide: ModalService, useFactory: InitModalService, deps:[Router, Modals] }
-            ]
+            //     { provide: Modals, useValue: modals},
+            //     { provide: ANALYZE_FOR_ENTRY_COMPONENTS, multi: true, useValue: modals },
+            //     { provide: ModalService, useFactory: InitModalService, deps:[Router, Modals] }
+            // ]
         }
     }
  

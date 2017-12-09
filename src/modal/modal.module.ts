@@ -5,15 +5,15 @@ import { ModalOutletComponent } from "./modal-outlet/modal-outlet.component";
 import { ModalService } from "./services/modal.service";
 import { Modal } from "./models/modal.model";
 import { ModalDialogComponent } from "./modal-dialog/modal-dialog.component";
-import { ANALYZE_FOR_ENTRY_COMPONENTS } from "@angular/core";
+//import { ANALYZE_FOR_ENTRY_COMPONENTS } from "@angular/core";
 
 
-export const Modals = new InjectionToken<Modal[]>('modals');
-export function InitModalService(router:Router, modals:Modal[]) {
-    var routes:Routes =  modals.map(t=> { return { path: t.name, component: t.component, outlet:'modal'}});
-    router.resetConfig(routes);
-    return new ModalService(router);
-}
+// export const Modals = new InjectionToken<Modal[]>('modals');
+// export function InitModalService(router:Router, modals:Modal[]) {
+//     var routes:Routes =  modals.map(t=> { return { path: t.name, component: t.component, outlet:'modal'}});
+//     router.resetConfig(routes);
+//     return new ModalService(router);
+// }
 
 @NgModule({
     imports: [
@@ -35,16 +35,16 @@ export function InitModalService(router:Router, modals:Modal[]) {
 export class ModalModule {
 
 
-    static forRoot(modals:Modal[]): ModuleWithProviders {
+    static forRoot(): ModuleWithProviders {
         return {
             ngModule: ModalModule, 
-            //providers: [ModalService, provideRoutes(modals)]
-            providers: [
+            providers: [ModalService]
+            // providers: [
             
-                { provide: Modals, useValue: modals},
-                { provide: ANALYZE_FOR_ENTRY_COMPONENTS, multi: true, useValue: modals },
-                { provide: ModalService, useFactory: InitModalService, deps:[Router, Modals] }
-            ]
+            //     { provide: Modals, useValue: modals},
+            //     { provide: ANALYZE_FOR_ENTRY_COMPONENTS, multi: true, useValue: modals },
+            //     { provide: ModalService, useFactory: InitModalService, deps:[Router, Modals] }
+            // ]
         }
     }
  

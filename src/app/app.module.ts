@@ -10,8 +10,10 @@ import { provideRoutes, RouterModule } from '@angular/router';
 @NgModule({
   imports:      [ 
       BrowserModule,
-      RouterModule.forRoot([]),
-      ModalModule.forRoot([ { name:'test', component: TestComponent }])
+      RouterModule.forRoot([{
+        path: "test", component: TestComponent, outlet: 'modal'
+      }]),
+      ModalModule.forRoot()
      //ModalModule.forRoot([ TestComponent])
     ],
   declarations: [ AppComponent, TestComponent ],

@@ -37,6 +37,6 @@
         "strictMetadataEmit": true,
         "skipTemplateCodegen": true,
         "flatModuleOutFile": "index.js",
-        "flatModuleId": "ng-modal-dialog"
+        "flatModuleId": "modal"
     }
 }

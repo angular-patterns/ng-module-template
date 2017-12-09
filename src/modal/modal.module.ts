@@ -27,21 +27,24 @@ export function InitModalService(router:Router, modals:Modal[]) {
     exports: [
         ModalDialogComponent,
         ModalOutletComponent
+    ],
+    providers: [
+        ModalService
     ]
 })
 export class ModalModule {
 
 
-    static forRoot(modals:any[]): ModuleWithProviders {
+    static forRoot(modals:Modal[]): ModuleWithProviders {
         return {
             ngModule: ModalModule, 
-            providers: [ModalService, provideRoutes(modals)]
-            // providers: [
-            //     //ModalService, 
-            //     { provide: Modals, useValue: modals},
-            //     { provide: ANALYZE_FOR_ENTRY_COMPONENTS, multi: true, useValue: modals },
-            //     { provide: ModalService, useFactory: InitModalService, deps:[Router, Modals] }
-            // ]
+            //providers: [ModalService, provideRoutes(modals)]
+            providers: [
+                ModalService, 
+                { provide: Modals, useValue: modals},
+                { provide: ANALYZE_FOR_ENTRY_COMPONENTS, multi: true, useValue: modals },
+                { provide: ModalService, useFactory: InitModalService, deps:[Router, Modals] }
+            ]
         }
     }
  

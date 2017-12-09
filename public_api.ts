@@ -14,3 +14,5 @@
 
 export * from './src/feature/feature.module';
 export * from './src/feature/widget.component';
+export * from './src/feature/modal-outlet.component';
+export * from './src/feature/modal.service';

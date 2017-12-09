@@ -29,7 +29,7 @@ export function InitModalService(router:Router, modals:Modal[]) {
         ModalOutletComponent
     ],
     providers: [
-        ModalService
+        
     ]
 })
 export class ModalModule {
@@ -40,7 +40,7 @@ export class ModalModule {
             ngModule: ModalModule, 
             //providers: [ModalService, provideRoutes(modals)]
             providers: [
-                ModalService, 
+            
                 { provide: Modals, useValue: modals},
                 { provide: ANALYZE_FOR_ENTRY_COMPONENTS, multi: true, useValue: modals },
                 { provide: ModalService, useFactory: InitModalService, deps:[Router, Modals] }

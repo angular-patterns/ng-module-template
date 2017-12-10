@@ -8,8 +8,10 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  principles: Observable<any[]>;
+  general: Observable<any[]>;
+  angular: Observable<any[]>;
   constructor(private http:HttpClient) {
-      this.principles = http.get<any[]>('http://localhost:3000/principles');
+      this.general = http.get<any[]>('http://localhost:3000/general-principles');
+      this.angular = http.get<any[]>('http://localhost:3000/angular-principles');
   }
 }

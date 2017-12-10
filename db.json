@@ -12,14 +12,14 @@
             "code": "SA 01-02",
             "title": "Component Reusability",
             "category": "General",
-            "description": "Build components with re-use in mind. Design components with the ability to customize it through configuration.  This will help to maximize the potential for re-use by enabling users to integrate the component in a variety of other related contexts."
+            "description": "Build components with re-use in mind. Design components with the ability to customize through configuration.  This will help to maximize the potential for re-use by enabling users to integrate the component in a variety of other related contexts."
         },
         {
             "id": 3,
             "code": "SA 01-04",
             "title": "Rapid Prototyping",
             "category": "General",
-            "description": "Use proof-of-concepts to drive innovation. For any significant task where there are unknowns as to how to apply industry best practices, consider investing in a rapid proof-of-concept. Prototyping is a quick way for developers to discover alternative solutions that will meet the core requirements while ensuring that best-pratices in coding and design are being followed."
+            "description": "Leverage proof-of-concepts to drive innovation. For any significant task where there are unknowns as to how to apply industry best practices, consider investing in a rapid proof-of-concept. Prototyping is a quick way for developers to discover alternative solutions that will meet the core requirements while ensuring that best-pratices in coding and design are being followed."
         },
         {
             "id": 4,
@@ -48,7 +48,15 @@
             "title": "Enforced Architecture ",
             "category": "General",
             "description": "When a new pattern or architecture is introduced, consider exploring ways to enforce the pattern through tools or automation, that would reduce or eliminate the reliance on manual code reviews to uncover deviations from the established architecture. This will help to ensure consistency, quality, and longevity with regards to architecture patterns and practices."
+        },
+        {
+            "id": 8,
+            "code": "SA 01-08",
+            "title": "Interoperability",
+            "category": "General",
+            "description": "Write once, use anywhere. Build components and modules with the intent that it can be published and shared across teams, projects, and even organizations. Follow open industry standards rather than writing custom code in order to ensure maximal interoperability. "
         }        
+
 
 
         

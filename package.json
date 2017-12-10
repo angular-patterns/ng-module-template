@@ -1,9 +1,9 @@
 {
-  "name": "ng-module-template",
+  "name": "ng-architecture-principles",
   "version": "1.0.0",
   "description": "",
   "main": "dist/bundles/ng-module-template.umd.js",
-  "module": "dist/index.es5.js",
+  "module": "dist/bundles/ng-architecture-principles.umd.js",
   "es2015": "dist/index.es6.js",
   "typings": "dist/index.d.ts",
   "metadata": "dist/index.metadata.json",
@@ -21,7 +21,7 @@
     "e2e": "protractor e2e/protractor.conf.js",
     "pree2e": "webdriver-manager update --standalone false --gecko false --quiet",
     "base-tag": "cd build && gulp base-tag",
-    "api":"json-server db.json"
+    "api": "json-server db.json"
   },
   "author": "",
   "license": "ISC",

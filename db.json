@@ -1,0 +1,56 @@
+{
+    "principles": [
+        {
+            "id": 1,
+            "code": "SA 01-01",
+            "title": "Industry Best Practices",
+            "category": "General",
+            "description": "When building new solutions, always consider using existing established patterns and practices first for consistency, research best-practices in industry second, and custom coding as a last resort.  This has the implication that all new patterns introduced should follow industry best practices."
+        },
+        {
+            "id": 2,
+            "code": "SA 01-02",
+            "title": "Component Reusability",
+            "category": "General",
+            "description": "Build components with re-use in mind. Design components with the ability to customize it through configuration.  This will help to maximize the potential for re-use by enabling users to integrate the component in a variety of other related contexts."
+        },
+        {
+            "id": 3,
+            "code": "SA 01-04",
+            "title": "Rapid Prototyping",
+            "category": "General",
+            "description": "Use proof-of-concepts to drive innovation. For any significant task where there are unknowns as to how to apply industry best practices, consider investing in a rapid proof-of-concept. Prototyping is a quick way for developers to discover alternative solutions that will meet the core requirements while ensuring that best-pratices in coding and design are being followed."
+        },
+        {
+            "id": 4,
+            "code": "SA 01-05",
+            "title": "Standards",
+            "category": "General",
+            "description": "Always prefer standards compliance and industry solutions over customization. Any developer can write custom code to meet a requirement. However, industry solutions are usually not that much more effort to code, requires less coding with fewer defects, and often lowers integration costs with 3rd party products. The small investment to research industry best practices is well worth it."
+        },
+        {
+            "id": 5,
+            "code": "SA 01-05",
+            "title": "Testability",
+            "category": "General",
+            "description": "Writing tests and ensuring test coverage are fundamental to ensuring high code quality. Strive for superior test coverage for all major functionality. When developers write tests against the code that they write, they are forced to write testable code.  This results in resiliant code that is far less brittle and much easier to develop, refactor, and maintain. "
+        },
+        {
+            "id": 6,
+            "code": "SA 01-06",
+            "title": "Automation",
+            "category": "General",
+            "description": "Leverage software and tools to automate key development, build, and deployment processes to promote developer productivity, optimize operational efficiency, and enable business agility. "
+        },
+        {
+            "id": 7,
+            "code": "SA 01-07",
+            "title": "Enforced Architecture ",
+            "category": "General",
+            "description": "When a new pattern or architecture is introduced, consider exploring ways to enforce the pattern through tools or automation, that would reduce or eliminate the reliance on manual code reviews to uncover deviations from the established architecture. This will help to ensure consistency, quality, and longevity with regards to architecture patterns and practices."
+        }        
+
+
+        
+    ]
+}

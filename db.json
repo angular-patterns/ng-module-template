@@ -1,18 +1,18 @@
 {
-    "general-principles": [
+    "general": [
         {
             "id": 1,
             "code": "SA 01-01",
             "title": "Industry Best Practices",
             "category": "General",
-            "description": "When building new solutions, always consider using existing established patterns and practices first for consistency, research best-practices in industry second, and custom coding as a last resort.  This has the implication that all new patterns introduced should follow industry best practices."
+            "description": "Align to industry best practices when introducing new tools, patterns, or architecture. In order of preference, use existing established patterns and practices first for consistency, research and adapt best-practices in industry second, and custom coding last. "
         },
         {
             "id": 2,
             "code": "SA 01-02",
             "title": "Component Reusability",
             "category": "General",
-            "description": "Build components with re-use in mind. Design components with the ability to customize through configuration.  This will help to maximize the potential for re-use by enabling users to integrate the component in a variety of other related contexts."
+            "description": "Strive for designing components for re-usability. This will help to maximize re-use potential by enabling users to integrate the component in a variety of different contexts."
         },
         {
             "id": 3,
@@ -57,34 +57,34 @@
             "description": "Write once, use anywhere. Build components and modules with the intent that it can be published and shared across teams, projects, and even organizations. Follow open industry standards rather than writing custom code in order to ensure maximal interoperability. "
         }        
     ],
-    "angular-principles": [
+    "angular": [
         {
             "id": 1,
             "code": "SA 01-01",
             "title": "LIFT",
             "category": "Application Structure",
-            "description": "Easy to Locate. Keep related files close. Easy to Identify at a glance. Flat folder structure as long as possible. Try not to repeat yourself."
+            "description": "Locate, Identify, Flat, T-DRY.  Organize files and folders so that they are easy to Locate. Files should be easy to Identify at a glance. Keep a Flat folder structure as long as possible. Try not to repeat yourself."
         },
         {
             "id": 2,
             "code": "SA 01-02",
             "title": "Folders-by-Feature",
             "category": "Application Structure",
-            "description": "Follows LIFT. Each folder has its own NgModule.  This helps to keep the folder structure as flat as possible (usually two folder levels deep)"
+            "description": "Try to have a folder for each feature area under the App module. For each feature area, consider organizing related files together in its own NgModule.  Why? This practice aligns to the LIFT principle."
         },
         {
             "id": 3,
             "code": "SA 01-03",
             "title": "Shared Module",
             "category": "Application Structure",
-            "description": "If a component, directive, or pipe is shared, consider taking them out of the FeatureModule and putting them in its own SharedModule. Avoid placing services in a SharedModule."
+            "description": "For each feature area, consider placing shared components, directives, and pipes into a SharedModule.  Avoid placing singleton services with application scope in a SharedModule. Intentional singletons are Ok."
         },
         {
             "id": 4,
             "code": "SA 01-04",
             "title": "Services",
             "category": "Services",
-            "description": "Use services for sharing data or functionality between components. Leverage services as singletons and limit their scope to the top-most component that needs it."
+            "description": "Use services for sharing data or functionality between components. Create services as singletons.  Use hierrarchical injectors to limit their scope to the top-most component that needs it."
         }
 
     ]

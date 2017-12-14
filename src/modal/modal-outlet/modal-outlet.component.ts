@@ -5,7 +5,7 @@ import { baseAnimation } from '../modal.anim';
   selector: 'modal-outlet',
   templateUrl: './modal-outlet.component.html',
   animations:[
-    baseAnimation
+    
   ]
 })
 export class ModalOutletComponent {

@@ -1,23 +1,24 @@
-import { trigger, animate, style, group,state, transition, AnimationTriggerMetadata } from '@angular/animations';
+import { trigger, animate, style, group, state, transition, AnimationTriggerMetadata } from '@angular/animations';
 
 
-export const baseAnimation:AnimationTriggerMetadata  =
-trigger('baseAnimation', [
-    state('in', style({opacity: 0})),
-    transition('void => *', [
-      style({opacity: 0}),
-      group([
-        animate('0.5s ease', style({
-          opacity: 1
-        }))
-      ])
+export const baseAnimation: AnimationTriggerMetadata =
+  trigger('baseAnimation', [
+    state('void', style({position:'fixed', opacity: 0}) ),
+    // route 'enter' transition
+    transition(':enter', [
+
+      // css styles at start of transition
+      style({ opacity: 0 }),
+
+      // animation and styles at end of transition
+      animate('.3s', style({ opacity: 1 }))
     ]),
-    transition('* => void', [
-      group([
-        animate('0.3s ease', style({
-          opacity: 0,
-          
-        }))
-      ])
-    ])
+    transition(':leave', [
+
+      // css styles at start of transition
+      style({ opacity: 1 }),
+
+      // animation and styles at end of transition
+      animate('.3s', style({ opacity: 0 }))
+    ]),
   ])

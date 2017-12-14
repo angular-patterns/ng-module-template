@@ -7,7 +7,7 @@ trigger('baseAnimation', [
     transition('void => *', [
       style({opacity: 0}),
       group([
-        animate('0.3s ease', style({
+        animate('0.5s ease', style({
           opacity: 1
         }))
       ])

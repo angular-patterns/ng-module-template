@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { ModalService } from 'modal';
+import { ModalService } from 'ng-bootstrap-modal';
 
 @Component({
   selector: 'app-root',

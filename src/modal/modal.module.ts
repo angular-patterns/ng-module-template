@@ -7,6 +7,7 @@ import { Modal } from "./models/modal.model";
 import { ModalDialogComponent } from "./modal-dialog/modal-dialog.component";
 import { CommonModule } from "@angular/common";
 //import { ANALYZE_FOR_ENTRY_COMPONENTS } from "@angular/core";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 export const Modals = new InjectionToken<Modal[]>('modals');
@@ -19,6 +20,7 @@ export function InitModalService(router:Router, modals:Modal[]) {
 @NgModule({
     imports: [
         CommonModule,
+        BrowserAnimationsModule,
         RouterModule.forChild([])
     ],
     declarations: [

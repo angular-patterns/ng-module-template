@@ -1,6 +1,7 @@
-import { trigger, animate, style, group,state, query, transition } from '@angular/animations';
+import { trigger, animate, style, group,state, transition, AnimationTriggerMetadata } from '@angular/animations';
 
-export const baseAnimation =
+
+export const baseAnimation:AnimationTriggerMetadata  =
 trigger('baseAnimation', [
     state('in', style({opacity: 0})),
     transition('void => *', [

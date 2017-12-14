@@ -1,6 +1,6 @@
 {
   "name": "ng-bootstrap-modal",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "description": "",
   "main": "dist/bundles/ng-bootstrap-modal.umd.js",
   "module": "dist/index.es5.js",

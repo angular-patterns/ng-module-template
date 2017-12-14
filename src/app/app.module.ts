@@ -12,8 +12,9 @@ const routes:Routes = [
 @NgModule({
   imports:      [ 
       BrowserModule,
-      ModalModule.forRoot([
-          { name: 'test', component: TestComponent }
+      ModalModule,
+      RouterModule.forRoot([
+          { path: 'test', component: TestComponent, outlet: 'modal' }
       ])
     ],
   declarations: [ AppComponent, TestComponent ],

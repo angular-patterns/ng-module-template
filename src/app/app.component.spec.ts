@@ -1,10 +1,13 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { WidgetComponent } from '../feature/widget.component';
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        WidgetComponent
       ],
     }).compileComponents();
   }));

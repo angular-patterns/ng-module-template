@@ -124,7 +124,7 @@
       "component-selector": [
         true,
         "element",
-        "ex",
+        "sa",
         "kebab-case"
       ],
       "use-input-property-decorator": true,

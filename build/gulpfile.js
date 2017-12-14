@@ -296,7 +296,7 @@ gulp.task('name-module', function () {
                 value: name
             }))
             .pipe(jsonModify({
-                key: 'module',
+                key: 'main',
                 value: `dist/bundles/${name}.umd.js`
             }))
             .pipe(gulp.dest('../'));

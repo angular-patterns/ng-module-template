@@ -13,7 +13,7 @@ import { provideRoutes, RouterModule } from '@angular/router';
       RouterModule.forRoot([{
         path: "test", component: TestComponent, outlet: 'modal'
       }]),
-      ModalModule.forRoot()
+      ModalModule
      //ModalModule.forRoot([ TestComponent])
     ],
   declarations: [ AppComponent, TestComponent ],

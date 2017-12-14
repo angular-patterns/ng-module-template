@@ -5,6 +5,7 @@ import { ModalOutletComponent } from "./modal-outlet/modal-outlet.component";
 import { ModalService } from "./services/modal.service";
 import { Modal } from "./models/modal.model";
 import { ModalDialogComponent } from "./modal-dialog/modal-dialog.component";
+import { CommonModule } from "@angular/common";
 //import { ANALYZE_FOR_ENTRY_COMPONENTS } from "@angular/core";
 
 
@@ -17,8 +18,8 @@ import { ModalDialogComponent } from "./modal-dialog/modal-dialog.component";
 
 @NgModule({
     imports: [
-        BrowserModule,
-        RouterModule
+        CommonModule,
+        RouterModule.forChild([])
     ],
     declarations: [
         ModalDialogComponent,
@@ -29,7 +30,7 @@ import { ModalDialogComponent } from "./modal-dialog/modal-dialog.component";
         ModalOutletComponent
     ],
     providers: [
-        
+        ModalService
     ]
 })
 export class ModalModule {

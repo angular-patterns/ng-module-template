@@ -1,4 +1,4 @@
-import { ModuleWithProviders, NgModule, Provider, InjectionToken, Type } from "@angular/core";
+import { ModuleWithProviders, NgModule, Provider, InjectionToken, Type, ANALYZE_FOR_ENTRY_COMPONENTS } from "@angular/core";
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule, provideRoutes, ROUTES, Router } from "@angular/router";
 import { ModalOutletComponent } from "./modal-outlet/modal-outlet.component";
@@ -9,12 +9,12 @@ import { CommonModule } from "@angular/common";
 //import { ANALYZE_FOR_ENTRY_COMPONENTS } from "@angular/core";
 
 
-// export const Modals = new InjectionToken<Modal[]>('modals');
-// export function InitModalService(router:Router, modals:Modal[]) {
-//     var routes:Routes =  modals.map(t=> { return { path: t.name, component: t.component, outlet:'modal'}});
-//     router.resetConfig(routes);
-//     return new ModalService(router);
-// }
+export const Modals = new InjectionToken<Modal[]>('modals');
+export function InitModalService(router:Router, modals:Modal[]) {
+    var routes:Routes =  modals.map(t=> { return { path: t.name, component: t.component, outlet:'modal'}});
+    router.resetConfig(routes);
+    return new ModalService(router);
+}
 
 @NgModule({
     imports: [
@@ -30,22 +30,22 @@ import { CommonModule } from "@angular/common";
         ModalOutletComponent
     ],
     providers: [
-        ModalService
+        //ModalService
     ]
 })
 export class ModalModule {
 
 
-    static forRoot(): ModuleWithProviders {
+    static forRoot(modals: Modal[]): ModuleWithProviders {
         return {
             ngModule: ModalModule, 
-            providers: [ModalService]
-            // providers: [
+            //providers: [ModalService]
+            providers: [
             
-            //     { provide: Modals, useValue: modals},
-            //     { provide: ANALYZE_FOR_ENTRY_COMPONENTS, multi: true, useValue: modals },
-            //     { provide: ModalService, useFactory: InitModalService, deps:[Router, Modals] }
-            // ]
+                { provide: Modals, useValue: modals},
+                { provide: ANALYZE_FOR_ENTRY_COMPONENTS, multi: true, useValue: modals },
+                { provide: ModalService, useFactory: InitModalService, deps:[Router, Modals] }
+            ]
         }
     }
  

@@ -35,9 +35,7 @@ export function InitModalService(router:Router, modals:Modal[]) {
 })
 export class ModalCommonModule {
 
- 
 }
-
 
 
 @NgModule({
@@ -54,7 +52,6 @@ export class RouterModalModule {
 
         return {
             ngModule: RouterModalModule, 
-            //providers: [ModalService]
             providers: [
                 
                 { provide: Modals, useValue: modals},
@@ -84,7 +81,6 @@ export class ModalModule {
 
         return {
             ngModule: ModalModule, 
-            //providers: [ModalService]
             providers: [
                 
                 { provide: Modals, useValue: modals},

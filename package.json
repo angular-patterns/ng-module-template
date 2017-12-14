@@ -1,9 +1,9 @@
 {
-  "name": "modal",
+  "name": "ng-bootstrap-modal",
   "version": "1.0.21",
   "description": "",
   "main": "dist/bundles/ng-module-template.umd.js",
-  "module": "dist/bundles/modal.umd.js",
+  "module": "dist/bundles/ng-bootstrap-modal.umd.js",
   "es2015": "dist/index.es6.js",
   "typings": "dist/index.d.ts",
   "metadata": "dist/index.metadata.json",
@@ -25,9 +25,8 @@
     "test": "karma start test/karma.conf.js",
     "e2e": "protractor e2e/protractor.conf.js",
     "pree2e": "webdriver-manager update --standalone false --gecko false --quiet",
-    "base-tag": "cd build && gulp base-tag", 
+    "base-tag": "cd build && gulp base-tag",
     "build2": "ng-packagr -p ng-package.json"
-    
   },
   "author": "",
   "license": "ISC",

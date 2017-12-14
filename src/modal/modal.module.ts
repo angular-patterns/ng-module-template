@@ -33,15 +33,30 @@ export function InitModalService(router:Router, modals:Modal[]) {
         //ModalService
     ]
 })
-export class ModalModule {
+export class ModalCommonModule {
+
+ 
+}
 
 
+
+@NgModule({
+    imports: [
+        CommonModule,
+        ModalCommonModule
+    ],
+    exports: [
+        ModalCommonModule
+    ]
+})
+export class RouterModalModule {
     static forRoot(modals: Modal[]): ModuleWithProviders {
+
         return {
-            ngModule: ModalModule, 
+            ngModule: RouterModalModule, 
             //providers: [ModalService]
             providers: [
-            
+                
                 { provide: Modals, useValue: modals},
                 { provide: ANALYZE_FOR_ENTRY_COMPONENTS, multi: true, useValue: modals },
                 { provide: ModalService, useFactory: InitModalService, deps:[Router, Modals] }
@@ -50,3 +65,34 @@ export class ModalModule {
     }
  
 }
+
+@NgModule({
+    imports: [
+        CommonModule,
+        ModalCommonModule,
+        RouterModule.forRoot([])
+    ],
+    exports: [
+        ModalCommonModule
+    ],
+    providers: [
+        //ModalService
+    ]
+})
+export class ModalModule {
+    static forRoot(modals: Modal[]): ModuleWithProviders {
+
+        return {
+            ngModule: ModalModule, 
+            //providers: [ModalService]
+            providers: [
+                
+                { provide: Modals, useValue: modals},
+                { provide: ANALYZE_FOR_ENTRY_COMPONENTS, multi: true, useValue: modals },
+                { provide: ModalService, useFactory: InitModalService, deps:[Router, Modals] }
+            ]
+        }
+    }
+ 
+}
+

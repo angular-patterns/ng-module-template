@@ -13,7 +13,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 export const Modals = new InjectionToken<Modal[]>('modals');
 export function InitModalService(router:Router, modals:Modal[]) {
     var routes:Routes =  modals.map(t=> { return { path: t.name, component: t.component, outlet:'modal'}});
-    router.resetConfig(routes);
+    var r = router.config.concat(routes);
+    router.resetConfig(r);
+    
     return new ModalService(router);
 }
 
@@ -51,11 +53,11 @@ export class ModalCommonModule {
 })
 export class RouterModalModule {
     static forRoot(modals: Modal[]): ModuleWithProviders {
-
+        var routes:Routes =  modals.map(t=> { return { path: t.name, component: t.component, outlet:'modal'}});
         return {
             ngModule: RouterModalModule, 
             providers: [
-                
+                        
                 { provide: Modals, useValue: modals},
                 { provide: ANALYZE_FOR_ENTRY_COMPONENTS, multi: true, useValue: modals },
                 { provide: ModalService, useFactory: InitModalService, deps:[Router, Modals] }

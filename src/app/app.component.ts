@@ -15,6 +15,13 @@ export class AppComponent {
     this.title = 'Hello World!';
   }
   test() {
-    this.modalService.open('test');
+    this.modalService.open('test', 'this is a title')
+      .subscribe(t=> {
+        console.log(t);
+      }, ()=> {
+        console.log('cancelled!');
+      });
   }
+
+
 }

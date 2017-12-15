@@ -17,4 +17,13 @@ export class TestComponent implements OnInit {
 
     ngOnInit() {
      }
+
+     ok() {
+         this.modalService.ok('ok good!');
+     }
+     cancel() {
+         this.modalService.cancel();
+     }
+
+     
 }

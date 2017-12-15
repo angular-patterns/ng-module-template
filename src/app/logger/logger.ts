@@ -10,15 +10,6 @@ export class Logger {
     logError(message: string, stack: string, properties: { [key: string]: string }){
         var propertyString = JSON.stringify(properties);
         var o = this.http.post('http://localhost:5000/api/v1/errors',{ message: message, stack: stack, properties: propertyString});
-        o.subscribe(t=> {
-
-        },(error) => {
-            console.error(error);
-        }, () => {
-
-        });
-        
-
            
     }
 }

@@ -15,6 +15,7 @@ export class GlobalErrorHandler extends ErrorHandler
         return this;
     }
     handleError(error: any): void {
+      
         var info = new ErrorInfo(error);
         this.handlers.forEach(t=> {
             try {

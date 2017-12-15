@@ -1,6 +1,6 @@
 import { ErrorHandler, Injectable } from "@angular/core";
-import { ErrorInfo } from "./error-info";
-import { Logger } from "../logger/logger";
+import { ErrorInfo } from "../error-info";
+import { Logger } from "../../logger/logger";
 
 @Injectable()
 export class LogHandler implements ErrorHandler{

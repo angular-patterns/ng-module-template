@@ -1,4 +1,5 @@
 import { Component, Inject } from '@angular/core';
+
 import { baseAnimation } from '../modal.anim';
 
 @Component({

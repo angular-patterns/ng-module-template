@@ -13,5 +13,7 @@
  */
 
 export * from './src/modal/modal.module';
+export * from './src/modal/router-modal.module';
+export * from './src/modal/common-modal.module';
 export * from './src/modal/services/modal.service';
 export * from './src/modal/models/modal.model';

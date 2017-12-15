@@ -1,20 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { ModalModule, RouterModalModule } from '../modal/modal.module';
+import { ModalModule } from '../modal/modal.module';
 import { TestComponent } from './test/test.component';
 import { provideRoutes, RouterModule } from '@angular/router';
+import { RouterModalModule } from '../modal/router-modal.module';
 //import { RouterModule, provideRoutes } from '@angular/router';
 
 
 @NgModule({
   imports:      [ 
       BrowserModule,
-      RouterModule.forRoot([]
-        //[{path: "test", component: TestComponent, outlet: 'modal'}]
-      ),
+      RouterModule.forRoot([]),
       RouterModalModule.forRoot([ { name: 'test', component: TestComponent}])
-     //ModalModule.forRoot([ TestComponent])
     ],
   declarations: [ AppComponent, TestComponent ],
   bootstrap:    [ AppComponent ],

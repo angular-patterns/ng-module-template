@@ -8,10 +8,10 @@ export const baseAnimation: AnimationTriggerMetadata =
     transition(':enter', [
 
       // css styles at start of transition
-      style({ opacity: 0 }),
+      style({ opacity: 0,"z-index": "1001" }),
 
       // animation and styles at end of transition
-      animate('.3s', style({ opacity: 1 }))
+      animate('20s', style({ opacity: 1, "z-index": "1001" }))
     ]),
     transition(':leave', [
 
@@ -19,6 +19,6 @@ export const baseAnimation: AnimationTriggerMetadata =
       style({ opacity: 1 }),
 
       // animation and styles at end of transition
-      animate('.3s', style({ opacity: 0 }))
+      animate('20s', style({ opacity: 0 }))
     ]),
   ])

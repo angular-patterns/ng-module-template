@@ -53,7 +53,7 @@ export class ModalCommonModule {
 })
 export class RouterModalModule {
     static forRoot(modals: Modal[]): ModuleWithProviders {
-        var routes:Routes =  modals.map(t=> { return { path: t.name, component: t.component, outlet:'modal'}});
+        
         return {
             ngModule: RouterModalModule, 
             providers: [

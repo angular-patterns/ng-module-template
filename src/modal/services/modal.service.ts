@@ -11,12 +11,12 @@ import { Observer } from 'rxjs/Observer';
 
 export class Result {
     name: string;
-    ok: (value:any)=>void;
-    cancel: ()=>void;
+    ok?: (value:any)=>void;
+    cancel?: ()=>void;
     constructor(name: string) {
         this.name = name;
     }
-    subscribe(ok: (value:any)=>void, cancel?:()=>void) {
+    subscribe(ok?: (value:any)=>void, cancel?:()=>void) {
         this.ok = ok;
         this.cancel = cancel;
     }

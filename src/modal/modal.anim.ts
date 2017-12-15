@@ -11,7 +11,7 @@ export const baseAnimation: AnimationTriggerMetadata =
       style({ opacity: 0,"z-index": "1001" }),
 
       // animation and styles at end of transition
-      animate('0.3s', style({ opacity: 1, "z-index": "1001" }))
+      animate('0.2s', style({ opacity: 1, "z-index": "1001" }))
     ]),
     transition(':leave', [
 
@@ -19,6 +19,6 @@ export const baseAnimation: AnimationTriggerMetadata =
       style({ opacity: 1 }),
 
       // animation and styles at end of transition
-      animate('0.3s', style({ opacity: 0,"z-index": "1001" }))
+      animate('0.2s', style({ opacity: 0,"z-index": "1001" }))
     ]),
   ])

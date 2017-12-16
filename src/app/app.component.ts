@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ModalService } from '../modal/services/modal.service';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/timer';
-import 'rxjs/add/operator/map';
+import { Confirm } from './confirm/confirm.model';
+
 
 @Component({
   selector: 'sa-app-root',
@@ -11,17 +11,25 @@ import 'rxjs/add/operator/map';
 })
 export class AppComponent {
   title: string;
-  constructor(private modalService:ModalService) {
+  message: string;
+  info: Confirm;
+  constructor(private modalService: ModalService) {
     this.title = 'Hello World!';
+    this.message = '';
+    this.info = {
+      name: 'John',
+      phone: 'Smith',
+      birthdate: new Date()
+    }; 
   }
-  test() {
-    this.modalService.open('test', 'this is a title')
-      .subscribe(t=> {
-        console.log(t);
-      }, ()=> {
-        console.log('cancelled!');
+  trigger() {
+    this.modalService.open('popup', this.info)
+      .subscribe(t => {
+        this.message = 'Confirmed successfully!';
+        this.info = t;
+      }, 
+      () => {
+        this.message = 'Cancelled';
       });
   }
-
-
 }

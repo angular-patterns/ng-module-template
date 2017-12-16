@@ -1,0 +1,12 @@
+<modal-dialog>
+    <div modal-title>Confirm Your Information</div>
+    <div modal-body>
+    <pre>
+        {{info | json}}
+    </pre>
+    </div>
+    <div modal-footer>
+        <button class="btn btn-primary btn-md" (click)="submit()">Submit</button>
+        <button class="btn btn-default btn-md" (click)="cancel()">Cancel</button>
+    </div>
+</modal-dialog>

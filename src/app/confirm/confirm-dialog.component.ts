@@ -1,25 +1,26 @@
 import { Component, OnInit, Injector } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ModalService } from '../../modal/services/modal.service';
+import { Confirm } from './confirm.model';
 
 
 @Component({
-    selector: 'test',
-    templateUrl: 'test.component.html'
+    selector: 'nx-confirm-dialog',
+    templateUrl: 'confirm-dialog.component.html'
 })
 
-export class TestComponent implements OnInit {
-    value:string;
+export class ConfirmDialogComponent implements OnInit {
+    info:Confirm;
     constructor(private modalService:ModalService,private injector:Injector) {
        
-        this.value = this.modalService.getValue(this.injector);
+        this.info = this.modalService.getValue(this.injector);
      }
 
     ngOnInit() {
      }
 
-     ok() {
-         this.modalService.ok('ok good!');
+     submit() {
+         this.modalService.ok(this.info);
      }
      cancel() {
          this.modalService.cancel();

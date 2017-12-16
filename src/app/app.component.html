@@ -1,4 +1,6 @@
 <h1>{{title}}</h1>
-<modal-outlet></modal-outlet>
+<pre>{{ info | json}}
+</pre>
 
-<button (click)="test()">Test</button>
+<button class="btn btn-primary btn-md" (click)="trigger()">Trigger Modal</button>  {{ message }}
+<modal-outlet></modal-outlet>

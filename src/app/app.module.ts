@@ -2,19 +2,18 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ModalModule } from '../modal/modal.module';
-import { TestComponent } from './test/test.component';
 import { provideRoutes, RouterModule } from '@angular/router';
 import { RouterModalModule } from '../modal/router-modal.module';
+import { ConfirmDialogComponent } from './confirm/confirm-dialog.component';
 //import { RouterModule, provideRoutes } from '@angular/router';
 
 
 @NgModule({
   imports:      [ 
       BrowserModule,
-      RouterModule.forRoot([]),
-      RouterModalModule.forRoot([ { name: 'test', component: TestComponent}])
+      ModalModule.forRoot([ { name: 'popup', component: ConfirmDialogComponent}])
     ],
-  declarations: [ AppComponent, TestComponent ],
+  declarations: [ AppComponent, ConfirmDialogComponent ],
   bootstrap:    [ AppComponent ],
   providers: [
   ],

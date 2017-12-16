@@ -9,19 +9,19 @@ import { Subscriber } from 'rxjs/Subscriber';
 import { Observer } from 'rxjs/Observer';
 
 
-export class Result {
+export class Result<T> {
     name: string;
-    ok?: (value:any)=>void;
+    ok?: (value:T)=>void;
     cancel?: ()=>void;
     constructor(name: string) {
         this.name = name;
     }
-    subscribe(ok?: (value:any)=>void, cancel?:()=>void) {
+    subscribe(ok?: (value:T)=>void, cancel?:()=>void) {
         this.ok = ok;
         this.cancel = cancel;
     }
 
-    nextOk(value: any) {
+    nextOk(value: T) {
         if (this.ok)
             this.ok(value);
     }
@@ -36,7 +36,7 @@ export class Result {
 
 @Injectable()
 export class ModalService {
-    results: Result[];
+    results: Result<any>[];
 
     constructor(@Inject(Router) private router:Router, private resolver:DataResolver) {
         this.results = [];
@@ -46,10 +46,10 @@ export class ModalService {
         return <T>injector.get<ActivatedRoute>(ActivatedRoute).snapshot.data.value;
     }
 
-    open(name: string, data?:Observable<any> | Promise<any> | any) {
+    open<T>(name: string, data?:Observable<T> | Promise<T> | T) {
         this.resolver.setValue(data);
         this.router.navigate([ { outlets: { modal: [name] } }], { skipLocationChange:true});
-        var result = new Result(name);
+        var result = new Result<T>(name);
         this.results.push(result);
         return result;
 

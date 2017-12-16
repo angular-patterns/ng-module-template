@@ -1,6 +1,8 @@
-<h1>{{title}}</h1>
-<pre>{{ info | json}}
-</pre>
+<div class="container">
+    <h1>{{title}}</h1>
+    <pre>{{ info | json}}
+    </pre>
 
-<button class="btn btn-primary btn-md" (click)="trigger()">Trigger Modal</button>  {{ message }}
+    <button class="btn btn-primary btn-md" (click)="trigger()">Trigger Modal</button> {{ message }}
+</div>
 <modal-outlet></modal-outlet>

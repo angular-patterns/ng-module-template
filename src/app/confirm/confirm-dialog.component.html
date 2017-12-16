@@ -1,9 +1,9 @@
 <modal-dialog>
-    <div modal-title>Confirm Your Information</div>
+    <h4 class="modal-title" modal-header>
+        Confirm Your Information
+    </h4>
     <div modal-body>
-    <pre>
-        {{info | json}}
-    </pre>
+        <pre>{{info | json}}</pre>
     </div>
     <div modal-footer>
         <button class="btn btn-primary btn-md" (click)="submit()">Submit</button>

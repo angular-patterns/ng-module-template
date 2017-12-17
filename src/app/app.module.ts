@@ -7,6 +7,7 @@ import { RouterModalModule } from '../modal/router-modal.module';
 import { ConfirmDialogComponent } from './confirm/confirm-dialog.component';
 //import { RouterModule, provideRoutes } from '@angular/router';
 import {  ReactiveFormsModule} from '@angular/forms';
+import { InputComponent } from './input/input.component';
 
 
 @NgModule({
@@ -15,7 +16,7 @@ import {  ReactiveFormsModule} from '@angular/forms';
       ModalModule.forRoot([ { name: 'popup', component: ConfirmDialogComponent}]),
       ReactiveFormsModule
     ],
-  declarations: [ AppComponent, ConfirmDialogComponent ],
+  declarations: [ AppComponent, ConfirmDialogComponent, InputComponent ],
   bootstrap:    [ AppComponent ],
   providers: [
   ],

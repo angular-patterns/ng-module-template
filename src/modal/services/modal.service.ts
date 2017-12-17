@@ -17,8 +17,14 @@ export class ModalService {
         this.results = [];
     }
 
-    getValue<T>():T {
-        return this.router.routerState.snapshot.root.firstChild.data.value;
+    getValue(): any {
+        if (this.router.routerState 
+            && this.router.routerState.snapshot 
+            && this.router.routerState.snapshot.root 
+            && this.router.routerState.snapshot.root.firstChild
+            && this.router.routerState.snapshot.root.firstChild.data)
+            return this.router.routerState.snapshot.root.firstChild.data['value'];
+        return undefined;
     }
 
     open<T>(name: string, data?:Observable<T> | Promise<T> | T) {

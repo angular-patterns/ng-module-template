@@ -14,14 +14,10 @@ import { FormBuilder } from '@angular/forms';
 export class ConfirmDialogComponent implements OnInit {
     info:Confirm;
     infoGroup: FormGroup;
-    
+
     constructor(private modalService:ModalService, private fb: FormBuilder) {
         this.info = this.modalService.getValue();
-        this.infoGroup = fb.group({
-            name: [this.info.name],
-            phone: [this.info.phone],
-            birthdate: [this.info.birthdate]
-        });
+        this.infoGroup = fb.group({});
      }
 
     ngOnInit() {

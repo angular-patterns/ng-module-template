@@ -3,10 +3,23 @@
         Confirm Your Information
     </h4>
     <div modal-body>
-        <pre>{{info | json}}</pre>
+        <form [formGroup]="infoGroup">
+            <div class="form-group">
+                <label for="">Name</label>
+                <input type="text" class="form-control" formControlName="name" placeholder="Name">
+            </div>
+            <div class="form-group">
+                <label for="">Phone</label>
+                <input type="text" class="form-control" formControlName="phone" placeholder="Phone">
+            </div>
+            <div class="form-group">
+                    <label for="">Birthdate</label>
+                    <input type="text" class="form-control" formControlName="birthdate" placeholder="Birthdate">
+            </div>        
+        </form>
     </div>
     <div modal-footer>
-        <button class="btn btn-primary btn-md" (click)="submit()">Submit</button>
+        <button class="btn btn-primary btn-md" (click)="submit(infoGroup.value)">Submit</button>
         <button class="btn btn-default btn-md" (click)="cancel()">Cancel</button>
     </div>
 </modal-dialog>

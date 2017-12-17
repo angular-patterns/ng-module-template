@@ -2,6 +2,8 @@ import { Component, OnInit, Injector } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ModalService } from '../../modal/services/modal.service';
 import { Confirm } from './confirm.model';
+import { FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 
 @Component({
@@ -11,15 +13,21 @@ import { Confirm } from './confirm.model';
 
 export class ConfirmDialogComponent implements OnInit {
     info:Confirm;
-    constructor(private modalService:ModalService) {
+    infoGroup: FormGroup;
+    constructor(private modalService:ModalService, private fb: FormBuilder) {
         this.info = this.modalService.getValue();
+        this.infoGroup = fb.group({
+            name: [this.info.name],
+            phone: [this.info.phone],
+            birthdate: [this.info.birthdate]
+        });
      }
 
     ngOnInit() {
      }
 
-     submit() {
-         this.modalService.ok(this.info);
+     submit(info:Confirm) {
+         this.modalService.ok(info);
      }
      cancel() {
          this.modalService.cancel();

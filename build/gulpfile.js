@@ -48,6 +48,7 @@ gulp.task('clean', function () {
 
 gulp.task('copy-public-api', [], function () {
     return gulp.src([
+        '../README.md',
         '../public_api.ts'
     ])
     //.pipe(replace('./app', './src'))
@@ -245,6 +246,7 @@ gulp.task('pre-build', function () {
 gulp.task('build', ['build-tmp', 'pre-build'], function(done) {
 
     gulp.src([
+        'dist/README.md',
         'dist/package.json',
         'dist/index.es6.js',
         'dist/index.es5.js',

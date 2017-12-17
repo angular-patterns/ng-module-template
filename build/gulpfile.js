@@ -16,14 +16,14 @@ const commandLineArgs = require('command-line-args');
 const rollupGlobals = require('./rollup.globals');
 
 const optionDefinitions = [
-    { name: 'dest', alias: 'd', type: String, defaultValue: 'c:\\packages' },
+    { name: 'dest', alias: 'd', type: String, defaultValue: `c:\\packages\\${pkg.name}` },
     { name: 'href', alias: 'h', type: String, defaultValue: '/'},
     { name: 'name', alias: 'm', type: String, defaultValue: pkg.name}
 ];
 
 const options = commandLineArgs(optionDefinitions);
 
-const publishPath = path.join(options.dest, pkg.name);
+const publishPath = options.dest;
 
 if (options.dest != null)
 {

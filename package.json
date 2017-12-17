@@ -19,7 +19,7 @@
     "build": "webpack -p",
     "build-dev": "webpack",
     "build-module": "cd build && gulp build",
-    "publish-local": "cd build && gulp publish --dest c:\\packages",
+    "publish-local": "cd build && gulp publish",
     "publish-npm": "cd build && gulp publish-npm",
     "name-module": "cd build && gulp name-module",
     "lint": "tslint --project .",

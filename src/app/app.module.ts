@@ -10,7 +10,9 @@ import { TabsComponent } from './tabs/tabs.component';
 import { CodeComponent } from './code/code.component';
 
 @NgModule({
-  imports:      [ BrowserModule, FeatureModule, 
+  imports:      [ 
+    BrowserModule, 
+    FeatureModule, 
     RouterModule.forRoot([
       { path:':concept', component: TabsComponent, children: [
          { path: 'concept', component: ConceptComponent },

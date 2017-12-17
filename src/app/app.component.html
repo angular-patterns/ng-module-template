@@ -1,21 +1,21 @@
 <nav class="navbar navbar-default navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
+    <div class="container">
+        <div class="navbar-header">
             <a class="navbar-brand" href="#">{{title}}</a>
-            </div>
         </div>
-    </nav>
-      
+    </div>
+</nav>
+
 <div class="container">
-        <div class="col-md-3">
-                <div class="list-group">
-                    <a *ngFor="let item of concepts" [routerLink]="[item.link]" class="list-group-item" routerLinkActive="active">
-                        {{item.title}}
-                    </a>
-            
-                </div>
-            </div>
-            <div class="col-md-9">
-                <router-outlet></router-outlet>
-            </div>
+    <div class="col-md-3">
+        <div class="list-group">
+            <a *ngFor="let i of concepts" [routerLink]="[i.link]" class="list-group-item" routerLinkActive="active">
+                {{i.title}}
+            </a>
+
+        </div>
+    </div>
+    <div class="col-md-9">
+        <router-outlet></router-outlet>
+    </div>
 </div>

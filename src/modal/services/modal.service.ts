@@ -8,6 +8,7 @@ import { Subject } from 'rxjs/Subject';
 import { Subscriber } from 'rxjs/Subscriber';
 import { Observer } from 'rxjs/Observer';
 import { Result } from '../models/result.model';
+import { ActivatedRouteSnapshot } from '@angular/router';
 
 @Injectable()
 export class ModalService {
@@ -20,10 +21,10 @@ export class ModalService {
     getValue(): any {
         if (this.router.routerState 
             && this.router.routerState.snapshot 
-            && this.router.routerState.snapshot.root 
-            && this.router.routerState.snapshot.root.firstChild
-            && this.router.routerState.snapshot.root.firstChild.data)
-            return this.router.routerState.snapshot.root.firstChild.data['value'];
+            && this.router.routerState.snapshot.root) {
+                var snapshot:ActivatedRouteSnapshot = this.router.routerState.snapshot.root.children.filter(t=>t.outlet == 'modal')[0];
+                return snapshot.data.value;
+            }
         return undefined;
     }
 

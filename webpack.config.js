@@ -41,7 +41,11 @@ module.exports = () => {
                 },
                 {
                     test: /\.html$/,
-                    loader: 'raw-loader'
+                    loader: 'html-loader',
+                    options: {
+                        removeAttributeQuotes: false,
+                        minimize: false
+                    }
                 },
                 {
                     test: /\.(eot|svg|cur)$/,

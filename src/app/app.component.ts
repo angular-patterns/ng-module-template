@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { data } from './data';
 
 @Component({
   selector: 'sa-app-root',
@@ -7,7 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title: string;
+  concepts: any[];
   constructor() {
-    this.title = 'Hello World!';
+    this.title = 'Angular Fundamental Concepts';
+    this.concepts = data.concepts;
   }
 }

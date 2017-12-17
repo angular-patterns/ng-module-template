@@ -197,7 +197,42 @@ gulp.task('pre-build-tmp', function () {
 
 
 gulp.task('build-tmp', ['pre-build-tmp'], function (done) {
-    runSequence('bundle-es6', 'bundle-es5', done);
+    runSequence('bundle-es6', 'bundle-es5', 'copy-package-json', done);
+});
+
+gulp.task('copy-package-json', function() {
+    var main = pkg.main;
+    var module = pkg.module;
+    var es2015 = pkg.es2015;
+    var typings = pkg.typings;
+    var metadata = pkg.metadata;
+
+    var prefix = new RegExp('^(dist/)', "g");
+    var srcPath = path.resolve('../');
+    return gulp.src([
+        path.join(srcPath, 'package.json')
+    ], { base: srcPath })
+    .pipe(jsonModify({
+        key: 'main',
+        value: main.replace(prefix, '')
+    }))
+    .pipe(jsonModify({
+        key: 'module',
+        value: module.replace(prefix, '')
+    }))
+    .pipe(jsonModify({
+        key: 'es2015',
+        value: es2015.replace(prefix, '')
+    }))
+    .pipe(jsonModify({
+        key: 'typings',
+        value: typings.replace(prefix, '')
+    }))
+    .pipe(jsonModify({
+        key: 'metadata',
+        value: metadata.replace(prefix, '')
+    }))                                
+    .pipe(gulp.dest('dist'));
 });
 
 
@@ -208,7 +243,9 @@ gulp.task('pre-build', function () {
 });
 
 gulp.task('build', ['build-tmp', 'pre-build'], function(done) {
+
     gulp.src([
+        'dist/package.json',
         'dist/index.es6.js',
         'dist/index.es5.js',
         'dist/public_api.js',
@@ -223,7 +260,6 @@ gulp.task('build', ['build-tmp', 'pre-build'], function(done) {
                 done();
             });
         });
-
 });
 
 gulp.task('pre-publish', function () {
@@ -277,15 +313,28 @@ gulp.task('version', ['deploy'], function (done) {
 });
 
 gulp.task('publish', ['pre-publish'], function () {
+
     if (publishPath != null) {
         var srcPath = path.resolve('../');
         return gulp.src([
-            path.join(srcPath, 'package.json'),
             path.join(srcPath, 'dist/**/*')
-        ], { base: srcPath })
+        ], { base: path.join(srcPath, 'dist') })
         .pipe(gulp.dest(publishPath));
     }
+    return [];
 });
+
+gulp.task('publish-npm', function(done){
+    if (publishPath != null) {
+        process.chdir(publishPath);
+        gulp.src('package.json')
+        .pipe(shell(['npm publish']))
+        .on('end', function () {
+            done();
+        });   
+    }
+});
+
 
 gulp.task('name-module', function () {
     var name = options.name;

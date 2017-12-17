@@ -11,9 +11,8 @@ import { Confirm } from './confirm.model';
 
 export class ConfirmDialogComponent implements OnInit {
     info:Confirm;
-    constructor(private modalService:ModalService,private injector:Injector) {
-       
-        this.info = this.modalService.getValue(this.injector);
+    constructor(private modalService:ModalService) {
+        this.info = this.modalService.getValue();
      }
 
     ngOnInit() {

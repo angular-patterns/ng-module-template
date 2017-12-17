@@ -17,9 +17,8 @@ export class ModalService {
         this.results = [];
     }
 
-    getValue<T>(injector:Injector):T {
-        
-        return <T>injector.get<ActivatedRoute>(ActivatedRoute).snapshot.data.value;
+    getValue<T>():T {
+        return this.router.routerState.snapshot.root.firstChild.data.value;
     }
 
     open<T>(name: string, data?:Observable<T> | Promise<T> | T) {
@@ -36,16 +35,14 @@ export class ModalService {
         this.results.splice(this.results.length-1, 1);
     }
 
-    ok(value:any) {
+    ok(value?:any) {
         this.results[this.results.length-1].nextOk(value);
-        this.router.navigate([ { outlets: { modal:null } }], { skipLocationChange: true});
-        this.results.splice(this.results.length-1, 1);
+        this.close();
 
     }
     cancel() { 
         this.results[this.results.length-1].nextCancel();
-        this.router.navigate([ { outlets: { modal:null } }], { skipLocationChange: true});
-        this.results.splice(this.results.length-1, 1);
+        this.close();
         
     }
 

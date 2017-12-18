@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { code } from '../code';
+
+alert(code.main.language);
 
 @Component({
     selector: 'code',
@@ -6,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class CodeComponent implements OnInit {
-    constructor() { }
+    content: string;
+    language: string;
+
+    constructor() { 
+        this.content = code.main.content;
+        this.language = 'html';
+    }
 
     ngOnInit() { }
 }

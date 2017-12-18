@@ -9,10 +9,14 @@ import { ConceptComponent } from './concept/concept.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { CodeComponent } from './code/code.component';
 
+import { PrismModule } from 'ng-prismjs';
+import 'prismjs/components/prism-typescript';
+
 @NgModule({
   imports:      [ 
     BrowserModule, 
     FeatureModule, 
+    PrismModule,
     RouterModule.forRoot([
       { path:':concept', component: TabsComponent, children: [
          { path: 'concept', component: ConceptComponent },

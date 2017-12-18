@@ -2,6 +2,10 @@
 
 An angular component for syntax highlighting using primsjs.
 
+## Demo
+
+https://angular-patterns.github.io/ng-prismjs/
+
 ## Pre-requisites
 
 * prismjs

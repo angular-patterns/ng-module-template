@@ -12,5 +12,5 @@
  * Entry point for all public APIs of the core package.
  */
 
-export * from './src/feature/feature.module';
-export * from './src/feature/widget.component';
+export * from './src/prism/prism.module';
+export * from './src/prism/prism.component';

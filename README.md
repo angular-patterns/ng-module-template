@@ -56,13 +56,17 @@ export class AppModule {
 </div>
 ```
 
-### Import the snippet
+### Load the snippet into a variable
 
 Use `raw-loader` and `require` to read the snippet into a variable.  The `!!` ensures that no other loaders are processing the file.
 
-Bind the snippet to the `prism` component.
+```typescript
+const snippet: string = require('!!raw-loader!./path/to/snippet.html');
+```
 
 **app.component.ts**
+
+Bind the snippet to the `prism` component.
 
 ```typescript
 import { Component } from '@angular/core';

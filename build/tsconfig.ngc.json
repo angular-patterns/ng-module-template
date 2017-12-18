@@ -7,7 +7,7 @@
             "*": [
                 "../node_modules/*"
             ]
-        },             
+        },
         "declaration": true,
         "stripInternal": true,
         "noImplicitAny": true,
@@ -21,9 +21,9 @@
             "dom"
         ],
         "skipLibCheck": true,
-        "typeRoots": [     
-            "../node_modules/@types/"  
-        ], 
+        "typeRoots": [
+            "../node_modules/@types/"
+        ],
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "sourceMap": true,
@@ -37,7 +37,6 @@
         "strictMetadataEmit": true,
         "skipTemplateCodegen": true,
         "flatModuleOutFile": "index.js",
-        "flatModuleId": "ng-module-template"
-    }    
-
+        "flatModuleId": "ng-prismjs"
+    }
 }

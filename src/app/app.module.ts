@@ -18,7 +18,7 @@ import 'prismjs/components/prism-typescript';
     FeatureModule, 
     PrismModule,
     RouterModule.forRoot([
-      { path:':concept', component: TabsComponent, children: [
+      { path:':id', component: TabsComponent, children: [
          { path: 'concept', component: ConceptComponent },
          { path: 'code', component: CodeComponent },
          { path: '**', redirectTo: 'concept' }

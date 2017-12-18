@@ -1,1 +1,12 @@
-<prism [contents]="content" [language]="language"></prism>
+<div *ngFor="let sample of code.samples">
+    <h3 class="page-header"> {{ sample.title }} </h3>
+    <prism [content]="sample.code.content" [language]="sample.code.language"></prism>
+
+    <div *ngIf="sample.description != ''">
+        <h4 class="page-header"> Description </h4>
+        <p>
+            {{ sample.description }}
+        </p>
+    </div>
+</div>
+

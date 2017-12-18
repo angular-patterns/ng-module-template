@@ -7,7 +7,7 @@
 </nav>
 
 <div class="container">
-    <div class="col-md-3">
+    <div class="col-sm-3">
         <div class="list-group">
             <a *ngFor="let i of concepts" [routerLink]="[i.link]" class="list-group-item" routerLinkActive="active">
                 {{i.title}}
@@ -15,7 +15,7 @@
 
         </div>
     </div>
-    <div class="col-md-9">
+    <div class="col-sm-9">
         <router-outlet></router-outlet>
     </div>
 </div>

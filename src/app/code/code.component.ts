@@ -1,21 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { code } from '../code';
+import { ActivatedRoute } from '@angular/router';
+import { data } from '../data';
 
-alert(code.main.language);
 
 @Component({
-    selector: 'code',
+    selector: 'sa-code',
     templateUrl: 'code.component.html'
 })
 
 export class CodeComponent implements OnInit {
-    content: string;
-    language: string;
-
-    constructor() { 
-        this.content = code.main.content;
-        this.language = 'html';
+    @Input() code: any;
+    constructor(private route:ActivatedRoute) { 
+        route.parent.params.subscribe(t=> {
+            var id = t.id;
+            this.code = data.concepts.filter(t=>t.id == id)[0].code;
+        });
+        //this.img = route.snapshot.data.img;
     }
+
 
     ngOnInit() { }
 }

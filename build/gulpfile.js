@@ -15,6 +15,8 @@ const toPascalCase = require('to-pascal-case');
 const commandLineArgs = require('command-line-args');
 const rollupGlobals = require('./rollup.globals');
 
+rollupGlobals['prismjs'] = 'prismjs';
+
 const optionDefinitions = [
     { name: 'dest', alias: 'd', type: String, defaultValue: `c:\\packages\\${pkg.name}` },
     { name: 'href', alias: 'h', type: String, defaultValue: '/'},

@@ -1,92 +1,88 @@
-# ng-module-template
+# ng-primsjs
 
-A template for building Angular applications or re-usable Angular modules that you can publish to npm. This template is Angular5 compatible.
+An angular component for syntax highlighting using primsjs.
 
-## Install
+## Pre-requisites
 
-`  git clone https://github.com/angular-patterns/ng-module-template.git`<br />
-`  cd ng-module-template` <br />
-`  npm install`
+* prismjs
+* Angular5+
 
-## Development
+## Installation
 
-Opens webpack-dev-server on port 8080 for development:
+Prismjs is a PEER depedency.
 
-`  npm run dev`
+npm install prismjs
+npm install ng-prismjs
 
-If you are building a reusable Angular module, you will also have to export any compnents, pipes, services, etc from `src\public_api.ts`. This will allow users of your module to import those sybmols directly.
+## Setup
 
-For example, if you want to export MyComponent, then modify `public_api.ts`:<br />
+**app.module.ts**
 
-`  export { MyComponent } from 'app/my.component';`
-<br />
-<br />
-Users of your module can then import the component:<br />
+```typescript
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppComponent } from './app.component';
+import { PrismModule } from 'ng-prismjs';
 
-`  import { MyComponent } from 'ng-module-template'`
+@NgModule({
+  imports:      [ 
+    BrowserModule, 
+    PrismModule
+  ],
+  declarations: [ 
+    AppComponent 
+  ],
+  bootstrap:    [ 
+    AppComponent 
+  ]
+})
+export class AppModule {
+}
+```
 
-## Test
+## Usage
 
-There are three type of tests: 
+### Create a code Snippet (make sure it is not compiled)
 
-1. Unit Tests - `npm run test`
-2. e2e Tests - `npm run e2e`
-3. lint Tests - `npm run lint`
+**snippet.html**
 
-## Production Builds
+```html
+<div>
+   <b>This is an HTML snippet!</b>
+</div>
+```
 
-You have two options for a production build:
+### Import the snippet
 
-1. Angular Application - outputs to the `dist` folder.<br/>
-  `npm run build`
- 
-2. Reusable Angular Module - outputs to the `dist` folder.<br/>
-  `npm run build-module`
-  
-## Deployment
+Use `raw-loader` and `require` to read the snippet into a variable.  The `!!` ensures that no other loaders are processing the file.
 
-There are two options for deployment.
+Bind the snippet to the `prism` component.
 
-1. Publish to local file system<br/>
-  `npm run publish-local` - publishes from the `dist` folder to `c:\packages`. <br />
-  
-  The folder can be customized using a `dest` parameter:<br/>
-  `npm run publish -- --dest c:\custom-folder`
-  
-2. Publish to npm<br/>
-  `npm publish`<br/>
-  Follow the publish instructions from npm: https://docs.npmjs.com/getting-started/publishing-npm-packages
-  
-## Building Reusable Angular Modules
+**app.component.ts**
 
-Rename the module before you publish:<br />
+```typescript
+import { Component } from '@angular/core';
+const snippet: string = require('!!raw-loader!./path/to/snippet.html');
 
-`npm run name-module -- --name my-module` <br />
-`git add *` <br />
-`git commit -m "renamed module from ng-module-template to my-module"`
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  content: string;
+  language: string;
+  constructor() {
+     this.content = snippet;
+     this.language = 'html'
+  }
+}
 
-Optional Versioning:
+```
 
-`npm version patch`
+**app.component.html**
 
-Then publish:
-
-`npm run publish-local`
-
-or
-
-`npm publish`
-
-## Installing your Published Module
-
-If you published locally:<br />
-`npm install c:\packages\my-module --save`
-
-If you published to npm:<br />
-`npm install my-module --save`
-
-
-
-
-
+```html
+<prism [content]="content" [language]="language"></prism>
+```
 

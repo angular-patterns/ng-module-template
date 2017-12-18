@@ -13,6 +13,11 @@ export const data = {
             code: {
                 samples: [
                     {
+                        title: 'index.html',
+                        code: code.indexhtml,
+                        description: `` 
+                    },   
+                    {
                         title: 'main.ts',
                         code: code.main,
                         description: `` 
@@ -32,11 +37,7 @@ export const data = {
                         code: code.appcomponenthtml,
                         description: `` 
                     },                                        
-                    {
-                        title: 'index.html',
-                        code: code.indexhtml,
-                        description: `` 
-                    },                    
+                 
                 ]
             }
         },

@@ -1,4 +1,4 @@
-import { bootstrap, mvc } from './snippets';
+import { bootstrap, mvc, rxjs } from './snippets';
 
 export const data = {
     concepts: [
@@ -10,6 +10,7 @@ export const data = {
                 title: 'Conceptual Architecture',
                 img: 'bootstrap'                
             },
+            demoUrl: 'https://stackblitz.com/edit/angular-ttj9dw?embed=1&file=app/app.component.html',
             code: {
                 samples: [
                     {
@@ -49,23 +50,39 @@ export const data = {
                 title: 'Conceptual Architecture',
                 img: 'mvc'                
             },
+            demoUrl: 'https://stackblitz.com/edit/angular-vifwsz?embed=1&file=app/app.component.ts',
             code: {
                 samples: [
                     {
-                        title: 'app.module.ts',
-                        code: mvc.appmodule,
+                        title: 'data/my.service.ts',
+                        code: mvc.myservice,
                         description: ``
                     },
+                    {
+                        title: 'foo/foo.component.ts',
+                        code: mvc.foocomponent,
+                        description: ``
+                    },
+                    {
+                        title: 'foo/foo.component.html',
+                        code: mvc.foocomponenthtml,
+                        description: ``
+                    }, 
                     {
                         title: 'app.component.ts',
                         code: mvc.appcomponent,
                         description: ``
-                    },
+                    },                                       
                     {
                         title: 'app.component.html',
                         code: mvc.appcomponenthtml,
                         description: ``
                     },
+                    {
+                        title: 'app.module.ts',
+                        code: mvc.appmodule,
+                        description: ``
+                    },                    
                 ]
             }
         },
@@ -77,6 +94,7 @@ export const data = {
                 title: 'Conceptual Architecture',
                 img: 'databinding'                
             },
+            demoUrl: '',
             code: {
                 samples: [
                     
@@ -91,6 +109,7 @@ export const data = {
                 title: 'Conceptual Architecture',
                 img: 'ngmodule'                
             },
+            demoUrl: '',            
             code: {
                 samples: [
                     
@@ -105,6 +124,7 @@ export const data = {
                 title: 'Conceptual Architecture',
                 img: 'module-deps'                
             },
+            demoUrl: '',            
             code: {
                 samples: [
                     
@@ -119,6 +139,7 @@ export const data = {
                 title: 'Conceptual Architecture',
                 img: 'import-export'                
             },
+            demoUrl: '',            
             code: {
                 samples: [
                     
@@ -133,6 +154,7 @@ export const data = {
                 title: 'Conceptual Architecture',
                 img: 'module-linking'                
             },
+            demoUrl: '',            
             code: {
                 samples: [
                     
@@ -147,6 +169,7 @@ export const data = {
                 title: 'Conceptual Architecture',
                 img: 'dependency-injection'                
             },
+            demoUrl: '',    
             code: {
                 samples: [
                     
@@ -161,11 +184,41 @@ export const data = {
                 title: 'Conceptual Architecture',
                 img: 'provider-scope'                
             },
+            demoUrl: '',            
             code: {
                 samples: [
                     
                 ]
             }
-        },        
+        },   
+        {
+            id: 'rxjs',            
+            title: 'Functional Reactive Programming',
+            link: '/rxjs',
+            concept: {
+                title: 'Conceptual Architecture',
+                img: 'rxjs'                
+            },
+            demoUrl: 'https://stackblitz.com/edit/angular-kzxfds?embed=1&file=app/app.component.ts',            
+            code: {
+                samples: [
+                    {
+                        title: 'app.module.ts',
+                        code: rxjs.appmodule,
+                        description: ``
+                    },
+                    {
+                        title: 'app.component.ts',
+                        code: rxjs.appcomponent,
+                        description: ``
+                    },
+                    {
+                        title: 'app.component.html',
+                        code: rxjs.appcomponenthtml,
+                        description: ``
+                    },                   
+                ]
+            }
+        },         
     ]
 }

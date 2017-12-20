@@ -13,6 +13,7 @@ import { CodeComponent } from './code/code.component';
 import { PrismModule } from 'ng-prismjs';
 import 'prismjs/components/prism-typescript';
 import { DemoComponent } from './demo/demo.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 @NgModule({
   imports:      [ 
@@ -25,6 +26,7 @@ import { DemoComponent } from './demo/demo.component';
          { path: 'concept', component: ConceptComponent },
          { path: 'code', component: CodeComponent },
          { path: 'demo', component: DemoComponent },
+         { path: 'rxjs', component: RxjsComponent }
          { path: '**', redirectTo: 'concept' }
         
       ] },
@@ -35,7 +37,8 @@ import { DemoComponent } from './demo/demo.component';
     ConceptComponent, 
     TabsComponent,
     CodeComponent,
-    DemoComponent 
+    DemoComponent,
+    RxjsComponent
   ],
   bootstrap:    [ AppComponent ],
   exports: [AppComponent],

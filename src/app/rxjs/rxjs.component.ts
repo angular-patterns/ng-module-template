@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'rxjs',
+    selector: 'sa-rxjs',
     templateUrl: 'rxjs.component.html'
 })
 

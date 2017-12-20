@@ -5,7 +5,7 @@ export class AppPage {
     return browser.get('/');
   }
   getParagraphText() {
-    return element(by.css('sa-app-root h1')).getText();
+    return element(by.css('sa-app-root .navbar-brand')).getText();
   }
 }
 
@@ -16,6 +16,6 @@ describe('App', () => {
     });
     it('should display welcome message', () => {
       page.navigateTo();
-      expect(page.getParagraphText()).toEqual('Hello World!');
+      expect(page.getParagraphText()).toEqual('Angular Fundamental Concepts');
     });
   });

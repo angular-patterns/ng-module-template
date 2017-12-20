@@ -1,10 +1,12 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { WidgetComponent } from '../feature/widget.component';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [RouterTestingModule.withRoutes([])],
       declarations: [
         AppComponent,
         WidgetComponent
@@ -19,12 +21,12 @@ describe('AppComponent', () => {
   it(`should have as title 'app'`, async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('Hello World!');
+    expect(app.title).toEqual('Angular Fundamental Concepts');
   }));
-  it('should render title in a h1 tag', async(() => {
+  it('should render title in a .navbar-brand tag', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Hello World!');
+    expect(compiled.querySelector('.navbar-brand').textContent).toContain('Angular Fundamental Concepts');
   }));
 });

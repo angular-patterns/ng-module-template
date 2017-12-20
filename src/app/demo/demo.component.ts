@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 
 @Component({
-    selector: 'demo',
+    selector: 'sa-demo',
     templateUrl: 'demo.component.html',
     styleUrls: [
         'demo.component.css'
@@ -10,8 +10,6 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 
 export class DemoComponent implements OnInit {
      constructor() {
-    
-          
      }
 
     ngOnInit() { }

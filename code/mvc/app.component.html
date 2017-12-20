@@ -1,0 +1,15 @@
+<div class="container">
+    <h1>{{ title }}</h1>
+    <label>Search</label>
+    <input class="form-control" #search>
+    <br />
+    <div *ngFor="let item of (results$ | async)?.items">
+        <h4>{{item.title}}</h4>
+        <p>{{item.description}}</p>
+        <i>
+            <a href="item.link">{{item.link}}</a>
+        </i>
+        <hr />
+    </div>
+    <pre><code>{{ (results$ | async) || { query: ''} | json}}</code></pre>
+</div>

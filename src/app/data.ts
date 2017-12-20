@@ -1,4 +1,4 @@
-import { code } from './code';
+import { bootstrap, mvc } from './snippets';
 
 export const data = {
     concepts: [
@@ -14,27 +14,27 @@ export const data = {
                 samples: [
                     {
                         title: 'index.html',
-                        code: code.indexhtml,
+                        code: bootstrap.indexhtml,
                         description: `` 
                     },   
                     {
                         title: 'main.ts',
-                        code: code.main,
+                        code: bootstrap.main,
                         description: `` 
                     },                    
                     {
                         title: 'app.module.ts',
-                        code: code.appmodule,
+                        code: bootstrap.appmodule,
                         description: `` 
                     },                    
                     {
                         title: 'app.component.ts',
-                        code: code.appcomponent,
+                        code: bootstrap.appcomponent,
                         description: `` 
                     }, 
                     {
                         title: 'app.component.html',
-                        code: code.appcomponenthtml,
+                        code: bootstrap.appcomponenthtml,
                         description: `` 
                     },                                        
                  
@@ -51,6 +51,21 @@ export const data = {
             },
             code: {
                 samples: [
+                    {
+                        title: 'app.module.ts',
+                        code: mvc.appmodule,
+                        description: ``
+                    },
+                    {
+                        title: 'app.component.ts',
+                        code: mvc.appcomponent,
+                        description: ``
+                    },
+                    {
+                        title: 'app.component.html',
+                        code: mvc.appcomponenthtml,
+                        description: ``
+                    },
                 ]
             }
         },

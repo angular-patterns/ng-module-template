@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { code } from '../code';
 import { ActivatedRoute } from '@angular/router';
 import { data } from '../data';
 

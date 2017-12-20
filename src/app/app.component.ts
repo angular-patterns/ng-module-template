@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { data } from './data';
 
-
-
 @Component({
   selector: 'sa-app-root',
   templateUrl: './app.component.html',

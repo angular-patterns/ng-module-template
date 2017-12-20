@@ -3,7 +3,16 @@
         <a routerLink="concept">Concept</a>
     </li>
     <li routerLinkActive="active">
-        <a routerLink="code" routerLinkActive="active">Code</a>
+        <a routerLink="code">Code</a>
+    </li>
+    <li routerLinkActive="active">
+        <a routerLink="demo">Demo</a>
     </li>
 </ul>
 <router-outlet></router-outlet>
+<div [hidden]="url !== '/bootstrap/demo'">
+    <div  class="embed-responsive embed-responsive-16by9" >
+        <iframe class="embed-responsive-item"  src= "https://stackblitz.com/edit/angular-etvcwu?embed=1&file=index.html"></iframe>
+    </div>
+</div>
+

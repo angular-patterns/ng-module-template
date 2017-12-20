@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { FeatureModule } from '../feature/feature.module';
 import { RouterModule} from '@angular/router';
+import { HttpClientModule } from  '@angular/common/http';
 
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ConceptComponent } from './concept/concept.component';
@@ -11,16 +12,19 @@ import { CodeComponent } from './code/code.component';
 
 import { PrismModule } from 'ng-prismjs';
 import 'prismjs/components/prism-typescript';
+import { DemoComponent } from './demo/demo.component';
 
 @NgModule({
   imports:      [ 
     BrowserModule, 
     FeatureModule, 
     PrismModule,
+    HttpClientModule,
     RouterModule.forRoot([
       { path:':id', component: TabsComponent, children: [
          { path: 'concept', component: ConceptComponent },
          { path: 'code', component: CodeComponent },
+         { path: 'demo', component: DemoComponent },
          { path: '**', redirectTo: 'concept' }
         
       ] },
@@ -30,10 +34,13 @@ import 'prismjs/components/prism-typescript';
     AppComponent, 
     ConceptComponent, 
     TabsComponent,
-    CodeComponent ],
+    CodeComponent,
+    DemoComponent 
+  ],
   bootstrap:    [ AppComponent ],
   exports: [AppComponent],
-  schemas: [NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA],
+  providers: []
 })
 export class AppModule {
 }

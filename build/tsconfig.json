@@ -8,7 +8,7 @@
                 "../node_modules/*"
             ]
         },             
-        "declaration": true,
+        "declaration": false,
         "stripInternal": true,
         "noImplicitAny": true,
         "strictNullChecks": true,
@@ -26,11 +26,11 @@
         ], 
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
-        "sourceMap": true,
-        "inlineSources": true
+        "sourceMap": false,
+        "inlineSources": false
     },
-    "files": [
-        "dist/public_api.ts"
+    "include": [
+        "dist/src/**/*.ts"
     ],
     "angularCompilerOptions": {
         "annotateForClosureCompiler": true,

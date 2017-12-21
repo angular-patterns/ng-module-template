@@ -63,6 +63,19 @@ gulp.task('copy-src', ['copy-public-api'], function () {
     .pipe(gulp.dest('dist/src'))
 });
 
+gulp.task('copy-src-js', [], function () {
+    return gulp.src([
+        'dist/src/**/*.js'
+    ])
+    .pipe(replace(`(this && this.__decorate)`, `function __decorate() { /*`))
+    .pipe(replace(`Object.defineProperty(target, key, r), r;`, `*/ `))
+    .pipe(replace(`(this && this.__metadata)`, `function __metadata() { /*`))
+    .pipe(replace(`return Reflect.metadata(k, v);`, `*/`))
+    .pipe(replace(`"`, `'`))
+    //.pipe(rename({ extname: '.js' }))
+    .pipe(gulp.dest('dist/src'))
+});
+
 gulp.task('compile-es6', ['copy-src'], function (done) {
     gulp.src('tsconfig.ngc.json')
         .pipe(shell(['"../node_modules/.bin/ngc" -p <%= file.path %> --target es6']))

@@ -14,27 +14,25 @@ const rename = require('gulp-rename');
 const toPascalCase = require('to-pascal-case');
 const commandLineArgs = require('command-line-args');
 const rollupGlobals = require('./rollup.globals');
+const plato = require('es6-plato');
 
 const optionDefinitions = [
     { name: 'dest', alias: 'd', type: String, defaultValue: `c:\\packages\\${pkg.name}` },
-    { name: 'href', alias: 'h', type: String, defaultValue: '/'},
-    { name: 'name', alias: 'm', type: String, defaultValue: pkg.name}
+    { name: 'href', alias: 'h', type: String, defaultValue: '/' },
+    { name: 'name', alias: 'm', type: String, defaultValue: pkg.name }
 ];
 
 const options = commandLineArgs(optionDefinitions);
 
 const publishPath = options.dest;
 
-if (options.dest != null)
-{
+if (options.dest != null) {
     console.log(`publish-path: `, `${options.dest}`);
 }
-if (options.name != null)
-{
+if (options.name != null) {
     console.log(`module-name: `, `${options.name}`);
 }
-if (options.href != null)
-{
+if (options.href != null) {
     console.log(`base-href: `, `${options.href}`);
 }
 
@@ -50,8 +48,8 @@ gulp.task('copy-public-api', [], function () {
         '../README.md',
         '../public_api.ts'
     ])
-    //.pipe(replace('./app', './src'))
-    .pipe(gulp.dest('dist'))
+        //.pipe(replace('./app', './src'))
+        .pipe(gulp.dest('dist'))
 
 });
 gulp.task('copy-src', ['copy-public-api'], function () {
@@ -59,8 +57,8 @@ gulp.task('copy-src', ['copy-public-api'], function () {
         '../src/**/*.ts',
         '!../src/**/*.spec.ts'
     ])
-    .pipe(inlineNg2Template({ base: '../src', useRelativePaths: true }))
-    .pipe(gulp.dest('dist/src'))
+        .pipe(inlineNg2Template({ base: '../src', useRelativePaths: true }))
+        .pipe(gulp.dest('dist/src'))
 });
 
 gulp.task('compile-es6', ['copy-src'], function (done) {
@@ -83,10 +81,10 @@ gulp.task('compile-es5', ['copy-src'], function (done) {
         });
 });
 
-gulp.task('bundle-es6', ['compile-es6'], function(done) {
+gulp.task('bundle-es6', ['compile-es6'], function (done) {
     var external = Object.keys(rollupGlobals);
     var globals = rollupGlobals;
-    
+
     rollup.rollup({
         input: 'dist/index.js',
         onwarn: function (warning) {
@@ -122,10 +120,10 @@ gulp.task('bundle-es6', ['compile-es6'], function(done) {
 });
 
 gulp.task('bundle-es5', ['compile-es5'], function (done) {
-    
+
     var external = Object.keys(rollupGlobals);
     var globals = rollupGlobals;
-    
+
     rollup.rollup({
         input: 'dist/index.js',
         onwarn: function (warning) {
@@ -200,7 +198,7 @@ gulp.task('build-tmp', ['pre-build-tmp'], function (done) {
     runSequence('bundle-es6', 'bundle-es5', 'copy-package-json', done);
 });
 
-gulp.task('copy-package-json', function() {
+gulp.task('copy-package-json', function () {
     var main = pkg.main;
     var module = pkg.module;
     var es2015 = pkg.es2015;
@@ -212,27 +210,27 @@ gulp.task('copy-package-json', function() {
     return gulp.src([
         path.join(srcPath, 'package.json')
     ], { base: srcPath })
-    .pipe(jsonModify({
-        key: 'main',
-        value: main.replace(prefix, '')
-    }))
-    .pipe(jsonModify({
-        key: 'module',
-        value: module.replace(prefix, '')
-    }))
-    .pipe(jsonModify({
-        key: 'es2015',
-        value: es2015.replace(prefix, '')
-    }))
-    .pipe(jsonModify({
-        key: 'typings',
-        value: typings.replace(prefix, '')
-    }))
-    .pipe(jsonModify({
-        key: 'metadata',
-        value: metadata.replace(prefix, '')
-    }))                                
-    .pipe(gulp.dest('dist'));
+        .pipe(jsonModify({
+            key: 'main',
+            value: main.replace(prefix, '')
+        }))
+        .pipe(jsonModify({
+            key: 'module',
+            value: module.replace(prefix, '')
+        }))
+        .pipe(jsonModify({
+            key: 'es2015',
+            value: es2015.replace(prefix, '')
+        }))
+        .pipe(jsonModify({
+            key: 'typings',
+            value: typings.replace(prefix, '')
+        }))
+        .pipe(jsonModify({
+            key: 'metadata',
+            value: metadata.replace(prefix, '')
+        }))
+        .pipe(gulp.dest('dist'));
 });
 
 
@@ -242,7 +240,7 @@ gulp.task('pre-build', function () {
     ], { force: true });
 });
 
-gulp.task('build', ['build-tmp', 'pre-build'], function(done) {
+gulp.task('build', ['build-tmp', 'pre-build'], function (done) {
 
     gulp.src([
         'dist/README.md',
@@ -264,17 +262,17 @@ gulp.task('build', ['build-tmp', 'pre-build'], function(done) {
 });
 
 
-gulp.task('git-init', function(done){
+gulp.task('git-init', function (done) {
     if (publishPath != null) {
         process.chdir(publishPath);
-        git.init({args: '--quiet'}, function (err) {
+        git.init({ args: '--quiet' }, function (err) {
             if (err) throw err;
             done();
         });
     }
 });
 
-gulp.task('git-add', function(){
+gulp.task('git-add', function () {
     if (publishPath != null) {
         process.chdir(publishPath);
         return gulp.src(path.join(publishPath, '**/*'))
@@ -282,28 +280,28 @@ gulp.task('git-add', function(){
     }
 });
 
-gulp.task('git-commit', function(){
+gulp.task('git-commit', function () {
     if (publishPath != null) {
         process.chdir(publishPath);
         return gulp.src(path.join(publishPath, '**/*'))
-          .pipe(git.commit(`v${pkg.version}`));
+            .pipe(git.commit(`v${pkg.version}`));
     }
 });
-  
-gulp.task('git-tag', function(done){
+
+gulp.task('git-tag', function (done) {
     if (publishPath != null) {
         process.chdir(publishPath);
-        git.tag(pkg.version, `v${pkg.version}`, function(err) {
+        git.tag(pkg.version, `v${pkg.version}`, function (err) {
             if (err) throw err;
             done();
-        });    
+        });
     }
 });
 
 gulp.task('version', [], function (done) {
-  if (publishPath != null) {
-      runSequence('git-init','git-add', 'git-commit', 'git-tag', done);
-  }  
+    if (publishPath != null) {
+        runSequence('git-init', 'git-add', 'git-commit', 'git-tag', done);
+    }
 });
 
 gulp.task('pre-publish', function () {
@@ -320,7 +318,7 @@ gulp.task('publish', ['pre-publish'], function () {
         return gulp.src([
             path.join(srcPath, 'dist/**/*')
         ], { base: path.join(srcPath, 'dist') })
-        .pipe(gulp.dest(publishPath));
+            .pipe(gulp.dest(publishPath));
     }
     return [];
 });
@@ -333,14 +331,14 @@ gulp.task('publish-clean', function () {
     }
 });
 
-gulp.task('publish-npm', function(done){
+gulp.task('publish-npm', function (done) {
     if (publishPath != null) {
         process.chdir(publishPath);
         gulp.src('package.json')
-        .pipe(shell(['npm publish']))
-        .on('end', function () {
-            done();
-        });   
+            .pipe(shell(['npm publish']))
+            .on('end', function () {
+                done();
+            });
     }
 });
 
@@ -376,7 +374,7 @@ gulp.task('name-module', function () {
     //     gulp.src('../webpack.config.js')
     //         .pipe(replace('#AppModule', '#' + toPascalCase(name + 'Module')))
     //         .pipe(gulp.dest('../'));
-            
+
     return [
         modifyPackageJson,
         modifyTsconfigJson,
@@ -389,6 +387,73 @@ gulp.task('name-module', function () {
 gulp.task('base-tag', function () {
 
     return gulp.src('../dist/index.html')
-        .pipe(replace(RegExp("<base href=\"(.*)\""),`<base href=\"${options.href}\"`))
+        .pipe(replace(RegExp("<base href=\"(.*)\""), `<base href=\"${options.href}\"`))
         .pipe(gulp.dest('../dist'));
+});
+
+
+gulp.task('es6-plato', ['compile-es6'], function () {
+
+    let src = './dist/**/*.js';
+    let outputDir = '../dist/metrics';
+
+
+    let lintRules = {
+        'rules': {
+            'indent': [2, 'tab'],
+            'quotes': [2, 'single'],
+            'semi': [2, 'always'],
+            'no-console': [1],
+            'curly': ['error'],
+            'no-dupe-keys': 2,
+            'func-names': [1, 'always']
+        },
+        'env': {
+            'es6': true
+        },
+        'globals': ['require'],
+        'parserOptions': {
+            'sourceType': 'module',
+            'ecmaFeatures': {
+                'jsx': true,
+                'modules': true
+            }
+        }
+    };
+
+
+    let complexityRules = {
+
+    };
+
+    let platoArgs = {
+        title: 'example',
+        eslint: lintRules,
+        complexity: complexityRules
+    };
+
+    function callback(reports) {
+        let overview = plato.getOverviewReport(reports);
+
+        let {
+          total,
+            average
+        } = overview.summary;
+
+        let output = `total
+          ----------------------
+          eslint: ${total.eslint}
+          sloc: ${total.sloc}
+          maintainability: ${total.maintainability}
+          average
+          ----------------------
+          eslint: ${average.eslint}
+          sloc: ${average.sloc}
+          maintainability: ${average.maintainability}`;
+
+        console.log(output);
+    }
+
+    return plato.inspect(src, outputDir, platoArgs, callback);
+
 });

@@ -1,23 +1,57 @@
+var webpackConfig = require('./webpack.config');
+
 module.exports = function (config) {
-  config.set({
+  var _config = {
     basePath: '',
     frameworks: ['jasmine'],
-    files: [
-      { pattern: './karma-shim.js' }
-    ],    
-    exclude: [
-    ],
-    preprocessors: {
-      './karma-shim.js': ['webpack']
-    },
-    webpack: require('./webpack.config')({env: 'test'}),
-    reporters: ['progress'],
+    reporters: ['coverage', 'remap-coverage'],
     port: 9876,
     colors: true,
-    logLevel: config.LOG_INFO,
+    logLevel: config.LOG_WARN,
     autoWatch: false,
     browsers: ['Chrome'],
     singleRun: true,
-    concurrency: Infinity
-  })
-}
+    webpack: webpackConfig,
+    client: {
+      captureConsole: false
+    },
+
+    files: [
+      {pattern: './karma-shim.js', watched: false}
+    ],
+    preprocessors: {
+      './karma-shim.js': ['coverage', 'webpack', 'sourcemap'] 
+    },
+    coverageReporter: {
+      type: 'in-memory'
+    },
+    remapCoverageReporter: {
+      'text-summary': null,
+      json: './coverage/coverage.json',
+      html: './coverage/html',
+      cobertura: './coverage/cobertura.xml',
+      lcovonly: './coverage/lcov.info'
+    },
+    webpackMiddleware: {
+      noInfo: true,
+      stats: {
+        chunks: false
+      }
+    },
+    customLaunchers: {
+      ChromeTravisCi: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
+    },
+
+  };
+  
+  if (process.env.TRAVIS) {
+    _config.browsers = [
+      'ChromeTravisCi'
+    ];
+  }
+
+  config.set(_config);
+};

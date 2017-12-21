@@ -4,6 +4,11 @@ const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin')
 const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 const Dotenv = require('dotenv-webpack');
 
+function resolvePathFromRoot(relativePath) {
+    var root = path.resolve(__dirname, '../');
+    return path.resolve(root, relativePath);
+}
+  
 module.exports = () => {
     const isProd = process.argv.indexOf('-p') !== -1;
     console.log(`ENV: ${isProd? 'production': 'development'}`);
@@ -13,10 +18,10 @@ module.exports = () => {
         devtool: isProd ? false: 'inline-source-map',
         resolve: { 
             extensions: ['.ts', '.js'],
-            // modules: [
-            //     path.resolve('../src'), 
-            //     path.resolve('../node_modules')
-            // ]
+            modules: [
+                resolvePathFromRoot('src'), 
+                resolvePathFromRoot('node_modules')
+            ]
         },
         module: {
             rules: [
@@ -61,7 +66,7 @@ module.exports = () => {
                     enforce: 'post',
                     test: /\.(js|ts)$/,
                     loader: 'istanbul-instrumenter-loader',
-                    include: path.resolve('../src'),
+                    include: resolvePathFromRoot('src'),
                     query: { esModules: true },
                     exclude: [
                       /\.(e2e|spec)\.ts$/,
@@ -73,7 +78,7 @@ module.exports = () => {
         },
         plugins: [
             new Dotenv({
-              path: path.resolve('./.env')
+              path: resolvePathFromRoot('.env')
             }),          
             new ProgressPlugin(),
             // new AotPlugin({

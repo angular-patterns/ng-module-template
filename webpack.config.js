@@ -1,30 +1,35 @@
-const path = require('path');
+
 const AotPlugin = require('@ngtools/webpack').AngularCompilerPlugin;
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { BaseHrefWebpackPlugin } = require('base-href-webpack-plugin'); 
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CommonChunksPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
-const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
+const Dotenv  =  require('dotenv-webpack');
+const ExtractTextPlugin  =  require("extract-text-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ProgressPlugin = require('webpack/lib/ProgressPlugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const ProvidePlugin = require('webpack').ProvidePlugin;
+const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 
 const del = require('del');
-const Dotenv = require('dotenv-webpack');
+const path = require('path');
 
+require('dotenv').config();
 del.sync("dist/**");
 
 module.exports = () => {
-    const isProd = process.argv.indexOf('-p') !== -1;
-    console.log(`ENV: ${isProd? 'production': 'development'}`);
-
+    const isOptimized = process.argv.indexOf('-p') !== -1;
+    console.log(`Optimized: ${isOptimized}`);
+    console.log(`Environment: ${process.env.Environment}`);
+    console.log(`BaseHref: ${process.env.BaseHref}`)
+    
 
     const config = {
-        devtool: isProd ? false: 'inline-source-map',
+        devtool: isOptimized ? false : 'inline-source-map',
         resolve: { extensions: ['.ts', '.js'] },
         entry: {
             app: './src/main.ts',
-            vendor:  './src/vendor.ts',
+            vendor: './src/vendor.ts',
             polyfills: './src/polyfills.ts'
         },
         output: {
@@ -33,26 +38,28 @@ module.exports = () => {
         },
         module: {
             rules: [
-                { 
+                {
                     test: /\.ts$/,
-                    loader: '@ngtools/webpack'
+                    loader: '@ngtools/webpack', 
+                    options: {
+                        tsConfigPath: './tsconfig.json'
+                    }
                 },
-                { 
-                    test: /\.html$/, 
+                {
+                    test: /\.html$/,
                     loader: 'html-loader',
                     options: {
-                        minimize:false,
-                        removeAttributeQuotes: false
+                        removeAttributeQuotes: false,
+                        minimize: false
                     }
-                    
                 },
                 {
                     test: /\.(eot|svg|cur)$/,
                     loader: "file-loader",
-                    options: {
-                        name: '[name].[hash:20].[ext]',
-                        outputPath: 'assets/'
-                    }  
+                    options:  {
+                        name:  '[name].[hash:20].[ext]',
+                        outputPath:  'assets/'
+                    }
                 },
                 {
                     test: /\.(jpg|png|webp|gif|otf|ttf|woff|woff2|ani)$/,
@@ -60,65 +67,49 @@ module.exports = () => {
                         path.join(__dirname, 'node_modules')
                     ],
                     loader: "url-loader",
-                    options: {
-                        name: '[name].[hash:20].[ext]',
-                        outputPath: 'assets/',
+                    options:  {
+                        name:  '[name].[hash:20].[ext]',
+                        outputPath:  'assets/',
                         useRelativePath: true,
                         limit: 10000
-                    }                      
+                    }
                 },
                 {
-                    test: /\.(jpg|png|webp|gif|otf|ttf|woff|woff2|ani)$/,
-                    include: [
-                        path.join(__dirname, 'src')
-                    ],
-                    loader: "url-loader",
-                    options: {
-                        name: '[name].[hash:20].[ext]',
-                        outputPath: 'assets/',
-                        useRelativePath: true,
-                        limit: 10
-                    }                      
-                },
-                
-                {
-                   
-                    test: /\.css$/,
+
+                    test: /\.css$/,
                     include: [
                         path.join(__dirname, 'src/app')
                     ],
-                    use: [
-                        'to-string-loader',
+                    use: [
+                        'to-string-loader',
                         'css-loader'
-                    ]
+                    ]
                 },
 
-                { 
-                    test: /\.css$/, 
+                {
+                    test: /\.css$/,
                     exclude: [
                         path.join(__dirname, 'src/app')
-                    ], 
-                    use: ExtractTextPlugin.extract({ 
-                        fallback: 'style-loader', 
-                        use: 'css-loader' }) 
-                    }
-                
+                    ],
+                    use: ExtractTextPlugin.extract({
+                        fallback: 'style-loader',
+                        use: 'css-loader'
+                    })
+                }
+
             ]
         },
         plugins: [
-            new Dotenv({
-              path: './.env'
-            }),          
-            new ProvidePlugin({
-                $: "jquery",
-                jQuery: "jquery"
+            new  Dotenv({
+                path:  './.env'
             }),
             new ProgressPlugin(),
+            new BaseHrefWebpackPlugin({ baseHref: process.env.BaseHref }),            
             new BundleAnalyzerPlugin({
                 openAnalyzer: false,
                 analyzerMode: 'static',
             }),
-            new ExtractTextPlugin('bundles/styles.[hash].bundle.css'),    
+            new  ExtractTextPlugin('bundles/styles.[hash].bundle.css'),
             new HtmlWebpackPlugin({
                 filename: __dirname + '/dist/index.html',
                 template: __dirname + '/src/index.html',
@@ -127,14 +118,18 @@ module.exports = () => {
                 showErrors: true
             }),
             new CommonChunksPlugin({
-                names: ['app','vendor','polyfills']
-            }),
+                names: ['app', 'vendor', 'polyfills']
+            })
+            
+
+        ].concat(isOptimized ? [
             new AotPlugin({
                 tsConfigPath: './tsconfig.json',
                 entryModule: path.join(__dirname, 'src/app/app.module#SaModule')
             })
-
-        ]
+        ]:[
+            new ContextReplacementPlugin(/\@angular(\\|\/)core(\\|\/)esm5/)
+        ])
     };
 
     return config;

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MessageService } from "@portal/core";
 
 @Component({
+<<<<<<< HEAD
     selector: 'app',
     templateUrl: 'app.component.html'
 })
@@ -41,3 +42,15 @@ export class AppComponent implements OnInit {
 
     ngOnInit() { }
 }
+=======
+  selector: 'sa-app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title: string;
+  constructor() {
+    this.title = 'Hello World!';
+  }
+}
+>>>>>>> fb23751bd5eab328566c342ab9cc9bbfc66fcde3

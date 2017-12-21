@@ -10,14 +10,8 @@
     </li>
 </ul>
 <router-outlet></router-outlet>
-<div [hidden]="url !== '/bootstrap/demo'">
+<div [hidden]="url !== demo.route" *ngFor="let demo of demoUrls">
     <div  class="embed-responsive embed-responsive-4by3" >
-        <iframe class="embed-responsive-item"  src= "https://stackblitz.com/edit/angular-ttj9dw?embed=1&file=app/app.component.html"></iframe>
+        <iframe class="embed-responsive-item"  [src]= "demo.url"></iframe>
     </div>
 </div>
-<div [hidden]="url !== '/mvc/demo'">
-    <div  class="embed-responsive embed-responsive-4by3" >
-        <iframe class="embed-responsive-item"  src= "https://stackblitz.com/edit/angular-kzxfds?embed=1&file=app/app.component.ts"></iframe>
-    </div>
-</div>
-

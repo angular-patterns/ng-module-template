@@ -1,4 +1,4 @@
-import { bootstrap, mvc } from './snippets';
+import { bootstrap, mvc, rxjs } from './snippets';
 
 export const data = {
     concepts: [
@@ -8,36 +8,36 @@ export const data = {
             link: '/bootstrap',
             concept: {
                 title: 'Conceptual Architecture',
-                img: 'bootstrap'                
+                img: 'bootstrap'
             },
+            demoUrl: 'https://stackblitz.com/edit/angular-ttj9dw?embed=1&file=app/app.component.html',
             code: {
                 samples: [
                     {
                         title: 'index.html',
                         code: bootstrap.indexhtml,
-                        description: `` 
-                    },   
+                        description: ``
+                    },
                     {
                         title: 'main.ts',
                         code: bootstrap.main,
-                        description: `` 
-                    },                    
+                        description: ``
+                    },
                     {
                         title: 'app.module.ts',
                         code: bootstrap.appmodule,
-                        description: `` 
-                    },                    
+                        description: ``
+                    },
                     {
                         title: 'app.component.ts',
                         code: bootstrap.appcomponent,
-                        description: `` 
-                    }, 
+                        description: ``
+                    },
                     {
                         title: 'app.component.html',
                         code: bootstrap.appcomponenthtml,
-                        description: `` 
-                    },                                        
-                 
+                        description: ``
+                    },
                 ]
             }
         },
@@ -47,13 +47,29 @@ export const data = {
             link: '/mvc',
             concept: {
                 title: 'Conceptual Architecture',
-                img: 'mvc'                
+                img: 'mvc'
             },
+            demoUrl: 'https://stackblitz.com/edit/angular-vifwsz?embed=1&file=app/app.component.ts',
             code: {
                 samples: [
                     {
+                        title: 'data/my.service.ts',
+                        code: mvc.myservice,
+                        description: ``
+                    },
+                    {
                         title: 'app.module.ts',
                         code: mvc.appmodule,
+                        description: ``
+                    },
+                    {
+                        title: 'foo/foo.component.ts',
+                        code: mvc.foocomponent,
+                        description: ``
+                    },
+                    {
+                        title: 'foo/foo.component.html',
+                        code: mvc.foocomponenthtml,
                         description: ``
                     },
                     {
@@ -75,97 +91,126 @@ export const data = {
             link: '/databinding',
             concept: {
                 title: 'Conceptual Architecture',
-                img: 'databinding'                
+                img: 'databinding'
             },
+            demoUrl: '',
             code: {
                 samples: [
-                    
                 ]
             }
-        },    
+        },
         {
-            id: 'ngmodule',            
+            id: 'ngmodule',
             title: 'NgModule',
             link: '/ngmodule',
             concept: {
                 title: 'Conceptual Architecture',
-                img: 'ngmodule'                
+                img: 'ngmodule'
             },
+            demoUrl: '',
             code: {
                 samples: [
-                    
                 ]
             }
-        },  
+        },
         {
-            id: 'module-deps',            
+            id: 'module-deps',
             title: 'Module Dependencies',
             link: '/module-deps',
             concept: {
                 title: 'Conceptual Architecture',
-                img: 'module-deps'                
+                img: 'module-deps'
             },
+            demoUrl: '',
             code: {
                 samples: [
-                    
                 ]
             }
-        },  
+        },
         {
-            id: 'import-export',            
+            id: 'import-export',
             title: 'Importing / Exporting from Modules',
             link: '/import-export',
             concept: {
                 title: 'Conceptual Architecture',
-                img: 'import-export'                
+                img: 'import-export'
             },
+            demoUrl: '',
             code: {
                 samples: [
-                    
                 ]
             }
-        }, 
+        },
         {
-            id: 'module-linking',            
+            id: 'module-linking',
             title: 'Module Linking',
             link: '/module-linking',
             concept: {
                 title: 'Conceptual Architecture',
-                img: 'module-linking'                
+                img: 'module-linking'
             },
+            demoUrl: '',
             code: {
                 samples: [
-                    
                 ]
             }
-        },    
+        },
         {
-            id: 'dependency-injection',            
+            id: 'dependency-injection',
             title: 'Dependency Injection',
             link: '/dependency-injection',
             concept: {
                 title: 'Conceptual Architecture',
-                img: 'dependency-injection'                
+                img: 'dependency-injection'
             },
+            demoUrl: '',
             code: {
                 samples: [
-                    
                 ]
             }
-        },        
+        },
         {
-            id: 'provider-scope',            
+            id: 'provider-scope',
             title: 'Provider Scope',
             link: '/provider-scope',
             concept: {
                 title: 'Conceptual Architecture',
-                img: 'provider-scope'                
+                img: 'provider-scope'
             },
+            demoUrl: '',
             code: {
                 samples: [
-                    
                 ]
             }
-        },        
+        },
+        {
+            id: 'rxjs',
+            title: 'Functional Reactive Programming',
+            link: '/rxjs',
+            concept: {
+                title: 'Conceptual Architecture',
+                img: 'rxjs'
+            },
+            demoUrl: 'https://stackblitz.com/edit/angular-kzxfds?embed=1&file=app/app.component.ts',
+            code: {
+                samples: [
+                    {
+                        title: 'app.module.ts',
+                        code: rxjs.appmodule,
+                        description: ``
+                    },
+                    {
+                        title: 'app.component.ts',
+                        code: rxjs.appcomponent,
+                        description: ``
+                    },
+                    {
+                        title: 'app.component.html',
+                        code: rxjs.appcomponenthtml,
+                        description: ``
+                    },
+                ]
+            }
+        },
     ]
-}
+};

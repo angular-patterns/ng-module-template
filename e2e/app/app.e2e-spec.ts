@@ -20,6 +20,6 @@ describe('App', () => {
     });
     it('should display welcome message', () => {
       page.navigateTo();
-      expect(page.getParagraphText()).toEqual('Student Aid Architecture Wiki');
+      expect(page.getParagraphText()).toEqual('Angular Fundamental Concepts');
     });
   });

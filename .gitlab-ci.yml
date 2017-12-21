@@ -1,0 +1,82 @@
+# CI script for sa - 2017-12-05
+#
+# Docker Image
+# https://hub.docker.com/r/library/node/tags/
+#image: node:latest
+
+# User docker service
+# Check out: http://docs.gitlab.com/ce/ci/docker/using_docker_images.html#what-is-service
+#services:
+#  - mysql:latest
+#  - redis:latest
+#  - postgres:latest
+
+# This folder is cached between builds
+# http://docs.gitlab.com/ce/ci/yaml/README.html#cache
+#cache:
+#  paths:
+#  - node_modules/
+
+before_script:
+  #- call npm install 
+
+
+after_script:
+  #- rm secrets
+
+stages:
+  - build
+  - deploy
+  - test
+  
+cache:
+  untracked: true
+  key: "$CI_BUILD_REF_NAME"
+  paths:
+  - node_modules/
+
+setup:
+  stage: build
+  script:
+    - call npm install
+    - call npm run lint
+    - call npm run build-dev
+    - call npm run build-module
+    - call npm run build
+    - call npm run test
+  only: 
+    - master
+  tags: 
+    - sa
+
+deploy:
+  stage: deploy
+  script:
+   - call npm run build
+   - call npm run base-tag -- --href /ng-core-concepts/
+   - call npm run publish-local -- --dest c:\inetpub\wwwroot\ng-core-concepts
+  only:
+    - master
+  tags:
+    - sa
+
+e2e:
+ stage: test
+ script:
+  - call npm run e2e -- --baseUrl http://VM-WS-0106.lan.local --virtualPath /ng-core-concepts/
+ only:
+   - master
+ tags:
+   - sa
+
+
+
+#test_async:
+#  script:
+#   - npm run build-dev
+#   - npm run build-module 
+#   - npm run build
+#   - npm run lint 
+#   - npm run test
+#   - npm run e2e
+

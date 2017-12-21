@@ -39,7 +39,7 @@ module.exports = function (config) {
            reports: ['html', 'lcovonly', 'text-summary', 'text', 'json'],
       
             // base output directory. If you include %browser% in the path it will be replaced with the karma browser name 
-           dir: resolvePathFromRoot('test/coverage'),
+           dir: resolvePathFromRoot('dist/coverage'),
       
             // if using webpack and pre-loaders, work around webpack breaking the source path 
            fixWebpackSourcePaths: true,
@@ -53,7 +53,7 @@ module.exports = function (config) {
              // all options available at: https://github.com/istanbuljs/istanbul-reports/blob/590e6b0089f67b723a1fdf57bc7ccc080ff189d7/lib/html/index.js#L135-L137 
              html: {
                // outputs the report in ./coverage/html 
-               subdir: 'html'
+               subdir: '.'
              }
       
            },

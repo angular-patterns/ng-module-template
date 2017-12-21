@@ -1,8 +1,11 @@
-const path = require('path');
 const AotPlugin = require('@ngtools/webpack').AngularCompilerPlugin;
+const { BaseHrefWebpackPlugin } = require('base-href-webpack-plugin'); 
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
-const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 const Dotenv = require('dotenv-webpack');
+const ProgressPlugin = require('webpack/lib/ProgressPlugin');
+
+const path = require('path');
+require('dotenv').config();
 
 function resolvePathFromRoot(relativePath) {
     var root = path.resolve(__dirname, '../');
@@ -10,12 +13,14 @@ function resolvePathFromRoot(relativePath) {
 }
   
 module.exports = () => {
-    const isProd = process.argv.indexOf('-p') !== -1;
-    console.log(`ENV: ${isProd? 'production': 'development'}`);
+    const isOptimized = process.argv.indexOf('-p') !== -1;
+    console.log(`Optimized: ${isOptimized}`);
+    console.log(`Environment: ${process.env.Environment}`);
+    console.log(`BaseHref: ${process.env.BaseHref}`)
 
 
     const config = {
-        devtool: isProd ? false: 'inline-source-map',
+        devtool: isOptimized ? false: 'inline-source-map',
         resolve: { 
             extensions: ['.ts', '.js'],
             modules: [
@@ -81,6 +86,7 @@ module.exports = () => {
               path: resolvePathFromRoot('.env')
             }),          
             new ProgressPlugin(),
+            new BaseHrefWebpackPlugin({ baseHref: process.env.BaseHref })
             // new AotPlugin({
             //     tsConfigPath: './tsconfig.json',
             //     entryModule: path.join(__dirname, 'src/app/app.module#AppModule')

@@ -45,7 +45,6 @@ gulp.task('clean', function () {
     ], { force: true });
 });
 
-
 gulp.task('copy-public-api', [], function () {
     return gulp.src([
         '../README.md',
@@ -264,13 +263,6 @@ gulp.task('build', ['build-tmp', 'pre-build'], function(done) {
         });
 });
 
-gulp.task('pre-publish', function () {
-    if (publishPath != null) {
-        var delPath = path.join(publishPath, '**/*');
-        return del(delPath, { force: true });
-    }
-});
-
 
 gulp.task('git-init', function(done){
     if (publishPath != null) {
@@ -308,10 +300,17 @@ gulp.task('git-tag', function(done){
     }
 });
 
-gulp.task('version', ['deploy'], function (done) {
+gulp.task('version', [], function (done) {
   if (publishPath != null) {
       runSequence('git-init','git-add', 'git-commit', 'git-tag', done);
   }  
+});
+
+gulp.task('pre-publish', function () {
+    if (publishPath != null) {
+        var delPath = path.join(publishPath, '**/*');
+        return del(delPath, { force: true });
+    }
 });
 
 gulp.task('publish', ['pre-publish'], function () {
@@ -324,6 +323,14 @@ gulp.task('publish', ['pre-publish'], function () {
         .pipe(gulp.dest(publishPath));
     }
     return [];
+});
+
+gulp.task('publish-clean', function () {
+    if (publishPath != null) {
+        return del([
+            publishPath
+        ], { force: true });
+    }
 });
 
 gulp.task('publish-npm', function(done){

@@ -1,11 +1,15 @@
 import { browser, by, element } from 'protractor';
 
+const { SpecReporter } = require('jasmine-spec-reporter');
+
+const { options } = require('../protractor-args');
+
 export class AppPage {
   navigateTo() {
-    return browser.get('/');
+    return browser.get(options.virtualPath);
   }
   getParagraphText() {
-    return element(by.css('sa-app-root h1')).getText();
+    return element(by.css('sa-app-root .navbar-brand')).getText();
   }
 }
 
@@ -16,6 +20,6 @@ describe('App', () => {
     });
     it('should display welcome message', () => {
       page.navigateTo();
-      expect(page.getParagraphText()).toEqual('Hello World!');
+      expect(page.getParagraphText()).toEqual('Student Aid Architecture Wiki');
     });
   });

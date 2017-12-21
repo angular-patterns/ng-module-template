@@ -1,5 +1,6 @@
 node_modules
 dist
+test/coverage
 src/**/*.js
 e2e/app/**/*.js
 **/*.ngfactory.*

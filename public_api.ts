@@ -14,3 +14,6 @@
 
 export * from './src/portal/portal.module';
 export * from './src/portal/portal.component';
+export { Message } from './src/portal/services/message.model';
+export * from './src/portal/services/portal.service';
+export * from './src/portal/widget-outlet/widget-outlet.component';

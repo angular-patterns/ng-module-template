@@ -8,7 +8,6 @@ const Dotenv  =  require('dotenv-webpack');
 const ExtractTextPlugin  =  require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ProgressPlugin = require('webpack/lib/ProgressPlugin');
-const ProvidePlugin = require('webpack').ProvidePlugin;
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 
 const del = require('del');
@@ -63,9 +62,6 @@ module.exports = () => {
                 },
                 {
                     test: /\.(jpg|png|webp|gif|otf|ttf|woff|woff2|ani)$/,
-                    include: [
-                        path.join(__dirname, 'node_modules')
-                    ],
                     loader: "url-loader",
                     options:  {
                         name:  '[name].[hash:20].[ext]',

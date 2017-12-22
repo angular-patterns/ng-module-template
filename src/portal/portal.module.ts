@@ -41,6 +41,7 @@ export class PortalModule {
             providers: [
                 { provide: widgetsToken, useValue: widgets },
                 { provide: ANALYZE_FOR_ENTRY_COMPONENTS, multi: true, useValue: widgets },
+                { provide: ANALYZE_FOR_ENTRY_COMPONENTS, multi: true, useValue: [WidgetOutletComponent, WidgetComponent] },
                 { provide: PortalService, useClass:PortalService, deps: [widgetsToken]},
                 { provide: WidgetFactory, useClass: WidgetFactory, deps: [ComponentFactoryResolver]}
             ]

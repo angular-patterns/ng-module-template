@@ -1,4 +1,4 @@
-import { Injectable, ComponentFactoryResolver } from "@angular/core";
+import { Injectable, ComponentFactoryResolver, Type } from "@angular/core";
 import { Widget } from "./widget.model";
 import { Observable } from "rxjs/Observable";
 import {  BehaviorSubject } from "rxjs/BehaviorSubject";
@@ -16,14 +16,16 @@ export class PortalService {
     }
 
     push(messages: Message[]) {
+        let types: { [name: string]: Type<any> } = {};
+        types = this.widgets.reduce((p, c)=> { p[c.name] = c.component; return p; }, types);
         let msg = messages.map(t=> {
-            return  {
+            return {
                 name: t.name,
                 location: t.location,
-                component: this.widgets.filter(x=> x.name == t.name).pop().component
+                component: types[t.name]
             }
-        })        
-
+        });
+    
         this._messages.next(msg);
     }
 }

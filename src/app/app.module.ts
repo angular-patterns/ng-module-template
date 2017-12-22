@@ -27,7 +27,10 @@ import { AppModule as AddressModule, AddressComponent } from 'address';
   bootstrap: [
     AppComponent
   ],
-  exports: [AppComponent]
+  exports: [AppComponent],
+  entryComponents: [
+    
+  ]
 })
 export class AppModule {
 }

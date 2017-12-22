@@ -28,6 +28,11 @@ const widgetsToken = new InjectionToken<Widget[]>('widgets');
         WidgetOutletComponent
     ],
     providers: [
+    ],
+    entryComponents: [
+        WidgetOutletComponent,
+        WidgetComponent,
+        PortalComponent
     ]
 })
 export class PortalModule {

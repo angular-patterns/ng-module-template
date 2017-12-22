@@ -13,10 +13,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   constructor(private portalService: PortalService) {
     this.location = 1;
     this.portalService.push([
-      { name: 'test', location: 1},
+      { name: 'address', location: 1},
+      { name: 'weather', location: 2},
       { name: 'test', location: 2},
-      { name: 'test', location: 2},
-      { name: 'test', location: 2},
+      { name: 'weather', location: 2},
       { name: 'test', location: 5},
       { name: 'test', location: 6}
     ]);
@@ -35,10 +35,10 @@ export class AppComponent implements OnInit, AfterViewInit {
       { name: 'test', location: 1},
       { name: 'test', location: 2},
       { name: 'time', location: 2},
-      { name: 'time', location: 3},
+      { name: 'weather', location: 3},
       { name: 'test', location: 3},
       { name: 'test', location: 6},
-      { name: 'time', location: 6}
+      { name: 'address', location: 6}
      ]);
   }
 }

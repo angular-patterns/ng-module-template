@@ -15,18 +15,16 @@
         "noFallthroughCasesInSwitch": true,
         "moduleResolution": "node",
         "module": "es2015",
-        "target": "es5",
-        "allowSyntheticDefaultImports": true,
+        "target": "es2015",
         "lib": [
             "es2015",
             "dom"
         ],
         "skipLibCheck": true,
-        // don't auto-discover @types/node, it results in a ///<reference in the .d.ts output
-        "types": [],
+        "typeRoots": [     
+            "../node_modules/@types/"  
+        ], 
         "experimentalDecorators": true,
-        // This is needed due to https://github.com/Microsoft/TypeScript/issues/17516.
-        // As tsickle will lower decorators before TS, this is not a problem for our build.
         "emitDecoratorMetadata": true,
         "sourceMap": true,
         "inlineSources": true
@@ -36,7 +34,7 @@
     ],
     "angularCompilerOptions": {
         "annotateForClosureCompiler": true,
-        "strictMetadataEmit": false,
+        "strictMetadataEmit": true,
         "skipTemplateCodegen": true,
         "flatModuleOutFile": "index.js",
         "flatModuleId": "time"

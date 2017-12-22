@@ -3,6 +3,7 @@ import { OnInit } from '@angular/core';
 import { PortalService } from '../portal/services/portal.service';
 
 
+
 @Component({
   selector: 'sa-app-root',
   templateUrl: './app.component.html',
@@ -13,12 +14,20 @@ export class AppComponent implements OnInit, AfterViewInit {
   constructor(private portalService: PortalService) {
     this.location = 1;
     this.portalService.push([
-      { name: 'address', location: 1},
-      { name: 'weather', location: 2},
-      { name: 'test', location: 2},
-      { name: 'weather', location: 2},
-      { name: 'test', location: 5},
-      { name: 'test', location: 6}
+      { name: 'test', location: 1},
+      { name: 'time', location: 2},
+      { name: 'time', location: 2},
+      { name: 'time', location: 2},
+      { name: 'time', location: 2},
+      { name: 'address', location: 3},
+      { name: 'time', location: 4},    
+      { name: 'time', location: 4},    
+      { name: 'time', location: 4},    
+      { name: 'time', location: 4},    
+      { name: 'time', location: 5},   
+      { name: 'time', location: 5},   
+      { name: 'time', location: 5},   
+      { name: 'time', location: 6},       
     ]);
 
   }
@@ -30,15 +39,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     
   }
   go() {
-    this.portalService.push([
-      { name: 'test', location: 1},
-      { name: 'test', location: 1},
-      { name: 'test', location: 2},
-      { name: 'time', location: 2},
-      { name: 'weather', location: 3},
-      { name: 'test', location: 3},
-      { name: 'test', location: 6},
-      { name: 'address', location: 6}
-     ]);
+ 
+
   }
 }

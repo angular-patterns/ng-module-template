@@ -14,7 +14,7 @@ import 'rxjs/add/operator/map';
 import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
-    selector: 'sa-widget-outlet',
+    selector: 'widget-outlet',
     templateUrl: 'widget-outlet.component.html'
 })
 

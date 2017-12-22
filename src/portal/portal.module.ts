@@ -28,12 +28,8 @@ const widgetsToken = new InjectionToken<Widget[]>('widgets');
         WidgetOutletComponent
     ],
     providers: [
-    ],
-    entryComponents: [
-        WidgetOutletComponent,
-        WidgetComponent,
-        PortalComponent
     ]
+
 })
 export class PortalModule {
     static forRoot(widgets: Widget[]): ModuleWithProviders{
@@ -41,7 +37,7 @@ export class PortalModule {
             ngModule: PortalModule,
             providers: [
                 { provide: widgetsToken, useValue: widgets },
-                { provide: ANALYZE_FOR_ENTRY_COMPONENTS, multi: true, useValue: widgets },
+                { provide: ANALYZE_FOR_ENTRY_COMPONENTS, multi: true, useValue: [...widgets, WidgetOutletComponent, WidgetComponent] },
                 { provide: PortalService, useClass:PortalService, deps: [widgetsToken]},
                 { provide: WidgetFactory, useClass: WidgetFactory, deps: [ComponentFactoryResolver]}
             ]

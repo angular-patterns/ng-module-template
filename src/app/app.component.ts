@@ -13,11 +13,11 @@ export class AppComponent implements OnInit, AfterViewInit {
   constructor(private portalService: PortalService) {
     this.location = 1;
     this.portalService.push([
-      { name: 'address', location: 1},
-      { name: 'weather', location: 2},
-      { name: 'test', location: 2},
-      { name: 'weather', location: 2},
-      { name: 'test', location: 5},
+      // { name: 'address', location: 1},
+      // { name: 'weather', location: 2},
+      // { name: 'test', location: 2},
+      // { name: 'weather', location: 2},
+      // { name: 'test', location: 5},
       { name: 'test', location: 6}
     ]);
 

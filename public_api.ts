@@ -17,5 +17,5 @@ export * from './src/portal/portal.component';
 export * from './src/portal/services/message.model';
 export * from './src/portal/services/portal.service';
 export * from './src/portal/widget-outlet/widget-outlet.component';
-export * from './src/portal/widget-outlet/widget.component';
+// export * from './src/portal/widget-outlet/widget.component';
 

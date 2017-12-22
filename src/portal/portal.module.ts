@@ -10,7 +10,7 @@ import { WidgetFactory } from './services/widget.factory';
 import { WidgetComponent } from './widget-outlet/widget.component';
 import { CommonModule } from '@angular/common';
 
-const widgetsToken = new InjectionToken<Widget[]>('widgets');
+export const widgetsToken = new InjectionToken<Widget[]>('widgets');
 
 @NgModule({
     imports: [
@@ -19,7 +19,8 @@ const widgetsToken = new InjectionToken<Widget[]>('widgets');
     exports: [
       
         PortalComponent,
-        WidgetOutletComponent
+        WidgetOutletComponent, 
+        //WidgetComponent
     ],
     declarations: [
         PortalComponent,
@@ -29,8 +30,7 @@ const widgetsToken = new InjectionToken<Widget[]>('widgets');
     providers: [
     ],
     entryComponents: [
-        WidgetOutletComponent, 
-        WidgetComponent
+        WidgetOutletComponent, WidgetComponent
     ]
 
 })
@@ -40,10 +40,9 @@ export class PortalModule {
             ngModule: PortalModule,
             providers: [
                 { provide: widgetsToken, useValue: widgets },
-                { provide: ANALYZE_FOR_ENTRY_COMPONENTS, multi: true, useValue: widgets },
-                { provide: ANALYZE_FOR_ENTRY_COMPONENTS, multi: true, useValue: [WidgetOutletComponent, WidgetComponent] },
+                { provide: ANALYZE_FOR_ENTRY_COMPONENTS, multi: true, useValue: widgets  },
                 { provide: PortalService, useClass:PortalService, deps: [widgetsToken]},
-                { provide: WidgetFactory, useClass: WidgetFactory, deps: [ComponentFactoryResolver]}
+                { provide: WidgetFactory, useClass: WidgetFactory }
             ]
         }
     }

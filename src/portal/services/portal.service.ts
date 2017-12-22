@@ -5,6 +5,8 @@ import {  BehaviorSubject } from "rxjs/BehaviorSubject";
 import { Message, InternalMessage } from "./message.model";
 import { of } from "rxjs/observable/of";
 import 'rxjs/add/operator/merge';
+import { Inject } from "@angular/core";
+//import { widgetsToken } from "../portal.module";
 
 @Injectable()
 export class PortalService {

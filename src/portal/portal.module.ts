@@ -19,7 +19,6 @@ const widgetsToken = new InjectionToken<Widget[]>('widgets');
     exports: [
       
         PortalComponent,
-        WidgetComponent,
         WidgetOutletComponent
     ],
     declarations: [
@@ -28,6 +27,10 @@ const widgetsToken = new InjectionToken<Widget[]>('widgets');
         WidgetOutletComponent
     ],
     providers: [
+    ],
+    entryComponents: [
+        WidgetOutletComponent, 
+        WidgetComponent
     ]
 
 })
@@ -37,7 +40,7 @@ export class PortalModule {
             ngModule: PortalModule,
             providers: [
                 { provide: widgetsToken, useValue: widgets },
-                { provide: ANALYZE_FOR_ENTRY_COMPONENTS, multi: true, useValue: [...widgets, WidgetOutletComponent, WidgetComponent] },
+                { provide: ANALYZE_FOR_ENTRY_COMPONENTS, multi: true, useValue: widgets },
                 { provide: PortalService, useClass:PortalService, deps: [widgetsToken]},
                 { provide: WidgetFactory, useClass: WidgetFactory, deps: [ComponentFactoryResolver]}
             ]

@@ -1,1 +1,2 @@
-<ng-template #view></ng-template>
+<!-- <ng-template #view></ng-template> -->
+<widget *ngFor="let msg of messages$ | async" [message]="msg"></widget>

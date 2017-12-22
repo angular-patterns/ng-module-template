@@ -7,17 +7,24 @@ import { PortalService } from './services/portal.service';
 import { ComponentFactoryResolver } from '@angular/core';
 import { Widget } from './services/widget.model';
 import { WidgetFactory } from './services/widget.factory';
+import { WidgetComponent } from './widget-outlet/widget.component';
+import { CommonModule } from '@angular/common';
 
 const widgetsToken = new InjectionToken<Widget[]>('widgets');
 
 @NgModule({
-    imports: [],
+    imports: [
+        CommonModule
+    ],
     exports: [
+      
         PortalComponent,
+        WidgetComponent,
         WidgetOutletComponent
     ],
     declarations: [
         PortalComponent,
+        WidgetComponent,
         WidgetOutletComponent
     ],
     providers: [

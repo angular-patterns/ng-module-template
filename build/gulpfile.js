@@ -400,13 +400,19 @@ gulp.task('es6-plato', ['compile-es6'], function () {
 
     let lintRules = {
         'rules': {
-            'indent': [2, 'tab'],
-            'quotes': [2, 'single'],
+            'indent': [0, 'tab'],
+            'quotes': [0, 'single'],
             'semi': [2, 'always'],
             'no-console': [1],
             'curly': ['error'],
             'no-dupe-keys': 2,
-            'func-names': [1, 'always']
+            'func-names': [1, 'always'],
+            'valid-jsdoc': 0,
+            'comma-dangle': 0,
+            'jsx-quotes': 0,
+            'react/jsx-sort-prop-types': 0,
+            'react/require-extension': 0,
+            'react/wrap-multilines': 0
         },
         'env': {
             'es6': true
@@ -427,7 +433,7 @@ gulp.task('es6-plato', ['compile-es6'], function () {
     };
 
     let platoArgs = {
-        title: 'example',
+        title: 'sa-portal',
         eslint: lintRules,
         complexity: complexityRules
     };

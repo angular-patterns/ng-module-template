@@ -12,6 +12,6 @@
  * Entry point for all public APIs of the core package.
  */
 
-export * from './app/app.module';
-export * from './app/weather/weather.component';
+export * from './src/app/app.module';
+export * from './src/app/weather/weather.component';
 

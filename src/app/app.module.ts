@@ -19,4 +19,5 @@ export const  OPEN_WEATHER_MAP_API_KEY = '14ef5c6d02466c43f17b02441ed57b44';
   bootstrap: [AppComponent],
   exports: [AppComponent, WeatherComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

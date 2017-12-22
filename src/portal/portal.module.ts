@@ -9,8 +9,10 @@ import { Widget } from './services/widget.model';
 import { WidgetFactory } from './services/widget.factory';
 import { WidgetComponent } from './widget-outlet/widget.component';
 import { CommonModule } from '@angular/common';
+import { PortalOptions } from './services/portal-options.model';
 
 export const widgetsToken = new InjectionToken<Widget[]>('widgets');
+export const optionsToken = new InjectionToken<PortalOptions>('portal options');
 
 @NgModule({
     imports: [
@@ -19,8 +21,7 @@ export const widgetsToken = new InjectionToken<Widget[]>('widgets');
     exports: [
       
         PortalComponent,
-        WidgetOutletComponent, 
-        //WidgetComponent
+        WidgetOutletComponent
     ],
     declarations: [
         PortalComponent,
@@ -30,19 +31,22 @@ export const widgetsToken = new InjectionToken<Widget[]>('widgets');
     providers: [
     ],
     entryComponents: [
-        WidgetOutletComponent, WidgetComponent
+        WidgetOutletComponent, 
+        WidgetComponent
     ]
 
 })
 export class PortalModule {
-    static forRoot(widgets: Widget[]): ModuleWithProviders{
+    static forRoot(widgets: Widget[], options: PortalOptions): ModuleWithProviders{
+ 
         return {
             ngModule: PortalModule,
             providers: [
                 { provide: widgetsToken, useValue: widgets },
-                { provide: ANALYZE_FOR_ENTRY_COMPONENTS, multi: true, useValue: widgets  },
+                { provide: optionsToken, useValue: options },
+                { provide: ANALYZE_FOR_ENTRY_COMPONENTS, multi: true, useValue: [widgets, options]  },
                 { provide: PortalService, useClass:PortalService, deps: [widgetsToken]},
-                { provide: WidgetFactory, useClass: WidgetFactory }
+                { provide: WidgetFactory, useClass: WidgetFactory, deps: [ComponentFactoryResolver, optionsToken]}
             ]
         }
     }

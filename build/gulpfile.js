@@ -15,6 +15,8 @@ const toPascalCase = require('to-pascal-case');
 const commandLineArgs = require('command-line-args');
 const rollupGlobals = require('./rollup.globals');
 const plato = require('es6-plato');
+const ngc = require('@angular/compiler-cli/src/main').main;
+
 
 const optionDefinitions = [
     { name: 'dest', alias: 'd', type: String, defaultValue: `c:\\packages\\${pkg.name}` },
@@ -61,24 +63,16 @@ gulp.task('copy-src', ['copy-public-api'], function () {
         .pipe(gulp.dest('dist/src'))
 });
 
-gulp.task('compile-es6', ['copy-src'], function (done) {
-    gulp.src('tsconfig.ngc.json')
-        .pipe(shell(['"../node_modules/.bin/ngc" -p <%= file.path %> --target es6']))
-        .on('end', function () {
-            del('node_modules/**', { force: true }).then(function () {
-                done();
-            });
-        });
+gulp.task('compile-es6', ['copy-src'], function () {
+    return Promise.resolve().then(
+        ()=> ngc(['-p', 'tsconfig.ngc.json', '-t', 'es6'], (err)=> console.error(err))
+    );
 });
 
-gulp.task('compile-es5', ['copy-src'], function (done) {
-    gulp.src('tsconfig.ngc.json')
-        .pipe(shell(['"../node_modules/.bin/ngc" -p <%= file.path %> --target es5']))
-        .on('end', function () {
-            del('node_modules/**', { force: true }).then(function () {
-                done();
-            });
-        });
+gulp.task('compile-es5', ['copy-src'], function () {
+    return Promise.resolve().then(
+        ()=> ngc(['-p', 'tsconfig.ngc.json', '-t', 'es6'], (err)=> console.error(err))
+    );
 });
 
 gulp.task('bundle-es6', ['compile-es6'], function (done) {
@@ -88,8 +82,8 @@ gulp.task('bundle-es6', ['compile-es6'], function (done) {
     rollup.rollup({
         input: 'dist/index.js',
         onwarn: function (warning) {
-            if (warning.message.indexOf("treating it as an external dependency") > -1)
-                return;
+            // if (warning.message.indexOf("treating it as an external dependency") > -1)
+            //     return;
 
             if (warning.message.indexOf("external module '@angular/core' but never used"))
                 return;
@@ -127,8 +121,8 @@ gulp.task('bundle-es5', ['compile-es5'], function (done) {
     rollup.rollup({
         input: 'dist/index.js',
         onwarn: function (warning) {
-            if (warning.message.indexOf("treating it as an external dependency") > -1)
-                return;
+            // if (warning.message.indexOf("treating it as an external dependency") > -1)
+            //     return;
 
             if (warning.message.indexOf("external module '@angular/core' but never used"))
                 return;

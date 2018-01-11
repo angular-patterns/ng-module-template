@@ -25,5 +25,8 @@ export class PortalService {
         this._widgets.next(event);
     }
 
+    clear(key: string) {
+    }
+
 
 }

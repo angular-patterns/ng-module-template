@@ -8,24 +8,28 @@ import 'rxjs/add/operator/publish';
 
 @Injectable()
 export class PortalService {
-    public widgets: Observable<{[key: string]: Type<any>[]}>;
-    private _widgets: ReplaySubject<{[key: string]: Type<any>[]}>; 
-
+    private _widgets: { [key: string]: ReplaySubject<Type<any>[]>}; 
+    private _ensureKey(key: string) {
+        if (!this._widgets[key]) {
+            this._widgets[key] = new ReplaySubject<Type<any>[]>(1);
+        }
+    }
     constructor(private widgetFactory:WidgetFactory) {
-        this._widgets = new ReplaySubject<{[key: string]: Type<any>[]}>();
-        this.widgets = this._widgets.asObservable();
+        this._widgets = {}; 
+    }
+
+
+    get(key: string) {
+        this._ensureKey(key);
+        return this._widgets[key].asObservable();
     }
 
     push (key: string, widgetKeys: string[]) {
-        
+        this._ensureKey(key);
+
         let widgets = widgetKeys.map(key => this.widgetFactory.resolve(key));
         let widgetTypes = widgets.map(t=>t.component);
-        let event = (<any>{});
-        event[key] = widgetTypes;
-        this._widgets.next(event);
-    }
-
-    clear(key: string) {
+        this._widgets[key].next(widgetTypes);
     }
 
 

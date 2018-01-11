@@ -6,13 +6,25 @@
             <hr />
         </div>
         <ul>
-            <li>Populate Widgets on any event</li>
+            <li>Load Widgets dynamically on any event</li>
+            <li>Remove Widgets on any event</li>
+            <li>Clear all Widgets</li>
         </ul>
         <div>
-            <button (click)="onPushTime()" class="btn btn-primary">Push Time</button>
-            <button (click)="onPushSignin()" class="btn btn-primary">Push Signin</button>
-            <button (click)="onPushData()" class="btn btn-primary">Push Data</button>
-            <button (click)="onPushPanel()" class="btn btn-primary">Push Panel</button>
+            <nav class="nav navbar">
+                    <button (click)="onPushTime()" class="btn btn-primary">Push Time</button>
+                    <button (click)="onPushSignin()" class="btn btn-primary">Push Signin</button>
+                    <button (click)="onPushData()" class="btn btn-primary">Push Data</button>
+                    <button (click)="onPushPanel()" class="btn btn-primary">Push Panel</button>        
+            </nav>
+            <nav class="nav navbar">
+                    <button (click)="onClear('location 2.1')" class="btn btn-danger">Clear 2.1</button>
+                    <button (click)="onClear('location 2.2')" class="btn btn-danger">Clear 2.2</button>
+                    <button (click)="onClear('location 2.3')" class="btn btn-danger">Clear 2.3</button>
+                    <button (click)="onClear('location 2.4')" class="btn btn-danger">Clear 2.4</button>
+                    <button (click)="onClearAll()" class="btn btn-danger">Clear All</button>
+                </nav>
+            
         </div>
     </div>
     <div class="container">
@@ -23,7 +35,8 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <widget-outlet key="location 2.1"></widget-outlet>
+                <widget-outlet key="location 2.1">
+                </widget-outlet>
             </div>
             <div class="col-md-6">
                 <widget-outlet key="location 2.2"></widget-outlet>
@@ -35,6 +48,7 @@
             </div>
             <div class="col-md-6">
                 <widget-outlet key="location 2.4"></widget-outlet>
+
             </div>
 
         </div>

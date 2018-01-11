@@ -20,14 +20,7 @@ export class WidgetOutletComponent implements OnInit {
     }
 
     ngOnInit() { 
-        this.types = this.portalService.widgets
-            .map(t=>t[this.key])
-            .filter(t=> t!= undefined);
-            
-        // this.portalService.widgets.subscribe(t=> {
-        //     console.log(this.key);
-        //     console.log(t);
-        // });
-
+        this.types = this.portalService.get(this.key);
+ 
     }
 }

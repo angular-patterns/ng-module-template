@@ -14,5 +14,9 @@ export class Demo1Component implements OnInit {
         portalService.push('location 1.4', ['panel']);
       }
 
+      
+
     ngOnInit() { }
+
+    
 }

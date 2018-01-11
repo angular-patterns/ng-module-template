@@ -1,3 +1,11 @@
 <h1>{{title}}</h1>
-
-<sa-widget></sa-widget>
+<input type="text" #val /> <button (click)="go(val.value)">Go</button>
+ <button (click)="go2()">Go2</button>
+<h1>1</h1>
+<widget-outlet key="1"></widget-outlet>
+<h1>2</h1>
+<widget-outlet key="2"></widget-outlet>
+<h1>3</h1>
+<widget-outlet key="3"></widget-outlet>
+<h1>Variable {{blue }}</h1> 
+<widget-outlet [key]="blue"></widget-outlet>

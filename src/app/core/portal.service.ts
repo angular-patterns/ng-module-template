@@ -1,18 +1,19 @@
 import { Injectable, Type } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Observable } from "rxjs/Observable";
-import { Subject } from "rxjs/Subject";
+import { ReplaySubject } from "rxjs/ReplaySubject";
 import { WidgetFactory } from "./widget.factory";
 import 'rxjs/add/operator/shareReplay';
+import 'rxjs/add/operator/publish';
 
 @Injectable()
 export class PortalService {
     public widgets: Observable<{[key: string]: Type<any>[]}>;
-    private _widgets: Subject<{[key: string]: Type<any>[]}>; 
+    private _widgets: ReplaySubject<{[key: string]: Type<any>[]}>; 
 
     constructor(private widgetFactory:WidgetFactory) {
-        this._widgets = new Subject<{[key: string]: Type<any>[]}>();
-        this.widgets = this._widgets.asObservable().shareReplay(1);
+        this._widgets = new ReplaySubject<{[key: string]: Type<any>[]}>();
+        this.widgets = this._widgets.asObservable();
     }
 
     push (key: string, widgetKeys: string[]) {

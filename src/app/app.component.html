@@ -1,11 +1,19 @@
-<h1>{{title}}</h1>
-<input type="text" #val /> <button (click)="go(val.value)">Go</button>
- <button (click)="go2()">Go2</button>
-<h1>1</h1>
-<widget-outlet key="1"></widget-outlet>
-<h1>2</h1>
-<widget-outlet key="2"></widget-outlet>
-<h1>3</h1>
-<widget-outlet key="3"></widget-outlet>
-<h1>Variable {{blue }}</h1> 
-<widget-outlet [key]="blue"></widget-outlet>
+<div class="container">
+    <div class="page-title">
+        <h1>@sa/portal
+            <small>demo</small>
+        </h1>
+        <hr />
+    </div>
+</div>
+<div class="container">
+    <ul class="nav nav-tabs">
+        <li role="presentation" routerLinkActive="active">
+            <a routerLink="demo1">Demo 1</a>
+        </li>
+        <li role="presentation" routerLinkActive="active">
+            <a routerLink="demo2">Demo 2</a>
+        </li>
+    </ul>
+    <router-outlet></router-outlet>
+</div>

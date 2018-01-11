@@ -17,10 +17,17 @@ export class WidgetOutletComponent implements OnInit {
     @Input() key: string;
     types: Observable<Type<any>[]>;
     constructor(private portalService: PortalService) { 
+    }
+
+    ngOnInit() { 
         this.types = this.portalService.widgets
             .map(t=>t[this.key])
             .filter(t=> t!= undefined);
-    }
+            
+        // this.portalService.widgets.subscribe(t=> {
+        //     console.log(this.key);
+        //     console.log(t);
+        // });
 
-    ngOnInit() { }
+    }
 }

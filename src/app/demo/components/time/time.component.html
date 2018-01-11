@@ -1,0 +1,7 @@
+<ul class="list-group">
+    <li class="list-group-item active btn-primary">
+        <h1>{{ currentTime | async | date: 'yyyy MMMM dd'}}
+            <span class="badge">{{ currentTime | async | date: 'h:mm:ss a' }}</span>
+        </h1>
+    </li>
+</ul>

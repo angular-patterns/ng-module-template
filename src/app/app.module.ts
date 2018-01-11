@@ -11,6 +11,7 @@ import { DataComponent } from './demo/components/data/data.component';
 import { PanelComponent } from './demo/components/panel/panel.component';
 import { Demo1Component } from './demo/examples/demo1.component';
 import { Demo2Component } from './demo/examples/demo2.component';
+import { Demo3Component } from './demo/examples/demo3.component';
 
 @NgModule({
   imports:      [ 
@@ -18,6 +19,7 @@ import { Demo2Component } from './demo/examples/demo2.component';
     RouterModule.forRoot([
       { path: 'demo1', component: Demo1Component},
       { path: 'demo2', component: Demo2Component},
+      { path: 'demo3', component: Demo3Component},
       { path: '', redirectTo: 'demo1', pathMatch: 'full'}
     ], { useHash: true}),
     CoreModule.forRoot([
@@ -35,7 +37,8 @@ import { Demo2Component } from './demo/examples/demo2.component';
     DataComponent,
     PanelComponent,
     Demo1Component,
-    Demo2Component
+    Demo2Component,
+    Demo3Component
   ],
   bootstrap:    [ AppComponent ],
   exports: [AppComponent]

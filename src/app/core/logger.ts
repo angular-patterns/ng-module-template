@@ -9,8 +9,8 @@ export class Logger {
     }
 
     logError(error: any) {
-        let formatterFactory = this.errorFormatterFactory.create(error);
-        let formattedError = formatterFactory.format(error);
+        const formatterFactory = this.errorFormatterFactory.create(error);
+        const formattedError = formatterFactory.format(error);
         console.log(formattedError);
     }
 }

@@ -6,7 +6,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
 
 @NgModule({
-  imports:      [ BrowserModule, FeatureModule, HttpClientModule, CoreModule],
+  imports: [
+    BrowserModule,
+    FeatureModule,
+    HttpClientModule,
+    CoreModule
+  ],
   declarations: [ AppComponent ],
   bootstrap:    [ AppComponent ],
   exports: [AppComponent],

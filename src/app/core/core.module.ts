@@ -10,13 +10,15 @@ import { ErrorFormatter } from './shared/error-formatter';
 export const ErrorFormatterToken = new InjectionToken<ErrorFormatter[]>("Error Formatters");
 
 @NgModule({
-    imports: [HttpClientModule],
+    imports: [
+        HttpClientModule
+    ],
     exports: [],
     declarations: [],
     providers: [
         Logger,
         ERROR_FORMATTERS,
-        { provide: ErrorFormatterToken, useFactory:(...formatters)=> formatters, deps: ERROR_FORMATTERS},
+        { provide: ErrorFormatterToken, useFactory:(...formatters) => formatters, deps: ERROR_FORMATTERS},
         { provide: ErrorFormatterFactory, useClass: ErrorFormatterFactory, deps: [ErrorFormatterToken]},
         { provide: ErrorHandler, useClass: GlobalErrorHandler, deps: [Injector] }
     ],

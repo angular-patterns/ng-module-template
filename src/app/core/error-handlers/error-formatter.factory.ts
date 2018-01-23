@@ -5,7 +5,6 @@ import { ErrorFormatterToken } from "../core.module";
 @Injectable()
 export class ErrorFormatterFactory {
     constructor(@Inject(ErrorFormatterToken) private errorFormatters: ErrorFormatter[]) {
-
     }
 
     create(error: any) {

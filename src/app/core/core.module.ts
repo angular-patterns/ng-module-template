@@ -16,7 +16,7 @@ export const ErrorFormatterToken = new InjectionToken<ErrorFormatter[]>("Error F
     providers: [
         Logger,
         ERROR_FORMATTERS,
-        { provide: ErrorFormatterToken, useValue: ERROR_FORMATTERS},
+        { provide: ErrorFormatterToken, useFactory:(...formatters)=> formatters, deps: ERROR_FORMATTERS},
         { provide: ErrorFormatterFactory, useClass: ErrorFormatterFactory, deps: [ErrorFormatterToken]},
         { provide: ErrorHandler, useClass: GlobalErrorHandler, deps: [Injector] }
     ],

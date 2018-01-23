@@ -8,7 +8,7 @@ export class GlobalErrorHandler implements ErrorHandler {
     }
     handleError(error: any): void {
         try {
-            let logger = this.injector.get(Logger);
+            const logger = this.injector.get(Logger);
             logger.logError(error);
         }
         catch (err) {

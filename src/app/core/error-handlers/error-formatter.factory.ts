@@ -8,7 +8,7 @@ export class ErrorFormatterFactory {
     }
 
     create(error: any) {
-        let formatters = this.errorFormatters.filter(t=> t.canFormat(error));
+        const formatters = this.errorFormatters.filter(t => t.canFormat(error));
         return formatters[0];
     }
 

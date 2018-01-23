@@ -1,9 +1,10 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Inject } from "@angular/core";
 import { ErrorFormatter } from "../shared/error-formatter";
+import { ErrorFormatterToken } from "../core.module";
 
 @Injectable()
 export class ErrorFormatterFactory {
-    constructor(private errorFormatters: ErrorFormatter[]) {
+    constructor(@Inject(ErrorFormatterToken) private errorFormatters: ErrorFormatter[]) {
 
     }
 

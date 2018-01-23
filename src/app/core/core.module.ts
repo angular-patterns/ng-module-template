@@ -1,31 +1,23 @@
-import { NgModule, ErrorHandler, InjectionToken } from '@angular/core';
-import { GlobalErrorHandler } from './error-handlers/global-error.handler';
-import { Injector } from '@angular/core';
-import { Logger } from './logger';
+import { NgModule, ErrorHandler, Injector, InjectionToken} from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { ErrorFormatter } from './shared/error-formatter';
-import { ErrorFormatterFactory } from './error-handlers/error-formatter.factory';
-import { HttpErrorResponseFormatter } from './error-formatters/httpErrorResponseFormatter';
-import { DefaultErrorFormatter } from './error-formatters/defaultErrorFormatter';
 
-export function initErrorFormatterFactory(
-    httpErrorResponseFormatter: HttpErrorResponseFormatter,
-    defaultErrorFormatter: DefaultErrorFormatter
-) {
-    return new ErrorFormatterFactory([
-        httpErrorResponseFormatter,
-        defaultErrorFormatter
-    ]);
-}
+import { Logger } from './logger';
+import { GlobalErrorHandler } from './error-handlers/global-error.handler';
+import { ErrorFormatterFactory } from './error-handlers/error-formatter.factory';
+import { ERROR_FORMATTERS } from './index';
+import { ErrorFormatter } from './shared/error-formatter';
+
+export const ErrorFormatterToken = new InjectionToken<ErrorFormatter[]>("Error Formatters");
+
 @NgModule({
     imports: [HttpClientModule],
     exports: [],
     declarations: [],
     providers: [
         Logger,
-        DefaultErrorFormatter,
-        HttpErrorResponseFormatter,
-        { provide: ErrorFormatterFactory, useFactory: initErrorFormatterFactory, deps: [HttpErrorResponseFormatter, DefaultErrorFormatter]},
+        ERROR_FORMATTERS,
+        { provide: ErrorFormatterToken, useValue: ERROR_FORMATTERS},
+        { provide: ErrorFormatterFactory, useClass: ErrorFormatterFactory, deps: [ErrorFormatterToken]},
         { provide: ErrorHandler, useClass: GlobalErrorHandler, deps: [Injector] }
     ],
 })

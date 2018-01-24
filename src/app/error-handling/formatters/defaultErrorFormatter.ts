@@ -1,7 +1,7 @@
-import { ErrorFormatter } from "../shared/error-formatter";
 import { Error } from "../shared/error.model";
+import { Formatter } from "../shared/formatter";
 
-export class DefaultErrorFormatter implements ErrorFormatter {
+export class DefaultErrorFormatter implements Formatter {
     canFormat(error: any): boolean {
         return true;
     }

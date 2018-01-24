@@ -1,6 +1,6 @@
 import { ErrorHandler, Injector } from "@angular/core";
 import { HttpErrorResponse } from "@angular/common/http";
-import { Logger } from "../logger";
+import { Logger } from "./logger";
 
 
 export class GlobalErrorHandler implements ErrorHandler {

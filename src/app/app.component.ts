@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/finally';
 import 'rxjs/add/observable/forkJoin';
 import { ErrorModel } from './error-handler/shared/error.model';
+import { ErrorMonitor } from './core/error-monitor';
 
 @Component({
   selector: 'sa-app-root',
@@ -19,15 +20,10 @@ export class AppComponent {
     this.refresh();
   }
   error1() {
-    try {
-      throw new Error("this is a general error");
-    }
-    finally {
-      setTimeout(t=> this.refresh());
-    }
+    throw new Error("this is a general error");
   }
   error2() {
-    this.http.get('http://urldoesnotexist').finally(()=> setTimeout(t=> this.refresh())).subscribe();
+    this.http.get('http://urldoesnotexist').subscribe();
   }
   getErrors() {
     return this.http.get<ErrorModel[]>('http://localhost:3000/errors?_sort=id&_order=desc');     
@@ -41,5 +37,6 @@ export class AppComponent {
       .mergeMap(t=> Observable.forkJoin(t.map(x=>this.http.delete(`http://localhost:3000/errors/${x.id}`))))
       .map(t=> []);
   }
+
 
 }

@@ -3,33 +3,24 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/distinctUntilChanged';
+import { HttpRequest } from '@angular/common/http';
 
 @Injectable()
 export class HttpMonitor {
     public pending: Observable<boolean>;
-    private pendingRequests: BehaviorSubject<string[]>;
-    private requests: string[];
-
+    private pendingRequests: BehaviorSubject<number>;
+    public count: number;
     constructor() {
-        this.requests = [];
-        this.pendingRequests = new BehaviorSubject(this.requests);
-        this.pending = this.get(t=> true);
+        this.count = 0;
+        this.pendingRequests = new BehaviorSubject(this.count);
+        this.pending = this.pendingRequests.map(t=>t > 0).distinctUntilChanged();
 
     }
 
-    addRequest(url: string) {
-        this.requests.push(url);
-        this.pendingRequests.next(this.requests)
+    addRequest(request: HttpRequest<any>) {
+        this.pendingRequests.next(++this.count);
     }
-    removeRequest(url: string) {
-        let i = this.requests.indexOf(url);
-        if (i >= 0) {
-            this.requests.splice(i, 1);
-        }
-        this.pendingRequests.next(this.requests)
-    }
-    get(predicate: (url: string) => boolean) {
-        return this.pendingRequests.map(t=> t.filter(predicate))
-            .map(t=> t.length > 0).distinctUntilChanged();
+    removeRequest(request: HttpRequest<any>) {
+        this.pendingRequests.next(--this.count);
     }
 }

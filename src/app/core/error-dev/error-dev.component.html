@@ -1,0 +1,28 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Oops, Something went Wrong...</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <h3>Name</h3>
+    {{ error?.name }}
+    <h3>Message</h3>
+    {{ error?.message }}
+    <h3>Stack</h3>
+    {{ error?.stack }}
+    <h3>Status</h3>
+    {{ error?.status }}
+    <h3>Status Text</h3>
+    {{ error?.statusText }}
+    <h3>URL</h3>
+    {{ error?.url }}
+    <h3>headers</h3>
+    {{ error?.headers }}
+    <h3>Created On</h3>
+    {{ error?.createdOn }}
+    
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Close</button>
+</div>

@@ -10,9 +10,9 @@ export class RequestInterceptor implements HttpInterceptor {
 
     }
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-       this.httpMonitor.addRequest(req.urlWithParams);
+       this.httpMonitor.addRequest(req);
         return next.handle(req).finally(() => {
-            this.httpMonitor.removeRequest(req.urlWithParams);
+            this.httpMonitor.removeRequest(req);
         })
 
     }

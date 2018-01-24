@@ -12,7 +12,7 @@ import 'rxjs/add/operator/merge';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/startWith';
 
-import { ErrorModel } from './error-handler/shared/error.model';
+import { ErrorInfo } from './error-handler/shared/error.model';
 import { GlobalErrorHandler } from './core/global-error.handler';
 import { ErrorHandler } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
@@ -24,10 +24,10 @@ import { Subject } from 'rxjs/Subject';
 })
 export class AppComponent {
   title: string;
-  errors: Observable<ErrorModel[]>;
-  clearEvent: Subject<ErrorModel[]>;
+  errors: Observable<ErrorInfo[]>;
+  clearEvent: Subject<ErrorInfo[]>;
   constructor(private http:HttpClient, @Inject(ErrorHandler) private errorHandler: GlobalErrorHandler) {
-    this.clearEvent = new Subject<ErrorModel[]>();
+    this.clearEvent = new Subject<ErrorInfo[]>();
     this.errors =  Observable.merge(
         this.getErrors(),
         this.errorHandler.lastError.switchMap(t=>this.getErrors()),
@@ -44,7 +44,7 @@ export class AppComponent {
     this.http.get('http://urldoesnotexist').subscribe();
   }
   getErrors() {
-    return this.http.get<ErrorModel[]>('http://localhost:3000/errors?_sort=id&_order=desc');     
+    return this.http.get<ErrorInfo[]>('http://localhost:3000/errors?_sort=id&_order=desc');     
   }
   clear() {
     this.clearEvent.next();

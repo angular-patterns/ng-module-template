@@ -1,6 +1,6 @@
 import { OnInit, Component, Input } from "@angular/core";
 import { BsModalRef } from "ngx-bootstrap/modal";
-import { ErrorModel } from "../../error-handler/shared/error.model";
+import { ErrorInfo } from "../../error-handler/shared/error.model";
 
 @Component({
     selector: 'modal-content',
@@ -8,7 +8,7 @@ import { ErrorModel } from "../../error-handler/shared/error.model";
 })
 
 export class ErrorDevComponent implements OnInit {
-    @Input() error: ErrorModel;
+    @Input() error: ErrorInfo;
 
     constructor(public bsModalRef: BsModalRef) {}
     ngOnInit() {

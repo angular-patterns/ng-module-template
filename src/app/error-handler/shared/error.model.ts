@@ -1,4 +1,4 @@
-export class ErrorModel {
+export class ErrorInfo {
     id: number;
     name: string;
     message: string;

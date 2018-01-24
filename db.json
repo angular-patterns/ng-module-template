@@ -32,6 +32,52 @@
       "url": null,
       "headers": "",
       "createdOn": "2018-01-24T16:09:42.163Z"
+    },
+    {
+      "id": 4,
+      "name": "Error",
+      "message": "this is a general error",
+      "stack": "Error: this is a general error\n   at AppComponent.prototype.simulateError1 (http://localhost:8080/bundles/app.da732a6e55f3c3dee77f.bundle.js:41575:9)\n   at Anonymous function (Function code:66:15)\n   at handleEvent (http://localhost:8080/bundles/vendor.da732a6e55f3c3dee77f.bundle.js:15332:87)\n   at callWithDebugContext (http://localhost:8080/bundles/vendor.da732a6e55f3c3dee77f.bundle.js:16841:9)\n   at debugHandleEvent (http://localhost:8080/bundles/vendor.da732a6e55f3c3dee77f.bundle.js:16428:5)\n   at dispatchEvent (http://localhost:8080/bundles/vendor.da732a6e55f3c3dee77f.bundle.js:11744:9)\n   at Anonymous function (http://localhost:8080/bundles/vendor.da732a6e55f3c3dee77f.bundle.js:12369:31)\n   at Anonymous function (http://localhost:8080/bundles/vendor.da732a6e55f3c3dee77f.bundle.js:31679:9)\n   at ZoneDelegate.prototype.invokeTask (http://localhost:8080/bundles/polyfills.da732a6e55f3c3dee77f.bundle.js:13231:13)\n   at onInvokeTask (http://localhost:8080/bundles/vendor.da732a6e55f3c3dee77f.bundle.js:6524:17)",
+      "headers": "",
+      "createdOn": "2018-01-24T17:00:54.543Z"
+    },
+    {
+      "id": 5,
+      "name": "Error",
+      "message": "this is a general error",
+      "stack": "Error: this is a general error\n   at AppComponent.prototype.simulateError1 (http://localhost:8080/bundles/app.da732a6e55f3c3dee77f.bundle.js:41575:9)\n   at Anonymous function (Function code:66:15)\n   at handleEvent (http://localhost:8080/bundles/vendor.da732a6e55f3c3dee77f.bundle.js:15332:87)\n   at callWithDebugContext (http://localhost:8080/bundles/vendor.da732a6e55f3c3dee77f.bundle.js:16841:9)\n   at debugHandleEvent (http://localhost:8080/bundles/vendor.da732a6e55f3c3dee77f.bundle.js:16428:5)\n   at dispatchEvent (http://localhost:8080/bundles/vendor.da732a6e55f3c3dee77f.bundle.js:11744:9)\n   at Anonymous function (http://localhost:8080/bundles/vendor.da732a6e55f3c3dee77f.bundle.js:12369:31)\n   at Anonymous function (http://localhost:8080/bundles/vendor.da732a6e55f3c3dee77f.bundle.js:31679:9)\n   at ZoneDelegate.prototype.invokeTask (http://localhost:8080/bundles/polyfills.da732a6e55f3c3dee77f.bundle.js:13231:13)\n   at onInvokeTask (http://localhost:8080/bundles/vendor.da732a6e55f3c3dee77f.bundle.js:6524:17)",
+      "headers": "",
+      "createdOn": "2018-01-24T17:00:58.503Z"
+    },
+    {
+      "id": 6,
+      "name": "HttpErrorResponse",
+      "message": "Http failure response for (unknown url): 0 Unknown Error",
+      "stack": "",
+      "status": 0,
+      "statusText": "Unknown Error",
+      "url": null,
+      "headers": "",
+      "createdOn": "2018-01-24T17:01:08.930Z"
+    },
+    {
+      "id": 7,
+      "name": "HttpErrorResponse",
+      "message": "Http failure response for (unknown url): 0 Unknown Error",
+      "stack": "",
+      "status": 0,
+      "statusText": "Unknown Error",
+      "url": null,
+      "headers": "",
+      "createdOn": "2018-01-24T17:01:39.062Z"
+    },
+    {
+      "id": 8,
+      "name": "Error",
+      "message": "this is a general error",
+      "stack": "Error: this is a general error\n   at AppComponent.prototype.simulateError1 (http://localhost:8080/bundles/app.da732a6e55f3c3dee77f.bundle.js:41575:9)\n   at Anonymous function (Function code:66:15)\n   at handleEvent (http://localhost:8080/bundles/vendor.da732a6e55f3c3dee77f.bundle.js:15332:87)\n   at callWithDebugContext (http://localhost:8080/bundles/vendor.da732a6e55f3c3dee77f.bundle.js:16841:9)\n   at debugHandleEvent (http://localhost:8080/bundles/vendor.da732a6e55f3c3dee77f.bundle.js:16428:5)\n   at dispatchEvent (http://localhost:8080/bundles/vendor.da732a6e55f3c3dee77f.bundle.js:11744:9)\n   at Anonymous function (http://localhost:8080/bundles/vendor.da732a6e55f3c3dee77f.bundle.js:12369:31)\n   at Anonymous function (http://localhost:8080/bundles/vendor.da732a6e55f3c3dee77f.bundle.js:31679:9)\n   at ZoneDelegate.prototype.invokeTask (http://localhost:8080/bundles/polyfills.da732a6e55f3c3dee77f.bundle.js:13231:13)\n   at onInvokeTask (http://localhost:8080/bundles/vendor.da732a6e55f3c3dee77f.bundle.js:6524:17)",
+      "headers": "",
+      "createdOn": "2018-01-24T17:01:44.735Z"
     }
   ]
 }

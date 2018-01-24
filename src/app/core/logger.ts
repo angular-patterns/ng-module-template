@@ -4,7 +4,7 @@ import { FormatterFactory } from "../error-handler/formatter.factory";
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/catch';
-import { ErrorModel } from "../error-handler/shared/error.model";
+import { ErrorInfo } from "../error-handler/shared/error.model";
 
 @Injectable()
 export class Logger {
@@ -12,7 +12,7 @@ export class Logger {
 
     }
 
-    logError(error: ErrorModel) {
-        return this.http.post<ErrorModel>(`http://localhost:3000/errors`, error);
+    logError(error: ErrorInfo) {
+        return this.http.post<ErrorInfo>(`http://localhost:3000/errors`, error);
     }
 }

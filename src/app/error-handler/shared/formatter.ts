@@ -1,6 +1,6 @@
-import { ErrorModel } from "./error.model";
+import { ErrorInfo } from "./error.model";
 
 export interface Formatter {
     canFormat(error: any): boolean;
-    format(error: any): ErrorModel;
+    format(error: any): ErrorInfo;
 }

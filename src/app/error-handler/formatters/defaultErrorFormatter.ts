@@ -1,11 +1,11 @@
-import { ErrorModel } from "../shared/error.model";
+import { ErrorInfo } from "../shared/error.model";
 import { Formatter } from "../shared/formatter";
 
 export class DefaultErrorFormatter implements Formatter {
     canFormat(error: any): boolean {
         return true;
     }
-    format(error: any): ErrorModel {
+    format(error: any): ErrorInfo {
         return {
             id: 0,
             name: 'Error',

@@ -13,18 +13,18 @@ import { NgZone } from "@angular/core";
 import { Observable } from "rxjs/Observable";
 import { Subject } from "rxjs/Subject";
 import { FormatterFactory } from "../error-handler/formatter.factory";
-import { ErrorModel } from "../error-handler/shared/error.model";
+import { ErrorInfo } from "../error-handler/shared/error.model";
 
 @Injectable()
 export class GlobalErrorHandler implements ErrorHandler {
-    lastError: Observable<ErrorModel>;
-    _lastError: Subject<ErrorModel>;
+    lastError: Observable<ErrorInfo>;
+    _lastError: Subject<ErrorInfo>;
     constructor(private injector: Injector) { 
-        this._lastError = new Subject<ErrorModel>();
+        this._lastError = new Subject<ErrorInfo>();
         this.lastError = this._lastError.asObservable();
     }
     handleError(error: any): void {
-        let lastError = this.getErrorModel(error);
+        let lastError = this.getErrorInfo(error);
         let modalService = this.injector.get(BsModalService);
         if (modalService.getModalsCount() == 0) {
             this.injector.get(NgZone).run(t=> {
@@ -42,7 +42,7 @@ export class GlobalErrorHandler implements ErrorHandler {
 
     }
 
-    getErrorModel(error: any) {
+    getErrorInfo(error: any) {
         try {
             let formatterFactory = this.injector.get(FormatterFactory);
             let formatter = formatterFactory.create(error);
@@ -52,10 +52,10 @@ export class GlobalErrorHandler implements ErrorHandler {
         catch (err) {
             console.log(err);
         }
-        return new ErrorModel();
+        return new ErrorInfo();
     }
 
-    showModal(error: ErrorModel) {
+    showModal(error: ErrorInfo) {
         try {
             let modalService = this.injector.get(BsModalService);
             let bsModalRef = modalService.show(ErrorDevComponent);
@@ -74,7 +74,7 @@ export class GlobalErrorHandler implements ErrorHandler {
 
         
     }
-    logError(error: ErrorModel) {
+    logError(error: ErrorInfo) {
         try {
             
             const logger = this.injector.get(Logger);

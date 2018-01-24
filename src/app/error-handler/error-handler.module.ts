@@ -7,23 +7,17 @@ import { RetryInterceptor } from './retry.interceptor';
 
 export const FormatterToken = new InjectionToken<Formatter[]>("Error Formatters");
 
-export class Test {
-
-}
-
 @NgModule({
     imports: [],
     exports: [],
     declarations: [],
     providers: [
         ERROR_FORMATTERS,
-        { provide: FormatterFactory, useFactory: (...formatters)=> new FormatterFactory(formatters), deps: ERROR_FORMATTERS},
         {
-            provide: HTTP_INTERCEPTORS,
-            useClass: RetryInterceptor,
-            multi: true,
+            provide: FormatterFactory, 
+            useFactory: (...formatters)=> new FormatterFactory(formatters), 
+            deps: ERROR_FORMATTERS
         }
-  
     ]
 })
 export class ErrorHandlerModule { 

@@ -1,5 +1,5 @@
 import { NgModule, ErrorHandler, Injector, InjectionToken, Component, OnInit} from '@angular/core';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { Logger } from './logger';
 import { GlobalErrorHandler } from './global-error.handler';
@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ErrorComponent } from './error/error.component';
 import { ErrorDevComponent } from './error-dev/error-dev.component';
+import { RetryInterceptor } from './retry.interceptor';
 
 @NgModule({
     imports: [
@@ -24,7 +25,13 @@ import { ErrorDevComponent } from './error-dev/error-dev.component';
     ],
     providers: [
         Logger,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: RetryInterceptor,
+            multi: true,
+        },
         { provide: ErrorHandler, useClass: GlobalErrorHandler, deps: [Injector] }
+
     ],
     entryComponents: [
         ErrorComponent,

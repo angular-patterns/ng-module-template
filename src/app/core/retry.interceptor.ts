@@ -12,16 +12,14 @@ import { Injector } from '@angular/core';
 export class RetryInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        //throw new Error('something');
+
         console.log(req.url);
 
         return next.handle(req).retryWhen(function (errors) {
             return errors.delay(1000).scan((errorCount, err) => {
                 console.log(errorCount);
                 if (errorCount >= 2) {
-                   
                     throw err;
-
                 }
                 return errorCount + 1;
             }, 0);

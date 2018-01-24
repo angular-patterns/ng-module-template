@@ -1,12 +1,12 @@
 import { HttpErrorResponse } from "@angular/common/http";
-import { ErrorModel } from "../shared/error.model";
+import { ErrorInfo } from "../shared/error.model";
 import { Formatter } from "../shared/formatter";
 
 export class HttpErrorResponseFormatter implements Formatter {
     canFormat(error: any): boolean {
         return error.name == 'HttpErrorResponse';
     }
-    format(error: any): ErrorModel {
+    format(error: any): ErrorInfo {
         let httpError = <HttpErrorResponse>error;
         return {
             id: 0,

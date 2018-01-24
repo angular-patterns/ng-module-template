@@ -3,7 +3,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { Logger } from './logger';
 import { GlobalErrorHandler } from './global-error.handler';
-import { ErrorHandlerModule } from '../error-handling/error-handler.module';
+import { ErrorHandlerModule } from '../error-handler/error-handler.module';
 @NgModule({
     imports: [
         HttpClientModule, 

@@ -2,11 +2,25 @@
   "errors": [
     {
       "id": 1,
-      "name": "Error",
-      "message": "this is a general error",
-      "stack": "Error: this is a general error\n    at AppComponent.webpackJsonp.184.AppComponent.error1 (http://localhost:8080/bundles/app.33eb1367a56693653d84.bundle.js:36483:19)\n    at Object.eval [as handleEvent] (ng:///AppModule/AppComponent.ngfactory.js:68:31)\n    at handleEvent (http://localhost:8080/bundles/vendor.33eb1367a56693653d84.bundle.js:28117:155)\n    at callWithDebugContext (http://localhost:8080/bundles/vendor.33eb1367a56693653d84.bundle.js:29626:42)\n    at Object.debugHandleEvent [as handleEvent] (http://localhost:8080/bundles/vendor.33eb1367a56693653d84.bundle.js:29213:12)\n    at dispatchEvent (http://localhost:8080/bundles/vendor.33eb1367a56693653d84.bundle.js:24529:25)\n    at http://localhost:8080/bundles/vendor.33eb1367a56693653d84.bundle.js:25154:38\n    at HTMLButtonElement.<anonymous> (http://localhost:8080/bundles/vendor.33eb1367a56693653d84.bundle.js:11536:53)\n    at ZoneDelegate.invokeTask (http://localhost:8080/bundles/polyfills.33eb1367a56693653d84.bundle.js:13148:31)\n    at Object.onInvokeTask (http://localhost:8080/bundles/vendor.33eb1367a56693653d84.bundle.js:19309:33)",
+      "name": "HttpErrorResponse",
+      "message": "Http failure response for (unknown url): 0 Unknown Error",
+      "stack": "",
+      "status": 0,
+      "statusText": "Unknown Error",
+      "url": null,
       "headers": "",
-      "createdOn": "2018-01-24T09:50:06.308Z"
+      "createdOn": "2018-01-24T11:49:02.948Z"
+    },
+    {
+      "id": 2,
+      "name": "HttpErrorResponse",
+      "message": "Http failure response for (unknown url): 0 Unknown Error",
+      "stack": "",
+      "status": 0,
+      "statusText": "Unknown Error",
+      "url": null,
+      "headers": "",
+      "createdOn": "2018-01-24T11:49:29.823Z"
     }
   ]
 }

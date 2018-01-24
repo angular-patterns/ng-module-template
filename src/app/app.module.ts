@@ -3,12 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
+import { WaitHandlerModule } from './wait-handler/wait-handler.module';
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpClientModule,
-    CoreModule
+    CoreModule,
+    WaitHandlerModule
   ],
   declarations: [ AppComponent ],
   bootstrap:    [ AppComponent ],

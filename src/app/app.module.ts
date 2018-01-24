@@ -9,8 +9,8 @@ import { WaitHandlerModule } from './wait-handler/wait-handler.module';
   imports: [
     BrowserModule,
     HttpClientModule,
-    CoreModule,
-    WaitHandlerModule
+    WaitHandlerModule,
+    CoreModule
   ],
   declarations: [ AppComponent ],
   bootstrap:    [ AppComponent ],

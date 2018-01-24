@@ -2,11 +2,14 @@
   "errors": [
     {
       "id": 1,
-      "name": "Error",
-      "message": "this is a general error",
-      "stack": "Error: this is a general error\n   at AppComponent.prototype.simulateError1 (http://localhost:8080/bundles/app.4d5e1595b8d08b0dc308.bundle.js:41354:9)\n   at Anonymous function (Function code:66:15)\n   at handleEvent (http://localhost:8080/bundles/vendor.4d5e1595b8d08b0dc308.bundle.js:14562:87)\n   at callWithDebugContext (http://localhost:8080/bundles/vendor.4d5e1595b8d08b0dc308.bundle.js:16071:9)\n   at debugHandleEvent (http://localhost:8080/bundles/vendor.4d5e1595b8d08b0dc308.bundle.js:15658:5)\n   at dispatchEvent (http://localhost:8080/bundles/vendor.4d5e1595b8d08b0dc308.bundle.js:10974:9)\n   at Anonymous function (http://localhost:8080/bundles/vendor.4d5e1595b8d08b0dc308.bundle.js:11599:31)\n   at Anonymous function (http://localhost:8080/bundles/vendor.4d5e1595b8d08b0dc308.bundle.js:31762:9)\n   at ZoneDelegate.prototype.invokeTask (http://localhost:8080/bundles/polyfills.4d5e1595b8d08b0dc308.bundle.js:13225:13)\n   at onInvokeTask (http://localhost:8080/bundles/vendor.4d5e1595b8d08b0dc308.bundle.js:5754:17)",
+      "name": "HttpErrorResponse",
+      "message": "Http failure response for (unknown url): 0 Unknown Error",
+      "stack": "",
+      "status": 0,
+      "statusText": "Unknown Error",
+      "url": null,
       "headers": "",
-      "createdOn": "2018-01-24T15:56:07.365Z"
+      "createdOn": "2018-01-24T16:06:55.345Z"
     },
     {
       "id": 2,
@@ -17,7 +20,7 @@
       "statusText": "Unknown Error",
       "url": null,
       "headers": "",
-      "createdOn": "2018-01-24T15:56:18.844Z"
+      "createdOn": "2018-01-24T16:08:24.210Z"
     },
     {
       "id": 3,
@@ -28,37 +31,7 @@
       "statusText": "Unknown Error",
       "url": null,
       "headers": "",
-      "createdOn": "2018-01-24T15:56:28.407Z"
-    },
-    {
-      "id": 4,
-      "name": "HttpErrorResponse",
-      "message": "Http failure response for (unknown url): 0 Unknown Error",
-      "stack": "",
-      "status": 0,
-      "statusText": "Unknown Error",
-      "url": null,
-      "headers": "",
-      "createdOn": "2018-01-24T16:00:38.015Z"
-    },
-    {
-      "id": 5,
-      "name": "Error",
-      "message": "this is a general error",
-      "stack": "Error: this is a general error\n    at AppComponent.Array.concat.AppComponent.simulateError1 (http://localhost:8080/bundles/app.ce0db5486866ae548ab5.bundle.js:41435:15)\n    at Object.eval [as handleEvent] (ng:///AppModule/AppComponent.ngfactory.js:68:31)\n    at handleEvent (http://localhost:8080/bundles/vendor.ce0db5486866ae548ab5.bundle.js:14479:155)\n    at callWithDebugContext (http://localhost:8080/bundles/vendor.ce0db5486866ae548ab5.bundle.js:15988:42)\n    at Object.debugHandleEvent [as handleEvent] (http://localhost:8080/bundles/vendor.ce0db5486866ae548ab5.bundle.js:15575:12)\n    at dispatchEvent (http://localhost:8080/bundles/vendor.ce0db5486866ae548ab5.bundle.js:10891:25)\n    at http://localhost:8080/bundles/vendor.ce0db5486866ae548ab5.bundle.js:11516:38\n    at HTMLButtonElement.<anonymous> (http://localhost:8080/bundles/vendor.ce0db5486866ae548ab5.bundle.js:31679:53)\n    at ZoneDelegate.invokeTask (http://localhost:8080/bundles/polyfills.ce0db5486866ae548ab5.bundle.js:13227:31)\n    at Object.onInvokeTask (http://localhost:8080/bundles/vendor.ce0db5486866ae548ab5.bundle.js:5671:33)",
-      "headers": "",
-      "createdOn": "2018-01-24T16:00:46.794Z"
-    },
-    {
-      "id": 6,
-      "name": "HttpErrorResponse",
-      "message": "Http failure response for (unknown url): 0 Unknown Error",
-      "stack": "",
-      "status": 0,
-      "statusText": "Unknown Error",
-      "url": null,
-      "headers": "",
-      "createdOn": "2018-01-24T16:01:03.136Z"
+      "createdOn": "2018-01-24T16:09:42.163Z"
     }
   ]
 }

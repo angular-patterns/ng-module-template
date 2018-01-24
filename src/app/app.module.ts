@@ -9,7 +9,7 @@ import { ErrorDevComponent } from './error-dev/error-dev.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 let errorModal: Type<any>;
-if (process.env.ENV === 'Production') {
+if (process.env.Environment === 'Production') {
   errorModal = ErrorComponent;
 }
 else {

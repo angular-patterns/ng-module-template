@@ -5,6 +5,9 @@ import { ERROR_FORMATTERS } from './index';
 
 export const FormatterToken = new InjectionToken<Formatter[]>("Error Formatters");
 
+export class Test {
+
+}
 
 @NgModule({
     imports: [],
@@ -12,8 +15,7 @@ export const FormatterToken = new InjectionToken<Formatter[]>("Error Formatters"
     declarations: [],
     providers: [
         ERROR_FORMATTERS,
-        { provide: FormatterToken, useFactory:(...formatters)=> formatters, deps: ERROR_FORMATTERS},
-        { provide: FormatterFactory, useClass: FormatterFactory, deps: [FormatterToken]}
+        { provide: FormatterFactory, useFactory: (...formatters)=> new FormatterFactory(formatters), deps: ERROR_FORMATTERS},
     ]
 })
 export class ErrorHandlerModule { 

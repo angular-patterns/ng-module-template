@@ -1,3 +1,45 @@
-<h1>{{title}}</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-header">
+                <h2>Global Error Handler</h2>
+            </div>
+            <button class="btn btn-sm btn-primary" (click)="error1()">Throw Generic Error</button>
+            <button class="btn btn-sm btn-primary" (click)="error2()">Throw Http Error</button>
+            <button class="btn btn-sm btn-danger" (click)="clear()">Clear</button>
+        </div>
+        <div class="col-sm-12">
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Name</th>
+                        <th>Message</th>
+                        <th>Stack</th>
+                        <th>Status</th>
+                        <th>Status Text</th>
+                        <th>Headers</th>
+                        <th>Url</th>
+                        <th>Created On</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let error of errors |async">
+                        <td>{{error.id}}</td>
+                        <td>{{error.name}}</td>
+                        <td>{{error.message}}</td>
+                        <td>
+                            <pre>{{error.stack}}</pre>
+                        </td>
+                        <td>{{error.status}}</td>
+                        <td>{{error.statusText}}</td>
+                        <td>{{error.headers}}</td>
+                        <td>{{error.url}}</td>
+                        <td>{{error.createdOn}}</td>
+                    </tr>
 
-<sa-widget></sa-widget>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

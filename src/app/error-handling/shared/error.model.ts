@@ -1,4 +1,5 @@
-export class Error {
+export class ErrorModel {
+    id: number;
     name: string;
     message: string;
     stack: string;
@@ -6,4 +7,5 @@ export class Error {
     statusText: string;
     url: string;
     headers: string;
+    createdOn: Date
 }

@@ -4,7 +4,7 @@ import { FormatterToken } from "./error-handler.module";
 
 @Injectable()
 export class FormatterFactory {
-    constructor(@Inject(FormatterToken) private errorFormatters: Formatter[]) {
+    constructor(private errorFormatters: Formatter[]) {
     }
 
     create(error: any) {

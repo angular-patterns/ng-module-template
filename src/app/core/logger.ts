@@ -1,6 +1,9 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { Injectable, Injector, Inject  } from "@angular/core";
 import { FormatterFactory } from "../error-handling/formatter.factory";
+import { Observable } from 'rxjs/Observable';
+
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class Logger {
@@ -9,8 +12,8 @@ export class Logger {
     }
 
     logError(error: any) {
-        let formatterFactory = this.formatterFactory.create(error);
-        let formattedError = formatterFactory.format(error);
-        console.log(formattedError);
+        let formatter = this.formatterFactory.create(error);
+        let formattedError = formatter.format(error);
+        return this.http.post(`http://localhost:3000/errors`, formattedError);
     }
 }

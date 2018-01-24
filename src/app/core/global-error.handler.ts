@@ -4,12 +4,11 @@ import { Logger } from "./logger";
 
 
 export class GlobalErrorHandler implements ErrorHandler {
-    constructor(private injector: Injector) {
-        
+    constructor(private injector: Injector) {   
     }
     handleError(error: any): void {
         try {
-            let logger = this.injector.get(Logger);
+            const logger = this.injector.get(Logger);
             logger.logError(error);
         }
         catch (err) {

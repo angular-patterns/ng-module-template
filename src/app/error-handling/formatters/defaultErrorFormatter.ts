@@ -15,6 +15,5 @@ export class DefaultErrorFormatter implements Formatter {
             url: error.url,
             headers: ''
         }
-    }
-    
+    }   
 }

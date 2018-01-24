@@ -12,7 +12,7 @@ export class HttpErrorResponseFormatter implements Formatter {
             id: 0,
             name: httpError.name,
             message: httpError.message,
-            stack: '',
+            stack: httpError.error.stack,
             status: httpError.status,
             statusText: httpError.statusText,
             url: httpError.url,

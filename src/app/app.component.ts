@@ -34,7 +34,7 @@ export class AppComponent {
         this.clearEvent
            .switchMap(t=> this.getErrors())
            .mergeMap(t=> Observable.forkJoin(t.map(x=>this.http.delete(`http://localhost:3000/errors/${x.id}`))))
-           .map(t=>[])   
+           .map(t=>[]);  
         );
   }
   simulateError1() {

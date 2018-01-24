@@ -14,12 +14,13 @@ import { Observable } from "rxjs/Observable";
 import { Subject } from "rxjs/Subject";
 import { FormatterFactory } from "../error-handler/formatter.factory";
 import { ErrorInfo } from "../error-handler/shared/error.model";
+import { Config } from "./shared/config";
 
 @Injectable()
 export class GlobalErrorHandler implements ErrorHandler {
     lastError: Observable<ErrorInfo>;
     _lastError: Subject<ErrorInfo>;
-    constructor(private injector: Injector) { 
+    constructor(private injector: Injector, private config: Config) { 
         this._lastError = new Subject<ErrorInfo>();
         this.lastError = this._lastError.asObservable();
     }
@@ -58,7 +59,7 @@ export class GlobalErrorHandler implements ErrorHandler {
     showModal(error: ErrorInfo) {
         try {
             let modalService = this.injector.get(BsModalService);
-            let bsModalRef = modalService.show(ErrorDevComponent);
+            let bsModalRef = modalService.show(this.config.errorModal);
             bsModalRef.content.error = error;
             return new Promise((resolve, reject)=> {
                 modalService.onHide.subscribe(t=> {

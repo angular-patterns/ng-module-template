@@ -6,22 +6,22 @@ import { GlobalErrorHandler } from './global-error.handler';
 import { ErrorHandlerModule } from '../error-handler/error-handler.module';
 import { CommonModule } from '@angular/common';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { ErrorComponent } from './error/error.component';
-import { ErrorDevComponent } from './error-dev/error-dev.component';
 import { RetryInterceptor } from './retry.interceptor';
+import { ModuleWithProviders, ANALYZE_FOR_ENTRY_COMPONENTS } from '@angular/core';
+import { Config } from './shared/config';
+
 
 @NgModule({
     imports: [
         CommonModule,
         HttpClientModule, 
         ErrorHandlerModule,
-        ModalModule.forRoot()
+        ModalModule
 
     ],
     exports: [],
     declarations: [
-        ErrorComponent,
-        ErrorDevComponent
+
     ],
     providers: [
         Logger,
@@ -30,12 +30,25 @@ import { RetryInterceptor } from './retry.interceptor';
             useClass: RetryInterceptor,
             multi: true,
         },
-        { provide: ErrorHandler, useClass: GlobalErrorHandler, deps: [Injector] }
+        { 
+            provide: ErrorHandler, 
+            useClass: GlobalErrorHandler, 
+            deps: [Injector, Config] 
+        }
 
     ],
     entryComponents: [
-        ErrorComponent,
-        ErrorDevComponent
+
     ]
 })
-export class CoreModule { }
+export class CoreModule { 
+    static forRoot(config: Config): ModuleWithProviders {
+        return {
+            ngModule: CoreModule,
+            providers: [
+                { provide: Config, useValue: config },
+                { provide: ANALYZE_FOR_ENTRY_COMPONENTS, useValue: config, multi: true }
+            ]
+        }
+    }
+}

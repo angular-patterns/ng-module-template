@@ -1,26 +1,22 @@
-import { ErrorHandler, Injector, Injectable } from "@angular/core";
+import { ErrorHandler, Injector, Injectable, Component, OnInit, NgZone } from "@angular/core";
 import { HttpErrorResponse } from "@angular/common/http";
-import { Logger } from "./logger";
 
-import 'rxjs/add/operator/catch';
 import { BsModalService } from "ngx-bootstrap/modal";
-
-import { Component, OnInit } from '@angular/core';
-import { ErrorComponent } from "./error/error.component";
-import { ErrorDevComponent } from "./error-dev/error-dev.component";
-
-import { NgZone } from "@angular/core";
 import { Observable } from "rxjs/Observable";
 import { Subject } from "rxjs/Subject";
-import { FormatterFactory } from "../error-handler/formatter.factory";
-import { ErrorInfo } from "../error-handler/shared/error.model";
-import { Config } from "./shared/config";
+
+import { Logger } from "./logger";
+import { Config } from "./config";
+
+import { ErrorInfo, FormatterFactory } from "../../error-handler";
+import 'rxjs/add/operator/catch';
+
 
 @Injectable()
 export class GlobalErrorHandler implements ErrorHandler {
     lastError: Observable<ErrorInfo>;
     _lastError: Subject<ErrorInfo>;
-    constructor(private injector: Injector, private config: Config) { 
+    constructor(private injector: Injector, private config: Config) {
         this._lastError = new Subject<ErrorInfo>();
         this.lastError = this._lastError.asObservable();
     }
@@ -28,13 +24,13 @@ export class GlobalErrorHandler implements ErrorHandler {
         let lastError = this.getErrorInfo(error);
         let modalService = this.injector.get(BsModalService);
         if (modalService.getModalsCount() == 0) {
-            this.injector.get(NgZone).run(t=> {
+            this.injector.get(NgZone).run(t => {
                 this.logError(lastError).then(
-                    t => this._lastError.next(t), 
-                    err=> this._lastError.next(lastError)
+                    t => this._lastError.next(t),
+                    err => this._lastError.next(lastError)
                 );
                 this.showModal(lastError);
-            });    
+            });
 
         }
         else {
@@ -61,8 +57,8 @@ export class GlobalErrorHandler implements ErrorHandler {
             let modalService = this.injector.get(BsModalService);
             let bsModalRef = modalService.show(this.config.errorModal);
             bsModalRef.content.error = error;
-            return new Promise((resolve, reject)=> {
-                modalService.onHide.subscribe(t=> {
+            return new Promise((resolve, reject) => {
+                modalService.onHide.subscribe(t => {
                     resolve(error);
                 });
             });
@@ -73,11 +69,11 @@ export class GlobalErrorHandler implements ErrorHandler {
         return Promise.resolve(error);
 
 
-        
+
     }
     logError(error: ErrorInfo) {
         try {
-            
+
             const logger = this.injector.get(Logger);
             return logger.logError(error).toPromise();
         }

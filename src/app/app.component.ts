@@ -13,7 +13,7 @@ import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/startWith';
 
 import { ErrorInfo } from './error-handler/shared/error.model';
-import { GlobalErrorHandler } from './core/global-error.handler';
+import { GlobalErrorHandler } from './core/shared/global-error.handler';
 import { ErrorHandler } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 

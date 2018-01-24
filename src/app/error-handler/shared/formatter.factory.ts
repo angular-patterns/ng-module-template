@@ -1,6 +1,6 @@
 import { Injectable, Inject } from "@angular/core";
-import { Formatter } from "./shared/formatter";
-import { FormatterToken } from "./error-handler.module";
+import { Formatter } from "./formatter";
+
 
 @Injectable()
 export class FormatterFactory {

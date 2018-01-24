@@ -15,7 +15,7 @@ export class DefaultErrorFormatter implements Formatter {
             statusText: error.statusText,
             url: error.url,
             headers: '',
-            createdOn: new Date()
-        }
+            createdOn: new Date()       
+         }
     }   
 }

@@ -13,6 +13,6 @@ export class Logger {
     }
 
     logError(error: ErrorModel) {
-        return this.http.post(`http://localhost:3000/errors`, error);
+        return this.http.post<ErrorModel>(`http://localhost:3000/errors`, error);
     }
 }

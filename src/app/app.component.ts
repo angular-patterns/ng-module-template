@@ -1,12 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/finally';
 import 'rxjs/add/observable/forkJoin';
+import 'rxjs/add/observable/interval';
+
 import { ErrorModel } from './error-handler/shared/error.model';
-import { ErrorMonitor } from './core/error-monitor';
+import { GlobalErrorHandler } from './core/global-error.handler';
+import { ErrorHandler } from '@angular/core';
 
 @Component({
   selector: 'sa-app-root',
@@ -16,8 +19,11 @@ import { ErrorMonitor } from './core/error-monitor';
 export class AppComponent {
   title: string;
   errors: Observable<ErrorModel[]>;
-  constructor(private http:HttpClient) {
+  constructor(private http:HttpClient, @Inject(ErrorHandler) private errorHandler: GlobalErrorHandler) {
     this.refresh();
+    this.errorHandler.lastError.subscribe(t=> {
+      this.refresh();
+    });
   }
   error1() {
     throw new Error("this is a general error");

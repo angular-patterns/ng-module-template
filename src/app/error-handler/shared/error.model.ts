@@ -7,5 +7,5 @@ export class ErrorModel {
     statusText: string;
     url: string;
     headers: string;
-    createdOn: Date
+    createdOn: Date;
 }

@@ -4,9 +4,9 @@
       "id": 1,
       "name": "Error",
       "message": "this is a general error",
-      "stack": "Error: this is a general error\n   at AppComponent.prototype.simulateError1 (http://localhost:8080/bundles/app.378c06c89a153bb141a8.bundle.js:41400:9)\n   at Anonymous function (Function code:66:15)\n   at handleEvent (http://localhost:8080/bundles/vendor.378c06c89a153bb141a8.bundle.js:14733:87)\n   at callWithDebugContext (http://localhost:8080/bundles/vendor.378c06c89a153bb141a8.bundle.js:16242:9)\n   at debugHandleEvent (http://localhost:8080/bundles/vendor.378c06c89a153bb141a8.bundle.js:15829:5)\n   at dispatchEvent (http://localhost:8080/bundles/vendor.378c06c89a153bb141a8.bundle.js:11145:9)\n   at Anonymous function (http://localhost:8080/bundles/vendor.378c06c89a153bb141a8.bundle.js:11770:31)\n   at Anonymous function (http://localhost:8080/bundles/vendor.378c06c89a153bb141a8.bundle.js:31679:9)\n   at ZoneDelegate.prototype.invokeTask (http://localhost:8080/bundles/polyfills.378c06c89a153bb141a8.bundle.js:13232:13)\n   at onInvokeTask (http://localhost:8080/bundles/vendor.378c06c89a153bb141a8.bundle.js:5925:17)",
+      "stack": "Error: this is a general error\n   at AppComponent.prototype.simulateError1 (http://localhost:8080/bundles/app.66389232b205dfa6d265.bundle.js:41636:9)\n   at Anonymous function (Function code:66:15)\n   at handleEvent (http://localhost:8080/bundles/vendor.66389232b205dfa6d265.bundle.js:14674:87)\n   at callWithDebugContext (http://localhost:8080/bundles/vendor.66389232b205dfa6d265.bundle.js:16183:9)\n   at debugHandleEvent (http://localhost:8080/bundles/vendor.66389232b205dfa6d265.bundle.js:15770:5)\n   at dispatchEvent (http://localhost:8080/bundles/vendor.66389232b205dfa6d265.bundle.js:11086:9)\n   at Anonymous function (http://localhost:8080/bundles/vendor.66389232b205dfa6d265.bundle.js:11711:31)\n   at Anonymous function (http://localhost:8080/bundles/vendor.66389232b205dfa6d265.bundle.js:31679:9)\n   at ZoneDelegate.prototype.invokeTask (http://localhost:8080/bundles/polyfills.66389232b205dfa6d265.bundle.js:13233:13)\n   at onInvokeTask (http://localhost:8080/bundles/vendor.66389232b205dfa6d265.bundle.js:5866:17)",
       "headers": "",
-      "createdOn": "2018-01-24T19:51:10.648Z"
+      "createdOn": "2018-01-24T19:57:40.417Z"
     },
     {
       "id": 2,
@@ -16,15 +16,7 @@
       "statusText": "Unknown Error",
       "url": null,
       "headers": "",
-      "createdOn": "2018-01-24T19:51:35.608Z"
-    },
-    {
-      "id": 3,
-      "name": "Error",
-      "message": "this is a general error",
-      "stack": "Error: this is a general error\n   at AppComponent.prototype.simulateError1 (http://localhost:8080/bundles/app.378c06c89a153bb141a8.bundle.js:41400:9)\n   at Anonymous function (Function code:66:15)\n   at handleEvent (http://localhost:8080/bundles/vendor.378c06c89a153bb141a8.bundle.js:14733:87)\n   at callWithDebugContext (http://localhost:8080/bundles/vendor.378c06c89a153bb141a8.bundle.js:16242:9)\n   at debugHandleEvent (http://localhost:8080/bundles/vendor.378c06c89a153bb141a8.bundle.js:15829:5)\n   at dispatchEvent (http://localhost:8080/bundles/vendor.378c06c89a153bb141a8.bundle.js:11145:9)\n   at Anonymous function (http://localhost:8080/bundles/vendor.378c06c89a153bb141a8.bundle.js:11770:31)\n   at Anonymous function (http://localhost:8080/bundles/vendor.378c06c89a153bb141a8.bundle.js:31679:9)\n   at ZoneDelegate.prototype.invokeTask (http://localhost:8080/bundles/polyfills.378c06c89a153bb141a8.bundle.js:13232:13)\n   at onInvokeTask (http://localhost:8080/bundles/vendor.378c06c89a153bb141a8.bundle.js:5925:17)",
-      "headers": "",
-      "createdOn": "2018-01-24T19:51:41.926Z"
+      "createdOn": "2018-01-24T19:57:56.582Z"
     }
   ]
 }

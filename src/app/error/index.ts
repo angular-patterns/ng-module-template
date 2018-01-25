@@ -9,5 +9,5 @@ export const ERROR_FORMATTERS = [
 
 export { ErrorInfo } from './shared/error.model';
 export { Formatter } from './shared/formatter';
-export { ErrorHandlerModule } from './error-handler.module';
-export { FormatterFactory } from './shared/formatter.factory';
+export { ErrorModule } from './error.module';
+export { FormatterFactory } from './services/formatter.factory';

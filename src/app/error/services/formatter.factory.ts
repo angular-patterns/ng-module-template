@@ -1,5 +1,5 @@
 import { Injectable, Inject } from "@angular/core";
-import { Formatter } from "./formatter";
+import { Formatter } from "../index";
 
 
 @Injectable()

@@ -1,17 +1,18 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { HttpMonitor } from '../http-monitor.service';
+
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/debounceTime';
+import { HttpMonitor } from '../../services/http-monitor';
 
 @Component({
-    selector: 'wait',
-    templateUrl: 'wait.component.html',
+    selector: 'spinner',
+    templateUrl: 'spinner.component.html',
     styleUrls: [
-        'wait.component.css'
+        'spinner.component.css'
     ]
 })
 
-export class WaitComponent implements OnInit {
+export class SpinnerComponent implements OnInit {
 
     private pending: Observable<boolean>;
     

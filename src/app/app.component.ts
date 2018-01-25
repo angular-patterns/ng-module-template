@@ -12,10 +12,10 @@ import 'rxjs/add/operator/merge';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/startWith';
 
-import { ErrorInfo } from './error-handler/shared/error.model';
-import { GlobalErrorHandler } from './core/shared/global-error.handler';
 import { ErrorHandler } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
+import { ErrorInfo } from './error/index';
+import { GlobalErrorHandler } from './core/services/global-error.handler';
 
 @Component({
   selector: 'sa-app-root',
@@ -34,7 +34,7 @@ export class AppComponent {
         this.clearEvent
            .switchMap(t=> this.getErrors())
            .mergeMap(t=> Observable.forkJoin(t.map(x=>this.http.delete(`http://localhost:3000/errors/${x.id}`))))
-           .map(t=>[]);  
+           .map(t=>[])  
         );
   }
   simulateError1() {

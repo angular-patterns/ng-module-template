@@ -2,7 +2,8 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/c
 import { Observable } from "rxjs/Observable";
 
 import 'rxjs/add/operator/finally'
-import { HttpMonitor } from './http-monitor.service';
+import { HttpMonitor } from '../services/http-monitor';
+
 
 
 export class RequestInterceptor implements HttpInterceptor {

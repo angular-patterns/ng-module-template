@@ -1,9 +1,9 @@
 import { NgModule, ErrorHandler, InjectionToken } from '@angular/core';
-import { FormatterFactory } from './shared/formatter.factory';
+
 import { Formatter } from './shared/formatter';
 import { ERROR_FORMATTERS } from './index';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RetryInterceptor } from './shared/retry.interceptor';
+import { FormatterFactory } from './services/formatter.factory';
 
 export const FormatterToken = new InjectionToken<Formatter[]>("Error Formatters");
 
@@ -20,7 +20,7 @@ export const FormatterToken = new InjectionToken<Formatter[]>("Error Formatters"
         }
     ]
 })
-export class ErrorHandlerModule { 
+export class ErrorModule { 
 
 }
 

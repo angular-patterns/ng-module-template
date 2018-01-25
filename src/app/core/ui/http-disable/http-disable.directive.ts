@@ -1,11 +1,11 @@
 import { Directive, OnInit,HostBinding, Input } from '@angular/core';
-import { HttpMonitor } from '../http-monitor.service';
+import { HttpMonitor } from '../../services/http-monitor';
 
 @Directive({
-    selector: '[wait-disable]'
+    selector: '[http-disable]'
 })
 
-export class WaitDisableDirective implements OnInit {
+export class HttpDisableDirective implements OnInit {
     @HostBinding('disabled') disabled: boolean;
 
     constructor(private httpMonitor: HttpMonitor) {

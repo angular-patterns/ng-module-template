@@ -8,6 +8,7 @@ import { Subject } from "rxjs/Subject";
 import { Logger } from "./logger";
 
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/of';
 import {  FormatterFactory } from "../../error/index";
 import { ErrorDialogComponent } from "../ui/error-dialog/error-dialog.component";
 import { ErrorInfo } from "../shared/error.model";
@@ -52,7 +53,7 @@ export class GlobalErrorHandler implements ErrorHandler {
         }
         return new ErrorInfo();
     }
-
+\
     showModal(error: ErrorInfo) {
         try {
             let modalService = this.injector.get(BsModalService);
@@ -76,7 +77,7 @@ export class GlobalErrorHandler implements ErrorHandler {
         try {
 
             const logger = this.injector.get(Logger);
-            return logger.logError(error).toPromise();
+            return logger.logError(error).catch(t=> Observable.of(error)).toPromise();
         }
         catch (err) {
             console.log(err);

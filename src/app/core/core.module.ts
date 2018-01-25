@@ -49,7 +49,6 @@ import { SpinnerComponent } from './ui/spinner/spinner.component';
             useClass: RetryInterceptor,
             multi: true,
         },
-
         { 
             provide: ErrorHandler, 
             useClass: GlobalErrorHandler, 

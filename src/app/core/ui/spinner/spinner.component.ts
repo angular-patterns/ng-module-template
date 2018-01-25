@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
+
 import 'rxjs/add/operator/debounceTime';
+
 import { HttpMonitor } from '../../services/http-monitor';
 
 @Component({
@@ -14,9 +16,9 @@ import { HttpMonitor } from '../../services/http-monitor';
 
 export class SpinnerComponent implements OnInit {
 
-    private pending: Observable<boolean>;
+    pending: Observable<boolean>;
     
-    constructor(private httpMonitor: HttpMonitor) { 
+    constructor(public httpMonitor: HttpMonitor) { 
     }
 
     ngOnInit() { 

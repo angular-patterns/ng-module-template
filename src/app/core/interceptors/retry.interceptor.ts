@@ -13,6 +13,7 @@ export class RetryInterceptor implements HttpInterceptor {
         console.log(req.url);
 
         return next.handle(req).retryWhen(function (errors) {
+        
             return errors.delay(1000).scan((errorCount, err) => {
                 console.log(errorCount);
                 if (errorCount >= 2) {

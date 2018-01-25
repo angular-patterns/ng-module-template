@@ -3,7 +3,7 @@ import { Injectable, Injector, Inject  } from "@angular/core";
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/catch';
-import { ErrorInfo } from "../../error/index";
+import { ErrorInfo } from "../shared/error.model";
 
 @Injectable()
 export class Logger {

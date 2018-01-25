@@ -8,9 +8,9 @@ import { Subject } from "rxjs/Subject";
 import { Logger } from "./logger";
 
 import 'rxjs/add/operator/catch';
-import { CoreConfig } from "../shared/core.config";
-import { ErrorInfo, FormatterFactory } from "../../error/index";
+import {  FormatterFactory } from "../../error/index";
 import { ErrorDialogComponent } from "../ui/error-dialog/error-dialog.component";
+import { ErrorInfo } from "../shared/error.model";
 
 
 @Injectable()

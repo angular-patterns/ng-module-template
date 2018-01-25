@@ -53,7 +53,7 @@ export class GlobalErrorHandler implements ErrorHandler {
         }
         return new ErrorInfo();
     }
-\
+
     showModal(error: ErrorInfo) {
         try {
             let modalService = this.injector.get(BsModalService);

@@ -109,6 +109,40 @@
       "url": null,
       "headers": "",
       "createdOn": "2018-01-25T04:03:34.496Z"
+    },
+    {
+      "id": 14,
+      "name": "Error",
+      "message": "this is a general error",
+      "stack": "Error: this is a general error\n   at AppComponent.prototype.simulateError1 (http://localhost:8080/bundles/app.c0e5f777be327dd8bf68.bundle.js:41353:9)\n   at Anonymous function (Function code:66:15)\n   at handleEvent (http://localhost:8080/bundles/vendor.c0e5f777be327dd8bf68.bundle.js:15436:87)\n   at handleEvent (http://localhost:8080/bundles/vendor.c0e5f777be327dd8bf68.bundle.js:16168:13)\n   at dispatchEvent (http://localhost:8080/bundles/vendor.c0e5f777be327dd8bf68.bundle.js:11848:9)\n   at Anonymous function (http://localhost:8080/bundles/vendor.c0e5f777be327dd8bf68.bundle.js:12473:31)\n   at Anonymous function (http://localhost:8080/bundles/vendor.c0e5f777be327dd8bf68.bundle.js:31762:9)\n   at ZoneDelegate.prototype.invokeTask (http://localhost:8080/bundles/polyfills.c0e5f777be327dd8bf68.bundle.js:13235:13)\n   at onInvokeTask (http://localhost:8080/bundles/vendor.c0e5f777be327dd8bf68.bundle.js:6628:17)\n   at ZoneDelegate.prototype.invokeTask (http://localhost:8080/bundles/polyfills.c0e5f777be327dd8bf68.bundle.js:13235:13)",
+      "headers": "",
+      "createdOn": "2018-01-25T04:04:11.525Z"
+    },
+    {
+      "id": 15,
+      "name": "Error",
+      "message": "this is a general error",
+      "stack": "Error: this is a general error\n   at AppComponent.prototype.simulateError1 (http://localhost:8080/bundles/app.c0e5f777be327dd8bf68.bundle.js:41353:9)\n   at Anonymous function (Function code:66:15)\n   at handleEvent (http://localhost:8080/bundles/vendor.c0e5f777be327dd8bf68.bundle.js:15436:87)\n   at handleEvent (http://localhost:8080/bundles/vendor.c0e5f777be327dd8bf68.bundle.js:16168:13)\n   at dispatchEvent (http://localhost:8080/bundles/vendor.c0e5f777be327dd8bf68.bundle.js:11848:9)\n   at Anonymous function (http://localhost:8080/bundles/vendor.c0e5f777be327dd8bf68.bundle.js:12473:31)\n   at Anonymous function (http://localhost:8080/bundles/vendor.c0e5f777be327dd8bf68.bundle.js:31762:9)\n   at ZoneDelegate.prototype.invokeTask (http://localhost:8080/bundles/polyfills.c0e5f777be327dd8bf68.bundle.js:13235:13)\n   at onInvokeTask (http://localhost:8080/bundles/vendor.c0e5f777be327dd8bf68.bundle.js:6628:17)\n   at ZoneDelegate.prototype.invokeTask (http://localhost:8080/bundles/polyfills.c0e5f777be327dd8bf68.bundle.js:13235:13)",
+      "headers": "",
+      "createdOn": "2018-01-25T04:04:18.640Z"
+    },
+    {
+      "id": 16,
+      "name": "HttpErrorResponse",
+      "message": "Http failure response for (unknown url): 0 Unknown Error",
+      "status": 0,
+      "statusText": "Unknown Error",
+      "url": null,
+      "headers": "",
+      "createdOn": "2018-01-25T04:04:39.278Z"
+    },
+    {
+      "id": 17,
+      "name": "Error",
+      "message": "this is a general error",
+      "stack": "Error: this is a general error\n   at AppComponent.prototype.simulateError1 (http://localhost:8080/bundles/app.c0e5f777be327dd8bf68.bundle.js:41353:9)\n   at Anonymous function (Function code:66:15)\n   at handleEvent (http://localhost:8080/bundles/vendor.c0e5f777be327dd8bf68.bundle.js:15436:87)\n   at handleEvent (http://localhost:8080/bundles/vendor.c0e5f777be327dd8bf68.bundle.js:16168:13)\n   at dispatchEvent (http://localhost:8080/bundles/vendor.c0e5f777be327dd8bf68.bundle.js:11848:9)\n   at Anonymous function (http://localhost:8080/bundles/vendor.c0e5f777be327dd8bf68.bundle.js:12473:31)\n   at Anonymous function (http://localhost:8080/bundles/vendor.c0e5f777be327dd8bf68.bundle.js:31762:9)\n   at ZoneDelegate.prototype.invokeTask (http://localhost:8080/bundles/polyfills.c0e5f777be327dd8bf68.bundle.js:13235:13)\n   at onInvokeTask (http://localhost:8080/bundles/vendor.c0e5f777be327dd8bf68.bundle.js:6628:17)\n   at ZoneDelegate.prototype.invokeTask (http://localhost:8080/bundles/polyfills.c0e5f777be327dd8bf68.bundle.js:13235:13)",
+      "headers": "",
+      "createdOn": "2018-01-25T04:06:26.811Z"
     }
   ]
 }

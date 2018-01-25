@@ -1,8 +1,10 @@
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
+
 import { Observable } from "rxjs/Observable";
 
-import 'rxjs/add/operator/finally'
 import { HttpMonitor } from '../services/http-monitor';
+
+import 'rxjs/add/operator/finally'
 
 
 

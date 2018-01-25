@@ -1,18 +1,20 @@
 import { NgModule, ErrorHandler, Injector, InjectionToken, Component, OnInit} from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { CommonModule } from '@angular/common';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { ModuleWithProviders, ANALYZE_FOR_ENTRY_COMPONENTS } from '@angular/core';
-import { HttpMonitor } from './services/http-monitor';
+
 import { RequestInterceptor } from './interceptors/request.interceptor';
-import { Logger } from './services/logger';
 import { RetryInterceptor } from './interceptors/retry.interceptor';
-import { ErrorModule } from '../error/error.module';
+
+import { HttpMonitor } from './services/http-monitor';
 import { GlobalErrorHandler } from './services/global-error.handler';
-import { SpinnerComponent } from './ui/spinner/spinner.component';
+import { Logger } from './services/logger';
+
+import { ErrorModule } from '../error/error.module';
 import { ErrorDialogComponent } from './ui/error-dialog/error-dialog.component';
 import { HttpDisableDirective } from './ui/http-disable/http-disable.directive';
+import { SpinnerComponent } from './ui/spinner/spinner.component';
 
 
 @NgModule({

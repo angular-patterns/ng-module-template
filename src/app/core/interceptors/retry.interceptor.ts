@@ -1,13 +1,10 @@
-import { HttpInterceptor } from '@angular/common/http';
-import { HttpRequest } from "@angular/common/http";
-import { Observable } from "rxjs/Observable";
-import { HttpHandler, HttpEvent } from "@angular/common/http";
-
-import 'rxjs/add/operator/retryWhen';
-import 'rxjs/add/operator/delay';
-import 'rxjs/add/operator/scan';
-import 'rxjs/add/operator/do';
 import { Injector } from '@angular/core';
+import { HttpInterceptor, HttpRequest,HttpHandler, HttpEvent } from "@angular/common/http";
+import { Observable } from "rxjs/Observable";
+
+import 'rxjs/add/operator/delay';
+import 'rxjs/add/operator/retryWhen';
+import 'rxjs/add/operator/scan';
 
 export class RetryInterceptor implements HttpInterceptor {
 

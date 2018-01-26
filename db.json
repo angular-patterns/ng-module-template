@@ -1,0 +1,33 @@
+{
+    "scholarships": [
+        { "id": 1, "name": "Rutherford" }
+    ],
+    "pages": [
+        { "id": 1, "scholarshipId": 1, "title": "Personal Information","templateId": 1 }
+    ],
+    "sections":[
+        { "id": 1, "pageId": 1, "title": "Personal Information", "templateLocationId": 1 },
+        { "id": 2, "pageId": 1, "title": "Address", "templateLocationId": 1 }
+    ],
+    "sectionField": [
+        { "id": 1, "sectionId": 1, "fieldId": 1, "location": 1 },
+        { "id": 2, "sectionId": 1, "fieldId": 2, "location": 2 }
+    ],
+    "templates": [
+        { "id": 1, "name": "template1" },
+        { "id": 2, "name": "template2" }    
+    ],
+    "templateLocations": [
+        { "id": 1, "templateId": 1, "location": 1 },
+        { "id": 2, "templateId": 1, "location": 2 },
+        { "id": 3, "templateId": 2, "location": 1 },
+        { "id": 4, "templateId": 2, "location": 2 }
+    ],
+
+    "fields": [
+        { "id": 1, "name": "first-name" },
+        { "id": 2, "name": "last-name" }
+    ]
+
+
+}

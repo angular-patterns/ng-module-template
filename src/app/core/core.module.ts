@@ -15,6 +15,7 @@ import { ErrorModule } from '../error/error.module';
 import { ErrorDialogComponent } from './ui/error-dialog/error-dialog.component';
 import { HttpDisableDirective } from './ui/http-disable/http-disable.directive';
 import { SpinnerComponent } from './ui/spinner/spinner.component';
+import { WaitComponent } from './ui/wait/wait.component';
 
 
 @NgModule({
@@ -27,11 +28,13 @@ import { SpinnerComponent } from './ui/spinner/spinner.component';
     ],
     exports: [
         SpinnerComponent,
+        WaitComponent,
         HttpDisableDirective
 
     ],
     declarations: [
         SpinnerComponent,
+        WaitComponent,
         ErrorDialogComponent,
         HttpDisableDirective,
     ],

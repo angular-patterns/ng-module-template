@@ -1,0 +1,21 @@
+<div *ngIf="pending | async">
+    <div class="modal fade in show" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Working...</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <img *ngIf="pending | async" src="http://www.silkron.co.uk/images/spinner.gif" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-backdrop fade in"></div>
+</div>

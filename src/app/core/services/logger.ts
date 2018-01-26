@@ -12,6 +12,6 @@ export class Logger {
     }
 
     logError(error: ErrorInfo) {
-        return this.http.post<ErrorInfo>(`http://localhost:3000/errors`, error);
+        return this.http.post<ErrorInfo>(`http://localhost:3000/errors`, error, { headers: { '__retry': 'none' } });
     }
 }

@@ -17,14 +17,14 @@ export class RetryInterceptor implements HttpInterceptor {
             let retryCount: number = 1;
             try { retryCount = parseInt(req.headers.get('__retry')); }
             catch(err) { console.log(err); }
-            
-            return errors.delay(1000).scan((errorCount, err) => {
-                console.log(`Retry ${errorCount}...`);
+
+            return errors.scan((errorCount, err) => {
                 if (errorCount >= retryCount) {
                     throw err;
                 }
+                console.log(`Retry ${errorCount+1}...`);
                 return errorCount + 1;
-            }, 0);
+            }, 0).delay(1000);
         });
 
 

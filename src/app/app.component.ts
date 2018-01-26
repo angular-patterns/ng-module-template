@@ -49,7 +49,7 @@ export class AppComponent {
     throw new Error("this is a general error");
   }
   simulateError2() {
-    this.http.get('http://urldoesnotexist', { headers: { '__wait': 'true', '__retry': '3'}}).subscribe();
+    this.http.get('http://urldoesnotexist', { headers: { '__wait': 'true', '__retry': '1'}}).subscribe();
   }
   getErrors() {
     return this.http.get<ErrorInfo[]>('http://localhost:3000/errors?_sort=id&_order=desc');     

@@ -4,7 +4,7 @@
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
-<div class="modal-body" *ngIf="!production">
+<div class="modal-body" *ngIf="showDetail">
         <h3>Name</h3>
         {{ error?.name }}
         <h3>Message</h3>
@@ -22,7 +22,7 @@
         <h3>Created On</h3>
         {{ error?.createdOn }}
 </div>
-<div  class="modal-body"  *ngIf="production">
+<div  class="modal-body"  *ngIf="!showDetail">
     Oops, something went wrong!
 </div>
 <div class="modal-footer">

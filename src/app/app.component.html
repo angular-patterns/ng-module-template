@@ -7,18 +7,26 @@
             <form class="form-inline">
                 <div class="form-group">
                     <button type="button" class="btn btn-sm btn-primary" (click)="simulateError1()">Throw Generic Error</button>
-                    <button type="button"  wait-disable class="btn btn-sm btn-primary" (click)="simulateError2()">Throw Http Error</button>
-                    <button type="button"  wait-disable class="btn btn-sm btn-danger" (click)="clear()">Clear</button>
-                    <spinner *ngIf="isActive(WaitType.spinner)"></spinner>
-                    <wait *ngIf="isActive(WaitType.dialog)"></wait>
+                    <button type="button" wait-disable class="btn btn-sm btn-primary" (click)="simulateError2()">Throw Http Error</button>
+                    <button type="button" wait-disable class="btn btn-sm btn-danger" (click)="clear()">Clear</button>
+                    <spinner *ngIf="isWaitActive(WaitType.spinner)"></spinner>
+                    <wait *ngIf="isWaitActive(WaitType.dialog)"></wait>
                 </div>
                 <div class="form-group spacer">
                     <label>Wait</label>
                     <div class="btn-group" role="group" aria-label="...">
-                        <button [ngClass]="{ 'active': isActive(WaitType.spinner) }" type="button" class="btn btn-default" (click)="waitType=WaitType.spinner">Spinner</button>
-                        <button [ngClass]="{ 'active': isActive(WaitType.dialog) }" type="button" class="btn btn-default" (click)="waitType=WaitType.dialog">Dialog</button>
+                        <button [ngClass]="{ 'active': isWaitActive(WaitType.spinner) }" type="button" class="btn btn-default" (click)="waitType=WaitType.spinner">Spinner</button>
+                        <button [ngClass]="{ 'active': isWaitActive(WaitType.dialog) }" type="button" class="btn btn-default" (click)="waitType=WaitType.dialog">Dialog</button>
                     </div>
                 </div>
+                <div class="form-group spacer">
+                    <label>Environment</label>
+                    <div class="btn-group" role="group" aria-label="...">
+                        <button [ngClass]="{ 'active': isEnvActive(Environment.development) }" type="button" class="btn btn-default" (click)="setEnvironment(Environment.development)">Development</button>
+                        <button [ngClass]="{ 'active': isEnvActive(Environment.production) }" type="button" class="btn btn-default" (click)="setEnvironment(Environment.production)">Production</button>
+                    </div>
+                </div>
+
             </form>
 
         </div>

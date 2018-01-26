@@ -20,6 +20,10 @@ enum WaitType {
   spinner,
   dialog
 }
+enum Environment {
+  development,
+  production
+}
 @Component({
   selector: 'sa-app-root',
   templateUrl: './app.component.html',
@@ -30,10 +34,13 @@ export class AppComponent {
   errors: Observable<ErrorInfo[]>;
   clearEvent: Subject<ErrorInfo[]>;
   waitType: WaitType;
+  environment: Environment;
+
   WaitType: any = WaitType;
+  Environment: any = Environment;
  
   constructor(private http:HttpClient, @Inject(ErrorHandler) private errorHandler: GlobalErrorHandler) {
-    
+    this.environment = Environment.development;  
     this.waitType = WaitType.spinner;
     this.clearEvent = new Subject<ErrorInfo[]>();
     this.errors =  Observable.merge(
@@ -58,7 +65,16 @@ export class AppComponent {
     this.clearEvent.next();
   }
 
-  isActive(waitType: WaitType) {
+  isWaitActive(waitType: WaitType) {
     return this.waitType == waitType;
+  }
+
+  isEnvActive(environment: Environment) {
+    return this.environment == environment;
+  }
+
+  setEnvironment(environment: Environment) {
+    this.errorHandler.showDetail = environment === Environment.development;
+    this.environment = environment;
   }
 }

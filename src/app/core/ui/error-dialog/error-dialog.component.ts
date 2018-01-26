@@ -2,7 +2,6 @@ import { OnInit, Component, Input } from "@angular/core";
 import { BsModalRef } from "ngx-bootstrap/modal";
 import { ErrorInfo } from "../../../error/index";
 
-const production = process.env.Environment === 'Production';
 
 @Component({
     selector: 'modal-content',
@@ -11,9 +10,9 @@ const production = process.env.Environment === 'Production';
 
 export class ErrorDialogComponent implements OnInit {
     @Input() error: ErrorInfo;
-    production: boolean;
+    @Input() showDetail: boolean;
     constructor(public bsModalRef: BsModalRef) {
-        this.production = production;
+        this.showDetail = false;
     }
     ngOnInit() {
         

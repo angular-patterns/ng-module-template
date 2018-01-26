@@ -13,14 +13,17 @@ import {  FormatterFactory } from "../../error/index";
 import { ErrorDialogComponent } from "../ui/error-dialog/error-dialog.component";
 import { ErrorInfo } from "../shared/error.model";
 
+const production = process.env.Environment === 'Production';
 
 @Injectable()
 export class GlobalErrorHandler implements ErrorHandler {
+    showDetail: boolean;
     lastError: Observable<ErrorInfo>;
     _lastError: Subject<ErrorInfo>;
     constructor(private injector: Injector) {
         this._lastError = new Subject<ErrorInfo>();
         this.lastError = this._lastError.asObservable();
+        this.showDetail = production;
     }
     handleError(error: any): void {
         let lastError = this.getErrorInfo(error);
@@ -59,6 +62,8 @@ export class GlobalErrorHandler implements ErrorHandler {
             let modalService = this.injector.get(BsModalService);
             let bsModalRef = modalService.show(ErrorDialogComponent);
             bsModalRef.content.error = error;
+            bsModalRef.content.showDetail = this.showDetail;
+
             return new Promise((resolve, reject) => {
                 modalService.onHide.subscribe(t => {
                     resolve(error);

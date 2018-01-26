@@ -3,3 +3,7 @@ pre {
     height: 200px;
     overflow: scroll;
 }
+
+.spacer {
+    margin-left: 30px;
+}

@@ -16,7 +16,10 @@ import { ErrorHandler } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { ErrorInfo } from './error/index';
 import { GlobalErrorHandler } from './core/services/global-error.handler';
-
+enum WaitType {
+  spinner,
+  dialog
+}
 @Component({
   selector: 'sa-app-root',
   templateUrl: './app.component.html',
@@ -26,7 +29,12 @@ export class AppComponent {
   title: string;
   errors: Observable<ErrorInfo[]>;
   clearEvent: Subject<ErrorInfo[]>;
+  waitType: WaitType;
+  WaitType: any = WaitType;
+ 
   constructor(private http:HttpClient, @Inject(ErrorHandler) private errorHandler: GlobalErrorHandler) {
+    
+    this.waitType = WaitType.spinner;
     this.clearEvent = new Subject<ErrorInfo[]>();
     this.errors =  Observable.merge(
         this.getErrors(),
@@ -41,7 +49,7 @@ export class AppComponent {
     throw new Error("this is a general error");
   }
   simulateError2() {
-    this.http.get('http://urldoesnotexist').subscribe();
+    this.http.get('http://urldoesnotexist', { headers: { '__wait': 'true', '__retry': '3'}}).subscribe();
   }
   getErrors() {
     return this.http.get<ErrorInfo[]>('http://localhost:3000/errors?_sort=id&_order=desc');     
@@ -50,5 +58,7 @@ export class AppComponent {
     this.clearEvent.next();
   }
 
-
+  isActive(waitType: WaitType) {
+    return this.waitType == waitType;
+  }
 }

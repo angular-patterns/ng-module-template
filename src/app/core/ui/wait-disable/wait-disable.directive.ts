@@ -1,19 +1,19 @@
 import { Directive, OnInit,HostBinding, Input, OnDestroy } from '@angular/core';
-import { HttpMonitor } from '../../services/http-monitor';
 import { Subscription } from 'rxjs/Subscription';
+import { WaitMonitor } from '../../services/wait.monitor';
 @Directive({
-    selector: '[http-disable]'
+    selector: '[wait-disable]'
 })
 
-export class HttpDisableDirective implements OnInit, OnDestroy {
+export class WaitDisableDirective implements OnInit, OnDestroy {
     @HostBinding('disabled') disabled: boolean;
     private subscription: Subscription;
-    constructor(private httpMonitor: HttpMonitor) {
+    constructor(private waitMonitor: WaitMonitor) {
 
     }
 
     ngOnInit() {
-        this.subscription = this.httpMonitor.pending.subscribe(t=> {
+        this.subscription = this.waitMonitor.pending.subscribe(t=> {
             this.disabled = t;
         });
     }

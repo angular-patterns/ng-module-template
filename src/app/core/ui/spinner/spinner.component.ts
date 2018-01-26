@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/debounceTime';
 
-import { HttpMonitor } from '../../services/http-monitor';
+import { WaitMonitor } from '../../services/wait.monitor';
 
 @Component({
     selector: 'spinner',
@@ -18,10 +18,10 @@ export class SpinnerComponent implements OnInit {
 
     pending: Observable<boolean>;
     
-    constructor(public httpMonitor: HttpMonitor) { 
+    constructor(public waitMonitor: WaitMonitor) { 
     }
 
     ngOnInit() { 
-        this.pending = this.httpMonitor.pending;
+        this.pending = this.waitMonitor.pending;
     }
 }

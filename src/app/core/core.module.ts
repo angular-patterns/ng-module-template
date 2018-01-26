@@ -4,16 +4,16 @@ import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common
 
 import { ModalModule } from 'ngx-bootstrap/modal';
 
-import { RequestInterceptor } from './interceptors/request.interceptor';
+import { WaitInterceptor } from './interceptors/wait.interceptor';
 import { RetryInterceptor } from './interceptors/retry.interceptor';
 
-import { HttpMonitor } from './services/http-monitor';
+import { WaitMonitor } from './services/wait.monitor';
 import { GlobalErrorHandler } from './services/global-error.handler';
 import { Logger } from './services/logger';
 
 import { ErrorModule } from '../error/error.module';
 import { ErrorDialogComponent } from './ui/error-dialog/error-dialog.component';
-import { HttpDisableDirective } from './ui/http-disable/http-disable.directive';
+import { WaitDisableDirective } from './ui/wait-disable/wait-disable.directive';
 import { SpinnerComponent } from './ui/spinner/spinner.component';
 import { WaitComponent } from './ui/wait/wait.component';
 
@@ -29,22 +29,22 @@ import { WaitComponent } from './ui/wait/wait.component';
     exports: [
         SpinnerComponent,
         WaitComponent,
-        HttpDisableDirective
+        WaitDisableDirective
 
     ],
     declarations: [
         SpinnerComponent,
         WaitComponent,
         ErrorDialogComponent,
-        HttpDisableDirective,
+        WaitDisableDirective,
     ],
     providers: [
         Logger,
-        HttpMonitor,
+        WaitMonitor,
         {
           provide: HTTP_INTERCEPTORS,
-          useClass: RequestInterceptor,
-          deps: [HttpMonitor],
+          useClass: WaitInterceptor,
+          deps: [WaitMonitor],
           multi: true,
         }, 
         {

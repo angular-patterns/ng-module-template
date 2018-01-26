@@ -6,7 +6,7 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import { HttpRequest } from '@angular/common/http';
 
 @Injectable()
-export class HttpMonitor {
+export class WaitMonitor {
     public pending: Observable<boolean>;
     private pendingRequests: BehaviorSubject<number>;
     public count: number;

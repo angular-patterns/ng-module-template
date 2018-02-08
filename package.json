@@ -1,6 +1,6 @@
 {
   "name": "@sa/time",
-  "version": "1.1.9",
+  "version": "1.1.10",
   "description": "",
   "main": "dist/bundles/@sa/time.umd.js",
   "module": "dist/index.es5.js",

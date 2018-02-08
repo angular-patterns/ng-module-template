@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 
 import { TimeComponent } from './time.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
-    imports: [],
+    imports: [CommonModule],
     exports: [ TimeComponent ],
     declarations: [TimeComponent],
     providers: [],

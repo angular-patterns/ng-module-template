@@ -1,8 +1,8 @@
 {
-  "name": "address",
+  "name": "@sa/address",
   "version": "1.2.10",
   "description": "",
-  "main": "dist/bundles/ng-module-template.umd.js",
+  "main": "dist/bundles/@sa/address.umd.js",
   "module": "dist/index.es5.js",
   "es2015": "dist/index.es6.js",
   "typings": "dist/index.d.ts",

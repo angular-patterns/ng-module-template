@@ -1,8 +1,8 @@
 {
-  "name": "weather",
+  "name": "@sa/weather",
   "version": "1.3.6",
   "description": "",
-  "main": "dist/bundles/ng-module-template.umd.js",
+  "main": "dist/bundles/@sa/weather.umd.js",
   "module": "dist/index.es5.js",
   "es2015": "dist/index.es6.js",
   "typings": "dist/index.d.ts",

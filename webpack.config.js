@@ -104,6 +104,7 @@ module.exports = () => {
             new BundleAnalyzerPlugin({
                 openAnalyzer: false,
                 analyzerMode: 'static',
+                reportFilename: 'size/index.html'
             }),
             new  ExtractTextPlugin('bundles/styles.[hash].bundle.css'),
             new HtmlWebpackPlugin({

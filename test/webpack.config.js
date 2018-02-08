@@ -86,7 +86,8 @@ module.exports = () => {
               path: resolvePathFromRoot('.env')
             }),          
             new ProgressPlugin(),
-            new BaseHrefWebpackPlugin({ baseHref: process.env.BaseHref })
+            new BaseHrefWebpackPlugin({ baseHref: process.env.BaseHref }),
+            new ContextReplacementPlugin(/\@angular(\\|\/)core(\\|\/)esm5/)
             // new AotPlugin({
             //     tsConfigPath: './tsconfig.json',
             //     entryModule: path.join(__dirname, 'src/app/app.module#AppModule')

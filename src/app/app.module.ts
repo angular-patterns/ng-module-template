@@ -8,7 +8,8 @@ import { WeatherComponent } from './weather/weather.component';
 export const  OPEN_WEATHER_MAP_API_KEY = '14ef5c6d02466c43f17b02441ed57b44';
 
 @NgModule({
-  imports: [BrowserModule,
+  imports: [
+    BrowserModule,
     AngularWeatherWidgetModule.forRoot({
       key:  OPEN_WEATHER_MAP_API_KEY,
       name:  WeatherApiName.OPEN_WEATHER_MAP,

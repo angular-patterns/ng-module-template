@@ -15,6 +15,8 @@ const toPascalCase = require('to-pascal-case');
 const commandLineArgs = require('command-line-args');
 const rollupGlobals = require('./rollup.globals');
 const plato = require('es6-plato');
+const ngc = require('@angular/compiler-cli/src/main').main;
+const eslintRules = require('eslint/conf/eslint-recommended');
 
 const optionDefinitions = [
     { name: 'dest', alias: 'd', type: String, defaultValue: `c:\\packages\\${pkg.name}` },
@@ -61,24 +63,16 @@ gulp.task('copy-src', ['copy-public-api'], function () {
         .pipe(gulp.dest('dist/src'))
 });
 
-gulp.task('compile-es6', ['copy-src'], function (done) {
-    gulp.src('tsconfig.ngc.json')
-        .pipe(shell(['"../node_modules/.bin/ngc" -p <%= file.path %> --target es6']))
-        .on('end', function () {
-            del('node_modules/**', { force: true }).then(function () {
-                done();
-            });
-        });
+gulp.task('compile-es6', ['copy-src'], function () {
+    return Promise.resolve().then(
+        ()=> ngc(['-p', 'tsconfig.ngc.json', '-t', 'es6'], (err)=> console.error(err))
+    );
 });
 
-gulp.task('compile-es5', ['copy-src'], function (done) {
-    gulp.src('tsconfig.ngc.json')
-        .pipe(shell(['"../node_modules/.bin/ngc" -p <%= file.path %> --target es5']))
-        .on('end', function () {
-            del('node_modules/**', { force: true }).then(function () {
-                done();
-            });
-        });
+gulp.task('compile-es5', ['copy-src'], function () {
+    return Promise.resolve().then(
+        ()=> ngc(['-p', 'tsconfig.ngc.json', '-t', 'es6'], (err)=> console.error(err))
+    );
 });
 
 gulp.task('bundle-es6', ['compile-es6'], function (done) {
@@ -88,8 +82,8 @@ gulp.task('bundle-es6', ['compile-es6'], function (done) {
     rollup.rollup({
         input: 'dist/index.js',
         onwarn: function (warning) {
-            if (warning.message.indexOf("treating it as an external dependency") > -1)
-                return;
+            // if (warning.message.indexOf("treating it as an external dependency") > -1)
+            //     return;
 
             if (warning.message.indexOf("external module '@angular/core' but never used"))
                 return;
@@ -127,8 +121,8 @@ gulp.task('bundle-es5', ['compile-es5'], function (done) {
     rollup.rollup({
         input: 'dist/index.js',
         onwarn: function (warning) {
-            if (warning.message.indexOf("treating it as an external dependency") > -1)
-                return;
+            // if (warning.message.indexOf("treating it as an external dependency") > -1)
+            //     return;
 
             if (warning.message.indexOf("external module '@angular/core' but never used"))
                 return;
@@ -397,44 +391,12 @@ gulp.task('es6-plato', ['compile-es6'], function () {
     let src = './dist/**/*.js';
     let outputDir = '../dist/metrics';
 
-
-    let lintRules = {
-        'rules': {
-            'indent': [0, 'tab'],
-            'quotes': [0, 'single'],
-            'semi': [2, 'always'],
-            'no-console': [1],
-            'curly': ['error'],
-            'no-dupe-keys': 2,
-            'func-names': [1, 'always'],
-            'valid-jsdoc': 0,
-            'comma-dangle': 0,
-            'jsx-quotes': 0,
-            'react/jsx-sort-prop-types': 0,
-            'react/require-extension': 0,
-            'react/wrap-multilines': 0
-        },
-        'env': {
-            'es6': true
-        },
-        'globals': ['require'],
-        'parserOptions': {
-            'sourceType': 'module',
-            'ecmaFeatures': {
-                'jsx': true,
-                'modules': true
-            }
-        }
-    };
-
-
     let complexityRules = {
-
     };
 
     let platoArgs = {
-        title: 'sa-portal',
-        eslint: lintRules,
+        title: 'Code Metrics',
+        eslint: eslintRules,
         complexity: complexityRules
     };
 

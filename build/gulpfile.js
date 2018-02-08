@@ -16,7 +16,7 @@ const commandLineArgs = require('command-line-args');
 const rollupGlobals = require('./rollup.globals');
 const plato = require('es6-plato');
 const ngc = require('@angular/compiler-cli/src/main').main;
-
+const eslintRules = require('eslint/conf/eslint-recommended');
 
 const optionDefinitions = [
     { name: 'dest', alias: 'd', type: String, defaultValue: `c:\\packages\\${pkg.name}` },
@@ -391,44 +391,12 @@ gulp.task('es6-plato', ['compile-es6'], function () {
     let src = './dist/**/*.js';
     let outputDir = '../dist/metrics';
 
-
-    let lintRules = {
-        'rules': {
-            'indent': [0, 'tab'],
-            'quotes': [0, 'single'],
-            'semi': [2, 'always'],
-            'no-console': [1],
-            'curly': ['error'],
-            'no-dupe-keys': 2,
-            'func-names': [1, 'always'],
-            'valid-jsdoc': 0,
-            'comma-dangle': 0,
-            'jsx-quotes': 0,
-            'react/jsx-sort-prop-types': 0,
-            'react/require-extension': 0,
-            'react/wrap-multilines': 0
-        },
-        'env': {
-            'es6': true
-        },
-        'globals': ['require'],
-        'parserOptions': {
-            'sourceType': 'module',
-            'ecmaFeatures': {
-                'jsx': true,
-                'modules': true
-            }
-        }
-    };
-
-
     let complexityRules = {
-
     };
 
     let platoArgs = {
-        title: 'sa-portal',
-        eslint: lintRules,
+        title: 'Code Metrics',
+        eslint: eslintRules,
         complexity: complexityRules
     };
 

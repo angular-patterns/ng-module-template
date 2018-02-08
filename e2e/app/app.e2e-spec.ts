@@ -9,7 +9,7 @@ export class AppPage {
     return browser.get(options.virtualPath);
   }
   getParagraphText() {
-    return element(by.css('sa-app-root .navbar-brand')).getText();
+    return element(by.css('app-root>h1')).getText();
   }
 }
 
@@ -18,8 +18,8 @@ describe('App', () => {
     beforeEach(() => {
       page = new AppPage();
     });
-    it('should display welcome message', () => {
+    it('should display hello world', () => {
       page.navigateTo();
-      expect(page.getParagraphText()).toEqual('Student Aid Architecture Wiki');
+      expect(page.getParagraphText()).toEqual('Hello World!');
     });
   });

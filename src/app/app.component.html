@@ -1,1 +1,23 @@
-<h1>Hello World!</h1>
+<h1>{{ title }}</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Report</th>
+            <th>Link</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Bundle Analyzer Report</td>
+            <td><a href="report.html">report.hml</a></td>
+            <td>npm run dev|build|build-module</td>
+        </tr>
+        <tr>
+            <td>Unit Test Coverage Report</td>
+            <td><a href="coverage/index.html">coverage/index.html</a></td>
+            <td>npm run test</td>
+        </tr>
+        
+    </tbody>
+</table>

@@ -122,7 +122,7 @@ module.exports = () => {
         ].concat(isOptimized ? [
             new AotPlugin({
                 tsConfigPath: './tsconfig.json',
-                entryModule: path.join(__dirname, 'src/app/app.module#AppModule')
+                entryModule: path.join(__dirname, 'src/app/app.module#AddressModule')
             })
         ]:[
             new ContextReplacementPlugin(/\@angular(\\|\/)core(\\|\/)esm5/)

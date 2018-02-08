@@ -25,5 +25,5 @@ import { AddressComponent } from './address/address.component';
     AddressComponent
   ]
 })
-export class AppModule {
+export class AddressModule {
 }

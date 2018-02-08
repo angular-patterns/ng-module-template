@@ -8,17 +8,16 @@ import 'rxjs/add/observable/timer';
 })
 
 export class TimeComponent implements OnInit {
-    date: Date;
+    time: Date;
     timer: Observable<number>;
     constructor() {
-        this.date = new Date();
-        this.timer =  Observable.timer(100,100);
-    
+        this.time = new Date();
+        this.timer =  Observable.timer(100, 100);
      }
 
-    ngOnInit() { 
-        this.timer.subscribe(t=> {
-            this.date = new Date();
+    ngOnInit() {
+        this.timer.subscribe(t => {
+            this.time = new Date();
         });
     }
 }

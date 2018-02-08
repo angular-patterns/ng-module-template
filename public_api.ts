@@ -7,4 +7,3 @@
 
 export * from './src/app/app.module';
 export * from './src/app/time/time.component';
-export * from './src/app/time/parse-date.pipe';

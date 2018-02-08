@@ -2,7 +2,7 @@ import { Component, ViewChild, AfterViewInit, ElementRef, OnDestroy, Output, Eve
 
 
 @Component({
-  selector: 'sa-app-root',
+  selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

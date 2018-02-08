@@ -104,7 +104,6 @@
           "variable-declaration": "nospace"
         }
       ],
-      "typeof-compare": true,
       "unified-signatures": true,
       "variable-name": false,
       "whitespace": [
@@ -124,7 +123,7 @@
       "component-selector": [
         true,
         "element",
-        "sa",
+        "",
         "kebab-case"
       ],
       "use-input-property-decorator": true,

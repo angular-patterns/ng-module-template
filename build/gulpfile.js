@@ -71,7 +71,7 @@ gulp.task('compile-es6', ['copy-src'], function () {
 
 gulp.task('compile-es5', ['copy-src'], function () {
     return Promise.resolve().then(
-        ()=> ngc(['-p', 'tsconfig.ngc.json', '-t', 'es6'], (err)=> console.error(err))
+        ()=> ngc(['-p', 'tsconfig.ngc.json', '-t', 'es5'], (err)=> console.error(err))
     );
 });
 

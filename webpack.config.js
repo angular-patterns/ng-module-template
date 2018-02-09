@@ -61,13 +61,25 @@ module.exports = () => {
                     }
                 },
                 {
-                    test: /\.(jpg|png|webp|gif|otf|ttf|woff|woff2|ani)$/,
+                    test: /\.(jpg|png|webp|gif|ani)$/,
                     loader: "url-loader",
                     options:  {
                         name:  '[name].[hash:20].[ext]',
-                        outputPath:  'assets/',
+                        outputPath:  'images/',              
+                        //limit: 10000
+                    }
+                },
+                {
+                    test: /\.(otf|ttf|woff|woff2)$/,
+                    loader: "url-loader",
+                    include: [
+                        path.join(__dirname, 'node_modules/bootstrap')
+                    ],
+                    options:  {
+                        name:  '[name].[hash:20].[ext]',
+                        outputPath:  'fonts/',
                         useRelativePath: true,
-                        limit: 10000
+                        //limit: 10000
                     }
                 },
                 {

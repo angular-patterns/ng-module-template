@@ -24,14 +24,15 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: false,
-    browsers: ['Chrome'],
+    browsers: ['PhantomJS'],
     singleRun: true,
     concurrency: Infinity,
     plugins: [
       'karma-coverage-istanbul-reporter',
       'karma-chrome-launcher',
       'karma-jasmine',
-      'karma-webpack'
+      'karma-webpack',
+      'karma-phantomjs-launcher'
     ],
     coverageIstanbulReporter: {
 

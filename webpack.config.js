@@ -98,12 +98,7 @@ module.exports = () => {
                     options: {
                         tsConfigPath: './tsconfig.json'
                     }
-                },
-                {
-                    test: /\.js$/,
-                    use: { loader: 'istanbul-instrumenter-loader' },
-                    include: path.resolve('src/')
-                },                
+                },               
                 {
                     "test": /\.html$/,
                     "loader": "raw-loader"

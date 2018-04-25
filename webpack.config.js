@@ -1,18 +1,73 @@
-
-const AotPlugin = require('@ngtools/webpack').AngularCompilerPlugin;
-const { BaseHrefWebpackPlugin } = require('base-href-webpack-plugin'); 
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const CommonChunksPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
-const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
-const Dotenv  =  require('dotenv-webpack');
-const ExtractTextPlugin  =  require("extract-text-webpack-plugin");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ProgressPlugin = require('webpack/lib/ProgressPlugin');
-const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
-
 const del = require('del');
 const path = require('path');
 
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const AotPlugin = require('@ngtools/webpack').AngularCompilerPlugin;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const { CommonsChunkPlugin } = require('webpack').optimize;
+const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
+const Dotenv = require('dotenv-webpack');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const autoprefixer = require('autoprefixer');
+const postcssUrl = require('postcss-url');
+const cssnano = require('cssnano');
+const customProperties = require('postcss-custom-properties');
+
+const ProgressPlugin = require('webpack/lib/ProgressPlugin');
+const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
+const { NamedLazyChunksWebpackPlugin, BaseHrefWebpackPlugin } = require('@angular/cli/plugins/webpack');
+
+const postcssPlugins = function () {
+    // safe settings based on: https://github.com/ben-eb/cssnano/issues/358#issuecomment-283696193
+    const importantCommentRe = /@preserve|@licen[cs]e|[@#]\s*source(?:Mapping)?URL|^!/i;
+    const minimizeOptions = {
+        autoprefixer: false,
+        safe: true,
+        mergeLonghand: false,
+        discardComments: { remove: (comment) => !importantCommentRe.test(comment) }
+    };
+    return [
+        postcssUrl({
+            filter: ({ url }) => url.startsWith('~'),
+            url: ({ url }) => path.join(projectRoot, 'node_modules', url.substr(1)),
+        }),
+        postcssUrl([
+            {
+                // Only convert root relative URLs, which CSS-Loader won't process into require().
+                filter: ({ url }) => url.startsWith('/') && !url.startsWith('//'),
+                url: ({ url }) => {
+                    if (deployUrl.match(/:\/\//) || deployUrl.startsWith('/')) {
+                        // If deployUrl is absolute or root relative, ignore baseHref & use deployUrl as is.
+                        return `${deployUrl.replace(/\/$/, '')}${url}`;
+                    }
+                    else if (baseHref.match(/:\/\//)) {
+                        // If baseHref contains a scheme, include it as is.
+                        return baseHref.replace(/\/$/, '') +
+                            `/${deployUrl}/${url}`.replace(/\/\/+/g, '/');
+                    }
+                    else {
+                        // Join together base-href, deploy-url and the original URL.
+                        // Also dedupe multiple slashes into single ones.
+                        return `/${baseHref}/${deployUrl}/${url}`.replace(/\/\/+/g, '/');
+                    }
+                }
+            },
+            {
+                // TODO: inline .cur if not supporting IE (use browserslist to check)
+                filter: (asset) => !asset.hash && !asset.absolutePath.endsWith('.cur'),
+                url: 'inline',
+                // NOTE: maxSize is in KB
+                maxSize: 10
+            }
+        ]),
+        autoprefixer(),
+        customProperties({ preserve: true })
+    ].concat(minimizeCss ? [cssnano(minimizeOptions)] : []);
+};
+
+
+const minimizeCss = false;
 require('dotenv').config();
 del.sync("dist/**");
 
@@ -21,7 +76,7 @@ module.exports = () => {
     console.log(`Optimized: ${isOptimized}`);
     console.log(`Environment: ${process.env.Environment}`);
     console.log(`BaseHref: ${process.env.BaseHref}`)
-    
+
 
     const config = {
         devtool: isOptimized ? false : 'inline-source-map',
@@ -39,86 +94,125 @@ module.exports = () => {
             rules: [
                 {
                     test: /\.ts$/,
-                    loader: '@ngtools/webpack', 
+                    loader: '@ngtools/webpack',
                     options: {
                         tsConfigPath: './tsconfig.json'
                     }
                 },
                 {
-                    test: /\.html$/,
-                    loader: 'html-loader',
-                    options: {
-                        removeAttributeQuotes: false,
-                        minimize: false
+                    test: /\.js$/,
+                    use: { loader: 'istanbul-instrumenter-loader' },
+                    include: path.resolve('src/')
+                },                
+                {
+                    "test": /\.html$/,
+                    "loader": "raw-loader"
+                },
+                {
+                    "test": /\.(eot|svg|cur)$/,
+                    "loader": "file-loader",
+                    "options": {
+                        "name": "[name].[hash:20].[ext]",
+                        "limit": 10000
                     }
                 },
                 {
-                    test: /\.(eot|svg|cur)$/,
-                    loader: "file-loader",
-                    options:  {
-                        name:  '[name].[hash:20].[ext]',
-                        outputPath:  'assets/'
+                    "test": /\.(jpg|png|webp|gif|otf|ttf|woff|woff2|ani)$/,
+                    "loader": "url-loader",
+                    "options": {
+                        "name": "[name].[hash:20].[ext]",
+                        "limit": 10000
                     }
                 },
                 {
-                    test: /\.(jpg|png|webp|gif|ani)$/,
-                    loader: "url-loader",
-                    options:  {
-                        name:  '[name].[hash:20].[ext]',
-                        outputPath:  'images/',              
-                        //limit: 10000
-                    }
-                },
-                {
-                    test: /\.(otf|ttf|woff|woff2)$/,
-                    loader: "url-loader",
-                    include: [
-                        path.join(__dirname, 'node_modules/bootstrap')
+                    "exclude": [
+                        path.join(process.cwd(), "src\\global.css")
                     ],
-                    options:  {
-                        name:  '[name].[hash:20].[ext]',
-                        outputPath:  'fonts/',
-                        useRelativePath: true,
-                        //limit: 10000
-                    }
-                },
-                {
-
-                    test: /\.css$/,
-                    include: [
-                        path.join(__dirname, 'src/app')
-                    ],
-                    use: [
-                        'to-string-loader',
-                        'css-loader'
+                    "test": /\.css$/,
+                    "use": [
+                        "exports-loader?module.exports.toString()",
+                        {
+                            "loader": "css-loader",
+                            "options": {
+                                "sourceMap": false,
+                                "importLoaders": 1
+                            }
+                        },
+                        {
+                            "loader": "postcss-loader",
+                            "options": {
+                                "ident": "postcss",
+                                "plugins": postcssPlugins,
+                                "sourceMap": false
+                            }
+                        }
                     ]
                 },
-
                 {
-                    test: /\.css$/,
-                    exclude: [
-                        path.join(__dirname, 'src/app')
+                    "include": [
+                      path.join(process.cwd(), "src\\global.css")
                     ],
-                    use: ExtractTextPlugin.extract({
-                        fallback: 'style-loader',
-                        use: 'css-loader'
-                    })
-                }
+                    "test": /\.css$/,
+                    "use": [
+                      "style-loader",
+                      {
+                        "loader": "css-loader",
+                        "options": {
+                          "sourceMap": false,
+                          "importLoaders": 1
+                        }
+                      },
+                      {
+                        "loader": "postcss-loader",
+                        "options": {
+                          "ident": "postcss",
+                          "plugins": postcssPlugins,
+                          "sourceMap": false
+                        }
+                      }
+                    ]
+                  }
 
             ]
         },
         plugins: [
-            new  Dotenv({
-                path:  './.env'
+            new Dotenv({
+                path: './.env'
             }),
+            new CopyWebpackPlugin([
+                {
+                  "context": "src",
+                  "to": "",
+                  "from": {
+                    "glob": "assets/**/*",
+                    "dot": true
+                  }
+                },
+                {
+                  "context": "src",
+                  "to": "",
+                  "from": {
+                    "glob": "favicon.ico",
+                    "dot": true
+                  }
+                }
+              ], {
+                "ignore": [
+                  ".gitkeep",
+                  "**/.DS_Store",
+                  "**/Thumbs.db"
+                ],
+                "debug": "warning"
+              }),
             new ProgressPlugin(),
-            new BaseHrefWebpackPlugin({ baseHref: process.env.BaseHref }),            
+            new BaseHrefWebpackPlugin({ baseHref: process.env.BaseHref }),
             new BundleAnalyzerPlugin({
                 openAnalyzer: false,
                 analyzerMode: 'static',
-                reportFilename: 'size/index.html'
+                reportFilename: './reports/size/index.html'
             }),
-            new  ExtractTextPlugin('bundles/styles.[hash].bundle.css'),
+            new ExtractTextPlugin('bundles/styles.[hash].bundle.css'),
+            new NamedLazyChunksWebpackPlugin(),
             new HtmlWebpackPlugin({
                 filename: __dirname + '/dist/index.html',
                 template: __dirname + '/src/index.html',
@@ -126,19 +220,19 @@ module.exports = () => {
                 compile: true,
                 showErrors: true
             }),
-            new CommonChunksPlugin({
+            new CommonsChunkPlugin({
                 names: ['app', 'vendor', 'polyfills']
-            })
-            
-
-        ].concat(isOptimized ? [
+            }),
             new AotPlugin({
                 tsConfigPath: './tsconfig.json',
                 entryModule: path.join(__dirname, 'src/app/app.module#AppModule')
             })
-        ]:[
-            new ContextReplacementPlugin(/\@angular(\\|\/)core(\\|\/)esm5/)
-        ])
+
+
+        ],
+        devServer: {
+            "historyApiFallback": true
+        }
     };
 
     return config;

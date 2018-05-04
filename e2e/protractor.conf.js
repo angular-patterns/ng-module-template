@@ -6,7 +6,7 @@ const { SpecReporter } = require('jasmine-spec-reporter');
 const HtmlScreenshotReporter = require('protractor-jasmine2-screenshot-reporter');
 
 var reporter = new HtmlScreenshotReporter({
-  dest: 'dist/e2e',
+  dest: 'reports/e2e',
   filename: 'index.html'
 });
 

@@ -3,7 +3,7 @@ const tslintHtmlReport = require('tslint-html-report');
 tslintHtmlReport({
     tslint: 'tslint.json', // path to tslint.json
     srcFiles: 'src/**/*.ts', // files to lint
-    outDir: 'dist/lint', // output folder to write the report to
+    outDir: 'reports/lint', // output folder to write the report to
     html: 'index.html', // name of the html report generated
     exclude: [], // Files/patterns to exclude
     breakOnError: false, // Should it throw an error in tslint errors are found

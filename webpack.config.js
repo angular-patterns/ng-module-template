@@ -323,7 +323,7 @@ module.exports = () => {
             new BundleAnalyzerPlugin({
                 openAnalyzer: false,
                 analyzerMode: 'static',
-                reportFilename:  __dirname +'./reports/size/index.html'
+                reportFilename:  __dirname +'/reports/size/index.html'
             })
         ],
         "node": {

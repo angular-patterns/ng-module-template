@@ -1,3 +1,4 @@
+
 # ng-module-template
 
 A template for building Angular applications or re-usable Angular modules that you can publish to npm. This template is compatible with Angular 5.
@@ -41,11 +42,18 @@ You have two options for a production build:
 2. Reusable Angular Module - outputs to the `dist` folder.<br/>
   `npm run build-module`
   
-Naming your application or module:
+  a. Specifying a Module to Package<br />
+     Modify src\public_api.ts and overwrite the export statements:<br />
+     `export * from './src/app/my/my.module.ts`<br />
+     `export * from './src/app/my/my.component.ts`<br />
+     
+  Note: Remember to rebuild before publishing (i.e. `npm run build` or `npm run build-module`)
+  
+## Naming the Application or Module:
 
-   `npm run name-module -- --name <my-module>`
-   `npm add *`
-   `npm commit -m "renamed module"
+   `npm run name-module -- --name <my-module>`<br />
+   `npm add *`<br />
+   `npm commit -m "renamed module"`<br />
   
 ## Deployment
 

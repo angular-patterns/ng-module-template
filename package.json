@@ -99,7 +99,7 @@
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
     "tslint-html-report": "^1.0.7",
-    "typescript": "^2.7.2",
+    "typescript": "~2.7.2",
     "uglifyjs-webpack-plugin": "^1.1.8",
     "url-loader": "^0.6.2",
     "webpack": "~3.11.0",

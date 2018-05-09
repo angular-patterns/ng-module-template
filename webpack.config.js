@@ -318,7 +318,7 @@ module.exports = () => {
             new AngularCompilerPlugin({
                 tsConfigPath: './tsconfig.json',
                 entryModule: path.join(__dirname, 'src/app/app.module#AppModule'),
-                skipCodeGeneration: true
+                skipCodeGeneration: !isOptimized
             }),
             new BundleAnalyzerPlugin({
                 openAnalyzer: false,

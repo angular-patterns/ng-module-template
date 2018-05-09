@@ -42,16 +42,16 @@ You have two options for a production build:
 2. Reusable Angular Module - outputs to the `dist` folder.<br/>
   `npm run build-module`
   
-  a. Specifying a Module to Package
-     Modify src\public_api.ts and overwrite the export statement:
-     `export * from './src/app/my/my.module.ts`
-     `export * from './src/app/my/my.component.ts`
+  a. Specifying a Module to Package<br />
+     Modify src\public_api.ts and overwrite the export statement:<br />
+     `export * from './src/app/my/my.module.ts`<br />
+     `export * from './src/app/my/my.component.ts`<br />
   
 Naming your application or module:
 
-   `npm run name-module -- --name <my-module>`
-   `npm add *`
-   `npm commit -m "renamed module"
+   `npm run name-module -- --name <my-module>`<br />
+   `npm add *`<br />
+   `npm commit -m "renamed module"`<br />
   
 ## Deployment
 

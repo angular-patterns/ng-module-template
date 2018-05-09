@@ -64,7 +64,7 @@ There are two options for deployment.
   `npm run publish-local` - publishes from the `dist` folder to `c:\packages`. <br />
   
   The folder can be customized using a `dest` parameter:<br/>
-  `npm run publish -- --dest c:\path\to\my-module`
+  `npm run publish-local -- --dest c:\path\to\my-module`
   
 2. Publish to npm<br/>
   `npm publish`<br/>

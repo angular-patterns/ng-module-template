@@ -1,7 +1,8 @@
-
 # ng-module-template
 
-A template for building Angular applications or re-usable Angular modules that you can publish to npm. This template is compatible with Angular 5.
+A template for building Angular applications or re-usable Angular modules that you can publish to npm. This template is compatible with Angular 6.
+
+For an Angular 5 compatible template, see ng-module-template version 5.
 
 ## Install
 `  git clone https://github.com/angular-patterns/ng-module-template.git`<br />

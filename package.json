@@ -1,6 +1,6 @@
 {
   "name": "ng-module-template",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "",
   "main": "dist/bundles/ng-module-template.umd.js",
   "module": "dist/index.es5.js",

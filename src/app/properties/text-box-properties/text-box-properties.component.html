@@ -1,3 +1,7 @@
-<p>
-  text-box-properties works!
-</p>
+<div class="form-group" [formGroup]="formGroup" validate>
+    <label>{{model.properties.id.name}}</label>
+    <input type="string" [formControlName]="model.properties.id.key" class="form-control" placeholder="ID">
+</div>
+<pre>
+{{ formGroup.value | json}}
+</pre>

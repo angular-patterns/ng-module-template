@@ -1,0 +1,8 @@
+<ng-content></ng-content>
+<div *ngIf="control && control.invalid">
+
+    <span class="label label-danger" *ngIf="control.errors.required">Required</span>
+    <span class="label label-danger" *ngIf="control.errors.maxlength">Length exceeds maximum</span>
+    <span class="label label-danger" *ngIf="control.errors.minlength">Does not meet required length</span>
+    <span class="label label-danger" *ngIf="control.errors.notstring">String cannot be bobby</span>
+</div>

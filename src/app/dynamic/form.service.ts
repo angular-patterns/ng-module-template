@@ -8,10 +8,10 @@ import { Widget, Validate } from "./shared/widget.model";
 import { FormGroup } from "@angular/forms";
 import { FormControl } from "@angular/forms";
 import { Validators } from "@angular/forms";
-import { SyncValidators } from "./validators/sync-validators";
 import 'rxjs/add/operator/do';
 import { Subject } from "rxjs";
 import { Observable } from "rxjs/internal/Observable";
+import { SyncValidators } from "../validators/sync/sync.validators";
 
 @Injectable()
 export class FormService {
@@ -21,11 +21,16 @@ export class FormService {
     config: Config;
     removeWidgetSubject: Subject<Widget>;
     removeWidget$: Observable<Widget>;
+    updateWidgetSubject: Subject<Widget>;
+    updateWidget$: Observable<Widget>;
     constructor( @Inject(ConfigToken) config: Config) {
         this.id = 0;
         this.config = config;
         this.removeWidgetSubject = new Subject<Widget>();
         this.removeWidget$ = this.removeWidgetSubject.asObservable();
+
+        this.updateWidgetSubject = new Subject<Widget>();
+        this.updateWidget$ = this.updateWidgetSubject.asObservable();
     }
     generateId(key:string) {
         return `${key}${++this.id}`;
@@ -65,6 +70,11 @@ export class FormService {
     }
     removeWidget(widget: Widget) {
         this.removeWidgetSubject.next(widget);
+    }
+
+    updateWidget(widget: Widget) {
+
+        this.updateWidgetSubject.next(widget);
     }
     // getFormValue(form:Form) {
     //     let value = {};

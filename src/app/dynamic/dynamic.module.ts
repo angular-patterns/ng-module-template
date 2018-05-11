@@ -19,31 +19,11 @@ import { DragulaModule } from 'ng2-dragula/ng2-dragula';
 import {DndModule} from 'ng2-dnd';
 import { ControlComponent } from './control/control.component';
 import { GroupComponent } from './group/group.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { ConfigComponent } from './config/config.component';
+import { ValidatorsModule } from '../validators/validators.module';
+import { DynamicModule as MyDynamicModule } from 'ng-dynamic-component';
 
-@Component({
-  selector: '.form-group',
-  template: `
-    <ng-content></ng-content>
-    <div *ngIf="form && form.control && form.control.invalid">
-  
-        <span class="label label-danger" *ngIf="form.control.errors.required">Required</span>
-        <span class="label label-danger" *ngIf="form.control.errors.maxlength">Length exceeds maximum</span>
-        <span class="label label-danger" *ngIf="form.control.errors.minlength">Does not meet required length</span>
-        <span class="label label-danger" *ngIf="form.control.errors.notstring">String cannot be bobby</span>
-    </div>
-  `
-})
-
-export class ValidatorComponent implements OnInit, AfterContentInit {
-  @ContentChild(FormControlName) form;
-  constructor() { }
-
-  ngOnInit() { }
-
-  ngAfterContentInit() {
-
-  }
-}
 @NgModule({
   imports: [
     CommonModule,
@@ -51,7 +31,10 @@ export class ValidatorComponent implements OnInit, AfterContentInit {
     ReactiveFormsModule,
     FormRoutingModule,
     DragulaModule,
-    DndModule.forRoot()
+    DndModule.forRoot(),
+    ModalModule.forRoot(),
+    ValidatorsModule,
+    MyDynamicModule.withComponents([])
 
   ],
   declarations: [
@@ -60,12 +43,12 @@ export class ValidatorComponent implements OnInit, AfterContentInit {
     FormComponent, 
     SectionComponent, 
     SectionListComponent, 
-    ValidatorComponent,
     TableComponent,
     WidgetListComponent,
     WidgetOutletComponent,
     ControlComponent,
-    GroupComponent
+    GroupComponent,
+    ConfigComponent
   ],
   exports: [
     FormsModule,
@@ -75,12 +58,12 @@ export class ValidatorComponent implements OnInit, AfterContentInit {
     FormComponent, 
     SectionComponent, 
     SectionListComponent,
-    ValidatorComponent,
     TableComponent,
     WidgetListComponent,
     WidgetOutletComponent,
     ControlComponent, 
-    GroupComponent
+    GroupComponent,
+    ConfigComponent
   ]
 })
 export class DynamicModule { 

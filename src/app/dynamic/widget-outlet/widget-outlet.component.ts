@@ -15,7 +15,14 @@ export class WidgetOutletComponent implements OnInit {
       if (index >= 0) {
         this.widgets.splice(index, 1);
       }
-    })
+    });
+
+    this.formService.updateWidget$.subscribe(t=> {
+      let index = this.widgets.indexOf(t);
+      if (index >= 0) {
+        this.widgets[index] = Object.assign({}, t);
+      }
+    });
   }
 
   ngOnInit() {

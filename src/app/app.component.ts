@@ -29,6 +29,7 @@ export class AppComponent {
       required: null,
       minlength: 5
     }
+
     
     this.widgets = [this.widget];
     this.formGroupService.root = this.formGroup;

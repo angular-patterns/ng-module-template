@@ -5,11 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { DynamicModule } from './dynamic/dynamic.module';
 import { WidgetsModule } from './widgets/widgets.module';
 import { TextBoxComponent} from './widgets/text-box/text-box.component';
-import { WidgetType } from './dynamic/shared/widget-ref.model';
+import { WidgetType, PropertyType } from './dynamic/shared/widget-ref.model';
 import { UtilitiesModule } from './utilities/utilities.module';
 import { PropertiesModule} from './properties/properties.module';
 import { TextBoxPropertiesComponent } from './properties/text-box-properties/text-box-properties.component';
-
+import { DynamicModule as MyDynamicModule } from 'ng-dynamic-component';
 
 @NgModule({
   imports:      [ 
@@ -18,9 +18,28 @@ import { TextBoxPropertiesComponent } from './properties/text-box-properties/tex
     WidgetsModule,
     UtilitiesModule,
     PropertiesModule,
+    MyDynamicModule.withComponents([
+      TextBoxComponent,
+      TextBoxPropertiesComponent
+    ]),
     DynamicModule.withComponents({
       widgets:[
-        { key: 'text-box', name: 'Text Box', component: TextBoxComponent, properties: TextBoxPropertiesComponent, type: WidgetType.Field }
+        { 
+          key: 'text-box', 
+          name: 'Text Box', 
+          component: TextBoxComponent, 
+          config: {
+            component: TextBoxPropertiesComponent,
+            properties: {
+              id: {
+                key: 'id',
+                name: 'ID',
+                type: PropertyType.String
+              }
+            }
+          }, 
+          type: WidgetType.Field 
+        }
       ],
       layouts:[]
     }) 

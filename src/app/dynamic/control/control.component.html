@@ -1,8 +1,25 @@
 <div (mouseover)="show=true" (mouseout)="show=false">
   <div class="menu" [hidden]="!show">
-      <span class="label label-default" (click)="properties()" >Properties</span>
+      <span class="label label-default"  (click)="openProperties(template)" >Properties</span>
       <span class="label label-default" (click)="removeWidget()">Delete</span>
     
   </div>
   <ng-content></ng-content>
 </div>
+{{ widget.id }}
+
+<ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">{{ widget.name }} Properties</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup)" novalidate>
+        <config  [formGroup]="formGroup" [config]="widgetConfig" [model]="widgetConfigRef"></config>
+        <button type="submit" class="btn btn-sm btn-primary" [disabled]="formGroup.invalid">Ok</button>
+      </form>
+    </div>
+  </ng-template>

@@ -1,0 +1,6 @@
+<div *ngIf="!edit" (click)="onEdit()">
+    <ng-content></ng-content>
+</div>
+<div *ngIf="edit">
+    <input #tmp type="text"><button (click)="onOk(tmp.value)">Ok</button><button (click)="onCancel()">Cancel</button>
+</div>

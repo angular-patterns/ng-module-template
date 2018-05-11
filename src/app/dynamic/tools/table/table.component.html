@@ -1,0 +1,10 @@
+<table class="table">
+    <tr *ngFor="let row of rows; index as i">
+      <td *ngFor="let col of cols; index as j" >
+        <widget *ngIf="data[i][j]" [model]="data[i][j]"></widget>
+        <div class="well" *ngIf="!data[i][j]" dnd-droppable  (onDropSuccess)="onDrop($event, i, j)">
+          Drop Zone
+        </div>
+      </td>
+    </tr>
+  </table>

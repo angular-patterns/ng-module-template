@@ -1,0 +1,21 @@
+{
+    "layouts": [
+        { "id": 1, "title": "One-column Layout", "name": "layout1"},
+        { "id": 2, "title": "Two-column Layout", "name": "layout2"},
+        { "id": 3, "title": "Three-column Layout","name": "layout3"}
+    ],
+    "widgets": [
+        { "id": 1, "title": "Time", "name": "time"},
+        { "id": 2, "title": "Address", "name": "address"},
+        { "id": 3, "title": "Weather","name": "weather"}       
+    ],
+    "profiles": [
+        { "id": 1, "layoutId": 1 }
+    ],
+    "profile-widgets": [
+        { "id": 1, "profileId": 1, "widgetId": 1, "location": 1 },
+        { "id": 2, "profileId": 1, "widgetId": 2, "location": 2 },
+        { "id": 3, "profileId": 1, "widgetId": 3, "location": 3 }
+    ]
+
+}

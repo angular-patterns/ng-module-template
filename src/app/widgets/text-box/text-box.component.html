@@ -1,0 +1,5 @@
+<div class="form-group" [formGroup]="formGroup">
+  <label>{{ widget.data.name || widget.name }}</label>
+  <input type="text" [formControlName]="widget.id" class="form-control" [placeholder]="widget.data.placeholder || widget.name">
+</div>
+{{formGroup.get(widget.id).errors | json}}

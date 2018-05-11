@@ -1,3 +1,20 @@
 <h1>{{ title }}</h1>
 
 <router-outlet></router-outlet>
+<div class="row">
+    <div class="col-md-3">
+        <widget-list></widget-list>
+    </div>
+    <div class="col-md-9">
+        <widget-outlet [widgets]="widgets">
+        </widget-outlet>
+
+    </div>
+</div>
+
+
+
+<pre>
+{{ widgets | json }}
+
+</pre>

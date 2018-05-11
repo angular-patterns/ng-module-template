@@ -1,0 +1,7 @@
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">Sections</div>
+    <div class="list-group">
+      <a routerLinkActive="active" *ngFor="let item of model" routerLink="./sections/{{item.key}}" class="list-group-item">{{ item.title}}</a>
+    </div>
+  </div>

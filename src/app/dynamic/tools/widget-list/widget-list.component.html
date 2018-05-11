@@ -1,0 +1,7 @@
+
+
+<ul class="list-group">
+   <li class="list-group-item" *ngFor="let widget of widgets" dnd-draggable [dragEnabled]="true" [dragData]="widget">
+      <a>{{widget.name }}</a>
+   </li> 
+  </ul>

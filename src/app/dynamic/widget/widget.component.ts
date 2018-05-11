@@ -1,0 +1,53 @@
+import { Component, OnInit, Input, OnChanges, SimpleChanges, Type,Injector, ReflectiveInjector } from '@angular/core';
+import { FormService } from '../form.service';
+import { Widget } from '../shared/widget.model';
+import { WidgetRef, WidgetType } from '../shared/widget-ref.model';
+import { FormGroupService } from '../form/form-group.service';
+import { FormGroup } from '@angular/forms';
+import { Section } from '../shared/section.model';
+import { Layout } from '../shared/layout.model';
+import { FormControl } from '@angular/forms';
+import { Validators } from '@angular/forms';
+
+
+
+@Component({
+  selector: 'widget',
+  templateUrl: './widget.component.html',
+  styleUrls: ['./widget.component.css'],
+  providers: [
+
+  ]
+})
+export class WidgetComponent implements OnInit, OnChanges {
+
+  @Input() model: Widget;
+  component: Type<any>;
+  widgetInjector: Injector;
+  //  constructor(private section:Section, private layout:Layout, private formGroup: FormGroup, private formService: FormService, private injector: Injector) {
+    
+
+     
+  constructor(private formGroup: FormGroup, private formService: FormService, private injector: Injector, private formDataService: FormGroupService) {
+  }
+
+  ngOnInit() {
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+     if (this.model != null && this.model.key != '') {
+       let widgetRef = this.formService.getWidgetRef(this.model.key, this.model.type);
+       this.component = widgetRef.component;
+
+
+       this.widgetInjector = ReflectiveInjector.resolveAndCreate([
+         ///{ provide: Layout, useFactory: () => this.model },
+         //{ provide: Section, useFactory: () => this.section },
+         { provide: Widget, useFactory:()=> this.model},
+         { provide: FormGroup, useFactory:()=> this.formGroup } 
+       ], this.injector);
+       
+     }
+  }
+
+}

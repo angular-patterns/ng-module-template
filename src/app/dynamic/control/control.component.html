@@ -1,0 +1,8 @@
+<div (mouseover)="show=true" (mouseout)="show=false">
+  <div class="menu" [hidden]="!show">
+      <span class="label label-default" (click)="properties()" >Properties</span>
+      <span class="label label-default" (click)="removeWidget()">Delete</span>
+    
+  </div>
+  <ng-content></ng-content>
+</div>

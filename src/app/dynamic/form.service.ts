@@ -12,6 +12,7 @@ import 'rxjs/add/operator/do';
 import { Subject } from "rxjs";
 import { Observable } from "rxjs/internal/Observable";
 import { SyncValidators } from "../validators/sync/sync.validators";
+import { WidgetSettings } from "./shared/widget-settings.model";
 
 @Injectable()
 export class FormService {
@@ -23,6 +24,8 @@ export class FormService {
     removeWidget$: Observable<Widget>;
     updateWidgetSubject: Subject<Widget>;
     updateWidget$: Observable<Widget>;
+    updateSettingsSubject: Subject<WidgetSettings>;
+    updateSettings$: Observable<WidgetSettings>;
     constructor( @Inject(ConfigToken) config: Config) {
 
         this.config = config;
@@ -31,6 +34,9 @@ export class FormService {
 
         this.updateWidgetSubject = new Subject<Widget>();
         this.updateWidget$ = this.updateWidgetSubject.asObservable();
+
+        this.updateSettingsSubject = new Subject<WidgetSettings>();
+        this.updateSettings$ = this.updateSettingsSubject.asObservable();
     }
     static generateId(key:string) {
         return `${key}${++FormService.id}`;
@@ -79,6 +85,9 @@ export class FormService {
     updateWidget(widget: Widget) {
 
         this.updateWidgetSubject.next(widget);
+    }
+    updateSettings(widgetSettings: WidgetSettings) {
+        this.updateSettingsSubject.next(widgetSettings);
     }
     // getFormValue(form:Form) {
     //     let value = {};

@@ -2,4 +2,3 @@
   <label>{{ settings?.name }}</label>
   <input type="text" [formControlName]="settings?.id" class="form-control" [placeholder]="settings?.placeholder">
 </div>
-{{formGroup.get(settings?.id)?.errors | json}}

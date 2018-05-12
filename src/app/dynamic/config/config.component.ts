@@ -3,6 +3,7 @@ import { WidgetSettingsRef } from '../shared/widget-ref.model';
 import { WidgetSettings } from '../shared/widget-settings.model';
 import { FormGroup } from '@angular/forms';
 import { Widget } from '../shared/widget.model';
+import { FormService } from '../form.service';
 
 
 @Component({
@@ -11,15 +12,16 @@ import { Widget } from '../shared/widget.model';
   styleUrls: ['./config.component.css']
 })
 export class ConfigComponent implements OnInit, OnChanges {
-  @Input() settingsRef: WidgetSettingsRef;
   @Input() settings: WidgetSettings;
+  @Input() settingsRef: WidgetSettingsRef;
   @Output() settingsChange: EventEmitter<WidgetSettings>;
+
   inputs: any;
   outputs: any;
   
   component: Type<any>;
   configInjector: Injector;
-  constructor( private injector: Injector) {
+  constructor( private injector: Injector, private formService: FormService) {
     this.settingsChange = new EventEmitter<WidgetSettings>();
    }
 
@@ -33,8 +35,8 @@ export class ConfigComponent implements OnInit, OnChanges {
 
     if (this.settings != null) {
       this.inputs = {
-        settings: this.settings
-        
+        settings: this.settings,
+        settingsRef: this.settingsRef
       };
       this.outputs = {
         settingsChange: (s: any)=> {

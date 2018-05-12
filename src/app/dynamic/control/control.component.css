@@ -1,4 +1,14 @@
 .menu {
-    float: right;
+    float: left;
+    position: absolute;
+
+
+}
+.parent {
     position: relative;
+    
+}
+
+.parent:hover {
+    border: dotted 1px lightblue;
 }

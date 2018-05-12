@@ -16,7 +16,7 @@ export class WidgetRef {
 
 export class WidgetSettingsRef {
     component: Type<any>;
-    defaults: WidgetSettings;
+    defaults: any;
 }
 
 export enum WidgetType {

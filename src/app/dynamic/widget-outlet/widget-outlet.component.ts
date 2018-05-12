@@ -19,6 +19,7 @@ export class WidgetOutletComponent implements OnInit {
 
     this.formService.updateWidget$.subscribe(t=> {
       let index = this.widgets.indexOf(t);
+
       if (index >= 0) {
         this.widgets[index] = Object.assign({}, t);
       }

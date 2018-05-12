@@ -16,7 +16,7 @@ export class TableComponent implements OnInit {
 
   widgets: Widget[][];
 
-  constructor(private formService: FormService, private widget: Widget, private widgetRef:WidgetRef) {
+  constructor(private formService: FormService) {
     this.widgets = [];
     this.formService.removeWidget$.subscribe(t=> {
       for (var i = 0; i < this.settings.rows; ++i) {

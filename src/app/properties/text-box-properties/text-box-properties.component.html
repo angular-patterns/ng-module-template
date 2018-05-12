@@ -1,4 +1,5 @@
-<div [formGroup]="formGroup">
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup)" novalidate>
+
     <div class="form-group" validate>
         <label>ID</label>
         <input type="string" formControlName="id" class="form-control" placeholder="ID">
@@ -12,7 +13,9 @@
         <label>Placeholder</label>
         <input type="string" formControlName="placeholder" class="form-control" placeholder="Placeholder">
     </div>
-</div>
+    <button type="submit" class="btn btn-sm btn-primary" [disabled]="formGroup.invalid">Ok</button>
+</form>
+
 <pre>
 {{ formGroup.value | json}}
 </pre>

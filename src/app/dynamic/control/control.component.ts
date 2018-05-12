@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, TemplateRef , OnChanges, SimpleChanges} from '@angular/core';
+import { Component, OnInit, Input, TemplateRef , OnChanges, SimpleChanges, EventEmitter, Output} from '@angular/core';
 import { Widget } from '../shared/widget.model';
 import { FormService } from '../form.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
@@ -19,49 +19,39 @@ import { Form, NgForm } from '@angular/forms';
 export class ControlComponent implements OnInit, OnChanges {
   formGroup:FormGroup;
    @Input() widget: Widget;
+   @Input() settings: WidgetSettings;
+   @Output() settingsChange: EventEmitter<WidgetSettings>;
+   @Input() settingsRef: WidgetSettingsRef;
+
    modalRef: BsModalRef;
-   widgetSettingsRef: WidgetSettingsRef;
-   widgetSettings: WidgetSettings;
    
   constructor( private formService: FormService,private modalService: BsModalService) { 
     this.formGroup = new FormGroup({});
+    this.settingsChange = new EventEmitter<WidgetSettings>();
+
   }
 
   ngOnInit() {
   }
 
   ngOnChanges(changes:SimpleChanges) {
-    if (this.widget) {
-      this.widgetSettingsRef = this.formService.getWidgetRef(this.widget.key, this.widget.type).settings;
-      this.widgetSettings = Object.assign(new WidgetSettings(), this.widget.settings);
-      
-    }
 
   }
 
-  removeWidget() {
-    this.formService.removeWidget(this.widget);
-  }
+
   openProperties(template: TemplateRef<any>) {
     this.formGroup = new FormGroup({});
     this.modalRef = this.modalService.show(template);
   
   }
-  onChange(s: WidgetSettings){
-
-     this.widgetSettings = s;
-     this.modalRef.hide();
-     this.widget.settings = s;
-     this.formService.updateWidget(this.widget);
-  }
-  onSubmit(f: NgForm) {
-    if (f.valid) {
-      this.widget.settings = f.value;
-      this.formService.updateWidget(this.widget);
-      this.modalRef.hide();
-    }
-
+  onSettingsChange(s: WidgetSettings) {
+    if (this.modalRef)
+       this.modalRef.hide();
     
+       this.settingsChange.next(s);
+  }
+  removeWidget() {
+    this.formService.removeWidget(this.widget);
   }
   
 }

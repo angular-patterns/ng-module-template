@@ -23,11 +23,19 @@ export class GroupComponent implements OnInit {
     this.formService.removeWidget$.subscribe(t=> {
       if (this.content == t) {
         this.content = null;
-        this.widget.settings.content = null;
-        parentFormGroup.removeControl(this.widget.settings.id);
-      }   
-   
-    })
+        this.widget.settings.content =null;
+        (<FormGroup>this.formGroup.get(this.widget.settings.id)).removeControl(t.settings.id);
+      }
+    });
+
+    this.formService.updateWidget$.subscribe(t=> {
+      if (this.content == t) {
+        this.content = Object.assign({}, t);
+        this.widget.settings.content = this.content;
+      }
+      
+    });
+  
    }
 
   ngOnInit() {

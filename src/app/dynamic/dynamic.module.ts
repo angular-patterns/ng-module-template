@@ -26,6 +26,7 @@ import { DynamicModule as MyDynamicModule } from 'ng-dynamic-component';
 import { TablePropertiesComponent } from '../properties/table-properties/table-properties.component';
 import { WidgetSettings } from './shared/widget-settings.model';
 import { TableSettings } from '../properties/table-properties/table-settings.model';
+import { GroupSettings } from '../properties/group-properties/group-settings.model';
 
 @NgModule({
   imports: [
@@ -108,11 +109,17 @@ export class DynamicModule {
         settings: {
           component: null, 
           defaults: {
-
+             id: 0, 
+             content: null
           }
         },
         initialize(settings: WidgetSettings) {
-          return settings;
+          let groupSettings = settings as GroupSettings;
+          let newSettings = {
+            id: FormService.generateId(this.key),
+            content: groupSettings.content
+          }
+          return newSettings;
         },
         type: WidgetType.Other 
       })

@@ -26,7 +26,7 @@ import { FormService } from './dynamic/form.service';
         { 
           key: 'text-box', 
           name: 'Text Box', 
-          component: TextBoxComponent, 
+          component: TextBoxComponent,  
           settings: {
             component: TextBoxPropertiesComponent,
             defaults: {

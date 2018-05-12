@@ -1,4 +1,4 @@
-<control [widget]="model">
+<control [widget]="model" [settings]="settings" (settingsChange)="onSettingChanged($event)" [settingsRef]="settingsRef">
     <ng-container *ngComponentOutlet="component; 
         ndcDynamicInputs: inputs;
         injector: widgetInjector;"></ng-container>

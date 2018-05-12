@@ -1,5 +1,5 @@
 <div [formGroup]="parentFormGroup">
-  <div [formGroupName]="widget.settings.id || widget.id">
+  <div [formGroupName]="widget.settings.id">
     <widget *ngIf="content" [model]="content"></widget>
     <div class="well" *ngIf="!content" dnd-droppable (onDropSuccess)="onDrop($event)">
       Drop Zone
@@ -7,5 +7,5 @@
   </div>
 </div>
 <pre>
-  {{ formGroup.value | json }}
+  {{ formGroup?.value | json }}
 </pre>

@@ -8,6 +8,7 @@ import { NgForm } from '@angular/forms';
 import { Widget } from '../../dynamic/shared/widget.model';
 import { Form } from '@angular/forms';
 import { OnChanges, SimpleChanges } from '@angular/core';
+import { WidgetSettingsRef } from '../../dynamic/shared/widget-ref.model';
 
 @Component({
   selector: 'app-table-properties',
@@ -17,6 +18,8 @@ import { OnChanges, SimpleChanges } from '@angular/core';
 export class TablePropertiesComponent implements OnChanges {
   formGroup: FormGroup;
   @Input() settings: TableSettings;
+  @Input() settingsRef: WidgetSettingsRef;
+
   @Output() settingsChange: EventEmitter<TableSettings>;
 
   constructor(private fb: FormBuilder, private formService: FormService) {
@@ -39,7 +42,7 @@ export class TablePropertiesComponent implements OnChanges {
     for (var i = 0; i < this.settings.rows; ++i) {
       this.settings.widgets.push([]);
     }
-    //this.formService.updateWidget(this.widget)
+    //this.formService.updateSettings(this.settings);
     this.settingsChange.next(this.settings);
   }
 

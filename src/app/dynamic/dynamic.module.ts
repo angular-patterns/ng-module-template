@@ -68,7 +68,17 @@ import { DynamicModule as MyDynamicModule } from 'ng-dynamic-component';
 })
 export class DynamicModule { 
   public static withComponents(config: Config): ModuleWithProviders {
-    config.widgets.push({ name: 'Table', component: TableComponent, key: 'table', type: WidgetType.Other })
+    config.widgets.push(
+      { 
+        key: 'table', 
+        name: 'Table', 
+        component: TableComponent, 
+        settings: {
+          component: null,
+          defaults: {}
+        },
+        type: WidgetType.Other 
+      })
     config.widgets.push({ name: 'Group', component: GroupComponent, key: 'group', type: WidgetType.Other })
     return {
       ngModule: DynamicModule,

@@ -1,6 +1,17 @@
-<div class="form-group" [formGroup]="formGroup" validate>
-    <label>{{model.properties.id.name}}</label>
-    <input type="string" [formControlName]="model.properties.id.key" class="form-control" placeholder="ID">
+<div [formGroup]="formGroup">
+    <div class="form-group" validate>
+        <label>ID</label>
+        <input type="string" formControlName="id" class="form-control" placeholder="ID">
+    </div>
+    <div class="form-group" validate>
+        <label>Name</label>
+        <input type="string" formControlName="name" class="form-control" placeholder="Name">
+    </div>
+
+    <div class="form-group" validate>
+        <label>Placeholder</label>
+        <input type="string" formControlName="placeholder" class="form-control" placeholder="Placeholder">
+    </div>
 </div>
 <pre>
 {{ formGroup.value | json}}

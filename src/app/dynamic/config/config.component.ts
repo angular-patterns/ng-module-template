@@ -1,6 +1,6 @@
 import { Component, OnInit, Injector,Input,Type, OnChanges, SimpleChanges, ReflectiveInjector } from '@angular/core';
-import { WidgetConfigRef } from '../shared/widget-ref.model';
-import { WidgetConfig } from '../shared/widget-config.model';
+import { WidgetSettingsRef } from '../shared/widget-ref.model';
+import { WidgetSettings } from '../shared/widget-settings.model';
 import { FormGroup } from '@angular/forms';
 
 
@@ -11,8 +11,8 @@ import { FormGroup } from '@angular/forms';
 })
 export class ConfigComponent implements OnInit, OnChanges {
   @Input() formGroup:FormGroup
-  @Input() model: WidgetConfigRef;
-  @Input() config: WidgetConfig;
+  @Input() settingsRef: WidgetSettingsRef;
+  @Input() settings: WidgetSettings;
   inputs: any;
   
   component: Type<any>;
@@ -29,14 +29,15 @@ export class ConfigComponent implements OnInit, OnChanges {
 
     if (this.formGroup != null) {
       this.inputs = {
-        formGroup: this.formGroup
+        formGroup: this.formGroup,
+        settings: this.settings
       };
-      this.component = this.model.component;
+      this.component = this.settingsRef.component;
       this.configInjector = ReflectiveInjector.resolveAndCreate([
         ///{ provide: Layout, useFactory: () => this.model },
         //{ provide: FormGroup, useFactory:()=> this.formGroup },
-        { provide: WidgetConfigRef, useFactory:()=> this.model},
-        { provide: WidgetConfig, useFactory:()=> this.config }
+        { provide: WidgetSettingsRef, useFactory:()=> this.settingsRef},
+        { provide: WidgetSettings, useFactory:()=> this.settings }
       ], this.injector);
       
     }

@@ -16,12 +16,12 @@ export class LabelEditorComponent implements OnInit {
     ngOnInit() { }
 
     onEdit() {
-        this.cache = this.widget.data.name;
+        this.cache = this.widget.settings.name;
         this.edit = true;
     }
 
     onOk(value: string) {
-        this.widget.data.name = value;
+        this.widget.settings.name = value;
         this.edit = false;
     }
     onCancel() {

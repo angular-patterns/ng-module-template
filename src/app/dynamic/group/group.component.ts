@@ -17,14 +17,14 @@ import { SkipSelf } from '@angular/core';
 export class GroupComponent implements OnInit {
   content: Widget;
   constructor(private formGroup:FormGroup, @SkipSelf() private parentFormGroup: FormGroup,  private widget:Widget, private formService:FormService, private formGroupService: FormGroupService) {
-    parentFormGroup.registerControl(widget.data.id || widget.id, formGroup);
+    parentFormGroup.registerControl(widget.settings.id, formGroup);
 
-    this.content = widget.data.content; 
+    this.content = widget.settings.content; 
     this.formService.removeWidget$.subscribe(t=> {
       if (this.content == t) {
         this.content = null;
-        this.widget.data.content = null;
-        parentFormGroup.removeControl(this.widget.id);
+        this.widget.settings.content = null;
+        parentFormGroup.removeControl(this.widget.settings.id);
       }   
    
     })
@@ -34,7 +34,7 @@ export class GroupComponent implements OnInit {
   }
   onDrop($event) {
     this.content = this.formService.createWidget($event.dragData);;
-    this.widget.data.content = this.content;
+    this.widget.settings.content = this.content;
   }
 
 }

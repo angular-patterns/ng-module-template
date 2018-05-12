@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { WidgetConfigRef } from '../../dynamic/shared/widget-ref.model';
+import { WidgetSettingsRef } from '../../dynamic/shared/widget-ref.model';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { WidgetConfig } from '../../dynamic/shared/widget-config.model';
-import { TextBoxConfig } from './text-box-config.model';
+import { WidgetSettings } from '../../dynamic/shared/widget-settings.model';
+import { TextBoxSettings } from './text-box-settings.model';
 import { SyncValidators } from '../../validators/sync/sync.validators';
 import { FormControl } from '@angular/forms';
 
@@ -15,15 +15,15 @@ import { FormControl } from '@angular/forms';
 export class TextBoxPropertiesComponent implements OnInit {
   
   @Input() formGroup: FormGroup;
-  textBoxConfig: TextBoxConfig;
-  constructor(private model: WidgetConfigRef, private config: WidgetConfig, private fb: FormBuilder) { 
+  @Input() settings: TextBoxSettings;
+  constructor(private model: WidgetSettingsRef, private fb: FormBuilder) { 
 
   }
 
   ngOnInit() {
-        alert(this.formGroup);
-    this.textBoxConfig = this.config as TextBoxConfig;
-    this.formGroup.registerControl(this.model.properties.id.key, new FormControl(this.textBoxConfig.id, SyncValidators.required()));
+    this.formGroup.setControl('id', new FormControl(this.settings.id,SyncValidators.required() ));
+    this.formGroup.setControl('name', new FormControl(this.settings.name,SyncValidators.required() ));
+    this.formGroup.setControl('placeholder', new FormControl(this.settings.placeholder,SyncValidators.required() ));
 
   }
 

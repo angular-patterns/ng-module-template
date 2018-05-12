@@ -15,7 +15,7 @@ import { SyncValidators } from "../validators/sync/sync.validators";
 
 @Injectable()
 export class FormService {
-    id: number;
+    static id: number = 0;
     rootFormGroup: FormGroup;
     parentFormGroup: FormGroup;
     config: Config;
@@ -24,7 +24,7 @@ export class FormService {
     updateWidgetSubject: Subject<Widget>;
     updateWidget$: Observable<Widget>;
     constructor( @Inject(ConfigToken) config: Config) {
-        this.id = 0;
+
         this.config = config;
         this.removeWidgetSubject = new Subject<Widget>();
         this.removeWidget$ = this.removeWidgetSubject.asObservable();
@@ -32,8 +32,8 @@ export class FormService {
         this.updateWidgetSubject = new Subject<Widget>();
         this.updateWidget$ = this.updateWidgetSubject.asObservable();
     }
-    generateId(key:string) {
-        return `${key}${++this.id}`;
+    static generateId(key:string) {
+        return `${key}${++FormService.id}`;
     }
 
     getWidgetRef(key: string, type: WidgetType) {
@@ -48,7 +48,11 @@ export class FormService {
     
     createWidget(widgetRef: WidgetRef) {
         let validate = { sync: {}, async:{}};
-        return { id: this.generateId(widgetRef.key), key: widgetRef.key, name: widgetRef.name, type: widgetRef.type, data: {}, validate: validate };
+        let widget: Widget = {  key: widgetRef.key, type: widgetRef.type, validate: validate, settings: widgetRef.settings.defaults };
+        if (widgetRef.initialize) {
+            widget.settings = widgetRef.initialize(widgetRef.settings.defaults);
+        }
+        return widget;
     }
     getLayout(key: string) {
         return this.config.layouts.find(t => t.key === key);
@@ -57,7 +61,7 @@ export class FormService {
     createFormControl(formGroup:FormGroup, widget: Widget) {
     
         let formControl = new FormControl('', this.getValidators(widget.validate.sync));
-        formGroup.registerControl(widget.id, formControl);
+        formGroup.registerControl(widget.settings.id, formControl);
         return formControl;
     }
     getValidators(validators: { [key: string]: any}) {

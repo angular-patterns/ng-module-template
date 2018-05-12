@@ -1,5 +1,5 @@
 <div [formGroup]="parentFormGroup">
-  <div [formGroupName]="widget.data.id || widget.id">
+  <div [formGroupName]="widget.settings.id || widget.id">
     <widget *ngIf="content" [model]="content"></widget>
     <div class="well" *ngIf="!content" dnd-droppable (onDropSuccess)="onDrop($event)">
       Drop Zone

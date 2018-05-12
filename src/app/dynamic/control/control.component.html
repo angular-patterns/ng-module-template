@@ -10,7 +10,7 @@
 
 <ng-template #template>
     <div class="modal-header">
-      <h4 class="modal-title pull-left">{{ widget.name }} Properties</h4>
+      <h4 class="modal-title pull-left">{{ widget.settings.name }} Properties</h4>
       <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -18,7 +18,7 @@
     <div class="modal-body">
 
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup)" novalidate>
-        <config  [formGroup]="formGroup" [config]="widgetConfig" [model]="widgetConfigRef"></config>
+        <config  [formGroup]="formGroup" [settings]="widgetSettings" [settingsRef]="widgetSettingsRef"></config>
         <button type="submit" class="btn btn-sm btn-primary" [disabled]="formGroup.invalid">Ok</button>
       </form>
     </div>

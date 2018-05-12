@@ -24,11 +24,13 @@ export class WidgetComponent implements OnInit, OnChanges {
   @Input() model: Widget;
   component: Type<any>;
   widgetInjector: Injector;
+  inputs: any;
   //  constructor(private section:Section, private layout:Layout, private formGroup: FormGroup, private formService: FormService, private injector: Injector) {
     
 
      
   constructor(private formGroup: FormGroup, private formService: FormService, private injector: Injector, private formDataService: FormGroupService) {
+
   }
 
   ngOnInit() {
@@ -38,7 +40,11 @@ export class WidgetComponent implements OnInit, OnChanges {
      if (this.model != null && this.model.key != '') {
        let widgetRef = this.formService.getWidgetRef(this.model.key, this.model.type);
        this.component = widgetRef.component;
-
+       this.inputs = {
+        formGroup: this.formGroup,
+        settings: this.model.settings
+      };
+ 
 
        this.widgetInjector = ReflectiveInjector.resolveAndCreate([
          ///{ provide: Layout, useFactory: () => this.model },

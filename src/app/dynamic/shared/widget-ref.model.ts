@@ -1,27 +1,22 @@
 import { Type } from "@angular/core";
+import { WidgetSettings } from "./widget-settings.model";
 
 export class WidgetRef {
     key: string;
     name: string;
     component: Type<any>;
     type: WidgetType;
-    config?: WidgetConfigRef;
+    settings?: WidgetSettingsRef;
+    initialize(settings:WidgetSettings): WidgetSettings 
+    {
+        return settings;
+    }
 
 }
 
-export class WidgetConfigRef {
+export class WidgetSettingsRef {
     component: Type<any>;
-    properties: PropertiesRef;
-}
-
-export class PropertiesRef {
-    [name: string]: PropertyRef;
-}
-
-export class PropertyRef {
-    key: string;
-    name: string;
-    type: PropertyType   
+    defaults: WidgetSettings;
 }
 
 export enum WidgetType {
@@ -29,10 +24,5 @@ export enum WidgetType {
     Group,
     Section,
     Other
-}
-export enum PropertyType {
-    String,
-    Number,
-    Date
 }
 

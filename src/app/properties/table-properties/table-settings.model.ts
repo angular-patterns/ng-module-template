@@ -6,4 +6,8 @@ export class TableSettings extends WidgetSettings {
     rows: number;
     cols: number;
     widgets: any;
+    constructor() {
+        super();
+        this.widgets = [];
+    }
 }

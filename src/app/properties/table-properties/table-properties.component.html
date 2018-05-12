@@ -1,3 +1,20 @@
-<p>
-  table-properties works!
-</p>
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup)" novalidate>
+  <div class="form-group" validate>
+    <label>ID</label>
+    <input type="string" formControlName="id" class="form-control" placeholder="ID">
+  </div>
+  <div class="form-group" validate>
+    <label>Rows</label>
+    <input type="number" formControlName="rows" class="form-control" placeholder="Rows">
+  </div>
+
+  <div class="form-group" validate>
+    <label>Columns</label>
+    <input type="number" formControlName="cols" class="form-control" placeholder="Cols">
+  </div>
+  <button type="submit" class="btn btn-sm btn-primary" [disabled]="formGroup.invalid">Ok</button>
+</form>
+
+<pre>
+      {{ formGroup.value | json}}
+      </pre>

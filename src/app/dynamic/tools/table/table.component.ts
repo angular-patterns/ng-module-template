@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject, Input, SimpleChanges } from '@angular/core';
 import { Widget } from '../../shared/widget.model';
 import { FormService } from '../../form.service';
-import { WidgetType } from '../../shared/widget-ref.model';
+import { WidgetType, WidgetRef } from '../../shared/widget-ref.model';
 import { TableSettings } from '../../../properties/table-properties/table-settings.model';
 import { FormGroup } from '@angular/forms';
 
@@ -16,13 +16,13 @@ export class TableComponent implements OnInit {
 
   widgets: Widget[][];
 
-  constructor(private formService: FormService, private widget: Widget) {
+  constructor(private formService: FormService, private widget: Widget, private widgetRef:WidgetRef) {
     this.widgets = [];
     this.formService.removeWidget$.subscribe(t=> {
       for (var i = 0; i < this.settings.rows; ++i) {
         for (var j =0; j < this.settings.cols; ++j) {
           if (this.widgets[i][j] == t) {
-            this.widgets[i].splice(j, 1);
+            this.widgets[i][j]=null;
           }
         }
       }
@@ -54,7 +54,7 @@ export class TableComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges) {
     if (this.settings) {
-      this.widgets = this.settings.widgets;      
+      this.widgets = this.settings.widgets;
     }
   }
   onDrop($event, i, j) {

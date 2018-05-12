@@ -22,6 +22,7 @@ import { Validators } from '@angular/forms';
 export class WidgetComponent implements OnInit, OnChanges {
 
   @Input() model: Widget;
+  widgetRef: WidgetRef;
   component: Type<any>;
   widgetInjector: Injector;
   inputs: any;
@@ -38,8 +39,8 @@ export class WidgetComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
      if (this.model != null && this.model.key != '') {
-       let widgetRef = this.formService.getWidgetRef(this.model.key, this.model.type);
-       this.component = widgetRef.component;
+       this.widgetRef = this.formService.getWidgetRef(this.model.key, this.model.type);
+       this.component = this.widgetRef.component;
        this.inputs = {
         formGroup: this.formGroup,
         settings: this.model.settings
@@ -48,7 +49,7 @@ export class WidgetComponent implements OnInit, OnChanges {
 
        this.widgetInjector = ReflectiveInjector.resolveAndCreate([
          ///{ provide: Layout, useFactory: () => this.model },
-         //{ provide: Section, useFactory: () => this.section },
+         { provide: WidgetRef, useFactory: () => this.widgetRef },
          { provide: Widget, useFactory:()=> this.model},
          { provide: FormGroup, useFactory:()=> this.formGroup } 
        ], this.injector);

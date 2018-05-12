@@ -47,11 +47,21 @@ export class ControlComponent implements OnInit, OnChanges {
     this.modalRef = this.modalService.show(template);
   
   }
+  onChange(s: WidgetSettings){
+
+     this.widgetSettings = s;
+     this.modalRef.hide();
+     this.widget.settings = s;
+     this.formService.updateWidget(this.widget);
+  }
   onSubmit(f: NgForm) {
     if (f.valid) {
       this.widget.settings = f.value;
       this.formService.updateWidget(this.widget);
       this.modalRef.hide();
     }
+
+    
   }
+  
 }

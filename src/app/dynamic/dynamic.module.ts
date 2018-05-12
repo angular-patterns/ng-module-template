@@ -102,9 +102,18 @@ export class DynamicModule {
       })
     config.widgets.push(
       { 
+        key: 'group', 
         name: 'Group', 
         component: GroupComponent, 
-        key: 'group', 
+        settings: {
+          component: null, 
+          defaults: {
+
+          }
+        },
+        initialize(settings: WidgetSettings) {
+          return settings;
+        },
         type: WidgetType.Other 
       })
     return {

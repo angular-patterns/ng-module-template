@@ -16,10 +16,10 @@
       </button>
     </div>
     <div class="modal-body">
+        <config [settings]="widgetSettings" (settingsChange)="onChange($event)" [settingsRef]="widgetSettingsRef"></config>
 
-      <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup)" novalidate>
-        <config  [formGroup]="formGroup" [settings]="widgetSettings" [settingsRef]="widgetSettingsRef"></config>
+      <!-- <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup)" novalidate>
         <button type="submit" class="btn btn-sm btn-primary" [disabled]="formGroup.invalid">Ok</button>
-      </form>
+      </form> -->
     </div>
   </ng-template>

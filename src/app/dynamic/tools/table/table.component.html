@@ -1,8 +1,8 @@
 <table class="table">
-    <tr *ngFor="let row of rows; index as i">
-      <td *ngFor="let col of cols; index as j" >
-        <widget *ngIf="settings[i][j]" [model]="settings[i][j]"></widget>
-        <div class="well" *ngIf="!settings[i][j]" dnd-droppable  (onDropSuccess)="onDrop($event, i, j)">
+    <tr *ngFor="let row of getArray(settings.rows); index as i">
+      <td *ngFor="let col of getArray(settings.cols); index as j" >
+        <widget *ngIf="widgets[i][j]" [model]="widgets[i][j]"></widget>
+        <div class="well" *ngIf="!widgets[i][j]" dnd-droppable  (onDropSuccess)="onDrop($event, i, j)">
           Drop Zone
         </div>
       </td>

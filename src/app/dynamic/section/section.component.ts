@@ -10,8 +10,9 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./section.component.css']
 })
 export class SectionComponent implements OnInit {
+
   model: Section;
-  formGroup: FormGroup;
+  @Input() formGroup: FormGroup;
 
   constructor(private formDataService: FormGroupService, private activatedRoute: ActivatedRoute, private router: Router) {
     this.formGroup = formDataService.root;

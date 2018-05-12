@@ -1,10 +1,10 @@
 <div [formGroup]="formGroup">
-    <div formGroupName="{{ model.key }}">
+    <div formGroupName="{{ model?.key }}">
         <table class="table">
             <tr>
-                <td>{{model.title}}</td>
+                <td>{{model?.title}}</td>
             </tr>
         </table>
-        <layout *ngFor="let layout of model.layouts" [section]="model" [model]="layout"></layout>
+        <layout *ngFor="let layout of model?.layouts" [section]="model" [model]="layout"></layout>
     </div>
 </div>

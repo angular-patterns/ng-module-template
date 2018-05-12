@@ -23,6 +23,9 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ConfigComponent } from './config/config.component';
 import { ValidatorsModule } from '../validators/validators.module';
 import { DynamicModule as MyDynamicModule } from 'ng-dynamic-component';
+import { TablePropertiesComponent } from '../properties/table-properties/table-properties.component';
+import { WidgetSettings } from './shared/widget-settings.model';
+import { TableSettings } from '../properties/table-properties/table-settings.model';
 
 @NgModule({
   imports: [
@@ -74,12 +77,36 @@ export class DynamicModule {
         name: 'Table', 
         component: TableComponent, 
         settings: {
-          component: null,
-          defaults: {}
+          component: TablePropertiesComponent,
+          defaults: {
+            id: 0, 
+            rows:2,
+            cols: 3,
+            widgets: []
+          }
         },
+        initialize(settings: WidgetSettings) {
+          let tableSettings = settings as TableSettings;
+          let newSettings = {
+            id: FormService.generateId(this.key),
+            rows: tableSettings.rows,
+            cols: tableSettings.cols,
+            widgets: [...tableSettings.widgets]
+          }
+          for (var i = 0; i < newSettings.rows; ++i) {
+            newSettings.widgets.push([]);
+          }
+          return newSettings;
+       },
         type: WidgetType.Other 
       })
-    config.widgets.push({ name: 'Group', component: GroupComponent, key: 'group', type: WidgetType.Other })
+    config.widgets.push(
+      { 
+        name: 'Group', 
+        component: GroupComponent, 
+        key: 'group', 
+        type: WidgetType.Other 
+      })
     return {
       ngModule: DynamicModule,
       providers: [

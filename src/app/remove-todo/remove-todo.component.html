@@ -1,0 +1,18 @@
+<button (click)="openModal(template)" class="btn btn-xs btn-danger">Remove</button> 
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Remove Todo</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    Are you Sure?
+  </div>
+  <div class="modal-footer">
+      <button (click)="ok()" type="button" class="btn btn-sm btn-primary">Ok</button>
+      <button (click)="cancel()" type="button" class="btn btn-sm btn-primary">Cancel</button>
+
+  </div>
+</ng-template>

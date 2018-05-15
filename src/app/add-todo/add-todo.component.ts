@@ -12,7 +12,7 @@ export class AddTodoComponent implements OnInit {
   formGroup: FormGroup;
   modalRef: BsModalRef;
   constructor(private modalService: BsModalService, private todoService: TodoService) {
-    this.initForm();    
+    this.initForm();
   }
   initForm() {
     this.formGroup = new FormGroup({

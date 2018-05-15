@@ -130,7 +130,8 @@ module.exports = () => {
 
 
     const config = {
-        devtool: isOptimized ? false : 'inline-source-map',
+        //devtool: isOptimized ? false : 'inline-source-map',
+        devtool: false, 
         resolve: { extensions: ['.ts', '.js'] },
         entry: {
             app: './src/main.ts',

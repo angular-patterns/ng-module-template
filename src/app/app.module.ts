@@ -14,7 +14,8 @@ import { RemoveTodoComponent } from './remove-todo/remove-todo.component';
   imports:      [ 
     BrowserModule, 
     AppRoutingModule, 
-    HttpClientModule,ModalModule.forRoot(),
+    HttpClientModule,
+    ModalModule.forRoot(),
     FormsModule,
     ReactiveFormsModule 
   ],

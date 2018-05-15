@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddTodoComponent } from './add-todo.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 describe('AddTodoComponent', () => {
   let component: AddTodoComponent;
@@ -8,6 +10,12 @@ describe('AddTodoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        ModalModule.forRoot()
+      
+      ],
       declarations: [ AddTodoComponent ]
     })
     .compileComponents();

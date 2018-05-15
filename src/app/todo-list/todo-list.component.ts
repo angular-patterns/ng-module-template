@@ -15,7 +15,6 @@ export class TodoListComponent implements OnInit {
   constructor(private todoService: TodoService) {
     this.todos$ = todoService.todos$;
     this.empty$ = this.todos$.pipe(
-      tap(x=> console.log(x.length)),
       map(t => t.length === 0)
     );
   }

@@ -26,6 +26,9 @@ describe('TodoListComponent', () => {
 
   beforeEach(() => {
     todoService =  new TodoService(null);
+    const q$ = cold('-x|', { x: [] });
+    spyOnProperty(todoService, 'todos$', 'get').and.returnValue(q$);
+
     TestBed.configureTestingModule({
       imports: [
         FormsModule,
@@ -52,29 +55,26 @@ describe('TodoListComponent', () => {
   });
 
   it ('should initialize observables', () => {
-    
-    const q$ = cold('---x|', []);
-
-    spyOnProperty(todoService, 'todos$', 'get').and.returnValue(q$);
-    
     expect(component.todos$).toBeTruthy();
     expect(component.empty$).toBeTruthy();
 
   });
 
-  it ('should render empty list', () => {
-    const q$ = cold('---x|', []);
-    spyOnProperty(todoService, 'todos$', 'get').and.returnValue(q$);
+  it ('should render empty list and show message', () => {
+
 
     getTestScheduler().flush(); // flush the observables
 
     fixture.detectChanges(); // update view
 
-    const elements = getAll(fixture, By.css('table tr'));
+    const elements = getAll(fixture, By.css('tr'));
     expect(elements.length).toBe(2);
 
-    expect(elements[0].nativeElement.innerText).toBe('emtpy');
-    
+    expect(elements[1].nativeElement.innerText).toBe('The list is empty'); 
+  });
+
+  it('show not empty message', () => {
+
   });
 
 

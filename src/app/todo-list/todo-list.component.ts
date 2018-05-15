@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../core/todo.service';
-import { Observable } from 'rxjs';
+import { Observable, pipe } from 'rxjs';
 import { Todo } from '../models/todo.model';
-import { map, distinctUntilChanged } from 'rxjs/operators';
+import { map, tap, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-todo-list',
@@ -10,12 +10,12 @@ import { map, distinctUntilChanged } from 'rxjs/operators';
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent implements OnInit {
-  todos$ : Observable<Todo[]>;
+  todos$: Observable<Todo[]>;
   empty$: Observable<boolean>;
   constructor(private todoService: TodoService) {
     this.todos$ = todoService.todos$;
     this.empty$ = this.todos$.pipe(
-      map(t=>t.length == 0)
+      map(t => t.length === 0)
     );
   }
 

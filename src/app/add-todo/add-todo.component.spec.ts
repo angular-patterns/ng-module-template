@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, TestBed, ComponentFixture } from '@angular/core/testing';
 
 import { AddTodoComponent } from './add-todo.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -7,9 +7,13 @@ import { defer } from 'rxjs';
 import { TodoService } from '../core/todo.service';
 import { By } from '@angular/platform-browser';
 import { BsModalService } from 'ngx-bootstrap/modal/bs-modal.service';
+import { DebugElement } from '@angular/core';
 
 export function asyncData<T>(data: T) {
   return defer(() => Promise.resolve(data));
+}
+export function getElement<T>(fixture: ComponentFixture<T>) {
+  return fixture.debugElement.query(By.css('button[type="button"]'));
 }
 
 describe('AddTodoComponent', () => {
@@ -53,17 +57,23 @@ describe('AddTodoComponent', () => {
     expect(control.hasError('required')).toBe(true);
   })
 
-  it ('should clear form before opening modal', () => {
-    const de = fixture.debugElement;
-    const btn = de.query(By.css('button[type="button"]'));
-    expect(btn).toBeTruthy();
+  it ('should open modal', () => {
 
+    const button = getElement(fixture);
+    spyOn(component, 'openModal');
+
+    button.triggerEventHandler('click', null);
+    expect(component.openModal).toHaveBeenCalled();
+    
     //const control = component.formGroup.get('title');
     
-    btn.triggerEventHandler('click', null);
+    //btn.triggerEventHandler('click', null);
     //expect(control).toBeTruthy();
    // expect(control.value).toEqual('');
    // expect(control.hasError('required')).toBe(true);
   })
+
+
+
 
 });

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
 
 import { TodoListComponent } from './todo-list.component';
 import { TodoService } from '../core/todo.service';
@@ -22,11 +22,10 @@ export function getAll<T>(fixture: ComponentFixture<T>, predicate: Predicate<Deb
 describe('TodoListComponent', () => {
   let component: TodoListComponent;
   let fixture: ComponentFixture<TodoListComponent>;
-  let todoService: TodoService;
 
   beforeEach(() => {
-    todoService =  new TodoService(null);
-    const q$ = cold('-x|', { x: [] });
+    const todoService =  new TodoService(null);
+    const q$ = cold('---x|', { x: [] });
     spyOnProperty(todoService, 'todos$', 'get').and.returnValue(q$);
 
     TestBed.configureTestingModule({
@@ -60,22 +59,63 @@ describe('TodoListComponent', () => {
 
   });
 
-  it ('should render empty list and show message', () => {
+  it ('should render empty list and show message',
+    inject([TodoService], (todoService: TodoService) => {
+      getTestScheduler().flush(); // flush the observables
+      fixture.detectChanges(); // update view
+      const elements = getAll(fixture, By.css('tr'));
+      expect(elements.length).toBe(2);
+      expect(elements[1].nativeElement.innerText).toEqual('The list is empty'); 
+    })
+  );
+});
 
 
+describe('TodoListComponent With Data', () => {
+  let component: TodoListComponent;
+  let fixture: ComponentFixture<TodoListComponent>;
+
+  beforeEach(() => {
+    const todoService =  new TodoService(null);
+    const q$ = cold('---x|', { x: [{id: 1, title: 'test'}] });
+    spyOnProperty(todoService, 'todos$', 'get').and.returnValue(q$);
+
+    TestBed.configureTestingModule({
+      imports: [
+        FormsModule,
+        ReactiveFormsModule
+      ],
+      declarations: [ TodoListComponent ],
+      providers: [
+        { provide: TodoService, useValue: todoService }
+      ],
+      schemas: [
+        NO_ERRORS_SCHEMA
+      ]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(TodoListComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+
+  });
+
+  it ('should not show empty message',
+  inject([TodoService], (todoService: TodoService) => {
     getTestScheduler().flush(); // flush the observables
-
     fixture.detectChanges(); // update view
+    const elements = getAll(fixture, By.css('tbody tr'));
+    expect(elements.length).toBe(1);
+    expect(elements[0].nativeElement.innerText).not.toEqual('The list is empty'); 
 
-    const elements = getAll(fixture, By.css('tr'));
-    expect(elements.length).toBe(2);
-
-    expect(elements[1].nativeElement.innerText).toBe('The list is empty'); 
-  });
-
-  it('show not empty message', () => {
-
-  });
+    const tds = elements[0].queryAll(By.css('td'));
+    expect(tds.length).toBe(3);
+    expect(tds[0].nativeElement.innerText).toBe('1');
+    expect(tds[1].nativeElement.innerText).toBe('test');
+    })
+  );
 
 
 });
+

@@ -1,4 +1,4 @@
-import { async, TestBed, ComponentFixture } from '@angular/core/testing';
+import { async, TestBed, ComponentFixture, inject } from '@angular/core/testing';
 
 import { AddTodoComponent } from './add-todo.component';
 import { FormsModule, ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
@@ -20,16 +20,12 @@ export function getElement<T>(fixture: ComponentFixture<T>, predicate: Predicate
 describe('AddTodoComponent', () => {
   let component: AddTodoComponent;
   let fixture: ComponentFixture<AddTodoComponent>;
-  let todoService: TodoService;
-  let modalService: BsModalService;
-  let bsModalRef: BsModalRef;
-
 
   beforeEach(() => {
-    bsModalRef = jasmine.createSpyObj('BsModalRef', ['hide']);
-    todoService =  jasmine.createSpyObj('TodoService', ['load', 'add']);
-    modalService = jasmine.createSpyObj('BsModalService', ['show'] );
-    (<any>modalService.show).and.returnValue(bsModalRef);
+    
+    const todoService =  jasmine.createSpyObj('TodoService', ['add']);
+    const modalService = jasmine.createSpyObj('BsModalService', ['show'] );
+    
 
     TestBed.configureTestingModule({
       imports: [
@@ -43,7 +39,7 @@ describe('AddTodoComponent', () => {
       ]
     })
     .compileComponents();
-
+    
     fixture = TestBed.createComponent(AddTodoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -54,40 +50,39 @@ describe('AddTodoComponent', () => {
   });
   it ('should initialize an empty form', () => {
     expect(component.formGroup).toBeTruthy();
-
     const control = component.formGroup.get('title');
     expect(control.value).toEqual('');
     expect(control.hasError('required')).toBe(true);
   });
-  it ('should call openModal on click', () => {
 
+  it ('should call openModal on click', () => {
     const button = getElement(fixture, By.css('button[type="button"]'));
     spyOn(component, 'openModal');
-
     button.triggerEventHandler('click', null);
     expect(component.openModal).toHaveBeenCalled();
   });
   it ('should clear form before opening modal', () => {
     const controlBefore = component.formGroup.get('title');
-    controlBefore.setValue('test');
-
     const button = getElement(fixture, By.css('button[type="button"]'));
-
     button.triggerEventHandler('click', null);
     const controlAfter = component.formGroup.get('title');
+    expect(controlBefore).not.toBe(controlAfter);
     expect(controlAfter.value).toEqual('');
 
   });
-  it ('should add todo when form is valid', () => {
-    const formGroup = new FormGroup({
-      title: new FormControl('')
-    });
-    component.modalRef = bsModalRef;
+  it ('should add todo when form is valid',
+    inject([TodoService, BsModalService], (todoService, modalService) => {
+      const bsModalRef = jasmine.createSpyObj('BsModalRef', ['hide']);
+      (<any>modalService.show).and.returnValue(bsModalRef);
+      const formGroup = new FormGroup({
+        title: new FormControl('')
+      });
+      component.modalRef = bsModalRef;
 
-    component.onSubmit(formGroup);
+      component.onSubmit(formGroup);
 
-    expect(todoService.add).toHaveBeenCalled();
-    expect(bsModalRef.hide).toHaveBeenCalled();
-  });
-
+      expect(todoService.add).toHaveBeenCalled();
+      expect(bsModalRef.hide).toHaveBeenCalled();
+    })
+  );
 });

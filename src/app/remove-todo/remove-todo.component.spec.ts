@@ -77,6 +77,11 @@ describe('RemoveTodoComponent', () => {
       expect(component.modalRef).toBe(bsModalRef);
 
     
-  })
+   })
   );
+  it ('should cancel modal', ()=> {
+    component.modalRef = jasmine.createSpyObj('BsModalRef', ['hide']);
+    component.cancel();
+    expect(component.modalRef.hide).toHaveBeenCalled();
+  })
 });

@@ -32,9 +32,11 @@ export class TodoService {
     update(id: number, todo: Todo) {
         const updated = this.http.put<Todo>(`http://localhost:3000/todos/${id}`, todo);
         updated.subscribe(t=> {
+            
             let i = this._store.todos.indexOf(todo);
             if (i >= 0) {
                 this._store.todos[i]= t;
+                this._todos.next(this._store.todos);
             }
         })
         return updated;

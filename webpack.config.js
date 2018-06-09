@@ -9,8 +9,9 @@ const postcssUrl = require('postcss-url');
 const postcssImports = require('postcss-import');
 
 const { NoEmitOnErrorsPlugin, NamedModulesPlugin } = require('webpack');
-const { NamedLazyChunksWebpackPlugin, BaseHrefWebpackPlugin, PostcssCliResources } = require('@angular/cli/plugins/webpack');
-const { CommonsChunkPlugin } = require('webpack').optimize;
+//NamedLazyChunksWebpackPlugin, BaseHrefWebpackPlugin, 
+const { PostcssCliResources } = require('@angular/cli/plugins/webpack');
+//const { CommonsChunkPlugin } = require('webpack').optimize;
 const { AngularCompilerPlugin } = require('@ngtools/webpack');
 
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -18,7 +19,7 @@ const Dotenv = require('dotenv-webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const cssnano = require('cssnano');
 
-const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
+//const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 
 const hashFormat = { "chunk": "", "extract": "", "file": ".[hash:20]", "script": "" };
 const baseHref = process.env.BaseHref;
@@ -133,14 +134,25 @@ module.exports = () => {
         devtool: isOptimized ? false : 'inline-source-map',
         resolve: { extensions: ['.ts', '.js'] },
         entry: {
-            app: './src/main.ts',
-            vendor: './src/vendor.ts',
             polyfills: './src/polyfills.ts',
-            styles: './src/styles.css'
+            app: './src/main.ts',
+            //vendor: './src/vendor.ts',
+            //styles: './src/styles.css'
         },
         output: {
             filename: 'bundles/[name].[hash].bundle.js',
             path: path.join(process.cwd(), "dist")
+        },
+        optimization: {
+            splitChunks: {
+                cacheGroups: {
+                    commons: {
+                        test: /[\\/]node_modules[\\/]/,
+                        name: "vendors",
+                        chunks: "all"
+                    }
+                }
+            }
         },
         module: {
             rules: [
@@ -302,7 +314,7 @@ module.exports = () => {
                 "onDetected": false,
                 "cwd": projectRoot
             }),
-            new NamedLazyChunksWebpackPlugin(),
+            //new NamedLazyChunksWebpackPlugin(),
             new HtmlWebpackPlugin({
                 filename: __dirname + '/dist/index.html',
                 template: __dirname + '/src/index.html',
@@ -310,11 +322,11 @@ module.exports = () => {
                 compile: true,
                 showErrors: true
             }),
-            new BaseHrefWebpackPlugin({ baseHref: process.env.BaseHref }),
-            new CommonsChunkPlugin({
-                names: ['app', 'vendor', 'styles', 'polyfills']
-            }),
-            new NamedModulesPlugin({}),
+            //new BaseHrefWebpackPlugin({ baseHref: process.env.BaseHref }),
+            // new CommonsChunkPlugin({
+            //     names: ['app', 'vendor', 'styles', 'polyfills']
+            // }),
+            //new NamedModulesPlugin({}),
             new AngularCompilerPlugin({
                 tsConfigPath: './tsconfig.json',
                 entryModule: path.join(__dirname, 'src/app/app.module#AppModule'),

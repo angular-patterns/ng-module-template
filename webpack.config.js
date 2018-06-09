@@ -134,10 +134,10 @@ module.exports = () => {
         devtool: isOptimized ? false : 'inline-source-map',
         resolve: { extensions: ['.ts', '.js'] },
         entry: {
+            styles: './src/styles.css',
             polyfills: './src/polyfills.ts',
             app: './src/main.ts',
             //vendor: './src/vendor.ts',
-            //styles: './src/styles.css'
         },
         output: {
             filename: 'bundles/[name].[hash].bundle.js',

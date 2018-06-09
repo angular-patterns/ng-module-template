@@ -10,7 +10,7 @@ const postcssImports = require('postcss-import');
 
 const { NoEmitOnErrorsPlugin, NamedModulesPlugin } = require('webpack');
 //NamedLazyChunksWebpackPlugin, BaseHrefWebpackPlugin, 
-const { PostcssCliResources } = require('@angular/cli/plugins/webpack');
+//const { PostcssCliResources } = require('@angular/cli/plugins/webpack');
 //const { CommonsChunkPlugin } = require('webpack').optimize;
 const { AngularCompilerPlugin } = require('@ngtools/webpack');
 
@@ -110,11 +110,11 @@ const postcssPlugins = function (loader) {
             },
             { url: 'rebase' },
         ]),
-        PostcssCliResources({
-            deployUrl: loader.loaders[loader.loaderIndex].options.ident == 'extracted' ? '' : deployUrl,
-            loader,
-            filename: `[name]${hashFormat.file}.[ext]`,
-        }),
+        // PostcssCliResources({
+        //     deployUrl: loader.loaders[loader.loaderIndex].options.ident == 'extracted' ? '' : deployUrl,
+        //     loader,
+        //     filename: `[name]${hashFormat.file}.[ext]`,
+        // }),
         autoprefixer({ grid: true }),
     ];
 };
@@ -136,8 +136,8 @@ module.exports = () => {
         entry: {
             styles: './src/styles.css',
             polyfills: './src/polyfills.ts',
-            app: './src/main.ts',
             //vendor: './src/vendor.ts',
+            app: './src/main.ts',
         },
         output: {
             filename: 'bundles/[name].[hash].bundle.js',

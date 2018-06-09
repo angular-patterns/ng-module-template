@@ -134,9 +134,8 @@ module.exports = () => {
         devtool: isOptimized ? false : 'inline-source-map',
         resolve: { extensions: ['.ts', '.js'] },
         entry: {
-            styles: './src/styles.css',
+            styles: './src/styles.scss',
             polyfills: './src/polyfills.ts',
-            //vendor: './src/vendor.ts',
             app: './src/main.ts',
         },
         output: {
@@ -178,7 +177,8 @@ module.exports = () => {
                 },
                 {
                     "exclude": [
-                        path.join(process.cwd(), "src\\styles.css")
+                        path.join(process.cwd(), "src\\styles.css"),
+                        path.join(process.cwd(), "src\\styles.scss")
                     ],
                     "test": /\.css$/,
                     "use": [
@@ -197,7 +197,9 @@ module.exports = () => {
                 },
                 {
                     "exclude": [
-                        path.join(process.cwd(), "src\\styles.css")
+                        path.join(process.cwd(), "src\\styles.css"),
+                        path.join(process.cwd(), "src\\styles.scss"),
+                        
                     ],
                     "test": /\.scss$|\.sass$/,
                     "use": [
@@ -244,7 +246,7 @@ module.exports = () => {
                 },
                 {
                     "include": [
-                        path.join(process.cwd(), "src\\styles.css")
+                        path.join(process.cwd(), "src\\styles.scss")
                     ],
                     "test": /\.scss$|\.sass$/,
                     "use": [

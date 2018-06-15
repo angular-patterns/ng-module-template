@@ -123,6 +123,7 @@ require('dotenv').config();
 del.sync("dist/**");
 
 module.exports = (env) => {
+    env = env || {};
     const isOptimized = process.argv.indexOf('-p') !== -1;
     const environment = env.Environment;
     const baseHref = env.BaseHref || process.env.BaseHref || '/';

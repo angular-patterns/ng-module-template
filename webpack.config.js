@@ -122,12 +122,16 @@ const postcssPlugins = function (loader) {
 require('dotenv').config();
 del.sync("dist/**");
 
-module.exports = () => {
+module.exports = (env) => {
     const isOptimized = process.argv.indexOf('-p') !== -1;
-    console.log(`Optimized: ${isOptimized}`);
-    console.log(`Environment: ${process.env.Environment}`);
-    console.log(`BaseHref: ${process.env.BaseHref}`)
+    const environment = env.Environment;
+    const baseHref = env.BaseHref || process.env.BaseHref || '/';
+    const deployUrl = env.DeployUrl || process.env.DeployUrl || '/';
 
+    console.log(`Optimized: ${isOptimized}`);
+    console.log(`Environment: ${environment}`);
+    console.log(`BaseHref: ${baseHref}`)
+    console.log(`DeployUrl: ${deployUrl}`);
 
     const config = {
         devtool: isOptimized ? false : 'inline-source-map',
@@ -140,7 +144,8 @@ module.exports = () => {
         },
         output: {
             filename: 'bundles/[name].[hash].bundle.js',
-            path: path.join(process.cwd(), "dist")
+            path: path.join(process.cwd(), "dist"),
+            publicPath: deployUrl
         },
         module: {
             rules: [
@@ -310,7 +315,7 @@ module.exports = () => {
                 compile: true,
                 showErrors: true
             }),
-            new BaseHrefWebpackPlugin({ baseHref: process.env.BaseHref }),
+            new BaseHrefWebpackPlugin({ baseHref: baseHref }),
             new CommonsChunkPlugin({
                 names: ['app', 'vendor', 'styles', 'polyfills']
             }),

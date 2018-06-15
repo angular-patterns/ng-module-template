@@ -125,7 +125,7 @@ del.sync("dist/**");
 module.exports = (env) => {
     env = env || {};
     const isOptimized = process.argv.indexOf('-p') !== -1;
-    const environment = env.Environment;
+    const environment = env.Environment || process.env.Environment || 'Development';
     const baseHref = env.BaseHref || process.env.BaseHref || '/';
     const deployUrl = env.DeployUrl || process.env.DeployUrl || '/';
 

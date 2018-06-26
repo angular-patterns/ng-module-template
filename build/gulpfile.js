@@ -71,7 +71,7 @@ gulp.task('compile-es6', ['copy-src'], function () {
 
 gulp.task('compile-es5', ['copy-src'], function () {
     return Promise.resolve().then(
-        ()=> ngc(['-p', 'tsconfig.ngc.json', '-t', 'es6'], (err)=> console.error(err))
+        ()=> ngc(['-p', 'tsconfig.ngc.json', '-t', 'es5'], (err)=> console.error(err))
     );
 });
 
@@ -285,7 +285,8 @@ gulp.task('git-commit', function () {
 gulp.task('git-tag', function (done) {
     if (publishPath != null) {
         process.chdir(publishPath);
-        git.tag(pkg.version, `v${pkg.version}`, function (err) {
+        git.tag(`${pkg.version}`, `v${pkg.version}`, function (err) {
+            console.log(`tagged ${pkg.version}`);
             if (err) throw err;
             done();
         });
@@ -389,7 +390,7 @@ gulp.task('base-tag', function () {
 gulp.task('es6-plato', ['compile-es6'], function () {
 
     let src = './dist/**/*.js';
-    let outputDir = '../dist/metrics';
+    let outputDir = '../reports/metrics';
 
     let complexityRules = {
     };

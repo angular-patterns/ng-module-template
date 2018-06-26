@@ -1,9 +1,10 @@
 # ng-module-template
 
-A template for building Angular applications or re-usable Angular modules that you can publish to npm. This template is Angular5 compatible.
+A template for building Angular applications or re-usable Angular modules that you can publish to npm. This template is compatible with Angular 6.
+
+For an Angular 5 compatible template, see ng-module-template version 5.
 
 ## Install
-
 `  git clone https://github.com/angular-patterns/ng-module-template.git`<br />
 `  cd ng-module-template` <br />
 `  npm install`
@@ -14,24 +15,23 @@ Opens webpack-dev-server on port 8080 for development:
 
 `  npm run dev`
 
-If you are building a reusable Angular module, you will also have to export any compnents, pipes, services, etc from `src\public_api.ts`. This will allow users of your module to import those sybmols directly.
+## Building a Reusable Angular Module
 
-For example, if you want to export MyComponent, then modify `public_api.ts`:<br />
+`  npm run build-module`
 
-`  export { MyComponent } from 'app/my.component';`
-<br />
-<br />
-Users of your module can then import the component:<br />
-
-`  import { MyComponent } from 'ng-module-template'`
+Production distribution files may be found in the `dist` folder.
 
 ## Test
 
-There are three type of tests: 
+There are five type of tests: 
 
 1. Unit Tests - `npm run test`
 2. e2e Tests - `npm run e2e`
 3. lint Tests - `npm run lint`
+4. Code Metrics - `npm run metrics`
+5. Size Report - `npm run build`
+
+All reports are stored under the `reports` folder.
 
 ## Production Builds
 
@@ -43,6 +43,19 @@ You have two options for a production build:
 2. Reusable Angular Module - outputs to the `dist` folder.<br/>
   `npm run build-module`
   
+  a. Specifying a Module to Package<br />
+     Modify src\public_api.ts and overwrite the export statements:<br />
+     `export * from './src/app/my/my.module.ts`<br />
+     `export * from './src/app/my/my.component.ts`<br />
+     
+  Note: Remember to rebuild before publishing (i.e. `npm run build` or `npm run build-module`)
+  
+## Naming the Application or Module:
+
+   `npm run name-module -- --name <my-module>`<br />
+   `npm add *`<br />
+   `npm commit -m "renamed module"`<br />
+  
 ## Deployment
 
 There are two options for deployment.
@@ -51,42 +64,20 @@ There are two options for deployment.
   `npm run publish-local` - publishes from the `dist` folder to `c:\packages`. <br />
   
   The folder can be customized using a `dest` parameter:<br/>
-  `npm run publish -- --dest c:\custom-folder`
+  `npm run publish-local -- --dest c:\path\to\my-module`
   
 2. Publish to npm<br/>
   `npm publish`<br/>
   Follow the publish instructions from npm: https://docs.npmjs.com/getting-started/publishing-npm-packages
   
-## Building Reusable Angular Modules
-
-Rename the module before you publish:<br />
-
-`npm run name-module -- --name my-module` <br />
-`git add *` <br />
-`git commit -m "renamed module from ng-module-template to my-module"`
-
-Optional Versioning:
-
-`npm version patch`
-
-Then publish:
-
-`npm run publish-local`
-
-or
-
-`npm publish`
 
 ## Installing your Published Module
 
 If you published locally:<br />
-`npm install c:\packages\my-module --save`
+`npm install c:\path\to\my-module --save`
 
 If you published to npm:<br />
 `npm install my-module --save`
-
-
-
 
 
 

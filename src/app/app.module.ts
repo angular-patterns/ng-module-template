@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ControlsModule } from './controls/controls.module';
 import { TextboxComponent } from './controls/widgets/textbox/textbox.component';
 import { LabelComponent } from './controls/widgets/label/label.component';
+import { TableComponent } from './controls/widgets/table/table.component';
 
 
 
@@ -20,7 +21,8 @@ import { LabelComponent } from './controls/widgets/label/label.component';
     ReactiveFormsModule,
     CoreModule.withComponents([
       TextboxComponent,
-      LabelComponent
+      LabelComponent,
+      TableComponent
     ]) 
   ],
   declarations: [ AppComponent ],

@@ -5,6 +5,7 @@ import { FormGroup } from '@angular/forms';
 import { TextboxComponent } from './controls/widgets/textbox/textbox.component';
 import { LabelComponent } from './controls/widgets/label/label.component';
 import { TableComponent } from './controls/widgets/table/table.component';
+import { TableOptions } from './controls/shared/table.options';
 
 @Component({
   selector: 'app-root',
@@ -29,5 +30,9 @@ export class AppComponent {
         { col: 1, row: 1, widget: { component: TextboxComponent, options: { name: 'Middle Name', placeholder: 'hey', model: 'middleName', defaultValue: ''}}},
       ]}}
     ];
+  }
+  test() {
+    this.widgets[3].options.rows=1;
+    this.widgets[3] = Object.assign({}, this.widgets[3]);
   }
 }

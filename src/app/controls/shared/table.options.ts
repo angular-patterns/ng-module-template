@@ -1,4 +1,5 @@
-import { Widget } from "../../models/widget.model";
+import { Widget } from "../../dynamic-core/widget.model";
+
 
 export class TableOptions {
     rows: number;

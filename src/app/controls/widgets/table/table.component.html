@@ -2,9 +2,8 @@
   <tr *ngFor="let i of rows">
     <td *ngFor="let j of cols">
       <ng-template [ngIf]="findTableWidget(i,j)">
-        <app-widget-template [formGroup]="formGroup" [component]="findTableWidget(i,j).widget.component" [options]="findTableWidget(i,j).widget.options">
-        </app-widget-template>
-
+        <app-widget [formGroup]="formGroup" [widget]="findTableWidget(i,j).widget">
+        </app-widget>
       </ng-template>
     </td>
   </tr>

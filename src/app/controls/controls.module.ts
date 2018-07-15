@@ -6,20 +6,22 @@ import { TextboxComponent } from './widgets/textbox/textbox.component';
 import { TextboxOptionsComponent } from './options/textbox-options/textbox-options.component';
 import { LabelComponent } from './widgets/label/label.component';
 import { TableComponent } from './widgets/table/table.component';
-import { CoreModule } from '../core/core.module';
+import { DynamicCoreModule } from '../dynamic-core/dynamic-core.module';
+import { GroupComponent } from './widgets/group/group.component';
 
 @NgModule({
   imports: [
     CommonModule, 
     FormsModule,
     ReactiveFormsModule,
-    CoreModule
+    DynamicCoreModule
   ],
   declarations: [
     TextboxComponent,
     TextboxOptionsComponent,
     LabelComponent,
-    TableComponent
+    TableComponent,
+    GroupComponent
   ],
   exports: [
     TextboxComponent,

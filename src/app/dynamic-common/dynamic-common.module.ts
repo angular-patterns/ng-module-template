@@ -1,8 +1,8 @@
 import { NgModule, ModuleWithProviders, Type, ANALYZE_FOR_ENTRY_COMPONENTS } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DynamicModule } from 'ng-dynamic-component';
+import { DynamicModule as NgDynamicModule } from 'ng-dynamic-component';
 import { WidgetTemplateComponent } from './widget-template/widget-template.component';
-export const ngDynamicModule = DynamicModule.withComponents([]);
+export const ngDynamicModule = NgDynamicModule.withComponents([]);
 
 @NgModule({
   imports: [
@@ -12,10 +12,10 @@ export const ngDynamicModule = DynamicModule.withComponents([]);
   declarations: [WidgetTemplateComponent],
   exports: [WidgetTemplateComponent]
 })
-export class CoreModule { 
+export class DynamicCommonModule { 
   static withComponents(components: Type<any>[]): ModuleWithProviders {
     return {
-      ngModule: CoreModule,
+      ngModule: DynamicCommonModule,
       providers: [
         { provide: ANALYZE_FOR_ENTRY_COMPONENTS, multi: true, useValue: components }
       ]

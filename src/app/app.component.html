@@ -1,13 +1,12 @@
 <h1>{{ title }}</h1>
 
 <router-outlet></router-outlet>
-<app-textbox [options]="{ name: 'hey', placeholder: 'asdfsdf' }"></app-textbox>
 
 <form [formGroup]="formGroup">
-<div *ngFor="let widget of widgets">
-    <app-widget-template [formGroup]="formGroup" [component]="widget.component" [options]="widget.options">
-    </app-widget-template>
-</div>
+    <div *ngFor="let widget of widgets">
+        <app-widget [formGroup]="formGroup" [widget]="widget">
+        </app-widget>
+    </div>
 </form>
 
 <pre>

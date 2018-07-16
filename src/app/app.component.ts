@@ -7,6 +7,7 @@ import { LabelComponent } from './controls/widgets/label/label.component';
 import { TableComponent } from './controls/widgets/table/table.component';
 import { TableOptions } from './controls/shared/table.options';
 import { Widget } from './dynamic-core/widget.model';
+import { Form } from './dynamic-editor/models/form.model';
 
 @Component({
   selector: 'app-root',
@@ -17,10 +18,18 @@ export class AppComponent {
   title: string;
   widgets: Widget[];
   formGroup: FormGroup;
+  form: Form;
   constructor() {
+    this.form = {
+      title: 'hey',
+      sections: [
+        
+      ]
+    }
     this.formGroup = new FormGroup({});
     this.title = 'Hello World!';
-    this.widgets = [
+    this.widgets = 
+     [
       { component: 'group', options: { name: 'test', widget: { component: 'textbox', options: { name: 'sdfdsf Name', placeholder: 'hey', model: 'middleName', defaultValue: ''} } } },
       { component: 'label', options: { title: 'hey there'} },
       { component: 'textbox', options: { name: 'First Name', placeholder: 'hey', model: 'firstName', defaultValue: ''}},

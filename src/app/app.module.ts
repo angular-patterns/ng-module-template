@@ -14,6 +14,7 @@ import { labelOptions } from './controls/schemas/label-options';
 import { tableOptions } from './controls/schemas/table-options';
 import { GroupComponent } from './controls/widgets/group/group.component';
 import { groupOptions } from './controls/schemas/group-options';
+import { DynamicEditorModule } from './dynamic-editor/dynamic-editor.module';
 
 
 
@@ -24,6 +25,7 @@ import { groupOptions } from './controls/schemas/group-options';
     ControlsModule, 
     FormsModule, 
     ReactiveFormsModule,
+    DynamicEditorModule,
     DynamicCoreModule.withComponents([
       { name: 'textbox', component: TextboxComponent, optionsSchema: textboxOptions },
       { name: 'label', component: LabelComponent, optionsSchema: labelOptions },

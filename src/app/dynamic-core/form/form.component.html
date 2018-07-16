@@ -1,0 +1,6 @@
+<form [formGroup]="formGroup">
+  <div *ngFor="let widget of widgets">
+      <app-widget [formGroup]="formGroup" [widget]="widget">
+      </app-widget>
+  </div>
+</form>

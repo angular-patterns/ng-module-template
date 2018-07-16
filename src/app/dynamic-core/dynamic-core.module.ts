@@ -5,6 +5,7 @@ import { WidgetComponent } from './widget/widget.component';
 import { DynamicCommonModule } from '../dynamic-common/dynamic-common.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WidgetLookupService } from './widget-lookup.service';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
   imports: [
@@ -14,9 +15,13 @@ import { WidgetLookupService } from './widget-lookup.service';
     ReactiveFormsModule
   ],
   exports: [
-    WidgetComponent
+    WidgetComponent,
+    FormComponent
   ],
-  declarations: [WidgetComponent]
+  declarations: [
+    WidgetComponent,
+    FormComponent
+  ]
 })
 export class DynamicCoreModule {
   static withComponents(components: WidgetRef[]): ModuleWithProviders {

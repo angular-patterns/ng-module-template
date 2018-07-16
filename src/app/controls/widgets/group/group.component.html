@@ -1,6 +1,4 @@
 <div [formGroup]="formGroup">
-  <div [formGroupName]="options.name">
-    <app-widget [formGroup]="innerGroup" [widget]="options.widget">
+    <app-widget [formGroupName]="options.name" [formGroup]="innerGroup" [widget]="options.widget">
     </app-widget>
-  </div>
 </div>

@@ -14,8 +14,15 @@
 
   <!-- List group -->
   <ul class="list-group">
-    <li class="list-group-item" *ngFor="let section of sections">{{ section.title }}</li>
+    <li [ngClass]="{'active': currentSection == section }" (click)="selectSection(section)" class="list-group-item" *ngFor="let section of sections">
+      {{ section.title }} 
+    </li>
   </ul>
 
 
 </div>
+
+<pre>
+  {{ formService.store.form | json }}
+  {{ formService.store.currentSection | json }}
+</pre>

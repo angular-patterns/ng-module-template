@@ -6,26 +6,32 @@ import { Observable, Subject } from "rxjs";
 export class FormService {
     store:  {
         form: Form;
+        currentSection: Section;
     }
     events:  {
         init$: Observable<Form>,
         section: {
             added$: Observable<Section>;
+            current$: Observable<Section>;
         }
 
     }
     initSubject: Subject<Form>;
     addedSectionSubject: Subject<Section>;
+    currentSectionSubject: Subject<Section>;
     constructor() {
         this.initSubject = new Subject<Form>();
         this.addedSectionSubject = new Subject<Section>();
+        this.currentSectionSubject = new Subject<Section>();
         this.store = {
-            form: null
+            form: null,
+            currentSection: null
         }
         this.events = {
             init$: this.initSubject.asObservable(),
             section: {
-                added$: this.addedSectionSubject.asObservable()
+                added$: this.addedSectionSubject.asObservable(),
+                current$: this.currentSectionSubject.asObservable()
             }
         }
     }
@@ -39,6 +45,12 @@ export class FormService {
         const section = { title: title, widgets: []};
         this.store.form.sections.push(section);
         this.addedSectionSubject.next(section);
+        this.setCurrentSection(section);
+    }
+
+    setCurrentSection(section: Section){
+        this.store.currentSection = section;
+        this.currentSectionSubject.next(section);
     }
 
 }

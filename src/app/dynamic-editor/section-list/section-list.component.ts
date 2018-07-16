@@ -11,12 +11,16 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class SectionListComponent implements OnInit {
   formGroup: FormGroup;
   sections: Section[];
+  currentSection: Section;
   constructor(private formService: FormService) { 
     this.formGroup = new FormGroup({
       'title': new FormControl('')
     });
     this.formService.events.init$.subscribe(t=> {
       this.sections = t.sections;
+    });
+    this.formService.events.section.current$.subscribe(t=> {
+      this.currentSection = t;
     });
   }
 
@@ -28,6 +32,9 @@ export class SectionListComponent implements OnInit {
       this.formService.addSection(this.formGroup.get('title').value);
       this.formGroup.get('title').reset('');
     }
+  }
+  selectSection(section:Section) {
+    this.formService.setCurrentSection(section);
   }
 
 }

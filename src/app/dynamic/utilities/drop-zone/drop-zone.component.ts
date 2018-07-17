@@ -9,6 +9,7 @@ import { DropZoneService } from './drop-zone.service';
 })
 export class DropZoneComponent implements OnInit {
   @Input('drop-zone') args: any;
+  @Input() name: string;
   constructor(private dropZoneService: DropZoneService) {
 
   }

@@ -1,4 +1,8 @@
-<div [formGroup]="formGroup">
-    <app-widget [formGroupName]="options.name" [formGroup]="innerGroup" [widget]="options.widget">
-    </app-widget>
+<div class="form-group" [formGroup]="formGroup" *ngIf="options?.widget">
+    <div  [optionsDialog]="options">
+       <app-widget [formGroupName]="options.name" [formGroup]="innerGroup" [widget]="options.widget">
+       </app-widget>
+    </div>
+</div>
+<div *ngIf="!options?.widget" drop-zone name="Group">
 </div>

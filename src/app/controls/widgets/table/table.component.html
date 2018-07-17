@@ -1,17 +1,19 @@
 <table class="table">
   <tr *ngFor="let i of rows">
     <td *ngFor="let j of cols">
-      <ng-template [ngIf]="findTableWidget(i,j) && findTableWidget(i,j).widget">
-        <app-widget [formGroup]="formGroup" [widget]="findTableWidget(i,j).widget">
-        </app-widget>
+      <ng-template [ngIf]="tableWidgetExists(i,j)">
+        <div [optionsDialog]="findTableWidget(i,j).widget.options">
+          <app-widget [formGroup]="formGroup" [widget]="findTableWidget(i,j).widget">
+          </app-widget>
+        </div>
       </ng-template>
-      <div *ngIf="!findTableWidget(i,j) || !findTableWidget(i,j).widget" [drop-zone]="{ row: i, col: j}">
+      <div *ngIf="!tableWidgetExists(i,j)" [drop-zone]="{ row: i, col: j}" name="Table">
       </div>
     </td>
   </tr>
 </table>
 
-<pre>
+<!-- <pre>
   {{ rows | json }}
   {{ options | json}}
-</pre>
+</pre> -->

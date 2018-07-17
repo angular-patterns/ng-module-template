@@ -2,12 +2,14 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 import { FormGroup } from '@angular/forms';
 import { TableOptions, TableWidget } from '../../models/table.options';
 import { DropZoneService } from '../../../dynamic/utilities/drop-zone/drop-zone.service';
-import { FormService } from '../../../forms/editor/form.service';
+import { OptionsDialogService } from '../../../dynamic/services/options-dialog.service';
+import { WidgetFactory } from '../../../dynamic/services/widget.factory';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css']
+  styleUrls: ['./table.component.css'],
+  providers: [ DropZoneService, OptionsDialogService ]
 })
 export class TableComponent implements OnInit {
 
@@ -15,13 +17,13 @@ export class TableComponent implements OnInit {
   @Input() options: TableOptions;
   rows: number[];
   cols: number[];
-  constructor(private formService: FormService, private dropZoneService: DropZoneService) { 
+  constructor(private widgetFactory: WidgetFactory, private dropZoneService: DropZoneService, private optionsDialogService: OptionsDialogService) { 
     this.rows = [];
     this.cols = [];
     this.formGroup = new FormGroup({});
 
     this.dropZoneService.drop$.subscribe(t=> {
-      let widget = this.formService.createWidget(t.widget);
+      let widget = this.widgetFactory.createWidget(t.widget);
       let tableWidget = this.findTableWidget(t.args.row, t.args.col);
       if (tableWidget == null) {
         tableWidget = { row: t.args.row-1, col: t.args.col-1, widget: null };
@@ -29,6 +31,12 @@ export class TableComponent implements OnInit {
       }
       tableWidget.widget = widget;
       //this.formService.updateOptions(this.options);
+    });
+    this.optionsDialogService.remove$.subscribe(o=> {
+      var widgets = this.options.widgets.filter(t=>t.widget != null && t.widget.options == o.options);
+      widgets.forEach(t=> {
+        t.widget = null;
+      });
     });
   }
 
@@ -40,6 +48,10 @@ export class TableComponent implements OnInit {
   findTableWidget(i: number, j: number) {
     let widget = this.options.widgets.find(t=>t.row == i-1 && t.col == j-1);
     return widget ? widget : null;
+  }
+  tableWidgetExists(i: number, j: number) {
+    let tableWidget = this.findTableWidget(i, j);
+    return tableWidget && tableWidget.widget;
   }
   
 }

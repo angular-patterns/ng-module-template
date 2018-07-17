@@ -9,6 +9,7 @@ import { ToolsMenuComponent } from './tools-menu/tools-menu.component';
 import { DndModule } from 'ng2-dnd';
 import { DynamicModule } from '../../dynamic/dynamic.module';
 
+
 export const dndModule = DndModule.forRoot();
 
 @NgModule({

@@ -8,6 +8,8 @@ import { WidgetComponent } from './widget/widget.component';
 import { WidgetRef, widgetRefToken } from './models/widget.model';
 import { WidgetLookupService } from './services/widget-lookup.service';
 import { DropZoneService } from './utilities/drop-zone/drop-zone.service';
+import { OptionsDialogComponent } from './utilities/options-dialog/options-dialog.component';
+import { WidgetFactory } from './services/widget.factory';
 
 
 export const ngDynamicModule = NgDynamicModule.withComponents([]);
@@ -21,11 +23,13 @@ export const dndModule = DndModule.forRoot();
   declarations: [
     WidgetTemplateComponent,
     DropZoneComponent,
-    WidgetComponent
+    WidgetComponent,
+    OptionsDialogComponent
   ],
   exports: [
     DropZoneComponent,
-    WidgetComponent
+    WidgetComponent,
+    OptionsDialogComponent
   ]
 })
 export class DynamicModule { 
@@ -35,6 +39,7 @@ export class DynamicModule {
       providers: [
         DropZoneService,
         WidgetLookupService,
+        WidgetFactory,
         { provide: widgetRefToken, useValue: components },
         { provide: ANALYZE_FOR_ENTRY_COMPONENTS, multi: true, useValue: components }
       ]

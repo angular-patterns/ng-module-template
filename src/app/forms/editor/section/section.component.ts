@@ -3,16 +3,18 @@ import { FormService } from '../form.service';
 import { Section } from '../models/form.model';
 import { DropZoneService } from '../../../dynamic/utilities/drop-zone/drop-zone.service';
 import { FormGroup } from '@angular/forms';
+import { OptionsDialogService } from '../../../dynamic/services/options-dialog.service';
 
 @Component({
   selector: 'app-section',
   templateUrl: './section.component.html',
-  styleUrls: ['./section.component.css']
+  styleUrls: ['./section.component.css'],
+  providers: [ OptionsDialogService ]
 })
 export class SectionComponent implements OnInit {
   @Input() formGroup: FormGroup;
   section: Section; 
-  constructor(private formService: FormService, private dropZoneService: DropZoneService) {
+  constructor(private formService: FormService, private dropZoneService: DropZoneService, private optionsDialogService: OptionsDialogService) {
     this.formService.events.init$.subscribe(t=> {
       if (t.sections.length > 0)
         this.section = t.sections[0];
@@ -22,6 +24,9 @@ export class SectionComponent implements OnInit {
     });
     this.dropZoneService.drop$.subscribe(t=> {
       this.formService.addWidget(t.widget);
+    });
+    this.optionsDialogService.remove$.subscribe(t=> {
+      this.formService.removeWidget(t.options);
     });
 
   }

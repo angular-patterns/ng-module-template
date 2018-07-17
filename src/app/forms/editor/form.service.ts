@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Form, Section } from "./models/form.model";
 import { Observable, Subject } from "rxjs";
 import { WidgetRef, Widget } from "../../dynamic/models/widget.model";
+import { WidgetFactory } from "../../dynamic/services/widget.factory";
 
 @Injectable()
 export class FormService {
@@ -17,6 +18,7 @@ export class FormService {
         },
         widget: {
             added$: Observable<Widget>;
+            removed$: Observable<Widget>;
         },
         options: {
             updated$: Observable<any>;
@@ -29,13 +31,15 @@ export class FormService {
     currentSectionSubject: Subject<Section>;
     addedWidgetSubject: Subject<Widget>;
     updatedOptionsSubject: Subject<any>;
+    removedWidgetSubject: Subject<Widget>;
 
-    constructor() {
+    constructor(private widgetFactory: WidgetFactory) {
         this.initSubject = new Subject<Form>();
         this.addedSectionSubject = new Subject<Section>();
         this.currentSectionSubject = new Subject<Section>();
         this.addedWidgetSubject = new Subject<Widget>();
         this.updatedOptionsSubject = new Subject<any>();
+        this.removedWidgetSubject = new Subject<Widget>();
 
         this.store = {
             form: null,
@@ -48,10 +52,12 @@ export class FormService {
                 current$: this.currentSectionSubject.asObservable()
             },
             widget: {
-                added$: this.addedWidgetSubject.asObservable()
+                added$: this.addedWidgetSubject.asObservable(),
+                removed$: this.removedWidgetSubject.asObservable()
             },
             options: {
-                updated$: this.updatedOptionsSubject.asObservable()
+                updated$: this.updatedOptionsSubject.asObservable(),
+                
             }
         }
     }
@@ -73,21 +79,29 @@ export class FormService {
         this.currentSectionSubject.next(section);
     }
     addWidget(widgetRef: WidgetRef) {
-        var widget = this.createWidget(widgetRef);
+        var widget = this.widgetFactory.createWidget(widgetRef);
         this.store.currentSection.widgets.push(widget);
         this.addedWidgetSubject.next(widget);
     }
 
-    createWidget(widgetRef: WidgetRef) {
-        var widget = new Widget();
-        widget.component = widgetRef.name;
-        widget.options = widgetRef.defaultOptions;
-        return widget;
-    }
+
     updateOptions(options: any) {
         var widgets = this.store.form.sections.map(t=>t.widgets).reduce((p,c)=> p.concat(c),[]).filter(t=>t.options == options);
         widgets.forEach(t=> {
             t.options = Object.assign({}, t.options);
+        });
+    }
+    removeWidget(options: any) {
+        var widgets = this.store.form.sections.map(t=>t.widgets).reduce((p,c)=> p.concat(c),[]).filter(t=>t.options == options);
+
+        widgets.forEach(t=> {
+            this.store.form.sections.forEach(x=> {
+                let i = x.widgets.indexOf(t);
+                if (i >= 0) {
+                    x.widgets.splice(i, 1);
+                    this.removedWidgetSubject.next(t);
+                }
+            });
         });
     }
 

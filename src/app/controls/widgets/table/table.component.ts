@@ -43,9 +43,8 @@ export class TableComponent implements OnInit {
     this.optionsDialogService.update$.subscribe(t=> {
       let index = this.options.widgets.findIndex(x=>x.widget != null && x.widget.options == t.oldOptions);   
       if (index >= 0) {
-        this.options.widgets[index].widget.options = t.newOptions; 
-        this.options = JSON.parse(JSON.stringify(this.options));
-        this.formService.updateOptions(this.options, this.options);
+        this.options.widgets[index].widget.options = t.newOptions;
+        this.formService.refresh(this.options);
       } 
     });
   }

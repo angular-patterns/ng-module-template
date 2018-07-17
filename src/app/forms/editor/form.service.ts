@@ -108,5 +108,13 @@ export class FormService {
             });
         });
     }
+    refresh(options: any) {
+        this.store.form.sections.forEach(t=> {
+            var i = t.widgets.findIndex(t=>t.options == options);
+            if (i >= 0) {
+                t.widgets[i] =  JSON.parse(JSON.stringify(t.widgets[i]));
+            }
+        });
+    }
 
 }

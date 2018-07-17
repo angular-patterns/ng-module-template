@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { FormGroup, FormControl } from '@angular/forms';
-import { TextboxOptions } from '../../shared/textbox.options';
+import { TextboxOptions } from '../../models/textbox.options';
+
 
 @Component({
   selector: 'app-textbox',

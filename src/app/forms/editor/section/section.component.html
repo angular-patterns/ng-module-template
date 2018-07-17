@@ -1,0 +1,7 @@
+<h1>{{ section?.title }}</h1>
+<app-widget *ngFor="let widget of section?.widgets" [formGroup]="formGroup" [widget]="widget">
+</app-widget>
+<br />
+<div *ngIf="section" drop-zone>
+  Drop Component Here
+</div>

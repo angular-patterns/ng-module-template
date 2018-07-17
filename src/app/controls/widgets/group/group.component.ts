@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { GroupOptions } from '../../shared/group.options';
+import { GroupOptions } from '../../models/group.options';
+
 
 @Component({
   selector: 'app-group',

@@ -1,10 +1,12 @@
 <table class="table">
   <tr *ngFor="let i of rows">
     <td *ngFor="let j of cols">
-      <ng-template [ngIf]="findTableWidget(i,j)">
+      <ng-template [ngIf]="findTableWidget(i,j) && findTableWidget(i,j).widget">
         <app-widget [formGroup]="formGroup" [widget]="findTableWidget(i,j).widget">
         </app-widget>
       </ng-template>
+      <div *ngIf="!findTableWidget(i,j) || !findTableWidget(i,j).widget" [drop-zone]="{ row: i, col: j}">
+      </div>
     </td>
   </tr>
 </table>

@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { TableOptions } from '../../shared/table.options';
 import { FormGroup } from '@angular/forms';
+import { TableOptions, TableWidget } from '../../models/table.options';
+import { DropZoneService } from '../../../dynamic/utilities/drop-zone/drop-zone.service';
+import { FormService } from '../../../forms/editor/form.service';
 
 @Component({
   selector: 'app-table',
@@ -13,10 +15,21 @@ export class TableComponent implements OnInit {
   @Input() options: TableOptions;
   rows: number[];
   cols: number[];
-  constructor() { 
+  constructor(private formService: FormService, private dropZoneService: DropZoneService) { 
     this.rows = [];
     this.cols = [];
     this.formGroup = new FormGroup({});
+
+    this.dropZoneService.drop$.subscribe(t=> {
+      let widget = this.formService.createWidget(t.widget);
+      let tableWidget = this.findTableWidget(t.args.row, t.args.col);
+      if (tableWidget == null) {
+        tableWidget = { row: t.args.row-1, col: t.args.col-1, widget: null };
+        this.options.widgets.push(tableWidget);
+      }
+      tableWidget.widget = widget;
+      //this.formService.updateOptions(this.options);
+    });
   }
 
   ngOnInit() {
@@ -28,4 +41,5 @@ export class TableComponent implements OnInit {
     let widget = this.options.widgets.find(t=>t.row == i-1 && t.col == j-1);
     return widget ? widget : null;
   }
+  
 }

@@ -1,0 +1,13 @@
+<div>
+  <div class="col-md-3">
+    <app-section-list></app-section-list>
+    <app-tools-menu></app-tools-menu>
+  </div>
+  <div class="col-md-9">
+    <app-section [formGroup]="formGroup"></app-section>
+  </div>
+</div>
+<pre>
+    {{ formService.store.form | json }}
+    {{ formService.store.currentSection | json }}
+  </pre>

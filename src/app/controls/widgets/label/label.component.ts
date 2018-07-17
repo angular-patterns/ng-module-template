@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { LabelOptions } from '../../shared/label.options';
+import { LabelOptions } from '../../models/label.options';
+
 
 @Component({
   selector: 'app-label',

@@ -86,6 +86,7 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "ng2-dnd": "^5.0.2",
     "phantomjs": "^1.9.8",
     "postcss-import": "^11.0.0",
     "postcss-loader": "^2.0.10",

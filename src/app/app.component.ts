@@ -5,9 +5,10 @@ import { FormGroup } from '@angular/forms';
 import { TextboxComponent } from './controls/widgets/textbox/textbox.component';
 import { LabelComponent } from './controls/widgets/label/label.component';
 import { TableComponent } from './controls/widgets/table/table.component';
-import { TableOptions } from './controls/shared/table.options';
-import { Widget } from './dynamic-core/widget.model';
-import { Form } from './dynamic-editor/models/form.model';
+
+
+import { Widget } from './dynamic/models/widget.model';
+import { Form } from './forms/editor/models/form.model';
 
 @Component({
   selector: 'app-root',

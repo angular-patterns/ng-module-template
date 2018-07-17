@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Type } from '@angular/core';
+import { Component, OnInit, Input, Type, OnChanges } from '@angular/core';
 
 import { FormGroup } from '@angular/forms';
 
@@ -20,6 +20,17 @@ export class WidgetComponent implements OnInit {
 
   ngOnInit() {
     if (this.widget) {
+      let w = this.widgetLookupService.find(this.widget.component);
+      this.component = w.component;
+      let result = this.validateSchema(this.widget.options, w.optionsSchema);
+      if (!result.valid) {
+        console.log(result);
+      }
+    }
+  }
+  ngOnChanges() {
+    if (this.widget) {
+     
       let w = this.widgetLookupService.find(this.widget.component);
       this.component = w.component;
       let result = this.validateSchema(this.widget.options, w.optionsSchema);

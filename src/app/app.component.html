@@ -3,7 +3,17 @@
 <router-outlet></router-outlet>
 
 
-<app-editor [formGroup]="formGroup" [form]="form"></app-editor>
+<app-editor [formGroup]="formGroup" [form]="form"></app-editor> 
 
-<!-- <app-widget [formGroup]="formGroup" [widget]=" { component: 'textbox', options: { name: 'First Name', placeholder: 'First Name', model: 'firstName', defaultValue: ''}}"></app-widget>
-<app-widget [formGroup]="formGroup" [widget]=" { component: 'textbox', options: { name: 'Last Name', placeholder: 'Last Name', model: 'lastName', defaultValue: ''}}"></app-widget> -->
+<div *ngFor="let widget of widgets">
+    <app-widget [formGroup]="formGroup" [widget]="widget"></app-widget>
+</div>
+
+<app-widget [formGroup]="formGroup" [widget]="widget1"></app-widget>
+
+<button (click)="test()">Click Me</button>
+
+<pre>
+    {{ widget1 | json }}
+    {{ widgets | json }}
+</pre>

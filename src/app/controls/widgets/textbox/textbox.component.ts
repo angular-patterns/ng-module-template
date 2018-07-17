@@ -9,7 +9,7 @@ import { TextboxOptions } from '../../models/textbox.options';
   templateUrl: './textbox.component.html',
   styleUrls: ['./textbox.component.css']
 })
-export class TextboxComponent implements OnInit {
+export class TextboxComponent implements OnInit, OnChanges {
   @Input() options: TextboxOptions;
   @Input() formGroup: FormGroup;
   constructor() { 
@@ -17,6 +17,9 @@ export class TextboxComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.formGroup.setControl(this.options.model, new FormControl(this.options.defaultValue));
+  }
+  ngOnChanges() {
     this.formGroup.setControl(this.options.model, new FormControl(this.options.defaultValue));
   }
 

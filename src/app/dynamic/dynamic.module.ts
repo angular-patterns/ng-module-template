@@ -10,7 +10,8 @@ import { WidgetLookupService } from './services/widget-lookup.service';
 import { DropZoneService } from './utilities/drop-zone/drop-zone.service';
 import { OptionsDialogComponent } from './utilities/options-dialog/options-dialog.component';
 import { WidgetFactory } from './services/widget.factory';
-
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 export const ngDynamicModule = NgDynamicModule.withComponents([]);
 export const dndModule = DndModule.forRoot();
@@ -18,7 +19,11 @@ export const dndModule = DndModule.forRoot();
   imports: [
     CommonModule,
     ngDynamicModule,
-    dndModule
+    dndModule, 
+    ModalModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule
+
   ],
   declarations: [
     WidgetTemplateComponent,

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 import { FormGroup, FormControl } from '@angular/forms';
 import { TextboxOptions } from '../../models/textbox.options';
@@ -17,7 +17,7 @@ export class TextboxComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.formGroup.addControl(this.options.model, new FormControl(this.options.defaultValue));
+    this.formGroup.setControl(this.options.model, new FormControl(this.options.defaultValue));
   }
 
 }

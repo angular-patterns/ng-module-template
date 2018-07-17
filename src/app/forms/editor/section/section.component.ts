@@ -28,6 +28,13 @@ export class SectionComponent implements OnInit {
     this.optionsDialogService.remove$.subscribe(t=> {
       this.formService.removeWidget(t.options);
     });
+    this.optionsDialogService.update$.subscribe(t=> {
+      let index = this.section.widgets.findIndex(x=>x.options == t.oldOptions);   
+      if (index >= 0) {
+        this.formService.updateOptions(t.oldOptions, t.newOptions);  
+        this.section.widgets[index] = JSON.parse(JSON.stringify(this.section.widgets[index]))
+      } 
+    });
 
   }
 

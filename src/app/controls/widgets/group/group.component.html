@@ -1,5 +1,5 @@
 <div class="form-group" [formGroup]="formGroup" *ngIf="options?.widget">
-    <div  [optionsDialog]="options">
+    <div  optionsDialog [options]="options"  [component]="options.widget.component" title="Group">
        <app-widget [formGroupName]="options.name" [formGroup]="innerGroup" [widget]="options.widget">
        </app-widget>
     </div>

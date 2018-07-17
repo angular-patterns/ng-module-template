@@ -85,10 +85,14 @@ export class FormService {
     }
 
 
-    updateOptions(options: any) {
-        var widgets = this.store.form.sections.map(t=>t.widgets).reduce((p,c)=> p.concat(c),[]).filter(t=>t.options == options);
-        widgets.forEach(t=> {
-            t.options = Object.assign({}, t.options);
+    updateOptions(prevOptions: any, newOptions: any) {
+        this.store.form.sections.forEach(t=> {
+            var i = t.widgets.findIndex(t=>t.options == prevOptions);
+            if (i >= 0) {
+                t.widgets[i].options = newOptions;
+                this.updatedOptionsSubject.next(newOptions);
+                //t.widgets[i] = JSON.parse(JSON.stringify(t.widgets[i]));
+            }
         });
     }
     removeWidget(options: any) {

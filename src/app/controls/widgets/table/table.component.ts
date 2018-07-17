@@ -4,6 +4,7 @@ import { TableOptions, TableWidget } from '../../models/table.options';
 import { DropZoneService } from '../../../dynamic/utilities/drop-zone/drop-zone.service';
 import { OptionsDialogService } from '../../../dynamic/services/options-dialog.service';
 import { WidgetFactory } from '../../../dynamic/services/widget.factory';
+import { FormService } from '../../../forms/editor/form.service';
 
 @Component({
   selector: 'app-table',
@@ -17,7 +18,7 @@ export class TableComponent implements OnInit {
   @Input() options: TableOptions;
   rows: number[];
   cols: number[];
-  constructor(private widgetFactory: WidgetFactory, private dropZoneService: DropZoneService, private optionsDialogService: OptionsDialogService) { 
+  constructor(private formService: FormService, private widgetFactory: WidgetFactory, private dropZoneService: DropZoneService, private optionsDialogService: OptionsDialogService) { 
     this.rows = [];
     this.cols = [];
     this.formGroup = new FormGroup({});
@@ -37,6 +38,15 @@ export class TableComponent implements OnInit {
       widgets.forEach(t=> {
         t.widget = null;
       });
+    });
+
+    this.optionsDialogService.update$.subscribe(t=> {
+      let index = this.options.widgets.findIndex(x=>x.widget != null && x.widget.options == t.oldOptions);   
+      if (index >= 0) {
+        this.options.widgets[index].widget.options = t.newOptions; 
+        this.options = JSON.parse(JSON.stringify(this.options));
+        this.formService.updateOptions(this.options, this.options);
+      } 
     });
   }
 

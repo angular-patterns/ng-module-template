@@ -2,7 +2,7 @@
   <tr *ngFor="let i of rows">
     <td *ngFor="let j of cols">
       <ng-template [ngIf]="tableWidgetExists(i,j)">
-        <div [optionsDialog]="findTableWidget(i,j).widget.options">
+        <div optionsDialog [options]="findTableWidget(i,j).widget.options"  [component]="findTableWidget(i,j).widget.component" title="Table">
           <app-widget [formGroup]="formGroup" [widget]="findTableWidget(i,j).widget">
           </app-widget>
         </div>

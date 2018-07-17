@@ -1,5 +1,5 @@
 <h1>{{ section?.title }}</h1>
-<div *ngFor="let widget of section?.widgets" [optionsDialog]="widget.options">
+<div *ngFor="let widget of section?.widgets" optionsDialog [options]="widget.options" [component]="widget.component" [title]="widget.component">
     <app-widget [formGroup]="formGroup" [widget]="widget">
     </app-widget>
 </div>
@@ -8,3 +8,7 @@
 <div *ngIf="section" drop-zone name="Section">
   Drop Component Here
 </div>
+
+<pre>
+  {{ section?.widgets | json}}
+</pre>

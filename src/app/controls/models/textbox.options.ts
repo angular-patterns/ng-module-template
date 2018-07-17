@@ -3,4 +3,5 @@ export class TextboxOptions {
     placeholder: string;
     model: string;
     defaultValue: string;
+    label: string;
 }

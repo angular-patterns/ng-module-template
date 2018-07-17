@@ -14,4 +14,5 @@ export class WidgetLookupService {
     find(name: string) {
         return this.widgetRefs.find(t=>t.name == name);
     }
+    
 }

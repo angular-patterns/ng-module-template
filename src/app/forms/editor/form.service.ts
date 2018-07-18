@@ -3,15 +3,21 @@ import { Form, Section } from "./models/form.model";
 import { Observable, Subject } from "rxjs";
 import { WidgetRef, Widget } from "../../dynamic/models/widget.model";
 import { WidgetFactory } from "../../dynamic/services/widget.factory";
+import { IdService } from "../../dynamic/services/id.service";
+import { FormGroup } from "@angular/forms";
 
 @Injectable()
 export class FormService {
     store:  {
         form: Form;
+        formGroup: FormGroup;
         currentSection: Section;
     }
     events:  {
         init$: Observable<Form>,
+        form: {
+            modelChanged$: Observable<FormGroup>;
+        },
         section: {
             added$: Observable<Section>;
             current$: Observable<Section>;
@@ -32,21 +38,26 @@ export class FormService {
     addedWidgetSubject: Subject<Widget>;
     updatedOptionsSubject: Subject<any>;
     removedWidgetSubject: Subject<Widget>;
+    modelChangedSubject: Subject<FormGroup>;
 
-    constructor(private widgetFactory: WidgetFactory) {
+    constructor(private widgetFactory: WidgetFactory, private idService: IdService) {
         this.initSubject = new Subject<Form>();
         this.addedSectionSubject = new Subject<Section>();
         this.currentSectionSubject = new Subject<Section>();
         this.addedWidgetSubject = new Subject<Widget>();
         this.updatedOptionsSubject = new Subject<any>();
         this.removedWidgetSubject = new Subject<Widget>();
-
+        this.modelChangedSubject = new Subject<FormGroup>();
         this.store = {
             form: null,
+            formGroup: null,
             currentSection: null
         }
         this.events = {
             init$: this.initSubject.asObservable(),
+            form: {
+                modelChanged$: this.modelChangedSubject.asObservable()
+            },
             section: {
                 added$: this.addedSectionSubject.asObservable(),
                 current$: this.currentSectionSubject.asObservable()
@@ -64,7 +75,10 @@ export class FormService {
 
     initialize(form:Form) {
         this.store.form = form;
+        this.store.formGroup = new FormGroup({});
+        this.idService.init(form.idSpace);
         this.initSubject.next(this.store.form);
+        return this.store.formGroup;
     }
 
     addSection(title: string) {
@@ -91,7 +105,10 @@ export class FormService {
             if (i >= 0) {
                 t.widgets[i].options = newOptions;
                 this.updatedOptionsSubject.next(newOptions);
-                //t.widgets[i] = JSON.parse(JSON.stringify(t.widgets[i]));
+                if (prevOptions.model && prevOptions.model != newOptions.model) {
+                    this.store.formGroup = new FormGroup({});
+                    this.modelChangedSubject.next(this.store.formGroup);
+                }
             }
         });
     }
@@ -108,13 +125,6 @@ export class FormService {
             });
         });
     }
-    refresh(options: any) {
-        this.store.form.sections.forEach(t=> {
-            var i = t.widgets.findIndex(t=>t.options == options);
-            if (i >= 0) {
-                t.widgets[i] =  JSON.parse(JSON.stringify(t.widgets[i]));
-            }
-        });
-    }
+
 
 }

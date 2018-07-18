@@ -1,7 +1,7 @@
 export const textboxOptionsDefaults = { 
     name: 'Textbox', 
     placeholder: 'Textbox', 
-    model: 'textbox', 
+    model: 'Textbox', 
     defaultValue: '',
     label: 'Textbox'
 };

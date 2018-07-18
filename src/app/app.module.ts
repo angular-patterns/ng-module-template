@@ -33,28 +33,28 @@ import { TextboxOptionsComponent } from './controls/options/widgets/textbox-opti
     EditorModule,
     DynamicModule.withComponents([
       { 
-        name: 'textbox', 
+        name: 'Textbox', 
         component: TextboxComponent, 
         optionsSchema: textboxOptionsSchema, 
         defaultOptions: textboxOptionsDefaults,
         settingsComponent: TextboxOptionsComponent  
       },
       { 
-        name: 'label', 
+        name: 'Label', 
         component: LabelComponent, 
         optionsSchema: labelOptionsSchema, 
         defaultOptions: labelOptionsDefaults, 
         settingsComponent: null  
       },
       { 
-        name: 'table', 
+        name: 'Table', 
         component: TableComponent, 
         optionsSchema: tableOptionsSchema, 
         defaultOptions: tableOptionsDefaults, 
         settingsComponent: null  
       },
       { 
-        name: 'group', 
+        name: 'Group', 
         component: GroupComponent, 
         optionsSchema: groupOptionsSchema, 
         defaultOptions: groupOptionsDefaults, 

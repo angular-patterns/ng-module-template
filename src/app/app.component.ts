@@ -39,7 +39,8 @@ export class AppComponent {
       title: 'hey',
       sections: [
         
-      ]
+      ],
+      idSpace: {}
     }
     this.formGroup = new FormGroup({});
     this.title = 'Hello World!';

@@ -21,7 +21,7 @@ export const tableOptionsSchema = {
               "type": "integer"
             },
             "widget": {
-              "type": "object",
+              "type": ["object", null],
               "properties": {
                 "component": {
                   "type": "string"

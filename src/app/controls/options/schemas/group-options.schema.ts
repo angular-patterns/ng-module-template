@@ -2,7 +2,7 @@ export const groupOptionsSchema = {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
     "properties": {
-      "name": {
+      "model": {
         "type": "string"
       },
       "widget": {
@@ -22,7 +22,7 @@ export const groupOptionsSchema = {
       }
     },
     "required": [
-      "name",
+      "model",
       "widget"
     ]
   };

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, TemplateRef, Type, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, TemplateRef, Type, EventEmitter, Output, OnChanges } from '@angular/core';
 import { FormService } from '../../../forms/editor/form.service';
 import { OptionsDialogService } from '../../services/options-dialog.service';
 import { FormGroup } from '@angular/forms';
@@ -12,7 +12,7 @@ import { WidgetLookupService } from '../../services/widget-lookup.service';
   styleUrls: ['./options-dialog.component.css'],
   //host: {'[attr.optionsDialog]': 'optionsDialog ? optionsDialog : null'}
 })
-export class OptionsDialogComponent implements OnInit {
+export class OptionsDialogComponent implements OnInit, OnChanges {
   @Input() options: any;
   @Output() optionsChange: EventEmitter<any>;
   @Input() component: string;
@@ -30,6 +30,10 @@ export class OptionsDialogComponent implements OnInit {
       let widgetRef = this.widgetLookupService.find(this.component);
       this.optionsComponent = widgetRef.settingsComponent;
     }
+  }
+  ngOnChanges() {
+    let widgetRef = this.widgetLookupService.find(this.component);
+    this.optionsComponent = widgetRef.settingsComponent;
   }
 
   onRemove() {

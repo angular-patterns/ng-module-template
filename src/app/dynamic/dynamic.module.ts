@@ -12,6 +12,8 @@ import { OptionsDialogComponent } from './utilities/options-dialog/options-dialo
 import { WidgetFactory } from './services/widget.factory';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OptionsFactory } from './services/options.factory';
+import { IdService } from './services/id.service';
 
 export const ngDynamicModule = NgDynamicModule.withComponents([]);
 export const dndModule = DndModule.forRoot();
@@ -42,9 +44,11 @@ export class DynamicModule {
     return {
       ngModule: DynamicModule,
       providers: [
+        IdService,
         DropZoneService,
         WidgetLookupService,
         WidgetFactory,
+        OptionsFactory,
         { provide: widgetRefToken, useValue: components },
         { provide: ANALYZE_FOR_ENTRY_COMPONENTS, multi: true, useValue: components }
       ]

@@ -32,8 +32,7 @@ export class SectionComponent implements OnInit {
       let index = this.section.widgets.findIndex(x=>x.options == t.oldOptions);   
       if (index >= 0) {
         this.formService.updateOptions(t.oldOptions, t.newOptions);  
-        //this.section.widgets[index] = JSON.parse(JSON.stringify(this.section.widgets[index]))
-        this.formService.refresh(t.newOptions);
+
       } 
     });
 

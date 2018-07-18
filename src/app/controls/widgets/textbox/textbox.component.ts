@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, OnDestroy } from '@angular/core';
 
 import { FormGroup, FormControl } from '@angular/forms';
 import { TextboxOptions } from '../../models/textbox.options';
@@ -9,7 +9,7 @@ import { TextboxOptions } from '../../models/textbox.options';
   templateUrl: './textbox.component.html',
   styleUrls: ['./textbox.component.css']
 })
-export class TextboxComponent implements OnInit, OnChanges {
+export class TextboxComponent implements OnInit, OnChanges, OnDestroy {
   @Input() options: TextboxOptions;
   @Input() formGroup: FormGroup;
   constructor() { 
@@ -19,8 +19,11 @@ export class TextboxComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.formGroup.setControl(this.options.model, new FormControl(this.options.defaultValue));
   }
-  ngOnChanges() {
+  ngOnChanges(changes: SimpleChanges) {
     this.formGroup.setControl(this.options.model, new FormControl(this.options.defaultValue));
+  }
+  ngOnDestroy() {
+    this.formGroup.removeControl(this.options.model);
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { TextboxOptions } from '../../../models/textbox.options';
 
@@ -8,7 +8,7 @@ import { TextboxOptions } from '../../../models/textbox.options';
   templateUrl: './textbox-options.component.html',
   styleUrls: ['./textbox-options.component.css']
 })
-export class TextboxOptionsComponent implements OnInit {
+export class TextboxOptionsComponent implements OnInit, OnChanges {
   @Input() formGroup: FormGroup;
   @Input() options: TextboxOptions;
 
@@ -23,6 +23,13 @@ export class TextboxOptionsComponent implements OnInit {
       this.formGroup.setControl('label', new FormControl(this.options.label));
      
     }
+  }
+  ngOnChanges() {
+    
+    this.formGroup.setControl('model', new FormControl(this.options.model));
+    this.formGroup.setControl('placeholder', new FormControl(this.options.placeholder));
+    this.formGroup.setControl('defaultValue', new FormControl(this.options.defaultValue));
+    this.formGroup.setControl('label', new FormControl(this.options.label));
   }
 
 

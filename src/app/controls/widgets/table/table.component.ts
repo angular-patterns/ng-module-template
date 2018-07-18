@@ -12,7 +12,7 @@ import { FormService } from '../../../forms/editor/form.service';
   styleUrls: ['./table.component.css'],
   providers: [ DropZoneService, OptionsDialogService ]
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, OnChanges {
 
   @Input() formGroup: FormGroup;
   @Input() options: TableOptions;
@@ -31,7 +31,7 @@ export class TableComponent implements OnInit {
         this.options.widgets.push(tableWidget);
       }
       tableWidget.widget = widget;
-      //this.formService.updateOptions(this.options);
+      
     });
     this.optionsDialogService.remove$.subscribe(o=> {
       var widgets = this.options.widgets.filter(t=>t.widget != null && t.widget.options == o.options);
@@ -41,15 +41,20 @@ export class TableComponent implements OnInit {
     });
 
     this.optionsDialogService.update$.subscribe(t=> {
+    
       let index = this.options.widgets.findIndex(x=>x.widget != null && x.widget.options == t.oldOptions);   
       if (index >= 0) {
         this.options.widgets[index].widget.options = t.newOptions;
-        this.formService.refresh(this.options);
       } 
     });
   }
 
   ngOnInit() {
+    this.rows = Array.from({length:this.options.rows },(v,k)=>k+1);
+    this.cols = Array.from({length:this.options.cols },(v,k)=>k+1);
+  }
+
+  ngOnChanges() {
     this.rows = Array.from({length:this.options.rows },(v,k)=>k+1);
     this.cols = Array.from({length:this.options.cols },(v,k)=>k+1);
   }

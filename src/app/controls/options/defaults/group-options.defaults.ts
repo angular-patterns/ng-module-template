@@ -1,4 +1,4 @@
 export const groupOptionsDefaults = { 
-    name: 'Group', 
+    model: 'Group', 
     widget: null 
 };

@@ -1,16 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Form } from '../../models/form.model';
 import { FormGroup } from '@angular/forms';
-import { Form } from '../models/form.model';
-import { FormService } from '../form.service';
-import { IdService } from '../../../dynamic/services/id.service';
+import { FormService } from '../../form.service';
 
 @Component({
-  selector: 'app-editor',
-  templateUrl: './editor.component.html',
-  styleUrls: ['./editor.component.css'],
-  providers: [IdService]
+  selector: 'app-main',
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.css']
 })
-export class EditorComponent implements OnInit {
+export class MainComponent implements OnInit {
   @Input() form: Form;
   formGroup: FormGroup;
   constructor(private formService: FormService) { 
@@ -29,10 +27,5 @@ export class EditorComponent implements OnInit {
     this.formGroup = this.formService.initialize(this.form);
   }
 
-  submit() {
-    alert(JSON.stringify(this.formGroup.value));
-  }
-  save() {
-    alert(JSON.stringify(this.form));
-  }
+
 }

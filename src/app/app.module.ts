@@ -21,8 +21,9 @@ import { tableOptionsDefaults } from './controls/options/defaults/table-options.
 import { groupOptionsDefaults } from './controls/options/defaults/group-options.defaults';
 import { TextboxOptionsComponent } from './controls/options/widgets/textbox-options/textbox-options.component';
 import { LabelOptionsComponent } from './controls/options/widgets/label-options/label-options.component';
+import { DndModule } from 'ng2-dnd';
 
-
+export const dndModule = DndModule.forRoot();
 
 @NgModule({
   imports:      [ 
@@ -31,7 +32,7 @@ import { LabelOptionsComponent } from './controls/options/widgets/label-options/
     ControlsModule, 
     FormsModule, 
     ReactiveFormsModule,
-    EditorModule,
+    dndModule,
     DynamicModule.withComponents([
       { 
         name: 'Textbox', 

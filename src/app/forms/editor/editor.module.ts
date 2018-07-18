@@ -9,19 +9,26 @@ import { ToolsMenuComponent } from './tools-menu/tools-menu.component';
 import { DndModule } from 'ng2-dnd';
 import { DynamicModule } from '../../dynamic/dynamic.module';
 
+import { Routes, RouterModule } from '@angular/router';
+import { TestComponent } from './test/test.component';
+import { MainComponent } from './routing/main/main.component';
+import { EditorRoutingModule } from './editor-routing.module';
+import { MainSectionComponent } from './routing/main-section/main-section.component';
+import { MainPreviewComponent } from './routing/main-preview/main-preview.component';
+import { MainModelComponent } from './routing/main-model/main-model.component';
+import { JsonPreviewComponent } from './routing/json-preview/json-preview.component';
+
 export const dndModule = DndModule.forRoot();
+
 
 @NgModule({
   imports: [
-    CommonModule,
-    DynamicModule,
-    FormsModule,  
-    ReactiveFormsModule,
-    dndModule
+
+    EditorRoutingModule
   ],
-  declarations: [EditorComponent, SectionListComponent, SectionComponent, ToolsMenuComponent],
+  declarations: [   TestComponent ],
   exports: [
-    EditorComponent
+    
   ],
   providers: [
     FormService

@@ -1,0 +1,26 @@
+<div>
+  <div class="col-md-3">
+    <app-section-list></app-section-list>
+    <app-tools-menu></app-tools-menu>
+  </div>
+  <div class="col-md-9">
+    <ul class="nav nav-tabs">
+      <li role="presentation" routerLinkActive="active">
+        <a routerLink="/editor" >Editor</a>
+      </li>
+      <li role="presentation" routerLinkActive="active">
+        <a routerLink="/preview">Preview</a>
+      </li>
+      <li role="presentation" routerLinkActive="active">
+          <a routerLink="/definition">Definition</a>
+        </li>
+  
+      <li role="presentation" routerLinkActive="active">
+        <a routerLink="/model">Model</a>
+      </li>
+    </ul>
+    <router-outlet></router-outlet>
+
+
+  </div>
+</div>

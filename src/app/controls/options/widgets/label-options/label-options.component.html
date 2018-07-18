@@ -1,0 +1,12 @@
+<div [formGroup]="formGroup">
+  <div class="form-group">
+    <label>Text</label>
+    <input type="text" formControlName="text" class="form-control" placeholder="Text">
+  </div>
+  <div class="form-group">
+    <label>Size</label> <br />
+    <div class="btn-group">
+      <div (click)="selectSize(size)" *ngFor="let size of sizeOptions" [ngClass]="{ 'active': size === selectedSize }" class="btn btn-default">{{ size }}</div>
+    </div>
+  </div>
+</div>

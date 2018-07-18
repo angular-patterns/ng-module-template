@@ -1,3 +1,6 @@
+import { LabelSize } from "../../models/label.options";
+
 export const labelOptionsDefaults = { 
-    title: 'Label'
+    text: 'Label',
+    size: LabelSize.H1
 };

@@ -9,6 +9,7 @@ import { TableComponent } from './widgets/table/table.component';
 import { GroupComponent } from './widgets/group/group.component';
 import { DynamicModule } from '../dynamic/dynamic.module';
 import { TextboxOptionsComponent } from './options/widgets/textbox-options/textbox-options.component';
+import { LabelOptionsComponent } from './options/widgets/label-options/label-options.component';
 
 
 @NgModule({
@@ -23,12 +24,14 @@ import { TextboxOptionsComponent } from './options/widgets/textbox-options/textb
     TextboxOptionsComponent,
     LabelComponent,
     TableComponent,
-    GroupComponent
+    GroupComponent,
+    LabelOptionsComponent
   ],
   exports: [
     TextboxComponent,
     TextboxOptionsComponent,
     LabelComponent,
+    LabelOptionsComponent,
     TableComponent
   ]
 })

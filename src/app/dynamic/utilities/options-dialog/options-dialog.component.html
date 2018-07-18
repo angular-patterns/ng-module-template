@@ -1,14 +1,14 @@
 <div class="field">
     <div class="btn-group pull-right toolbar">
-        <a class="btn btn-xs btn-default" (click)="onSettings(template)">
+        <button [disabled]="!optionsComponent" class="btn btn-xs btn-default" (click)="onSettings(template)">
             <span class="glyphicon glyphicon-cog" title="settings"></span>
-        </a>
-        <a class="btn btn-xs btn-default">
+        </button>
+        <button class="btn btn-xs btn-default">
             <span>{{title}}</span>
-        </a>
-        <a class="btn btn-xs btn-default" (click)="onRemove()">
+        </button>
+        <button class="btn btn-xs btn-default" (click)="onRemove()">
             <span class="glyphicon glyphicon-remove"></span>
-        </a>
+        </button>
     </div>
     <ng-content></ng-content>
 </div>

@@ -103,6 +103,7 @@ export class FormService {
         this.store.form.sections.forEach(t=> {
             var i = t.widgets.findIndex(t=>t.options == prevOptions);
             if (i >= 0) {
+                
                 t.widgets[i].options = newOptions;
                 this.updatedOptionsSubject.next(newOptions);
                 if (prevOptions.model && prevOptions.model != newOptions.model) {

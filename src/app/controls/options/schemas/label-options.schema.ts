@@ -2,11 +2,11 @@ export const labelOptionsSchema = {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
     "properties": {
-      "title": {
+      "text": {
         "type": "string"
       }
     },
     "required": [
-      "title"
+      "text"
     ]
   };

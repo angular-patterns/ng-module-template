@@ -20,6 +20,7 @@ import { labelOptionsDefaults } from './controls/options/defaults/label-options.
 import { tableOptionsDefaults } from './controls/options/defaults/table-options.defaults';
 import { groupOptionsDefaults } from './controls/options/defaults/group-options.defaults';
 import { TextboxOptionsComponent } from './controls/options/widgets/textbox-options/textbox-options.component';
+import { LabelOptionsComponent } from './controls/options/widgets/label-options/label-options.component';
 
 
 
@@ -44,7 +45,7 @@ import { TextboxOptionsComponent } from './controls/options/widgets/textbox-opti
         component: LabelComponent, 
         optionsSchema: labelOptionsSchema, 
         defaultOptions: labelOptionsDefaults, 
-        settingsComponent: null  
+        settingsComponent: LabelOptionsComponent  
       },
       { 
         name: 'Table', 

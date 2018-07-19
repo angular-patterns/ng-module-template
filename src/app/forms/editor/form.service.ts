@@ -2,9 +2,12 @@ import { Injectable } from "@angular/core";
 import { Form, Section } from "./models/form.model";
 import { Observable, Subject } from "rxjs";
 import { WidgetRef, Widget } from "../../dynamic/models/widget.model";
-import { WidgetFactory } from "../../dynamic/services/widget.factory";
-import { IdService } from "../../dynamic/services/id.service";
+
+
 import { FormGroup } from "@angular/forms";
+import { WidgetFactory } from "../../core/widget.factory";
+import { IdService } from "../../core/id.service";
+
 
 @Injectable()
 export class FormService {

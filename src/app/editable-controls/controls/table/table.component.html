@@ -1,0 +1,19 @@
+<div optionsDialog [options]="options" component="Table" title="Table">
+    <table class="table">
+        <tr *ngFor="let i of rows">
+          <td *ngFor="let j of cols">
+              <div optionsDialog [options]="options?.widget.options" component="options?.widget.component" title="options?.widget.component">
+                  <app-widget [formGroup]="formGroup"[widget]="findTableWidget(i,j).widget">
+                  </app-widget>
+              </div>
+          </td>
+        </tr>
+      </table>
+</div>
+
+
+
+<!-- <pre>
+  {{ rows | json }}
+  {{ options | json}}
+</pre> -->

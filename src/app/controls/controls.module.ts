@@ -2,14 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TextboxComponent } from './widgets/textbox/textbox.component';
-
-import { LabelComponent } from './widgets/label/label.component';
-import { TableComponent } from './widgets/table/table.component';
-import { GroupComponent } from './widgets/group/group.component';
 import { DynamicModule } from '../dynamic/dynamic.module';
-import { TextboxOptionsComponent } from './options/widgets/textbox-options/textbox-options.component';
-import { LabelOptionsComponent } from './options/widgets/label-options/label-options.component';
+import { TextboxComponent } from './textbox/textbox.component';
+import { LabelComponent } from './label/label.component';
+import { TableComponent } from './table/table.component';
+import { GroupComponent } from './group/group.component';
 
 
 @NgModule({
@@ -21,18 +18,18 @@ import { LabelOptionsComponent } from './options/widgets/label-options/label-opt
   ],
   declarations: [
     TextboxComponent,
-    TextboxOptionsComponent,
     LabelComponent,
     TableComponent,
-    GroupComponent,
-    LabelOptionsComponent
+    GroupComponent
   ],
   exports: [
     TextboxComponent,
-    TextboxOptionsComponent,
     LabelComponent,
-    LabelOptionsComponent,
-    TableComponent
+    TableComponent,
+    GroupComponent,
+    FormsModule,
+    ReactiveFormsModule
+    
   ]
 })
 export class ControlsModule { }

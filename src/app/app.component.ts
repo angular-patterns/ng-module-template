@@ -2,9 +2,6 @@ import { Component, Type } from '@angular/core';
 
 
 import { FormGroup } from '@angular/forms';
-import { TextboxComponent } from './controls/widgets/textbox/textbox.component';
-import { LabelComponent } from './controls/widgets/label/label.component';
-import { TableComponent } from './controls/widgets/table/table.component';
 
 
 import { Widget } from './dynamic/models/widget.model';

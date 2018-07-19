@@ -22,10 +22,7 @@ export class WidgetComponent implements OnInit {
     if (this.widget) {
       let w = this.widgetLookupService.find(this.widget.component);
       this.component = w.component;
-      let result = this.validateSchema(this.widget.options, w.optionsSchema);
-      if (!result.valid) {
-        console.log(result);
-      }
+
     }
   }
   ngOnChanges() {
@@ -33,17 +30,7 @@ export class WidgetComponent implements OnInit {
      
       let w = this.widgetLookupService.find(this.widget.component);
       this.component = w.component;
-      let result = this.validateSchema(this.widget.options, w.optionsSchema);
-      if (!result.valid) {
-        console.log(result);
-      }
     }
   }
 
-  private validateSchema(instance:any, schema: any)
-  {
-    var v = new Validator();
-    var result = v.validate(instance, schema);
-    return result;
-  }
 }

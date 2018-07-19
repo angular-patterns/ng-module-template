@@ -8,9 +8,6 @@ export class Widget {
 export class WidgetRef {
     name: string;
     component: Type<any>;
-    optionsSchema: any;
-    defaultOptions: any;
-    settingsComponent?: Type<any>
 }
 
 export const widgetRefToken = new InjectionToken<WidgetRef>('widget ref');

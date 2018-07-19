@@ -1,0 +1,13 @@
+<table class="table">
+  <tr *ngFor="let i of rows">
+    <td *ngFor="let j of cols">
+        <app-widget [formGroup]="formGroup" [widget]="findTableWidget(i,j).widget">
+        </app-widget>
+    </td>
+  </tr>
+</table>
+
+<!-- <pre>
+  {{ rows | json }}
+  {{ options | json}}
+</pre> -->

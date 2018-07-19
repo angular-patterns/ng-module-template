@@ -5,64 +5,54 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ControlsModule } from './controls/controls.module';
-import { TextboxComponent } from './controls/widgets/textbox/textbox.component';
-import { LabelComponent } from './controls/widgets/label/label.component';
-import { TableComponent } from './controls/widgets/table/table.component';
-import { GroupComponent } from './controls/widgets/group/group.component';
 import { DynamicModule } from './dynamic/dynamic.module';
 import { EditorModule } from './forms/editor/editor.module';
-import { groupOptionsSchema } from './controls/options/schemas/group-options.schema';
-import { labelOptionsSchema } from './controls/options/schemas/label-options.schema';
-import { tableOptionsSchema } from './controls/options/schemas/table-options.schema';
-import { textboxOptionsSchema } from './controls/options/schemas/textbox-options.schema';
-import { textboxOptionsDefaults } from './controls/options/defaults/textbox-options.defaults';
-import { labelOptionsDefaults } from './controls/options/defaults/label-options.defaults';
-import { tableOptionsDefaults } from './controls/options/defaults/table-options.defaults';
-import { groupOptionsDefaults } from './controls/options/defaults/group-options.defaults';
-import { TextboxOptionsComponent } from './controls/options/widgets/textbox-options/textbox-options.component';
-import { LabelOptionsComponent } from './controls/options/widgets/label-options/label-options.component';
 import { DndModule } from 'ng2-dnd';
+import { EditableControlsModule } from './editable-controls/editable-controls.module';
+import { TextboxComponent } from './editable-controls/controls/textbox/textbox.component';
+import { LabelComponent } from './editable-controls/controls/label/label.component';
+import { TableComponent } from './editable-controls/controls/table/table.component';
+import { GroupComponent } from './editable-controls/controls/group/group.component';
+import { DynamicOptionsModule } from './dynamic-options/dynamic-options.module';
+import { groupOptionsSchema } from './shared/controls-common/schemas/group-options.schema';
+import { labelOptionsSchema } from './shared/controls-common/schemas/label-options.schema';
+import { textboxOptionsSchema } from './shared/controls-common/schemas/textbox-options.schema';
+import { tableOptionsSchema } from './shared/controls-common/schemas/table-options.schema';
+import { groupOptionsDefaults } from './editable-controls/defaults/group-options.defaults';
+import { labelOptionsDefaults } from './editable-controls/defaults/label-options.defaults';
+import { textboxOptionsDefaults } from './editable-controls/defaults/textbox-options.defaults';
+import { tableOptionsDefaults } from './editable-controls/defaults/table-options.defaults';
+import { LabelOptionsComponent } from './editable-controls/options/label-options/label-options.component';
+import { TextboxOptionsComponent } from './editable-controls/options/textbox-options/textbox-options.component';
+import { CoreModule } from './core/core.module';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 export const dndModule = DndModule.forRoot();
 
 @NgModule({
   imports:      [ 
+    CoreModule,
     BrowserModule, 
     AppRoutingModule, 
     ControlsModule, 
+    EditableControlsModule,
     FormsModule, 
     ReactiveFormsModule,
     dndModule,
+    ModalModule.forRoot(),
     DynamicModule.withComponents([
-      { 
-        name: 'Textbox', 
-        component: TextboxComponent, 
-        optionsSchema: textboxOptionsSchema, 
-        defaultOptions: textboxOptionsDefaults,
-        settingsComponent: TextboxOptionsComponent  
-      },
-      { 
-        name: 'Label', 
-        component: LabelComponent, 
-        optionsSchema: labelOptionsSchema, 
-        defaultOptions: labelOptionsDefaults, 
-        settingsComponent: LabelOptionsComponent  
-      },
-      { 
-        name: 'Table', 
-        component: TableComponent, 
-        optionsSchema: tableOptionsSchema, 
-        defaultOptions: tableOptionsDefaults, 
-        settingsComponent: null  
-      },
-      { 
-        name: 'Group', 
-        component: GroupComponent, 
-        optionsSchema: groupOptionsSchema, 
-        defaultOptions: groupOptionsDefaults, 
-        settingsComponent: null  
-      }
+      { name: 'Textbox', component: TextboxComponent },
+      { name: 'Label',  component: LabelComponent },
+      { name: 'Table', component: TableComponent },
+      { name: 'Group', component: GroupComponent }
+    ]),
+    DynamicOptionsModule.withOptions([
+      { name: 'Group', schema: groupOptionsSchema, default: groupOptionsDefaults, component: null },
+      { name: 'Label', schema: labelOptionsSchema, default: labelOptionsDefaults, component: LabelOptionsComponent },
+      { name: 'Textbox', schema: textboxOptionsSchema, default: textboxOptionsDefaults, component: TextboxOptionsComponent },
+      { name: 'Table', schema: tableOptionsSchema, default: tableOptionsDefaults, component: null },
     ])
+
   ],
   declarations: [ AppComponent ],
   bootstrap:    [ AppComponent ],

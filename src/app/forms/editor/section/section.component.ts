@@ -1,16 +1,20 @@
 import { Component, OnInit, Input, OnChanges, OnDestroy } from '@angular/core';
 import { FormService } from '../form.service';
 import { Section } from '../models/form.model';
-import { DropZoneService } from '../../../dynamic/utilities/drop-zone/drop-zone.service';
+
 import { FormGroup } from '@angular/forms';
-import { OptionsDialogService } from '../../../dynamic/services/options-dialog.service';
+
 import { Subscription } from 'rxjs';
+import { OptionsDialogService } from '../../../dynamic-options/services/options-dialog.service';
+import { DropZoneService } from '../../../dynamic/services/drop-zone.service';
+
+
 
 @Component({
   selector: 'app-section',
   templateUrl: './section.component.html',
   styleUrls: ['./section.component.css'],
-  providers: [ OptionsDialogService ]
+  providers: [ OptionsDialogService, DropZoneService ]
 })
 export class SectionComponent implements OnInit, OnChanges, OnDestroy {
   @Input() formGroup: FormGroup;

@@ -2,13 +2,16 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Form } from '../models/form.model';
 import { FormService } from '../form.service';
-import { IdService } from '../../../dynamic/services/id.service';
+
+
+
 
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
   styleUrls: ['./editor.component.css'],
-  providers: [IdService]
+  providers: [
+  ]
 })
 export class EditorComponent implements OnInit {
   @Input() form: Form;

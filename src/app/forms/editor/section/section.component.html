@@ -1,5 +1,5 @@
 <h1>{{ section?.title }}</h1>
-<div *ngFor="let widget of section?.widgets" optionsDialog [options]="widget.options" [component]="widget.component" [title]="widget.component">
+<div *ngFor="let widget of section?.widgets">
     <app-widget [formGroup]="formGroup" [widget]="widget">
     </app-widget>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DropZoneService } from './drop-zone.service';
+import { DropZoneService } from '../../services/drop-zone.service';
+
 
 @Component({
   selector: '[drop-zone]',

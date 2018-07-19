@@ -4,9 +4,6 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { TextboxOptions } from '../../shared/models/textbox.options';
 import { FormGroupService } from '../../dynamic/services/form-group.service';
 
-
-
-
 @Component({
   selector: 'co-textbox',
   templateUrl: './textbox.component.html',

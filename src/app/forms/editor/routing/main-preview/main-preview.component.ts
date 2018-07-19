@@ -10,6 +10,7 @@ import { TableComponent } from '../../../../controls/table/table.component';
 import { GroupComponent } from '../../../../controls/group/group.component';
 import { Subscription } from 'rxjs';
 import { FormGroupService } from '../../../../dynamic/services/form-group.service';
+import { TestComponent } from '../../../../test/test.component';
 
 @Component({
   selector: 'app-main-preview',
@@ -22,7 +23,8 @@ import { FormGroupService } from '../../../../dynamic/services/form-group.servic
           { name: 'Textbox', component: TextboxComponent },
           { name: 'Label',  component: LabelComponent },
           { name: 'Table', component: TableComponent },
-          { name: 'Group', component: GroupComponent }
+          { name: 'Group', component: GroupComponent },
+          { name: 'Test', component: TestComponent }
         ];
         
         return new WidgetLookupService(widgetRefs)
@@ -43,7 +45,7 @@ export class MainPreviewComponent implements OnInit, OnDestroy {
       this.section = t;
       var val = this.formService.store.data[this.section.title];
       this.formGroupService.setValue(val);
-      
+
     });
     this.subscriptions = [];
     this.subscriptions.push(s);

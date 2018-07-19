@@ -10,7 +10,7 @@ import { DndModule } from 'ng2-dnd';
 import { DynamicModule } from '../../dynamic/dynamic.module';
 
 import { Routes, RouterModule } from '@angular/router';
-import { TestComponent } from './test/test.component';
+
 import { MainComponent } from './routing/main/main.component';
 import { EditorRoutingModule } from './editor-routing.module';
 import { MainSectionComponent } from './routing/main-section/main-section.component';
@@ -26,7 +26,7 @@ export const dndModule = DndModule.forRoot();
 
     EditorRoutingModule
   ],
-  declarations: [   TestComponent ],
+  declarations: [  ],
   exports: [
     
   ],

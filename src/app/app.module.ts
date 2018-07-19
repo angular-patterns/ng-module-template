@@ -33,6 +33,7 @@ import { LabelOptionsComponent } from './editable-controls/options/label-options
 import { TextboxOptionsComponent } from './editable-controls/options/textbox-options/textbox-options.component';
 import { CoreModule } from './core/core.module';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { TestComponent } from './test/test.component';
 
 
 export const dndModule = DndModule.forRoot();
@@ -52,17 +53,19 @@ export const dndModule = DndModule.forRoot();
       { name: 'Textbox', component: TextboxComponent },
       { name: 'Label',  component: LabelComponent },
       { name: 'Table', component: TableComponent },
-      { name: 'Group', component: GroupComponent }
+      { name: 'Group', component: GroupComponent },
+      { name: 'Test', component: TestComponent }
     ]),
     DynamicOptionsModule.withOptions([
       { name: 'Group', schema: groupOptionsSchema, default: groupOptionsDefaults, component: null },
       { name: 'Label', schema: labelOptionsSchema, default: labelOptionsDefaults, component: LabelOptionsComponent },
       { name: 'Textbox', schema: textboxOptionsSchema, default: textboxOptionsDefaults, component: TextboxOptionsComponent },
       { name: 'Table', schema: tableOptionsSchema, default: tableOptionsDefaults, component: null },
+      { name: 'Test', schema: {}, default: {}, component: null },
     ])
 
   ],
-  declarations: [ AppComponent ],
+  declarations: [ AppComponent, TestComponent ],
   bootstrap:    [ AppComponent ],
   exports: [AppComponent],
   entryComponents: [

@@ -7,6 +7,7 @@ import { GroupComponent } from '../../../../controls/group/group.component';
 import { TableComponent } from '../../../../controls/table/table.component';
 import { LabelComponent } from '../../../../controls/label/label.component';
 import { TextboxComponent } from '../../../../controls/textbox/textbox.component';
+import { TestComponent } from '../../../../test/test.component';
 
 @Component({
   selector: 'app-main-model',
@@ -18,7 +19,8 @@ import { TextboxComponent } from '../../../../controls/textbox/textbox.component
           { name: 'Textbox', component: TextboxComponent },
           { name: 'Label',  component: LabelComponent },
           { name: 'Table', component: TableComponent },
-          { name: 'Group', component: GroupComponent }
+          { name: 'Group', component: GroupComponent },
+          { name: 'Test', component: TestComponent }
         ];
         
         return new WidgetLookupService(widgetRefs)

@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges, OnDestroy } from '@
 
 import { FormGroup, FormControl } from '@angular/forms';
 import { TextboxOptions } from '../../shared/models/textbox.options';
+import { FormGroupService } from '../../dynamic/services/form-group.service';
 
 
 
@@ -14,12 +15,13 @@ import { TextboxOptions } from '../../shared/models/textbox.options';
 export class TextboxComponent implements OnInit, OnChanges, OnDestroy {
   @Input() options: TextboxOptions;
   @Input() formGroup: FormGroup;
-  constructor() { 
+  constructor(private formGroupService: FormGroupService) { 
     this.formGroup = new FormGroup({});
   }
 
   ngOnInit() {
-    this.formGroup.setControl(this.options.model, new FormControl(this.options.defaultValue));
+    var value = this.formGroupService.getValue(this.formGroup, this.options.model) || this.options.defaultValue;
+    this.formGroup.setControl(this.options.model, new FormControl(value));
   }
   ngOnChanges(changes: SimpleChanges) {
     this.formGroup.setControl(this.options.model, new FormControl(this.options.defaultValue));

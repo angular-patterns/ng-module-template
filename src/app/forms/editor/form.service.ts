@@ -15,6 +15,7 @@ export class FormService {
         form: Form;
         formGroup: FormGroup;
         currentSection: Section;
+        data: { [key: string]: any};
     }
     events:  {
         init$: Observable<Form>,
@@ -54,7 +55,8 @@ export class FormService {
         this.store = {
             form: null,
             formGroup: null,
-            currentSection: null
+            currentSection: null,
+            data: null
         }
         this.events = {
             init$: this.initSubject.asObservable(),
@@ -78,6 +80,7 @@ export class FormService {
 
     initialize(form:Form) {
         this.store.form = form;
+        this.store.data = {};
         this.store.formGroup = new FormGroup({});
         this.idService.init(form.idSpace);
         this.initSubject.next(this.store.form);

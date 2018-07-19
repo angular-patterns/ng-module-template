@@ -1,11 +1,12 @@
 import { Component, Type } from '@angular/core';
 
 
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 
 
 import { Widget } from './dynamic/models/widget.model';
 import { Form } from './forms/editor/models/form.model';
+import { FormGroupService } from './dynamic/services/form-group.service';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,7 @@ export class AppComponent {
   widget3: Widget; 
   form: Form;
 
-  constructor() {
+  constructor(private formGroupService: FormGroupService) {
     this.widget1 =  { component: 'textbox', options: { label: 'First Name', name: 'First Name', placeholder: 'First Name', model: 'firstName', defaultValue: ''}};
     this.widget2 =  { component: 'textbox', options: { label: 'Last Name',  name: 'Last Name', placeholder: 'Last Name', model: 'lastName', defaultValue: ''}};
     this.widget3 = { component: 'table', options: { rows: 2, cols: 2, widgets: [
@@ -39,7 +40,24 @@ export class AppComponent {
       ],
       idSpace: {}
     }
-    this.formGroup = new FormGroup({});
+    var formGroup2 = new FormGroup({});
+    this.formGroup = new FormGroup({
+      "firstName": new FormControl(""),
+      "lastName": new FormControl(""),
+      "hey": formGroup2
+     });
+    this.formGroup.setValue({
+      "firstName": "asdf",
+      "lastName": "blah",
+      "hey": {}
+    });
+    
+    //this.formGroupService.setValue({ hey: { there: 'hey' }});
+    //var path = this.formGroupService.getPath(formGroup2);
+    //var val = this.formGroupService.getValue(formGroup2);
+    //alert(JSON.stringify(val));
+     
+
     this.title = 'Hello World!';
     // this.widgets = 
     //  [

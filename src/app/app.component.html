@@ -2,18 +2,7 @@
 
 <router-outlet></router-outlet>
 
-<!-- 
-<app-editor [form]="form"></app-editor>  -->
-<!-- 
-<div *ngFor="let widget of widgets">
-    <app-widget [formGroup]="formGroup" [widget]="widget"></app-widget>
+<div [formGroup]="formGroup">
+    <input type="text" formControlName="firstName"> <br />
+    <input type="text" formControlName="lastName">
 </div>
-
-<app-widget [formGroup]="formGroup" [widget]="widget1"></app-widget>
-
-<button (click)="test()">Click Me</button>
-
-<pre>
-    {{ widget1 | json }}
-    {{ widgets | json }}
-</pre> -->

@@ -14,6 +14,7 @@ export class MainSectionComponent implements OnInit {
     this.formService.events.init$.subscribe(t=> {
       this.formGroup = this.formService.store.formGroup;
     });
+    
   }
 
   ngOnInit() {

@@ -7,6 +7,7 @@ import { FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { OptionsDialogService } from '../../../dynamic-options/services/options-dialog.service';
 import { DropZoneService } from '../../../dynamic/services/drop-zone.service';
+import { FormGroupService } from '../../../dynamic/services/form-group.service';
 
 
 
@@ -20,14 +21,19 @@ export class SectionComponent implements OnInit, OnChanges, OnDestroy {
   @Input() formGroup: FormGroup;
   section: Section; 
   subscriptions: Subscription[];
-  constructor(private formService: FormService, private dropZoneService: DropZoneService, private optionsDialogService: OptionsDialogService) {
+  constructor(private formGroupService: FormGroupService, private formService: FormService, private dropZoneService: DropZoneService, private optionsDialogService: OptionsDialogService) {
     this.subscriptions = [];
     const s1 = this.formService.events.init$.subscribe(t=> {
       if (t.sections.length > 0)
         this.section = t.sections[0];
     });
     const s2 = this.formService.events.section.current$.subscribe(t=> {
+      if (this.section)
+        this.formService.store.data[this.section.title] = this.formGroup.value;
+        
       this.section = t;
+      var val = this.formService.store.data[this.section.title];
+      this.formGroupService.setValue(val);
     });
     const s3 = this.dropZoneService.drop$.subscribe(t=> {
       this.formService.addWidget(t.widget);

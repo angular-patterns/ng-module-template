@@ -11,6 +11,7 @@ import { WidgetTemplateComponent } from './utilities/widget-template/widget-temp
 import { DynamicModule as NgDynamicModule } from 'ng-dynamic-component';
 import { DropZoneService } from './services/drop-zone.service';
 import { DropZoneComponent } from './utilities/drop-zone/drop-zone.component';
+import { FormGroupService } from './services/form-group.service';
 
 export const dndModule = DndModule.forRoot();
 
@@ -41,6 +42,7 @@ export class DynamicModule {
       providers: [
         DropZoneService,
         WidgetLookupService,
+        FormGroupService,
         { provide: widgetRefToken, useValue: components },
         { provide: ANALYZE_FOR_ENTRY_COMPONENTS, multi: true, useValue: components }
       ]

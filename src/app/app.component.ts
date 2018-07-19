@@ -40,17 +40,7 @@ export class AppComponent {
       ],
       idSpace: {}
     }
-    var formGroup2 = new FormGroup({});
-    this.formGroup = new FormGroup({
-      "firstName": new FormControl(""),
-      "lastName": new FormControl(""),
-      "hey": formGroup2
-     });
-    this.formGroup.setValue({
-      "firstName": "asdf",
-      "lastName": "blah",
-      "hey": {}
-    });
+
     
     //this.formGroupService.setValue({ hey: { there: 'hey' }});
     //var path = this.formGroupService.getPath(formGroup2);

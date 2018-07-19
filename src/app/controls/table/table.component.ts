@@ -36,6 +36,9 @@ export class TableComponent implements OnInit, OnChanges {
     let widget = this.options.widgets.find(t=>t.row == i-1 && t.col == j-1);
     return widget ? widget : null;
   }
-
+  tableWidgetExists(i: number, j: number) {
+    let tableWidget = this.findTableWidget(i, j);
+    return tableWidget && tableWidget.widget;
+  }
   
 }

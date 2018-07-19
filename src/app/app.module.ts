@@ -4,15 +4,22 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ControlsModule } from './controls/controls.module';
 import { DynamicModule } from './dynamic/dynamic.module';
 import { EditorModule } from './forms/editor/editor.module';
 import { DndModule } from 'ng2-dnd';
+
+import { ControlsModule } from './controls/controls.module';
+import { TextboxComponent as PreviewTextboxComponent } from './controls/textbox/textbox.component';
+import { LabelComponent as PreviewLabelComponent } from './controls/label/label.component';
+import { TableComponent as PreviewTableComponent } from './controls/table/table.component';
+import { GroupComponent as PreviewGroupComponent } from './controls/group/group.component';
+
 import { EditableControlsModule } from './editable-controls/editable-controls.module';
 import { TextboxComponent } from './editable-controls/controls/textbox/textbox.component';
 import { LabelComponent } from './editable-controls/controls/label/label.component';
 import { TableComponent } from './editable-controls/controls/table/table.component';
 import { GroupComponent } from './editable-controls/controls/group/group.component';
+
 import { DynamicOptionsModule } from './dynamic-options/dynamic-options.module';
 import { groupOptionsSchema } from './shared/controls-common/schemas/group-options.schema';
 import { labelOptionsSchema } from './shared/controls-common/schemas/label-options.schema';
@@ -56,7 +63,13 @@ export const dndModule = DndModule.forRoot();
   ],
   declarations: [ AppComponent ],
   bootstrap:    [ AppComponent ],
-  exports: [AppComponent]
+  exports: [AppComponent],
+  entryComponents: [
+    PreviewTextboxComponent,
+    PreviewLabelComponent,
+    PreviewTableComponent,
+    PreviewGroupComponent
+  ]
 })
 export class AppModule {
 }

@@ -1,9 +1,2 @@
-
-<div hidden="true" *ngFor="let section of form.sections">
-    <h1>{{ section.title }}</h1>
-  <div *ngFor="let widget of section.widgets">
-      <app-widget [formGroup]="formGroup" [widget]="widget">
-      </app-widget>
-  </div>
-</div>
 <pre>{{formGroup.value | json}}</pre>
+ <app-main-preview [formGroup]="formGroup"></app-main-preview>

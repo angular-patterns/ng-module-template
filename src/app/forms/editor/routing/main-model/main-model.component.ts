@@ -10,10 +10,8 @@ import { Section, Form } from '../../models/form.model';
 })
 export class MainModelComponent implements OnInit {
   formGroup:FormGroup;
-  form: Form;
   constructor(private formService: FormService) {
-    this.formGroup = new FormGroup({});
-    this.form = this.formService.store.form;
+    this.formGroup = this.formService.store.formGroup;
   }
 
   ngOnInit() {

@@ -29,7 +29,7 @@ import { GroupComponent } from '../../../../controls/group/group.component';
 })
 export class MainPreviewComponent implements OnInit {
   @Input() formGroup:FormGroup;
-  form: Form;
+  @Input() form: Form;
   constructor(private formService: FormService) {
     this.formGroup = new FormGroup({});
     this.form = this.formService.store.form;

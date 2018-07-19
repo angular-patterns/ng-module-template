@@ -11,3 +11,7 @@ export class WidgetRef {
 }
 
 export const widgetRefToken = new InjectionToken<WidgetRef>('widget ref');
+
+export class Options {
+    
+}

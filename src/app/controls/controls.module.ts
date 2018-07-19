@@ -7,20 +7,25 @@ import { TextboxComponent } from './textbox/textbox.component';
 import { LabelComponent } from './label/label.component';
 import { TableComponent } from './table/table.component';
 import { GroupComponent } from './group/group.component';
-
+import { FormlyModule } from '@ngx-formly/core';
+import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
+import { PasswordComponent } from './password/password.component';
 
 @NgModule({
   imports: [
     CommonModule, 
     FormsModule,
     ReactiveFormsModule,
-    DynamicModule
+    DynamicModule,
+    FormlyModule,
+    FormlyBootstrapModule,
   ],
   declarations: [
     TextboxComponent,
     LabelComponent,
     TableComponent,
-    GroupComponent
+    GroupComponent,
+    PasswordComponent
   ],
   exports: [
     TextboxComponent,
@@ -28,8 +33,14 @@ import { GroupComponent } from './group/group.component';
     TableComponent,
     GroupComponent,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PasswordComponent,
+    FormlyModule,
+    FormlyBootstrapModule,
     
+  ],
+  entryComponents: [
+    PasswordComponent
   ]
 })
 export class ControlsModule { }

@@ -18,6 +18,7 @@ import { GroupComponent } from './controls/group/group.component';
 import { LabelComponent } from './controls/label/label.component';
 import { TableComponent } from './controls/table/table.component';
 import { TextboxComponent } from './controls/textbox/textbox.component';
+import { PasswordComponent } from './controls/password/password.component';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { TextboxComponent } from './controls/textbox/textbox.component';
     TableComponent,
     TextboxComponent,
     LabelOptionsComponent,
-    TextboxOptionsComponent
+    TextboxOptionsComponent,
+    PasswordComponent
   ],
   exports: [
     GroupComponent,
@@ -39,7 +41,11 @@ import { TextboxComponent } from './controls/textbox/textbox.component';
     TableComponent,
     TextboxComponent,
     LabelOptionsComponent,
-    TextboxOptionsComponent
+    TextboxOptionsComponent,
+    PasswordComponent
+  ],
+  entryComponents: [
+    PasswordComponent
   ]
 })
 export class EditableControlsModule {

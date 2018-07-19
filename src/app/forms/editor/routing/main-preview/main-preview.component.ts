@@ -11,6 +11,7 @@ import { GroupComponent } from '../../../../controls/group/group.component';
 import { Subscription } from 'rxjs';
 import { FormGroupService } from '../../../../dynamic/services/form-group.service';
 import { TestComponent } from '../../../../test/test.component';
+import { PasswordComponent } from '../../../../controls/password/password.component';
 
 @Component({
   selector: 'app-main-preview',
@@ -24,7 +25,8 @@ import { TestComponent } from '../../../../test/test.component';
           { name: 'Label',  component: LabelComponent },
           { name: 'Table', component: TableComponent },
           { name: 'Group', component: GroupComponent },
-          { name: 'Test', component: TestComponent }
+          { name: 'Test', component: TestComponent },
+          { name: 'Password', component: PasswordComponent }
         ];
         
         return new WidgetLookupService(widgetRefs)

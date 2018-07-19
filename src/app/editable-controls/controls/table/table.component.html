@@ -1,16 +1,17 @@
-<div optionsDialog [options]="options" component="Table" title="Table">
-    <table class="table">
-        <tr *ngFor="let i of rows">
-          <td *ngFor="let j of cols">
-              <div optionsDialog [options]="options?.widget.options" component="options?.widget.component" title="options?.widget.component">
-                  <app-widget [formGroup]="formGroup"[widget]="findTableWidget(i,j).widget">
-                  </app-widget>
-              </div>
-          </td>
-        </tr>
-      </table>
-</div>
-
+<table class="table">
+    <tr *ngFor="let i of rows">
+        <td *ngFor="let j of cols">
+            <ng-template [ngIf]="tableWidgetExists(i,j)">
+                <div optionsDialog [options]="findTableWidget(i,j).widget.options" [component]="findTableWidget(i,j).widget.component" [title]="findTableWidget(i,j).widget.component">
+                    <app-widget [formGroup]="formGroup" [widget]="findTableWidget(i,j).widget">
+                    </app-widget>
+                </div>
+            </ng-template>
+            <div *ngIf="!tableWidgetExists(i,j)" [drop-zone]="{ row: i, col: j}" name="Table">
+            </div>
+        </td>
+    </tr>
+</table>
 
 
 <!-- <pre>

@@ -3,6 +3,8 @@ import { FormGroup } from '@angular/forms';
 
 import { GroupOptions } from '../../../shared/controls-common/models/group.options';
 import { DropZoneService } from '../../../dynamic/services/drop-zone.service';
+import { WidgetFactory } from '../../../core/widget.factory';
+import { OptionsDialogService } from '../../../dynamic-options/services/options-dialog.service';
 
 
 @Component({
@@ -14,8 +16,18 @@ import { DropZoneService } from '../../../dynamic/services/drop-zone.service';
 export class GroupComponent implements OnInit {
   @Input() formGroup: FormGroup;
   @Input() options: GroupOptions;
-  constructor() { 
-
+  constructor(private widgetFactory: WidgetFactory, private dropZoneService: DropZoneService, private optionsDialogService: OptionsDialogService) { 
+    this.dropZoneService.drop$.subscribe(t=> {
+      let widget = this.widgetFactory.createWidget(t.widget);
+      this.options.widget = widget;
+    });
+    this.optionsDialogService.remove$.subscribe(o=> {
+      this.options.widget = null;
+    });
+    
+    this.optionsDialogService.update$.subscribe(t=> {
+      this.options.widget.options = t.newOptions;
+    });
   }
 
   ngOnInit() {

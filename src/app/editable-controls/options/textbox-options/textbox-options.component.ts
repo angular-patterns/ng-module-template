@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { TextboxOptions } from '../../../shared/controls-common/models/textbox.options';
+import { TextboxOptions } from '../../../shared/models/textbox.options';
+
 
 
 

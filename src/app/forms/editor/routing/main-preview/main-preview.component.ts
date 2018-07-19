@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormService } from '../../form.service';
-import { Form } from '../../models/form.model';
+import { Form, Section } from '../../models/form.model';
 import { FormGroup } from '@angular/forms';
 import { Widget } from '../../../../dynamic/models/widget.model';
 import { WidgetLookupService } from '../../../../dynamic/services/widget-lookup.service';
@@ -29,10 +29,10 @@ import { GroupComponent } from '../../../../controls/group/group.component';
 })
 export class MainPreviewComponent implements OnInit {
   @Input() formGroup:FormGroup;
-  @Input() form: Form;
+  @Input() section: Section;
   constructor(private formService: FormService) {
     this.formGroup = new FormGroup({});
-    this.form = this.formService.store.form;
+    this.section = this.formService.store.currentSection;
   }
 
   ngOnInit() {

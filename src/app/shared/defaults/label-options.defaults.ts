@@ -1,4 +1,5 @@
-import { LabelSize } from "../../shared/controls-common/models/label.options";
+import { LabelSize } from "../models/label.options";
+
 
 export const labelOptionsDefaults = { 
     text: 'Label',

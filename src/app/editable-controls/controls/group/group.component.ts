@@ -1,10 +1,11 @@
 import { Component, OnInit, Input, OnChanges, OnDestroy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
-import { GroupOptions } from '../../../shared/controls-common/models/group.options';
+
 import { DropZoneService } from '../../../dynamic/services/drop-zone.service';
 import { WidgetFactory } from '../../../core/widget.factory';
 import { OptionsDialogService } from '../../../dynamic-options/services/options-dialog.service';
+import { GroupOptions } from '../../../shared/models/group.options';
 
 
 @Component({

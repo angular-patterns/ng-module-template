@@ -21,18 +21,19 @@ import { TableComponent } from './editable-controls/controls/table/table.compone
 import { GroupComponent } from './editable-controls/controls/group/group.component';
 
 import { DynamicOptionsModule } from './dynamic-options/dynamic-options.module';
-import { groupOptionsSchema } from './shared/controls-common/schemas/group-options.schema';
-import { labelOptionsSchema } from './shared/controls-common/schemas/label-options.schema';
-import { textboxOptionsSchema } from './shared/controls-common/schemas/textbox-options.schema';
-import { tableOptionsSchema } from './shared/controls-common/schemas/table-options.schema';
-import { groupOptionsDefaults } from './editable-controls/defaults/group-options.defaults';
-import { labelOptionsDefaults } from './editable-controls/defaults/label-options.defaults';
-import { textboxOptionsDefaults } from './editable-controls/defaults/textbox-options.defaults';
-import { tableOptionsDefaults } from './editable-controls/defaults/table-options.defaults';
+import { groupOptionsSchema } from './shared/schemas/group-options.schema';
+import { labelOptionsSchema } from './shared/schemas/label-options.schema';
+import { textboxOptionsSchema } from './shared/schemas/textbox-options.schema';
+import { tableOptionsSchema } from './shared/schemas/table-options.schema';
+import { groupOptionsDefaults } from './shared/defaults/group-options.defaults';
+import { labelOptionsDefaults } from './shared/defaults/label-options.defaults';
+import { textboxOptionsDefaults } from './shared/defaults/textbox-options.defaults';
+import { tableOptionsDefaults } from './shared/defaults/table-options.defaults';
 import { LabelOptionsComponent } from './editable-controls/options/label-options/label-options.component';
 import { TextboxOptionsComponent } from './editable-controls/options/textbox-options/textbox-options.component';
 import { CoreModule } from './core/core.module';
 import { ModalModule } from 'ngx-bootstrap/modal';
+
 
 export const dndModule = DndModule.forRoot();
 

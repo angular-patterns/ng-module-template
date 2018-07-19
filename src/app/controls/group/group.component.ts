@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, OnChanges, OnDestroy } from "@angular/core";
 import { FormGroup } from "@angular/forms";
-import { GroupOptions } from "../../shared/controls-common/models/group.options";
+import { GroupOptions } from "../../shared/models/group.options";
+
 
 
 @Component({

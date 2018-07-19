@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { LabelSize, LabelOptions } from '../../../shared/controls-common/models/label.options';
+import { LabelSize, LabelOptions } from '../../../shared/models/label.options';
+
 
 @Component({
   selector: 'app-label-options',

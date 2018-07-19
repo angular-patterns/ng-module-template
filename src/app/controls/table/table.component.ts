@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { TableOptions } from '../../shared/controls-common/models/table.options';
+import { TableOptions } from '../../shared/models/table.options';
 
 
 @Component({

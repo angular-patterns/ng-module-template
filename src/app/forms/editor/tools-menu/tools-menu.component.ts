@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormService } from '../form.service';
-import { WidgetRef } from '../../../dynamic/models/widget.model';
-import { WidgetLookupService } from '../../../dynamic/services/widget-lookup.service';
+import { WidgetRef } from '../../../../framework/dynamic/models/widget.model';
+import { WidgetLookupService } from '../../../../framework/dynamic/services/widget-lookup.service';
 
 
 @Component({

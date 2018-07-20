@@ -7,12 +7,13 @@ import { SectionComponent } from './section/section.component';
 import { ToolsMenuComponent } from './tools-menu/tools-menu.component';
 import { DndModule } from 'ng2-dnd';
 import { CommonModule } from '@angular/common';
-import { DynamicModule } from '../../dynamic/dynamic.module';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainSectionComponent } from './routing/main-section/main-section.component';
 import { MainPreviewComponent } from './routing/main-preview/main-preview.component';
 import { MainModelComponent } from './routing/main-model/main-model.component';
 import { JsonPreviewComponent } from './routing/json-preview/json-preview.component';
+import { DynamicModule } from '../../../framework/dynamic/dynamic.module';
 
 
 const routes: Routes = [

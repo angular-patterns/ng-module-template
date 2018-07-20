@@ -7,7 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SectionComponent } from './section/section.component';
 import { ToolsMenuComponent } from './tools-menu/tools-menu.component';
 import { DndModule } from 'ng2-dnd';
-import { DynamicModule } from '../../dynamic/dynamic.module';
+
 
 import { Routes, RouterModule } from '@angular/router';
 

@@ -1,6 +1,7 @@
 import { Injectable, Inject } from "@angular/core";
-import { OptionsLookupService } from "../dynamic-options/services/options-lookup.service";
+
 import { IdService } from "./id.service";
+import { OptionsLookupService } from "../../framework/dynamic-options/services/options-lookup.service";
 
 
 

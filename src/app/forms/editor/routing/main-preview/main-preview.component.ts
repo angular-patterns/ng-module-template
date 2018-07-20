@@ -2,15 +2,16 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { FormService } from '../../form.service';
 import { Form, Section } from '../../models/form.model';
 import { FormGroup } from '@angular/forms';
-import { Widget } from '../../../../dynamic/models/widget.model';
-import { WidgetLookupService } from '../../../../dynamic/services/widget-lookup.service';
+
 import { TextboxComponent } from '../../../../controls/textbox/textbox.component';
 import { LabelComponent } from '../../../../controls/label/label.component';
 import { TableComponent } from '../../../../controls/table/table.component';
 import { GroupComponent } from '../../../../controls/group/group.component';
 import { Subscription } from 'rxjs';
-import { FormGroupService } from '../../../../dynamic/services/form-group.service';
+
 import { TestComponent } from '../../../../test/test.component';
+import { FormGroupService } from '../../../../../framework/dynamic/services/form-group.service';
+import { WidgetLookupService } from '../../../../../framework/dynamic/services/widget-lookup.service';
 
 @Component({
   selector: 'app-main-preview',

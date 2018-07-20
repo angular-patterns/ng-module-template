@@ -2,10 +2,12 @@ import { Component, OnInit, Input, OnChanges, OnDestroy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 
-import { DropZoneService } from '../../../dynamic/services/drop-zone.service';
+
 import { WidgetFactory } from '../../../core/widget.factory';
-import { OptionsDialogService } from '../../../dynamic-options/services/options-dialog.service';
+
 import { GroupOptions } from '../../../shared/models/group.options';
+import { DropZoneService } from '../../../../framework/dynamic/services/drop-zone.service';
+import { OptionsDialogService } from '../../../../framework/dynamic-options/services/options-dialog.service';
 
 
 @Component({

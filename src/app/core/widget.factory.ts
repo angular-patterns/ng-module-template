@@ -1,7 +1,7 @@
 import { Injectable, Inject } from "@angular/core";
 
-import { WidgetRef, Widget } from "../dynamic/models/widget.model";
 import { OptionsFactory } from "./options.factory";
+import { WidgetRef, Widget } from "../../framework/dynamic/models/widget.model";
 
 
 @Injectable()

@@ -4,9 +4,9 @@ import { Component, Type } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
 
-import { Widget } from './dynamic/models/widget.model';
+import { Widget } from '../framework/dynamic/models/widget.model';
 import { Form } from './forms/editor/models/form.model';
-import { FormGroupService } from './dynamic/services/form-group.service';
+import { FormGroupService } from '../framework/dynamic/services/form-group.service';
 
 @Component({
   selector: 'app-root',

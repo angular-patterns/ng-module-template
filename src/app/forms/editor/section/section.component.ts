@@ -5,10 +5,9 @@ import { Section } from '../models/form.model';
 import { FormGroup } from '@angular/forms';
 
 import { Subscription } from 'rxjs';
-import { OptionsDialogService } from '../../../dynamic-options/services/options-dialog.service';
-import { DropZoneService } from '../../../dynamic/services/drop-zone.service';
-import { FormGroupService } from '../../../dynamic/services/form-group.service';
-
+import { OptionsDialogService } from '../../../../framework/dynamic-options/services/options-dialog.service';
+import { DropZoneService } from '../../../../framework/dynamic/services/drop-zone.service';
+import { FormGroupService } from '../../../../framework/dynamic/services/form-group.service';
 
 
 @Component({
@@ -30,7 +29,7 @@ export class SectionComponent implements OnInit, OnChanges, OnDestroy {
     const s2 = this.formService.events.section.current$.subscribe(t=> {
       if (this.section)
         this.formService.store.data[this.section.title] = this.formGroup.value;
-        
+
       this.section = t;
       var val = this.formService.store.data[this.section.title];
       this.formGroupService.setValue(val);

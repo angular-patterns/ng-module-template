@@ -1,4 +1,5 @@
-import { Widget } from "../../dynamic/models/widget.model";
+import { Widget } from "../../../framework/dynamic/models/widget.model";
+
 
 
 export class TableOptions {

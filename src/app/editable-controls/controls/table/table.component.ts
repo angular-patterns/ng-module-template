@@ -2,9 +2,10 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 import { FormGroup } from '@angular/forms';
 
 import { WidgetFactory } from '../../../core/widget.factory';
-import { DropZoneService } from '../../../dynamic/services/drop-zone.service';
-import { OptionsDialogService } from '../../../dynamic-options/services/options-dialog.service';
+
 import { TableOptions } from '../../../shared/models/table.options';
+import { DropZoneService } from '../../../../framework/dynamic/services/drop-zone.service';
+import { OptionsDialogService } from '../../../../framework/dynamic-options/services/options-dialog.service';
 
 
 @Component({

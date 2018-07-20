@@ -2,7 +2,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges, OnDestroy } from '@
 
 import { FormGroup, FormControl } from '@angular/forms';
 import { TextboxOptions } from '../../shared/models/textbox.options';
-import { FormGroupService } from '../../dynamic/services/form-group.service';
+import { FormGroupService } from '../../../framework/dynamic/services/form-group.service';
 
 @Component({
   selector: 'co-textbox',

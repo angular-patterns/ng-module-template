@@ -13,11 +13,12 @@ import { TextboxOptionsComponent } from './options/textbox-options/textbox-optio
 import { tableOptionsSchema } from '../shared/schemas/table-options.schema';
 import { tableOptionsDefaults } from '../shared/defaults/table-options.defaults';
 
-import { DynamicOptionsModule } from '../dynamic-options/dynamic-options.module';
+
 import { GroupComponent } from './controls/group/group.component';
 import { LabelComponent } from './controls/label/label.component';
 import { TableComponent } from './controls/table/table.component';
 import { TextboxComponent } from './controls/textbox/textbox.component';
+import { DynamicOptionsModule } from '../../framework/dynamic-options/dynamic-options.module';
 
 @NgModule({
   imports: [

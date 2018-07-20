@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DynamicModule } from './dynamic/dynamic.module';
+import { DynamicModule } from '../framework/dynamic/dynamic.module';
 import { EditorModule } from './forms/editor/editor.module';
 import { DndModule } from 'ng2-dnd';
 
@@ -20,7 +20,7 @@ import { LabelComponent } from './editable-controls/controls/label/label.compone
 import { TableComponent } from './editable-controls/controls/table/table.component';
 import { GroupComponent } from './editable-controls/controls/group/group.component';
 
-import { DynamicOptionsModule } from './dynamic-options/dynamic-options.module';
+import { DynamicOptionsModule } from '../framework/dynamic-options/dynamic-options.module';
 import { groupOptionsSchema } from './shared/schemas/group-options.schema';
 import { labelOptionsSchema } from './shared/schemas/label-options.schema';
 import { textboxOptionsSchema } from './shared/schemas/textbox-options.schema';

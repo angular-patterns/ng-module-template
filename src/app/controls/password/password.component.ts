@@ -12,16 +12,20 @@ import { FormGroupService } from '../../dynamic/services/form-group.service';
 export class PasswordComponent implements OnInit {
   @Input() formGroup: FormGroup = new FormGroup({});
   @Input() options: PasswordOptions;
-
+  model = { email: 'email@gmail.com' };
   constructor(private formGroupService: FormGroupService) {
-    
+    this.model = this.formGroupService.getGroup(this.formGroup) ;
+    //this.model.email = this.formGroupService.getValue(this.formGroup, 'email') || this.options.defaultValue;
+    this.model.email = this.formGroup.get('email').value || this.options.defaultValue;
   }
   submit(model) {
     console.log(model);
   }
   ngOnInit() {
-    var value = this.formGroupService.getValue(this.formGroup, this.options.model) || this.options.defaultValue;
-    this.formGroup.setControl(this.options.model, new FormControl(value));
+    this.model.email = this.formGroup.get('email').value || this.options.defaultValue;
+    //this.model.email = this.options.defaultValue;
+    //var value = this.formGroupService.getValue(this.formGroup, 'email') || this.options.defaultValue;
+    //this.formGroup.addControl('email', new FormControl(this.options.defaultValue));
   }
 
 }

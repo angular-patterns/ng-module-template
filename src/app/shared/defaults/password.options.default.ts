@@ -1,6 +1,5 @@
 export const passwordOptionsDefaults = {
-    model: 'email',
-    defaultValue: 'email@gmail.com',
+    defaultValue: "email@gmail.com",
     fields:  [{
         key: 'email',
         type: 'input',

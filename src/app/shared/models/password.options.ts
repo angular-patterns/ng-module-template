@@ -1,5 +1,6 @@
+import { FormlyFieldConfig } from "@ngx-formly/core";
+
 export class PasswordOptions {
-    model: string;
     defaultValue: string;
-    fields: string;
+    fields: FormlyFieldConfig[];
 }

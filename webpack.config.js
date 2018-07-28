@@ -7,7 +7,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const postcssUrl = require('postcss-url');
 const postcssImports = require('postcss-import');
-
+const webpack = require('webpack');
 const { NoEmitOnErrorsPlugin, NamedModulesPlugin } = require('webpack');
 const { NamedLazyChunksWebpackPlugin, BaseHrefWebpackPlugin, PostcssCliResources } = require('@angular/cli/plugins/webpack');
 const { CommonsChunkPlugin } = require('webpack').optimize;
@@ -273,6 +273,10 @@ module.exports = (env) => {
         },
         plugins: [
             new NoEmitOnErrorsPlugin(),
+            // new webpack.ProvidePlugin({
+            //     ClassicEditor: 'ClassicEditor',
+            //     // ...
+            // }),
             new Dotenv({
                 path: './.env'
             }),

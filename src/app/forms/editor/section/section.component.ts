@@ -5,9 +5,8 @@ import { Section } from '../models/form.model';
 import { FormGroup } from '@angular/forms';
 
 import { Subscription } from 'rxjs';
-import { OptionsDialogService } from '../../../../framework/dynamic-options/services/options-dialog.service';
-import { DropZoneService } from '../../../../framework/dynamic/services/drop-zone.service';
-import { FormGroupService } from '../../../../framework/dynamic/services/form-group.service';
+import { OptionsDialogService } from '../../../../lib/dynamic-options';
+import { DropZoneService, FormGroupService } from '../../../../lib/dynamic';
 
 
 @Component({

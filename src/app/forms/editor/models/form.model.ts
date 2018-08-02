@@ -1,5 +1,4 @@
-import { Widget } from "../../../../framework/dynamic/models/widget.model";
-
+import { Widget } from "../../../../lib/dynamic";
 
 export class Form {
     title: string;

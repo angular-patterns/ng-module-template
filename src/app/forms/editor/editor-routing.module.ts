@@ -13,7 +13,7 @@ import { MainSectionComponent } from './routing/main-section/main-section.compon
 import { MainPreviewComponent } from './routing/main-preview/main-preview.component';
 import { MainModelComponent } from './routing/main-model/main-model.component';
 import { JsonPreviewComponent } from './routing/json-preview/json-preview.component';
-import { DynamicModule } from '../../../framework/dynamic/dynamic.module';
+import { DynamicModule } from '../../../lib/dynamic';
 
 
 const routes: Routes = [

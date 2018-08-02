@@ -4,9 +4,10 @@ import { Observable, Subject } from "rxjs";
 
 
 import { FormGroup } from "@angular/forms";
-import { WidgetFactory } from "../../core/widget.factory";
-import { IdService } from "../../core/id.service";
-import { Widget, WidgetRef } from "../../../framework/dynamic/models/widget.model";
+
+import { Widget, IdService, WidgetRef, WidgetFactory } from "../../../lib/dynamic";
+import { OptionsFactory } from "../../../lib/dynamic-options";
+
 
 
 @Injectable()
@@ -44,7 +45,7 @@ export class FormService {
     removedWidgetSubject: Subject<Widget>;
     modelChangedSubject: Subject<FormGroup>;
 
-    constructor(private widgetFactory: WidgetFactory, private idService: IdService) {
+    constructor(private widgetFactory: WidgetFactory, private optionsFactory: OptionsFactory, private idService: IdService) {
         this.initSubject = new Subject<Form>();
         this.addedSectionSubject = new Subject<Section>();
         this.currentSectionSubject = new Subject<Section>();
@@ -99,7 +100,8 @@ export class FormService {
         this.currentSectionSubject.next(section);
     }
     addWidget(widgetRef: WidgetRef) {
-        var widget = this.widgetFactory.createWidget(widgetRef);
+        var options = this.optionsFactory.createOptions(widgetRef.name);
+        var widget = this.widgetFactory.createWidget(widgetRef, options);
         this.store.currentSection.widgets.push(widget);
         this.addedWidgetSubject.next(widget);
     }

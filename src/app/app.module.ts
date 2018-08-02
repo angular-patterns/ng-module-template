@@ -10,7 +10,7 @@ import { DndModule } from 'ng2-dnd';
 import { CoreModule } from './core/core.module';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TestComponent } from './test/test.component';
-import { ControlsModule, groupOptionsSchema, labelOptionsSchema, textboxOptionsSchema, tableOptionsSchema } from '../lib/controls';
+import { ControlsModule, groupOptionsSchema, labelOptionsSchema, textboxOptionsSchema, tableOptionsSchema, TextboxComponent, LabelComponent, TableComponent, GroupComponent } from '../lib/controls';
 import { EditableControlsModule, groupOptionsDefaults, labelOptionsDefaults, textboxOptionsDefaults, tableOptionsDefaults, LabelOptionsComponent, TextboxOptionsComponent, EditableTextboxComponent, EditableLabelComponent, EditableTableComponent, EditableGroupComponent } from '../lib/editable-controls';
 import { DynamicModule } from '../lib/dynamic';
 import { DynamicOptionsModule } from '../lib/dynamic-options';
@@ -49,7 +49,10 @@ export const dndModule = DndModule.forRoot();
   bootstrap:    [ AppComponent ],
   exports: [AppComponent],
   entryComponents: [
-
+    TextboxComponent,
+    LabelComponent,
+    TableComponent,
+    GroupComponent
   ]
 })
 export class AppModule {

@@ -1,12 +1,16 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [
-  { path: '', loadChildren: './forms/editor/editor.module#EditorModule'}
+
+export const routes: Routes = [
+  { path: '', loadChildren: './info/info.module#InfoModule'}
 ];
 
+export const forRoot: ModuleWithProviders = RouterModule.forRoot(routes);
+
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [ forRoot ],
+  exports: [ RouterModule ]
 })
 export class AppRoutingModule { }

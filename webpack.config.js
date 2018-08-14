@@ -122,17 +122,12 @@ const postcssPlugins = function (loader) {
 require('dotenv').config();
 del.sync("dist/**");
 
-module.exports = (env) => {
-    env = env || {};
+module.exports = () => {
     const isOptimized = process.argv.indexOf('-p') !== -1;
-    const environment = env.Environment || process.env.Environment || 'Development';
-    const baseHref = env.BaseHref || process.env.BaseHref || '/';
-    const deployUrl = env.DeployUrl || process.env.DeployUrl || '/';
-
     console.log(`Optimized: ${isOptimized}`);
-    console.log(`Environment: ${environment}`);
-    console.log(`BaseHref: ${baseHref}`)
-    console.log(`DeployUrl: ${deployUrl}`);
+    console.log(`Environment: ${process.env.Environment}`);
+    console.log(`BaseHref: ${process.env.BaseHref}`)
+
 
     const config = {
         devtool: isOptimized ? false : 'inline-source-map',
@@ -141,12 +136,11 @@ module.exports = (env) => {
             app: './src/main.ts',
             vendor: './src/vendor.ts',
             polyfills: './src/polyfills.ts',
-            styles: './src/styles.css'
+            styles: './src/styles.scss'
         },
         output: {
             filename: 'bundles/[name].[hash].bundle.js',
-            path: path.join(process.cwd(), "dist"),
-            publicPath: deployUrl
+            path: path.join(process.cwd(), "dist")
         },
         module: {
             rules: [
@@ -172,7 +166,7 @@ module.exports = (env) => {
                 },
                 {
                     "exclude": [
-                        path.join(process.cwd(), "src\\styles.css")
+                        path.join(process.cwd(), "src\\styles.scss")
                     ],
                     "test": /\.css$/,
                     "use": [
@@ -191,7 +185,7 @@ module.exports = (env) => {
                 },
                 {
                     "exclude": [
-                        path.join(process.cwd(), "src\\styles.css")
+                        path.join(process.cwd(), "src\\styles.scss")
                     ],
                     "test": /\.scss$|\.sass$/,
                     "use": [
@@ -218,7 +212,7 @@ module.exports = (env) => {
                 },
                 {
                     "include": [
-                        path.join(process.cwd(), "src\\styles.css")
+                        path.join(process.cwd(), "src\\styles.scss")
                     ],
                     "test": /\.css$/,
                     "use": [
@@ -238,7 +232,7 @@ module.exports = (env) => {
                 },
                 {
                     "include": [
-                        path.join(process.cwd(), "src\\styles.css")
+                        path.join(process.cwd(), "src\\styles.scss")
                     ],
                     "test": /\.scss$|\.sass$/,
                     "use": [
@@ -316,7 +310,7 @@ module.exports = (env) => {
                 compile: true,
                 showErrors: true
             }),
-            new BaseHrefWebpackPlugin({ baseHref: baseHref }),
+            new BaseHrefWebpackPlugin({ baseHref: process.env.BaseHref }),
             new CommonsChunkPlugin({
                 names: ['app', 'vendor', 'styles', 'polyfills']
             }),

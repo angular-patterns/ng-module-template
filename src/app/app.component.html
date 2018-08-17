@@ -1,3 +1,12 @@
-<h1>{{ title }}</h1>
-
-<router-outlet></router-outlet>
+<kendo-grid [data]="gridData" [height]="410">
+    <kendo-grid-column field="applicationDisplay" title="App ID" width="80">
+    </kendo-grid-column>
+    <kendo-grid-column field="firstName" title="First Name" width="120">
+    </kendo-grid-column>
+    <kendo-grid-column field="lastName" title="Last Name" width="120">
+    </kendo-grid-column>
+    <kendo-grid-column field="enteredDate" title="Entered Date" width="80">
+    </kendo-grid-column>
+    <kendo-grid-column field="asn" title="ASN" width="80">
+    </kendo-grid-column>
+</kendo-grid>

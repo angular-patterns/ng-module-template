@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { apps } from './data';
 
 @Component({
   selector: 'app-root',
@@ -6,8 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title: string;
-  constructor() {
-    this.title = 'Hello World!';
-  }
+  public gridData: any[] = apps;
+
 }

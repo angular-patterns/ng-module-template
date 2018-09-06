@@ -135,7 +135,7 @@ module.exports = (env) => {
     console.log(`DeployUrl: ${deployUrl}`);
 
     const config = {
-        devtool: isOptimized ? false : 'inline-source-map',
+        devtool: isOptimized ? false : 'cheap-module-eval-source-map',
         resolve: { extensions: ['.ts', '.js'] },
         entry: {
             app: './src/main.ts',

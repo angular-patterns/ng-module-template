@@ -135,7 +135,7 @@ module.exports = (env) => {
     console.log(`DeployUrl: ${deployUrl}`);
 
     const config = {
-        devtool: isOptimized ? false : 'cheap-module-eval-source-map',
+        devtool: isOptimized ? false : 'eval-source-map',
         resolve: { extensions: ['.ts', '.js'] },
         entry: {
             app: './src/main.ts',
@@ -324,7 +324,8 @@ module.exports = (env) => {
             new AngularCompilerPlugin({
                 tsConfigPath: './tsconfig.json',
                 entryModule: path.join(__dirname, 'src/app/app.module#AppModule'),
-                skipCodeGeneration: !isOptimized
+                skipCodeGeneration: !isOptimized,
+                sourceMap: !isOptimized
             }),
             new BundleAnalyzerPlugin({
                 openAnalyzer: false,

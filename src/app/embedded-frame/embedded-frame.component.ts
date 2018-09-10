@@ -13,6 +13,7 @@ export class EmbeddedFrameComponent implements OnInit {
   safeUrl: SafeUrl;
 
   constructor(private sanitizer : DomSanitizer) { 
+    
   }
 
   onLoad() {

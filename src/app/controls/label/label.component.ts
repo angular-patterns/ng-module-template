@@ -11,6 +11,7 @@ import { LabelOptions } from '../../shared/models/label.options';
 })
 export class LabelComponent implements OnInit {
   @Input() options: LabelOptions;
+  @Input() model: any;
   constructor() { }
 
   ngOnInit() {

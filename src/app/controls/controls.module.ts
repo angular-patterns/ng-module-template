@@ -9,7 +9,6 @@ import { TableComponent } from './table/table.component';
 import { GroupComponent } from './group/group.component';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
-import { PasswordComponent } from './password/password.component';
 
 @NgModule({
   imports: [
@@ -24,8 +23,7 @@ import { PasswordComponent } from './password/password.component';
     TextboxComponent,
     LabelComponent,
     TableComponent,
-    GroupComponent,
-    PasswordComponent
+    GroupComponent
   ],
   exports: [
     TextboxComponent,
@@ -34,13 +32,11 @@ import { PasswordComponent } from './password/password.component';
     GroupComponent,
     FormsModule,
     ReactiveFormsModule,
-    PasswordComponent,
     FormlyModule,
     FormlyBootstrapModule,
     
   ],
   entryComponents: [
-    PasswordComponent
   ]
 })
 export class ControlsModule { }

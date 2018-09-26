@@ -12,16 +12,17 @@ import { FormGroupService } from '../../dynamic/services/form-group.service';
 export class TextboxComponent implements OnInit, OnChanges, OnDestroy {
   @Input() options: TextboxOptions;
   @Input() formGroup: FormGroup;
+  @Input() model: any;
   constructor(private formGroupService: FormGroupService) { 
     this.formGroup = new FormGroup({});
   }
 
   ngOnInit() {
-    var value = this.formGroupService.getValue(this.formGroup, this.options.model) || this.options.defaultValue;
-    this.formGroup.setControl(this.options.model, new FormControl(value));
+    
+    this.formGroup.setControl(this.options.model, new FormControl());
   }
   ngOnChanges(changes: SimpleChanges) {
-    this.formGroup.setControl(this.options.model, new FormControl(this.options.defaultValue));
+    this.formGroup.setControl(this.options.model, new FormControl());
   }
   ngOnDestroy() {
     this.formGroup.removeControl(this.options.model);

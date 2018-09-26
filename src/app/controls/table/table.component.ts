@@ -13,6 +13,7 @@ export class TableComponent implements OnInit, OnChanges {
 
   @Input() formGroup: FormGroup;
   @Input() options: TableOptions;
+  @Input() model: any;
   rows: number[];
   cols: number[];
   constructor() { 

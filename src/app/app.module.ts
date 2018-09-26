@@ -34,7 +34,6 @@ import { TextboxOptionsComponent } from './editable-controls/options/textbox-opt
 import { CoreModule } from './core/core.module';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TestComponent } from './test/test.component';
-import { PasswordComponent } from './editable-controls/controls/password/password.component';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 import { passwordOptionsDefaults } from './shared/defaults/password.options.default';
@@ -62,7 +61,6 @@ export const dndModule = DndModule.forRoot();
       { name: 'Table', component: TableComponent },
       { name: 'Group', component: GroupComponent },
       { name: 'Test', component: TestComponent },
-      { name: 'Password', component: PasswordComponent }
     ]),
     DynamicOptionsModule.withOptions([
       { name: 'Group', schema: groupOptionsSchema, default: groupOptionsDefaults, component: null },
@@ -70,7 +68,6 @@ export const dndModule = DndModule.forRoot();
       { name: 'Textbox', schema: textboxOptionsSchema, default: textboxOptionsDefaults, component: TextboxOptionsComponent },
       { name: 'Table', schema: tableOptionsSchema, default: tableOptionsDefaults, component: null },
       { name: 'Test', schema: {}, default: {}, component: null },
-      { name: 'Password', schema: {}, default: passwordOptionsDefaults, component: null },
     ])
 
   ],

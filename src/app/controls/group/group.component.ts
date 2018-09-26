@@ -13,6 +13,7 @@ import { GroupOptions } from "../../shared/models/group.options";
 export class GroupComponent implements OnInit, OnChanges, OnDestroy {
   @Input() formGroup: FormGroup;
   @Input() options: GroupOptions;
+  @Input() model: any;
   innerGroup: FormGroup;
   constructor() { 
 
@@ -21,6 +22,7 @@ export class GroupComponent implements OnInit, OnChanges, OnDestroy {
   ngOnInit() {
     if (this.formGroup != null){
       this.innerGroup = new FormGroup({});
+
       this.formGroup.setControl(this.options.model, this.innerGroup);
     }
   }

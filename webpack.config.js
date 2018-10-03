@@ -7,8 +7,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const postcssUrl = require('postcss-url');
 const postcssImports = require('postcss-import');
+const NamedLazyChunksWebpackPlugin = require('angular-named-lazy-chunks-webpack-plugin');
 
 const { NoEmitOnErrorsPlugin, NamedModulesPlugin } = require('webpack');
+const { BaseHrefWebpackPlugin } = require('base-href-webpack-plugin');
+
 //NamedLazyChunksWebpackPlugin, BaseHrefWebpackPlugin, 
 //const { PostcssCliResources } = require('@angular/cli/plugins/webpack');
 //const { CommonsChunkPlugin } = require('webpack').optimize;
@@ -131,7 +134,10 @@ module.exports = () => {
 
 
     const config = {
-        devtool: isOptimized ? false : 'inline-source-map',
+        performance : {
+            hints : false
+        },
+        devtool: isOptimized ? false : 'eval-source-map',
         resolve: { extensions: ['.ts', '.js'] },
         entry: {
             styles: './src/styles.scss',
@@ -316,7 +322,7 @@ module.exports = () => {
                 "onDetected": false,
                 "cwd": projectRoot
             }),
-            //new NamedLazyChunksWebpackPlugin(),
+            new NamedLazyChunksWebpackPlugin(),
             new HtmlWebpackPlugin({
                 filename: __dirname + '/dist/index.html',
                 template: __dirname + '/src/index.html',
@@ -332,7 +338,8 @@ module.exports = () => {
             new AngularCompilerPlugin({
                 tsConfigPath: './tsconfig.json',
                 entryModule: path.join(__dirname, 'src/app/app.module#AppModule'),
-                skipCodeGeneration: !isOptimized
+                skipCodeGeneration: !isOptimized,
+                sourceMap: !isOptimized
             }),
             new BundleAnalyzerPlugin({
                 openAnalyzer: false,

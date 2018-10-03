@@ -1,0 +1,18 @@
+{
+  "$schema": "../../../node_modules/ng-packagr/package.schema.json",
+  "name": "@my/common",
+  "version": "1.0.0",
+  "main": "bundles/my-common.umd.js",
+  "module": "fesm5/my-common.js",
+  "es2015": "fesm2015/my-common.js",
+  "esm5": "esm5/my-common.js",
+  "esm2015": "esm2015/my-common.js",
+  "fesm5": "fesm5/my-common.js",
+  "fesm2015": "fesm2015/my-common.js",
+  "typings": "my-common.d.ts",
+  "metadata": "my-common.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
+}

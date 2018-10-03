@@ -8,16 +8,5 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title: string;
-  model: any;
-  formGroup = new FormGroup({});
-  fields: FormlyFieldConfig[] = [
-    {
-      key: 'firstname',
-      type: 'field-input',
-    },
-  ];
-  constructor() {
-    this.title = 'Hello World!';
-  }
+
 }

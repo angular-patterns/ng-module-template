@@ -58,7 +58,7 @@
     "codelyzer": "^4.0.1",
     "command-line-args": "^4.0.7",
     "copy-webpack-plugin": "^4.5.1",
-    "css-loader": "^0.28.11",
+    "css-loader": "^1.0.0",
     "cssnano": "^3.10.0",
     "del": "^3.0.0",
     "dotenv-webpack": "^1.5.7",

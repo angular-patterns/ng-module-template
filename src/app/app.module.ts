@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { FormCommonModule } from './form-common/form-common.module';
 import { FormRenderingModule } from './form-rendering/form-rendering.module';
+import { FormCoreModule } from './form-core/form-core.module';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { FormRenderingModule } from './form-rendering/form-rendering.module';
     BrowserModule, 
     AppRoutingModule,
     RouterModule.forRoot([], { enableTracing: false}),
-    FormCommonModule
+    FormCommonModule,
+    FormCoreModule
   ],
   declarations: [ AppComponent ],
   bootstrap:    [ AppComponent ],

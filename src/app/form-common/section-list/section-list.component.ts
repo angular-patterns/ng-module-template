@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { filter, debounceTime } from 'rxjs/operators';
+import { NavigationService } from '../../form-core/services/navigation.service';
 
 @Component({
   selector: 'app-section-list',
@@ -9,7 +10,7 @@ import { filter, debounceTime } from 'rxjs/operators';
 })
 export class SectionListComponent implements OnInit {
 
-  constructor(private router: Router, private route: ActivatedRoute) {
+  constructor(private router: Router, private route: ActivatedRoute, private navigationService: NavigationService) {
     this.router.events.pipe(
       filter((event) => event instanceof NavigationEnd),
       debounceTime(40000)
@@ -24,7 +25,8 @@ export class SectionListComponent implements OnInit {
   }
   navigate(t: string) {
     console.log(this.route);
-    this.router.navigate(['./form',t ], { relativeTo: this.route});
+    //this.router.navigate(['./form',t ], { relativeTo: this.route});
+    this.navigationService.navigate(t);
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NavigationService } from '../form-core/services/navigation.service';
 
 @Component({
   selector: 'app-form-rendering',
@@ -8,8 +9,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FormRenderingComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) { 
+  constructor(private route: ActivatedRoute, private navigationService: NavigationService) { 
     console.log('route is' + route);
+    navigationService.initRoute(route);
   }
 
   ngOnInit() {

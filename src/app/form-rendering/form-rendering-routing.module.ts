@@ -8,6 +8,7 @@ const routes: Routes = [
     { path: 'v1', loadChildren: '../formly-templates/v1/formly-templates.module#FormlyTemplatesModule'},
     { path: 'v2', loadChildren: '../formly-templates/v2/formly-templates.module#FormlyTemplatesModule'}
   ]},  
+  { path: '', redirectTo: 'blah', pathMatch: 'full'}
   
 ];
 

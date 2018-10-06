@@ -4,7 +4,7 @@ import { RenderComponent } from './render/render.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
-  {path: '', component: RenderComponent, pathMatch: 'full'},];
+  {path: '', component: RenderComponent, pathMatch: 'full' },];
 
 @NgModule({
   imports: [
@@ -13,4 +13,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class FormlyCommonRoutingModule { }
+export class FormlyTemplatesRoutingModule { }

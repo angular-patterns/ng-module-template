@@ -3,15 +3,15 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 
-import { FormlyCommonRoutingModule } from './formly-common-routing.module';
+import { FormlyTemplatesRoutingModule  } from './formly-templates-routing.module';
 import { RenderComponent } from './render/render.component';
-import { FieldInputComponent } from './field-input/field-input.component';
+import { FieldInputComponent } from './components/field-input/field-input.component';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    FormlyCommonRoutingModule,
+    FormlyTemplatesRoutingModule,
     FormlyModule.forRoot({
       types: [
         { name: 'field-input', component: FieldInputComponent },
@@ -23,4 +23,4 @@ import { FieldInputComponent } from './field-input/field-input.component';
     FieldInputComponent
   ]
 })
-export class FormlyCommonModule { }
+export class FormlyTemplatesModule { }

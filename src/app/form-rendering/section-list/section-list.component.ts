@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-section-list',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SectionListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private route: ActivatedRoute) {
+
+  }
 
   ngOnInit() {
+  }
+  navigate(t: string) {
+    //this.router.navigate(['../',{outlets: { render: [t] }}], { relativeTo: this.route});
   }
 
 }

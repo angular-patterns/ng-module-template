@@ -1,2 +1,5 @@
-<a routerLink="one">One</a> |
-<a routerLink="two">Two</a>
+<!-- <a (click)="navigate('v1')">One</a> |
+<a (click)="navigate('v2')">Two</a> -->
+
+<a [routerLink]="['/', {outlets: {'render': ['v1']}}]">One</a> |
+<a [routerLink]="['/', {outlets: {'render': ['v2']}}]">Two</a>

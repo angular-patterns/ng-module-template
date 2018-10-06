@@ -1,21 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { SectionListComponent } from './section-list/section-list.component';
-import { SectionDetailComponent } from './section-detail/section-detail.component';
+
+import { FormRenderingRoutingModule } from './form-rendering-routing.module';
+import { FormRenderingComponent } from './form-rendering.component';
+
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    FormRenderingRoutingModule
   ],
   declarations: [
-    SectionDetailComponent, 
-    SectionListComponent
+    FormRenderingComponent
   ],
   exports: [
-    SectionDetailComponent,
-    SectionListComponent
   ]
 })
 export class FormRenderingModule { }

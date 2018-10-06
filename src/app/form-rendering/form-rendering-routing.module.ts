@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { InfoComponent } from './info.component';
-import { FormRenderingModule } from '../form-rendering/form-rendering.module';
+import { FormRenderingComponent } from './form-rendering.component';
 
 const routes: Routes = [
-  { path: ':info', component: InfoComponent, children: [
+  { path: ':section', component: FormRenderingComponent, children: [
+    { path: '', redirectTo: 'v2', pathMatch: 'full'},
     { path: 'v1', loadChildren: '../formly-common/v1/formly-common.module#FormlyCommonModule'},
     { path: 'v2', loadChildren: '../formly-common/v2/formly-common.module#FormlyCommonModule'}
   ]},  
@@ -12,8 +12,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes), FormRenderingModule],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  declarations: [ InfoComponent ]
+  declarations: [ ]
 })
-export class InfoRoutingModule { }
+export class FormRenderingRoutingModule { }

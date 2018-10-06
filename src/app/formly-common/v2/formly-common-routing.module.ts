@@ -4,7 +4,7 @@ import { RenderComponent } from './render/render.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
-  {path: '', component: RenderComponent, pathMatch: 'full', outlet: 'render' },];
+  {path: '', component: RenderComponent, pathMatch: 'full'},];
 
 @NgModule({
   imports: [

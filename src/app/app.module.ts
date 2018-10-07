@@ -14,7 +14,9 @@ import { FormCoreModule } from './form-core/form-core.module';
     AppRoutingModule,
     RouterModule.forRoot([], { enableTracing: false}),
     FormCommonModule,
-    FormCoreModule
+    FormCoreModule.forRoot({
+      formServiceUrl:`${process.env.BaseServiceUrl}/FormClient`
+    })
   ],
   declarations: [ AppComponent ],
   bootstrap:    [ AppComponent ],

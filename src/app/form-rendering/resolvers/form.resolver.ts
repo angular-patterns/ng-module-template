@@ -12,7 +12,7 @@ export class FormResolver implements Resolve<Form> {
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Form> {
         const formCode = route.params.formCode;
         const effectiveDate = route.params.effectiveDate;
-
+        
         return this.formService.getForm(formCode, effectiveDate);
     }
 }

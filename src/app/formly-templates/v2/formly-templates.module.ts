@@ -6,10 +6,12 @@ import { FormlyModule } from '@ngx-formly/core';
 import { FormlyTemplatesRoutingModule  } from './formly-templates-routing.module';
 import { RenderComponent } from './render/render.component';
 import { FieldInputComponent } from './components/field-input/field-input.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
+    RouterModule,
     ReactiveFormsModule,
     FormlyTemplatesRoutingModule,
     FormlyModule.forRoot({

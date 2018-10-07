@@ -5,6 +5,7 @@ import { Observable } from "rxjs";
 import { FormService } from "../../form-core/services/form.service";
 import { tap } from "rxjs/operators";
 import { Section } from "../../form-core/models/section.model";
+import { FormGroup } from "@angular/forms";
 
 @Injectable()
 export class SectionResolver implements Resolve<Section> {
@@ -20,7 +21,9 @@ export class SectionResolver implements Resolve<Section> {
         }
 
         return this.formService.getSection(form.id, form.versionNumber, sectionCode).pipe(tap(t => {
-            t.parent = form
+            t.parent = form,
+            t.form = new FormGroup({}),
+            t.options = {}
         }));
     }
 }

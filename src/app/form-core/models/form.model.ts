@@ -7,4 +7,5 @@ export class Form {
     code: string;
     title: string;
     versionNumber: Number;
+    sectionCodes: string[];
 }

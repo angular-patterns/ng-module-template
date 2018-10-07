@@ -13,6 +13,6 @@ export class FormResolver implements Resolve<Form> {
         const formCode = route.params.formCode;
         const effectiveDate = route.params.effectiveDate;
 
-        return this.formService.get(formCode, effectiveDate);
+        return this.formService.getForm(formCode, effectiveDate);
     }
 }

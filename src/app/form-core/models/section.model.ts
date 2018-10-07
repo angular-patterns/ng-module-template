@@ -1,8 +1,11 @@
 import { FormGroup } from "@angular/forms";
 import { FormlyFieldConfig, FormlyFormOptions } from "@ngx-formly/core";
 import { Guid } from "guid-typescript";
+import { Form } from "./form.model";
 
 export class Section {
+    parent: Form;
+    
     id: Guid;
     title: string;
     code: string;

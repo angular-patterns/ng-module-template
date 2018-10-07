@@ -3,15 +3,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { SectionComponent } from './section/section.component';
 import { FormComponent } from './form/form.component';
 import { FormResolver } from './resolvers/form.resolver';
+import { SectionResolver } from './resolvers/section.resolver';
 
 const routes: Routes = [
   { path: ':formCode/:effectiveDate', component: FormComponent, resolve:{ form: FormResolver }, children: [
-    { path: ':sectionCode', component: SectionComponent, children: [
+    { path: ':sectionCode', component: SectionComponent, resolve: { section: SectionResolver }, children: [
       { path: '', redirectTo: 'v2', pathMatch: 'full'},
       { path: 'v1', loadChildren: '../formly-templates/v1/formly-templates.module#FormlyTemplatesModule'},
       { path: 'v2', loadChildren: '../formly-templates/v2/formly-templates.module#FormlyTemplatesModule'}
     ]},  
-    { path: '', redirectTo: 'blah', pathMatch: 'full'}  
+    { path: '', component: SectionComponent, resolve: { section: SectionResolver }, pathMatch: 'full'}  
   ]}
   
 ];
@@ -25,7 +26,8 @@ const routes: Routes = [
   ],
   declarations: [ ],
   providers: [
-    FormResolver
+    FormResolver,
+    SectionResolver
   ]
 })
 export class FormRenderingRoutingModule { }

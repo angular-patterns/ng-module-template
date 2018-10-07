@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { FormRenderingRoutingModule } from './form-rendering-routing.module';
-import { FormRenderingComponent } from './form-rendering.component';
+import { SectionComponent } from './section/section.component';
+import { FormComponent } from './form/form.component';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { FormRenderingComponent } from './form-rendering.component';
     FormRenderingRoutingModule
   ],
   declarations: [
-    FormRenderingComponent
+    SectionComponent,
+    FormComponent
   ],
   exports: [
   ]

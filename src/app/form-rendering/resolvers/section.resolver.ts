@@ -14,8 +14,11 @@ export class SectionResolver implements Resolve<Section> {
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Section> {
         let sectionCode = route.params.sectionCode;
         const form: Form = route.parent.data.form;
-        sectionCode = sectionCode ? sectionCode : form.sectionCodes[0];
-        
+        if (!sectionCode) {
+            this.router.navigate(['form', route.parent.params.formCode, route.parent.params.effectiveDate, form.sectionCodes[0]]);
+            return null;
+        }
+
         return this.formService.getSection(form.id, form.versionNumber, sectionCode).pipe(tap(t => {
             t.parent = form
         }));

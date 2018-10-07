@@ -8,11 +8,11 @@ import { SectionResolver } from './resolvers/section.resolver';
 const routes: Routes = [
   { path: ':formCode/:effectiveDate', component: FormComponent, resolve:{ form: FormResolver }, children: [
     { path: ':sectionCode', component: SectionComponent, resolve: { section: SectionResolver }, children: [
-      { path: '', redirectTo: 'v2', pathMatch: 'full'},
+      { path: '', loadChildren: '../formly-templates/v2/formly-templates.module#FormlyTemplatesModule', pathMatch: 'full'},
       { path: 'v1', loadChildren: '../formly-templates/v1/formly-templates.module#FormlyTemplatesModule'},
       { path: 'v2', loadChildren: '../formly-templates/v2/formly-templates.module#FormlyTemplatesModule'}
     ]},  
-    { path: '', component: SectionComponent, resolve: { section: SectionResolver }, pathMatch: 'full'}  
+    { path: '', redirectTo: '_first', pathMatch: 'full'}  
   ]}
   
 ];

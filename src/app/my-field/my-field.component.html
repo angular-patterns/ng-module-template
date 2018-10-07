@@ -1,0 +1,9 @@
+
+
+<div [formGroup]="form">
+    <div [formGroupName]="key">
+        <input type="input" formControlName="firstName"><br />
+        <input type="input" formControlName="lastName">
+    </div>
+</div>
+{{ model | json }}

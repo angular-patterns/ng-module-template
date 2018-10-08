@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { FormlyFieldConfig } from '@ngx-formly/core';
+import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { ActivatedRoute } from '@angular/router';
-import { Section } from '../../../form-core/models/section.model';
-import { NavigationService } from '../../../form-core/services/navigation.service';
+import { RenderData } from '../models/render-data.model';
+
 
 @Component({
   selector: 'app-render',
@@ -11,12 +11,23 @@ import { NavigationService } from '../../../form-core/services/navigation.servic
   styleUrls: ['./render.component.css']
 })
 export class RenderComponent implements OnInit {
-  section: Section;
+  fields: FormlyFieldConfig[];
+  options: FormlyFormOptions;
+  model: any;
+  form: FormGroup;
 
-  constructor(private navigationService: NavigationService) {
-    this.section = navigationService.getSection();
-    console.log(this.section);
-    
+
+  constructor(private route: ActivatedRoute) {
+    this.fields = [];
+    this.options = {};
+    this.model = {};
+    this.form = new FormGroup({});
+      route.data.map(t=>t.renderData).subscribe(t=> {
+          this.fields = t.fields;
+          this.options = t.options;
+          this.model = t.model;
+          this.form = t.form;
+      });
   }
 
   submit(model) {

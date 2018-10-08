@@ -1,9 +1,9 @@
 import { ValidationErrors, AbstractControl } from '@angular/forms';
-import { LearnerSearchResult } from '../models/learner-search-result';
-import { HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
-import { of, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { HttpResponse } from '@angular/common/http';
+import { LearnerSearchResult } from '../models/learner-search-result';
 import { ScholarshipsExternalValidationService } from '../services/scholarships-external-validation.service';
 import { Platform } from '../services/platform.service';
 
@@ -34,16 +34,16 @@ export function DuplicateSinValidator(control: AbstractControl): Promise<any> {
   if (control.value.length < 9) {
     return of(null).toPromise();
   }
-  return isDuplicateSin(control.value).pipe(map(t => {
+  return isDuplicateSin(control.value).map(t => {
     if (t === true) {
       return { 'DuplicateSin': true };
     } else {
       return null;
-    }} )).toPromise();
+    }} ).toPromise();
 }
 
 function isDuplicateSin(sinValue: any): Observable<boolean> {
-  return Platform.injector.get(ScholarshipsExternalValidationService).getBySIN(sinValue).pipe(map(x => IsExists(x)));
+  return Platform.injector.get(ScholarshipsExternalValidationService).getBySIN(sinValue).map(x => IsExists(x));
 }
 
 function IsExists(result: LearnerSearchResult): boolean {

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 
-import { FormlyTemplatesRoutingModule  } from './formly-templates-routing.module';
+import { FormlyTemplatesRoutingModule } from './formly-templates-routing.module';
 import { RenderComponent } from './render/render.component';
 import { FieldInputComponent } from './components/field-input/field-input.component';
 import { ClassicDatePickerComponent } from './components/classic-date-picker/classic-date-picker.component';
@@ -20,6 +20,7 @@ import { ReferenceDataSelectComponent } from './components/reference-data-select
 import { SectionTitleComponent } from './components/section-title/section-title.component';
 import { SinInputComponent } from './components/sin-input/sin-input.component';
 import { YesNoSelectComponent } from './components/yes-no-select/yes-no-select.component';
+import { SinValidator, SinNineDigitsValidator, DuplicateSinValidator } from './validators/sin-validation';
 
 @NgModule({
   imports: [
@@ -41,6 +42,17 @@ import { YesNoSelectComponent } from './components/yes-no-select/yes-no-select.c
         { name: 'sin-input', component: SinInputComponent },
         { name: 'yes-no-select', component: YesNoSelectComponent }
       ],
+      validators: [
+        { name: 'SinValid', validation: SinValidator },
+        { name: 'SinNineDigits', validation: SinNineDigitsValidator },
+        { name: 'DuplicateSin', validation: DuplicateSinValidator }
+    ],
+    validationMessages: [
+        { name: 'SinValid', message: 'This value is not a valid SIN' },
+        { name: 'SinNineDigits', message: 'This field must be 9 digits in length' },
+        { name: 'required', message: 'This field is required' },
+        { name: 'DuplicateSin', message: 'This value is a duplicate SIN'}
+    ]
     }),
     ServicesModule
   ],
@@ -55,10 +67,10 @@ import { YesNoSelectComponent } from './components/yes-no-select/yes-no-select.c
 export class FormlyTemplatesModule {
   static forRoot(url: LibConfig): ModuleWithProviders {
     return {
-        ngModule: FormlyTemplatesModule,
-        providers: [
-            { provide: LibConfig, useValue: url }
-        ]
+      ngModule: FormlyTemplatesModule,
+      providers: [
+        { provide: LibConfig, useValue: url }
+      ]
     };
+  }
 }
- }

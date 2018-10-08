@@ -1,0 +1,31 @@
+<div class="row institution-search">
+                
+    <div class="col-6"> 
+        <label class="form-control-label control-label" for={{id}>{{to.label}}</label> 
+            <ng-select 
+                [items]="to.options"
+                [bindLabel]="labelProp"               
+                [bindValue]="valueProp"
+                [groupBy]="to.groupProp"
+                [multiple]="to.multiple"
+                [placeholder]="to.placeholder"
+                [id] = "id"
+                [formControl]="formControl">
+            </ng-select>
+    </div> 
+
+    <div class="col-6" >
+        <div class="offset-for-label"></div> 
+        <div class="form-check-inline">
+            <label class="form-check-label">
+                <input (click)="allSelected()" type="radio" class="form-check-input" name="optradio"  checked value=0>All
+            </label>
+        </div>
+        <div class="form-check-inline">
+            <label class="form-check-label">
+                <input (click)="notFoundSelected()" type="radio" class="form-check-input" name="optradio" value=1>Not Found
+            </label>
+        </div>
+    </div>
+
+</div>

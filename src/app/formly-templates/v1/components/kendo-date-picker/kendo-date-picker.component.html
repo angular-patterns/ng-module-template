@@ -1,0 +1,6 @@
+<div class="kendo-date-picker-wrapper">
+    <label class="form-control-label control-label" for={{id}}>{{to.label}}</label>
+    <div class="kendo-date-picker">
+        <kendo-datepicker (valueChange)="onChange($event)" [format]="to.format" [(value)] = "value"></kendo-datepicker>
+    </div>
+</div>

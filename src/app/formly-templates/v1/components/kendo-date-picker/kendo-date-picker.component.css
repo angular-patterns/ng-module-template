@@ -1,0 +1,6 @@
+/* tried to set the height via the following classes but does not work.the date picker has a height of 36px
+whereas the defualt bootstrap inputs have a height of 38. ideally we would like them to be the ::-webkit-meter-suboptimal-value
+
+.k-dateinput-wrap .k-input, .k-dropdown-wrap .k-input, .k-numeric-wrap .k-input, .k-picker-wrap .k-input  {
+    height: 38px;
+} */

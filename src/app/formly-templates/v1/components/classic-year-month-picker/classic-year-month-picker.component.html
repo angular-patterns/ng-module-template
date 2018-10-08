@@ -1,0 +1,27 @@
+<div class="classic-year-month-picker">
+    <label class="form-control-label control-label" for={{id}}>{{to.label}}</label>
+    <div class="container">
+        <div class="row" [id]="id">                
+            <select #yearMonthMonth (change)="monthChange(yearMonthMonth)" class="form-control selectpicker col-5 year-month-picker-input">
+                <option style="display: none;" selected disabled value></option>
+                <option value="0"  [selected]="month === '0'">Jan</option>
+                <option value="1"  [selected]="month === '1'">Feb</option>
+                <option value="2"  [selected]="month === '2'">Mar</option>
+                <option value="3"  [selected]="month === '3'">Apr</option>
+                <option value="4"  [selected]="month === '4'">May</option>
+                <option value="5"  [selected]="month === '5'">Jun</option>
+                <option value="6"  [selected]="month === '6'">Jul</option>
+                <option value="7"  [selected]="month === '7'">Aug</option>
+                <option value="8"  [selected]="month === '8'">Sep</option>
+                <option value="9"  [selected]="month === '9'">Oct</option>
+                <option value="10" [selected]="month === '10'">Nov</option>
+                <option value="11" [selected]="month === '11'">Dec</option>
+            </select>                
+            <input #yearMonthYear (change)="yearChange(yearMonthYear)" class="form-control col-5 classic-year-month-picker-input" type="number" value={{year}}>
+        </div>
+        <div class="row">                
+            <span class="col-5 classic-year-month-picker-label">MMM</span>
+            <span class="col-5 classic-year-month-picker-label">YYYY</span>
+        </div>
+    </div>
+</div>

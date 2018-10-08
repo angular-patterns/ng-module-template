@@ -1,0 +1,29 @@
+<div class="row">
+
+    <div class="prov-state-select col-6">
+        <label class="form-control-label control-label" for={{id}}>{{to.labelProvState}}</label>
+        <select class="form-control selectpicker" [id]="id" [disabled]="to.disabled || isNotCanadaOrUsa()" (change)="onProvinceStateChange($event)">
+            <option selected></option>
+            <option 
+                *ngFor="let provState of provStates" 
+                value="{{provState.value}}" 
+                [selected]="provState.value === model[to.keys.provStateId]">
+                {{provState.name}}
+            </option>
+        </select>
+    </div>
+    
+    <div class="country-select col-6">
+        <label class="form-control-label control-label" for={{id}}>{{to.labelCountry}}</label>
+        <select class="form-control selectpicker" [id]="id" [disabled]="to.disabled" (change)="onCountryChange($event)">
+            <option selected></option>
+            <option 
+                *ngFor="let country of countries" 
+                value="{{country.value}}" 
+                [selected]="country.value === model[to.keys.countryId]">
+                {{country.name}}
+            </option>
+        </select>
+    </div>
+
+</div>

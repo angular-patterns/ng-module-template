@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
-import { NavigationService } from '../../../form-core/services/navigation.service';
+import { FormlyFieldConfig } from '@ngx-formly/core';
+import { ActivatedRoute } from '@angular/router';
 import { Section } from '../../../form-core/models/section.model';
+import { NavigationService } from '../../../form-core/services/navigation.service';
 
 @Component({
   selector: 'app-render',
@@ -25,3 +26,4 @@ export class RenderComponent implements OnInit {
   }
 
 }
+

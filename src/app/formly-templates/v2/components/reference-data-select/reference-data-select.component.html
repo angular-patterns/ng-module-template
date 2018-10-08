@@ -1,0 +1,7 @@
+<div class="reference-data-select">
+    <label class="form-control-label control-label" for={{id}}>{{to.label}}</label>
+    <select class="form-control selectpicker" [id]="id" [formControl]="formControl" [formlyAttributes]="field" [class.is-invalid]="showError">
+        <option selected></option>
+        <option *ngFor="let selectOption of selectOptions" value="{{selectOption.value}}">{{selectOption.name}}</option>
+    </select>
+</div>

@@ -1,0 +1,10 @@
+<label *ngIf="to.required" class="form-control-label control-label" for={{id}}>{{to.label}} *</label>
+<label *ngIf="!to.required" class="form-control-label control-label" for={{id}}>{{to.label}}</label> 
+<div class="input-group">
+    <div class="input-group-append">
+        <input [id]="id" type="text" [class.is-invalid]="showError" mask="000000000" class="form-control" [formControl]="formControl" [formlyAttributes]="field" (change)="sinInputChanged($event)">
+        <div class="input-group-text" [hidden]="checkSin(model.sin)">
+            <input type="checkbox" [checked]="getOverrideSelection()" value="" (change)="overrideChange($event)">
+        </div>
+    </div>
+</div>

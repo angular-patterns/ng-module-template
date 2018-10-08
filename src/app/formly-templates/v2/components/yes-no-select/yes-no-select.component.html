@@ -1,0 +1,10 @@
+
+<div class="yes-no-select">
+    <label *ngIf="to.required" class="form-control-label control-label" for={{id}}>{{to.label}} *</label>
+    <label *ngIf="!to.required" class="form-control-label control-label" for={{id}}>{{to.label}}</label>
+    <select class="form-control selectpicker" [id]="id" [formControl]="formControl" [class.is-invalid]="showError">
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
+</div>
+

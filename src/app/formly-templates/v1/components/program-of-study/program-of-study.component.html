@@ -1,0 +1,48 @@
+<div class="row program-of-study" [id]="id">
+    <div class="col-6">
+        <label class="form-control-label control-label" for="prgrm">Program of Study</label>
+
+        <select class="form-control" id="prgrm" value=""  [formControl]="formControl">
+            <option selected></option>
+            <option value="1">Bachelor of Arts</option>
+            <option value="2">Computer Science</option>
+            <option value="3">English</option>
+            <option value="4">Engineering</option>
+        </select>
+    </div>
+    <div class="col-6">
+        <div>
+            <label for="specsrch">&nbsp;</label>
+        </div>
+        <div class="form-check-inline">
+            <label class="form-check-label">
+                <input (click)="allSelected()" type="radio" class="form-check-input" name="specsrch" checked value=0>All
+            </label>
+        </div>
+        <div class="form-check-inline">
+            <label class="form-check-label">
+                <input (click)="notFoundSelected()" type="radio" class="form-check-input" name="specsrch" value=1>Not Found
+            </label>
+        </div>
+    </div>
+
+</div>
+<div class="row program-of-study">
+    <div class="col-6">
+        <label class="form-control-label control-label" for="spec">Program Specialization/Major</label>
+        <select class="form-control" id="spec" value="">
+            <option selected></option>
+            <option value="1">Anthropology</option>
+            <option value="2">General</option>
+        </select>
+    </div>
+
+    <div class="col-3">
+        <label class="form-control-label control-label" for=prgrmty>Program Type</label>
+        <input class="form-control col-3" id="prgrmty" value="">
+    </div>
+    <div class="col-3">
+        <label class="form-control-label control-label" for="cred">Credential Type</label>
+        <input class="form-control col-3" id="cred" value="">
+    </div>
+</div>

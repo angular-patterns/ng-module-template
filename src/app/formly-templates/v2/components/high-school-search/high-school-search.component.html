@@ -1,0 +1,27 @@
+<div class="row high-school-search">
+    <div class="col-6"> 
+        <label class="form-control-label control-label" for={{id}>{{to.label}}</label> 
+            <ng-select *ngIf="!localModel.notFound"
+                [ngModel]="localModel.id"
+                #highSchoolSelect
+                [items]="to.options"
+                bindLabel="highSchoolName"               
+                bindValue="id"
+                groupBy=""
+                [multiple]="false"
+                placeholder="Select High School"
+                (change)="onSelectChange($event)">
+            </ng-select>
+            <input (input)="onInputChange($event)" *ngIf="localModel.notFound" class="form-control col-12" type="text">
+    </div> 
+
+    <div class="col-6">
+        <div class="offset-for-label"></div> 
+        <div class="form-check-inline">
+            <label class="form-check-label">
+                <input [formControl]="checkbox" [checked]="localModel.notFound" type="checkbox" class="form-check-input">Not Found
+            </label>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,7 @@
+div.section-title {
+    color: white;
+    background-color: black;
+    padding: .5rem 1rem;
+    margin-bottom: 1rem;
+    border-radius: .25rem;   
+}

@@ -14,8 +14,11 @@ export class RenderComponent implements OnInit {
   section: Section;
 
   constructor(private navigationService: NavigationService) {
-    this.section = navigationService.getSection();
-    console.log(this.section);
+    navigationService.sectionRoute.params.subscribe(t=> {
+      this.section = navigationService.getSection();
+      console.log(this.section);
+  
+    });
     
   }
 

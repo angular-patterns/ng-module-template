@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Section } from '../../form-core/models/section.model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { NavigationService } from '../../form-core/services/navigation.service';
 
 @Component({
   selector: 'app-section',
@@ -11,7 +12,8 @@ import { map } from 'rxjs/operators';
 })
 export class SectionComponent implements OnInit {
   section: Observable<Section>;
-  constructor(private route: ActivatedRoute) { 
+  constructor(private route: ActivatedRoute, private navigationService:NavigationService) { 
+    navigationService.initSectionRoute(route); 
     this.section = route.data.pipe(map(t=>t.section));
   }
 

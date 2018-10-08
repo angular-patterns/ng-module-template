@@ -7,26 +7,30 @@ import { Section } from '../models/section.model';
   providedIn: 'root'
 })
 export class NavigationService {
-  route: ActivatedRoute;
+  public formRoute: ActivatedRoute;
+  public sectionRoute: ActivatedRoute;
   constructor(private router: Router) { 
 
   }
 
   initFormRoute(route: ActivatedRoute) {
-    this.route = route;
+    this.formRoute = route;
+  }
+  initSectionRoute(route: ActivatedRoute) {
+    this.sectionRoute = route;
   }
 
   navigate(section: string) {
-    if (this.route == null)
+    if (this.formRoute == null)
       throw new Error('Route for navigation service is not initialized');
-    this.router.navigate(['./', section], {relativeTo: this.route});
+    this.router.navigate(['./', section], {relativeTo: this.formRoute});
   }
 
   getForm(): Form {
-    return this.route.snapshot.data.form;
+    return this.formRoute.snapshot.data.form;
   }
   getSection(): Section {
-    return this.route.firstChild.snapshot.data.section;
+    return this.sectionRoute.snapshot.data.section;
   }
 
 }

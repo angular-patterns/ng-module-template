@@ -19,10 +19,10 @@ import {FormlyBootstrapModule} from '@ngx-formly/bootstrap';
     RouterModule.forRoot([], { enableTracing: false}),
     FormCommonModule,
     FormCoreModule.forRoot({
-      formServiceUrl:`${process.env.BaseServiceUrl}/FormClient`
+      formServiceUrl:`${process.env.FormServiceUrl}/FormClient`
     }),
     FormlyModule.forRoot(),
-    FormlyBoostrapModule,
+    FormlyBootstrapModule,
     FormlyTemplatesModule.forRoot({
       highSchoolSearchServiceUrl:`${process.env.BaseServiceUrl}/high-schools`,
       referenceDataUrl: `${process.env.BaseServiceUrl}/reference-data`,

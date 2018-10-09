@@ -1,5 +1,6 @@
 const del = require('del');
 const path = require('path');
+const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
@@ -8,7 +9,7 @@ const autoprefixer = require('autoprefixer');
 const postcssUrl = require('postcss-url');
 const postcssImports = require('postcss-import');
 
-const { NoEmitOnErrorsPlugin, NamedModulesPlugin } = require('webpack');
+const { NoEmitOnErrorsPlugin, NamedModulesPlugin, NormalModuleReplacementPlugin } = require('webpack');
 const { NamedLazyChunksWebpackPlugin, BaseHrefWebpackPlugin, PostcssCliResources } = require('@angular/cli/plugins/webpack');
 const { CommonsChunkPlugin } = require('webpack').optimize;
 const { AngularCompilerPlugin } = require('@ngtools/webpack');
@@ -128,11 +129,13 @@ module.exports = (env) => {
     const environment = env.Environment || process.env.Environment || 'Development';
     const baseHref = env.BaseHref || process.env.BaseHref || '/';
     const deployUrl = env.DeployUrl || process.env.DeployUrl || '/';
+    const nodeEnv = env.NodeEnv || process.env.NODE_ENV || '';
 
     console.log(`Optimized: ${isOptimized}`);
     console.log(`Environment: ${environment}`);
     console.log(`BaseHref: ${baseHref}`)
     console.log(`DeployUrl: ${deployUrl}`);
+    console.log('Node Env:', `${nodeEnv}`);
 
     const config = {
         devtool: isOptimized ? false : 'eval-source-map',
@@ -272,6 +275,11 @@ module.exports = (env) => {
             ]
         },
         plugins: [
+            new NormalModuleReplacementPlugin(/environment$/,
+            function(resource) {
+                if (`${nodeEnv}` != '')
+                    resource.request = resource.request.replace(/environment$/, `environment.${nodeEnv}`);
+            }),
             new NoEmitOnErrorsPlugin(),
             new Dotenv({
                 path: './.env'

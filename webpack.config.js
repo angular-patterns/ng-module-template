@@ -125,7 +125,7 @@ del.sync("dist/**");
 
 module.exports = (env) => {
     env = env || {};
-    const isOptimized = process.argv.indexOf('-p') !== -1;
+    const isOptimized = process.argv.indexOf('production') !== -1;
     const environment = env.Environment || process.env.Environment || 'Development';
     const baseHref = env.BaseHref || process.env.BaseHref || '/';
     const deployUrl = env.DeployUrl || process.env.DeployUrl || '/';
@@ -341,7 +341,8 @@ module.exports = (env) => {
             //}),
             new NamedModulesPlugin({}),
             new AngularCompilerPlugin({
-                tsConfigPath: './tsconfig.json',
+                tsConfigPath: path.join( __dirname, "tsconfig.json" ),
+                mainPath: path.join( __dirname, "src/main" ),
                 entryModule: path.join(__dirname, 'src/app/app.module#AppModule'),
                 skipCodeGeneration: !isOptimized,
                 sourceMap: !isOptimized

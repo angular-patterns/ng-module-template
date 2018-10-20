@@ -20,6 +20,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const cssnano = require('cssnano');
 
 //const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
+const UglifyWebpackPlugin = require('uglifyjs-webpack-plugin');
 
 const hashFormat = { "chunk": "", "extract": "", "file": ".[hash:20]", "script": "" };
 const baseHref = process.env.BaseHref;
@@ -161,7 +162,8 @@ module.exports = (env) => {
                     }
                 }
             },
-            runtimeChunk: 'single'
+            runtimeChunk: 'single',
+            minimizer: [new UglifyWebpackPlugin({ sourceMap: false, extractComments: true })]
         },
         entry: {
             // vendor: './src/vendor.ts',

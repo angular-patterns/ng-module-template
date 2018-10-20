@@ -140,16 +140,28 @@ module.exports = (env) => {
     const config = {
         devtool: isOptimized ? false : 'eval-source-map',
         resolve: { extensions: ['.ts', '.js'] },
+        // optimization: {
+        //     splitChunks: {
+        //         // Apply optimizations to all chunks, even initial ones (not just the
+        //         // ones that are lazy-loaded).
+        //         chunks: "all"
+        //     },
+        //     // I pull the Webpack runtime out into its own bundle file so that the
+        //     // contentHash of each subsequent bundle will remain the same as long as the
+        //     // source code of said bundles remain the same.
+        //     runtimeChunk: "single"
+        // },
         optimization: {
             splitChunks: {
-                // Apply optimizations to all chunks, even initial ones (not just the
-                // ones that are lazy-loaded).
-                chunks: "all"
+                cacheGroups: {
+                    commons: {
+                        test: /[\\/]node_modules[\\/]/,
+                        name: "vendors",
+                        chunks: "all"
+                    }
+                }
             },
-            // I pull the Webpack runtime out into its own bundle file so that the
-            // contentHash of each subsequent bundle will remain the same as long as the
-            // source code of said bundles remain the same.
-            runtimeChunk: "single"
+            runtimeChunk: 'single'
         },
         entry: {
             // vendor: './src/vendor.ts',

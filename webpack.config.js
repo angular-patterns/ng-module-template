@@ -378,7 +378,10 @@ module.exports = (env) => {
             "setImmediate": false
         },
         devServer: {
-            "historyApiFallback": true
+            "historyApiFallback": true,
+            stats: {
+                warningsFilter: /System.import/
+            }
         }
     };
 

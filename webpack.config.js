@@ -342,7 +342,6 @@ module.exports = (env) => {
             new NamedModulesPlugin({}),
             new AngularCompilerPlugin({
                 tsConfigPath: path.join( __dirname, "tsconfig.json" ),
-                mainPath: path.join( __dirname, "src/main" ),
                 entryModule: path.join(__dirname, 'src/app/app.module#AppModule'),
                 skipCodeGeneration: !isOptimized,
                 sourceMap: !isOptimized

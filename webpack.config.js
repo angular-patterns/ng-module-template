@@ -1,5 +1,6 @@
 const del = require('del');
 const path = require('path');
+const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
@@ -7,13 +8,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const postcssUrl = require('postcss-url');
 const postcssImports = require('postcss-import');
-const NamedLazyChunksWebpackPlugin = require('angular-named-lazy-chunks-webpack-plugin');
 
-const { NoEmitOnErrorsPlugin, NamedModulesPlugin } = require('webpack');
-const { BaseHrefWebpackPlugin } = require('base-href-webpack-plugin');
 
-//NamedLazyChunksWebpackPlugin, BaseHrefWebpackPlugin, 
-//const { PostcssCliResources } = require('@angular/cli/plugins/webpack');
+const { NoEmitOnErrorsPlugin, NamedModulesPlugin, NormalModuleReplacementPlugin } = require('webpack');
+// const { NamedLazyChunksWebpackPlugin, BaseHrefWebpackPlugin, PostcssCliResources } = require('@angular/cli/plugins/webpack');
 //const { CommonsChunkPlugin } = require('webpack').optimize;
 const { AngularCompilerPlugin } = require('@ngtools/webpack');
 
@@ -23,6 +21,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const cssnano = require('cssnano');
 
 //const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
+const UglifyWebpackPlugin = require('uglifyjs-webpack-plugin');
 
 const hashFormat = { "chunk": "", "extract": "", "file": ".[hash:20]", "script": "" };
 const baseHref = process.env.BaseHref;
@@ -126,38 +125,77 @@ const postcssPlugins = function (loader) {
 require('dotenv').config();
 del.sync("dist/**");
 
-module.exports = () => {
-    const isOptimized = process.argv.indexOf('-p') !== -1;
-    console.log(`Optimized: ${isOptimized}`);
-    console.log(`Environment: ${process.env.Environment}`);
-    console.log(`BaseHref: ${process.env.BaseHref}`)
+module.exports = (env) => {
 
+    env = env || {};
+    const isOptimized = process.argv.indexOf('production') !== -1;
+    const environment = env.Environment || process.env.Environment || 'Development';
+    const baseHref = env.BaseHref || process.env.BaseHref || '/';
+    const deployUrl = env.DeployUrl || process.env.DeployUrl || '/';
+    const nodeEnv = env.NodeEnv || process.env.NODE_ENV || '';
+
+    console.log(`Optimized: ${isOptimized}`);
+    console.log(`Environment: ${environment}`);
+    console.log(`BaseHref: ${baseHref}`)
+    console.log(`DeployUrl: ${deployUrl}`);
+    console.log('Node Env:', `${nodeEnv}`);
 
     const config = {
-        performance : {
-            hints : false
-        },
         devtool: isOptimized ? false : 'eval-source-map',
         resolve: { extensions: ['.ts', '.js'] },
-        entry: {
-            styles: './src/styles.scss',
-            polyfills: './src/polyfills.ts',
-            app: './src/main.ts',
-        },
-        output: {
-            filename: 'bundles/[name].[hash].bundle.js',
-            path: path.join(process.cwd(), "dist")
-        },
+        // optimization: {
+        //     splitChunks: {
+        //         // Apply optimizations to all chunks, even initial ones (not just the
+        //         // ones that are lazy-loaded).
+        //         chunks: "all"
+        //     },
+        //     // I pull the Webpack runtime out into its own bundle file so that the
+        //     // contentHash of each subsequent bundle will remain the same as long as the
+        //     // source code of said bundles remain the same.
+        //     runtimeChunk: "single"
+        // },
         optimization: {
+            providedExports: true,
+            usedExports: true,
+            sideEffects: true,
+            concatenateModules: true,
             splitChunks: {
                 cacheGroups: {
-                    commons: {
-                        test: /[\\/]node_modules[\\/]/,
-                        name: "vendors",
+                    polyfills: {
+                        test: /[\\/]node_modules[\\/](core-js|zone.js)[\\/]/,
+                        name: "polyfills",
+                        chunks: "all"
+                    },                   
+                    compiler: {
+                        test: /[\\/]node_modules[\\/]@angular[\\/]compiler[\\/]/,
+                        name: "compiler",
                         chunks: "all"
                     }
                 }
-            }
+            },
+            runtimeChunk: 'single',
+            minimize: true,
+            minimizer: [
+                new UglifyWebpackPlugin({ 
+                    sourceMap: false,  
+                    uglifyOptions: { 
+                        compress: true, 
+                        output: { 
+                            comments: false 
+                        } 
+                    } 
+                })],
+        },
+        entry: {
+            // vendor: './src/vendor.ts',
+            polyfills: './src/polyfills.ts',
+            app: './src/main.ts',
+            styles: './src/styles.scss'
+        },
+        output: {
+            filename: 'bundles/[name].[hash].bundle.js',
+            path: path.join(process.cwd(), "dist"),
+            publicPath: deployUrl
         },
         module: {
             rules: [
@@ -183,7 +221,6 @@ module.exports = () => {
                 },
                 {
                     "exclude": [
-                        path.join(process.cwd(), "src\\styles.css"),
                         path.join(process.cwd(), "src\\styles.scss")
                     ],
                     "test": /\.css$/,
@@ -203,9 +240,7 @@ module.exports = () => {
                 },
                 {
                     "exclude": [
-                        path.join(process.cwd(), "src\\styles.css"),
-                        path.join(process.cwd(), "src\\styles.scss"),
-                        
+                        path.join(process.cwd(), "src\\styles.scss")
                     ],
                     "test": /\.scss$|\.sass$/,
                     "use": [
@@ -232,7 +267,7 @@ module.exports = () => {
                 },
                 {
                     "include": [
-                        path.join(process.cwd(), "src\\styles.css")
+                        path.join(process.cwd(), "src\\styles.scss")
                     ],
                     "test": /\.css$/,
                     "use": [
@@ -279,13 +314,18 @@ module.exports = () => {
                     ]
                 },
                 {
-                    test: /\.ts$/,
+                    test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
                     loader: '@ngtools/webpack'
                 }
 
             ]
         },
         plugins: [
+            new NormalModuleReplacementPlugin(/environment$/,
+            function(resource) {
+                if (`${nodeEnv}` != '')
+                    resource.request = resource.request.replace(/environment$/, `environment.${nodeEnv}`);
+            }),
             new NoEmitOnErrorsPlugin(),
             new Dotenv({
                 path: './.env'
@@ -322,7 +362,7 @@ module.exports = () => {
                 "onDetected": false,
                 "cwd": projectRoot
             }),
-            new NamedLazyChunksWebpackPlugin(),
+            //new NamedLazyChunksWebpackPlugin(),
             new HtmlWebpackPlugin({
                 filename: __dirname + '/dist/index.html',
                 template: __dirname + '/src/index.html',
@@ -330,13 +370,13 @@ module.exports = () => {
                 compile: true,
                 showErrors: true
             }),
-            //new BaseHrefWebpackPlugin({ baseHref: process.env.BaseHref }),
-            // new CommonsChunkPlugin({
-            //     names: ['app', 'vendor', 'styles', 'polyfills']
-            // }),
-            //new NamedModulesPlugin({}),
+            //new BaseHrefWebpackPlugin({ baseHref: baseHref }),
+            //new CommonsChunkPlugin({
+            //    names: ['app', 'vendor', 'styles', 'polyfills']
+            //}),
+            new NamedModulesPlugin({}),
             new AngularCompilerPlugin({
-                tsConfigPath: './tsconfig.json',
+                tsConfigPath: path.join( __dirname, "tsconfig.json" ),
                 entryModule: path.join(__dirname, 'src/app/app.module#AppModule'),
                 skipCodeGeneration: !isOptimized,
                 sourceMap: !isOptimized
@@ -359,7 +399,10 @@ module.exports = () => {
             "setImmediate": false
         },
         devServer: {
-            "historyApiFallback": true
+            "historyApiFallback": true,
+            stats: {
+                warningsFilter: /System.import/
+            }
         }
     };
 

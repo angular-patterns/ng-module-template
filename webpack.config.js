@@ -9,6 +9,7 @@ const autoprefixer = require('autoprefixer');
 const postcssUrl = require('postcss-url');
 const postcssImports = require('postcss-import');
 
+
 const { NoEmitOnErrorsPlugin, NamedModulesPlugin, NormalModuleReplacementPlugin } = require('webpack');
 // const { NamedLazyChunksWebpackPlugin, BaseHrefWebpackPlugin, PostcssCliResources } = require('@angular/cli/plugins/webpack');
 //const { CommonsChunkPlugin } = require('webpack').optimize;
@@ -125,6 +126,7 @@ require('dotenv').config();
 del.sync("dist/**");
 
 module.exports = (env) => {
+
     env = env || {};
     const isOptimized = process.argv.indexOf('production') !== -1;
     const environment = env.Environment || process.env.Environment || 'Development';
@@ -139,7 +141,8 @@ module.exports = (env) => {
     console.log('Node Env:', `${nodeEnv}`);
 
     const config = {
-        devtool: isOptimized ? false : 'eval-source-map',
+        mode: 'production',
+        //devtool: isOptimized ? false : 'eval-source-map',
         resolve: { extensions: ['.ts', '.js'] },
         // optimization: {
         //     splitChunks: {
@@ -153,17 +156,33 @@ module.exports = (env) => {
         //     runtimeChunk: "single"
         // },
         optimization: {
+            providedExports: true,
+            usedExports: true,
+            concatenateModules: true,
             splitChunks: {
                 cacheGroups: {
-                    commons: {
-                        test: /[\\/]node_modules[\\/]/,
-                        name: "vendors",
+                    polyfills: {
+                        test: /[\\/]node_modules[\\/](core-js|zone.js)[\\/]/,
+                        name: "polyfills",
+                        chunks: "all"
+                    },                   
+                    compiler: {
+                        test: /[\\/]node_modules[\\/]@angular[\\/]compiler[\\/]/,
+                        name: "compiler",
                         chunks: "all"
                     }
                 }
             },
             runtimeChunk: 'single',
-            minimizer: [new UglifyWebpackPlugin({ sourceMap: false, extractComments: true })]
+            minimizer: [new UglifyWebpackPlugin({ sourceMap: false,  extractComments: {
+                condition: /^\**!|@preserve|@license|@cc_on/i,
+                filename(file) {
+                  return `${file}.LICENSE`;
+                },
+                banner(licenseFile) {
+                  return `License information can be found in ${licenseFile}`;
+                }
+              } })]
         },
         entry: {
             // vendor: './src/vendor.ts',

@@ -1,5 +1,6 @@
 {
   "name": "ng-module-template",
+  "sideEffects": false,
   "version": "6.0.0",
   "description": "",
   "main": "dist/bundles/ng-module-template.umd.js",
@@ -11,7 +12,7 @@
     "start": "npm run dev",
     "serve": "webpack-dev-server --content-base dist --hot true --inline true",
     "dev": "npm run serve -- --open --mode development",
-    "build": "webpack --mode production",
+    "build": "webpack --mode production --stats-json",
     "build-dev": "webpack",
     "build-module": "cd build && gulp build",
     "publish-clean": "cd build && gulp publish-clean",
@@ -56,6 +57,7 @@
     "circular-dependency-plugin": "^4.2.1",
     "codelyzer": "^4.0.1",
     "command-line-args": "^4.0.7",
+    "compression-webpack-plugin": "^2.0.0",
     "copy-webpack-plugin": "~4.4.1",
     "css-loader": "^0.28.11",
     "cssnano": "^3.10.0",

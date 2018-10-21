@@ -157,6 +157,7 @@ module.exports = (env) => {
         optimization: {
             providedExports: true,
             usedExports: true,
+            sideEffects: true,
             concatenateModules: true,
             splitChunks: {
                 cacheGroups: {
@@ -174,9 +175,16 @@ module.exports = (env) => {
             },
             runtimeChunk: 'single',
             minimize: true,
-            minimizer: [new UglifyWebpackPlugin({ sourceMap: false,  uglifyOptions: { compress: true, output: { comments: false } } })],
-            usedExports: true,
-            sideEffects: true
+            minimizer: [
+                new UglifyWebpackPlugin({ 
+                    sourceMap: false,  
+                    uglifyOptions: { 
+                        compress: true, 
+                        output: { 
+                            comments: false 
+                        } 
+                    } 
+                })],
         },
         entry: {
             // vendor: './src/vendor.ts',

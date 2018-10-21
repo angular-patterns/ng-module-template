@@ -141,8 +141,7 @@ module.exports = (env) => {
     console.log('Node Env:', `${nodeEnv}`);
 
     const config = {
-        mode: 'production',
-        //devtool: isOptimized ? false : 'eval-source-map',
+        devtool: isOptimized ? false : 'eval-source-map',
         resolve: { extensions: ['.ts', '.js'] },
         // optimization: {
         //     splitChunks: {
@@ -307,7 +306,7 @@ module.exports = (env) => {
                     ]
                 },
                 {
-                    test: /\.ts$/,
+                    test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
                     loader: '@ngtools/webpack'
                 }
 

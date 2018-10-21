@@ -174,15 +174,10 @@ module.exports = (env) => {
                 }
             },
             runtimeChunk: 'single',
-            minimizer: [new UglifyWebpackPlugin({ sourceMap: false,  extractComments: {
-                condition: /^\**!|@preserve|@license|@cc_on/i,
-                filename(file) {
-                  return `${file}.LICENSE`;
-                },
-                banner(licenseFile) {
-                  return `License information can be found in ${licenseFile}`;
-                }
-              } })]
+            minimize: true,
+            minimizer: [new UglifyWebpackPlugin({ sourceMap: false,  uglifyOptions: { compress: true, output: { comments: false } } })],
+            usedExports: true,
+            sideEffects: true
         },
         entry: {
             // vendor: './src/vendor.ts',

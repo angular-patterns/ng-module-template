@@ -51,6 +51,12 @@ module.exports = (env) => {
                         test: /[\\/]node_modules[\\/]@angular[\\/]compiler[\\/]/,
                         name: "compiler",
                         chunks: "all"
+                    },
+                    styles: {
+                        name: 'styles',
+                        test: /\.css$/,
+                        chunks: 'all',
+                        enforce: true
                     }
                 }
             },
@@ -68,9 +74,9 @@ module.exports = (env) => {
                 })],
         },
         entry: {
+            styles: './src/styles.css',
             polyfills: './src/polyfills.ts',
             app: './src/main.ts',
-            styles: './src/styles.css'
         },
         output: {
             filename: 'bundles/[name].[hash].bundle.js',
@@ -89,7 +95,9 @@ module.exports = (env) => {
                     ],
                     "test": /\.css$/,
                     "use": [
-                        "raw-loader"
+                        "to-string-loader",
+                        "css-loader",
+                        "postcss-loader"
                     ]
                 },         
                 {
@@ -98,8 +106,9 @@ module.exports = (env) => {
                     ],
                     "test": /\.css$/,
                     "use": [
-                        "raw-loader",
-                        "css-loader"
+                        MiniCssExtractPlugin.loader,
+                        "css-loader",
+                        "postcss-loader"
                     ]
                 },                 
                 {
@@ -164,6 +173,9 @@ module.exports = (env) => {
                 "onDetected": true,
                 "cwd": projectRoot
             }),
+            new MiniCssExtractPlugin({
+                filename: '[name].css',
+              }),
             new HtmlWebpackPlugin({
                 filename: __dirname + '/dist/index.html',
                 template: __dirname + '/src/index.html',

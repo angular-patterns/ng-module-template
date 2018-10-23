@@ -106,7 +106,7 @@ module.exports = (env) => {
                     ],
                     "test": /\.css$/,
                     "use": [
-                        MiniCssExtractPlugin.loader,
+                        !isOptimized ? 'style-loader':  MiniCssExtractPlugin.loader,
                         "css-loader",
                         "postcss-loader"
                     ]

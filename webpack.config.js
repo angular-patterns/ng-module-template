@@ -74,12 +74,12 @@ module.exports = (env) => {
                 })],
         },
         entry: {
-            styles: './src/styles.css',
             polyfills: './src/polyfills.ts',
             app: './src/main.ts',
+            styles: './src/styles.css',
         },
         output: {
-            filename: 'bundles/[name].[hash].bundle.js',
+            filename: 'bundles/[name].[contenthash].bundle.js',
             path: path.join(process.cwd(), "dist"),
             publicPath: deployUrl
         },
@@ -174,7 +174,7 @@ module.exports = (env) => {
                 "cwd": projectRoot
             }),
             new MiniCssExtractPlugin({
-                filename: '[name].css',
+                filename: '[name].[hash].css',
               }),
             new HtmlWebpackPlugin({
                 filename: __dirname + '/dist/index.html',

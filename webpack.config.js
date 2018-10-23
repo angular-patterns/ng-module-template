@@ -1,19 +1,19 @@
 const del = require('del');
 const path = require('path');
+const { NoEmitOnErrorsPlugin, NamedModulesPlugin, NormalModuleReplacementPlugin } = require('webpack');
+
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const UglifyWebpackPlugin = require('uglifyjs-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
 const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const { NoEmitOnErrorsPlugin, NamedModulesPlugin, NormalModuleReplacementPlugin } = require('webpack');
 const { AngularCompilerPlugin } = require('@ngtools/webpack');
-
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
-const UglifyWebpackPlugin = require('uglifyjs-webpack-plugin');
 const projectRoot = process.cwd();
-
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 del.sync("dist/**");
 

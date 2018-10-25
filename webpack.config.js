@@ -79,7 +79,8 @@ module.exports = (env) => {
             styles: './src/styles.css',
         },
         output: {
-            filename: 'bundles/[name].[contenthash].bundle.js',
+            filename: isOptimized ? 'bundles/[name].[contenthash].bundle.js' : 'bundles/[name].[hash].bundle.js' ,
+            
             path: path.join(process.cwd(), "dist"),
             publicPath: deployUrl
         },

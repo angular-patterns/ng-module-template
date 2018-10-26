@@ -15,6 +15,8 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const projectRoot = process.cwd();
 
+const getPostCssPlugins = require('./postcss.plugins');
+
 del.sync("dist/**");
 
 module.exports = (env) => {
@@ -31,6 +33,8 @@ module.exports = (env) => {
     console.log(`BaseHref: ${baseHref}`)
     console.log(`DeployUrl: ${deployUrl}`);
     console.log('Node Env:', `${nodeEnv}`);
+
+    const postCssPlugins = getPostCssPlugins(deployUrl, baseHref);    
 
     const config = {
         devtool: isOptimized ? false : 'eval-source-map',
@@ -98,7 +102,14 @@ module.exports = (env) => {
                     "use": [
                         "to-string-loader",
                         "css-loader",
-                        "postcss-loader"
+                        {
+                            "loader": "postcss-loader",
+                            "options": {
+                                "ident": "embedded",
+                                "plugins": postCssPlugins,
+                                "sourceMap": true
+                            }
+                        }
                     ]
                 },         
                 {
@@ -109,7 +120,14 @@ module.exports = (env) => {
                     "use": [
                         !isOptimized ? 'style-loader':  MiniCssExtractPlugin.loader,
                         "css-loader",
-                        "postcss-loader"
+                        {
+                            "loader": "postcss-loader",
+                            "options": {
+                                "ident": "embedded",
+                                "plugins": postCssPlugins,
+                                "sourceMap": true
+                            }
+                        }
                     ]
                 },                 
                 {
